@@ -1,0 +1,2 @@
+/** @type {import('tailwindcss').Config} */
+export default { content: ['./index.html', './src/**/*.{js,jsx}'], theme: { extend: { colors: { deep:'var(--color-deep)', mid:'var(--color-mid)', pale:'var(--color-pale)', cream:'var(--color-cream)', ink:'var(--color-ink)', muted:'var(--color-muted)', success:'var(--color-success)', error:'var(--color-error)', warm:'var(--color-warm)' }, fontFamily: { sans:['Manrope','sans-serif'], mono:['DM Mono','monospace'] } } }, plugins: [] };
