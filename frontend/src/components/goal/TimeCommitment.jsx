@@ -1,6 +1,7 @@
 import Input from '../common/Input';
+import { approxWeeks } from '../../lib/format';
 
-export default function TimeCommitment({ hours, targetWeeks, limits, errors, onHours, onTargetWeeks }) {
+export default function TimeCommitment({ hours, targetWeeks, limits, errors, estimatedHours, onHours, onTargetWeeks }) {
   return (
     <fieldset className="surface-card px-6 py-7 sm:px-8">
       <legend className="sr-only">Time commitment</legend>
@@ -11,7 +12,7 @@ export default function TimeCommitment({ hours, targetWeeks, limits, errors, onH
             Hours per week <span className="text-3xl font-extrabold tracking-[-.06em]">{hours}</span>
           </label>
           <input id="hoursPerWeek" type="range" min={limits.min} max={limits.max} value={hours} onChange={(e) => onHours(Number(e.target.value))} className="mt-4 w-full accent-[var(--color-mid,#1B6CA8)]" aria-describedby="hours-help" />
-          <p id="hours-help" className="mt-2 text-xs text-muted">{limits.min}–{limits.max} hours. Be realistic; your roadmap is paced to this.</p>
+          <p id="hours-help" className="mt-2 text-xs text-muted">{limits.min}–{limits.max} hours. Be realistic; your roadmap is paced to this.{estimatedHours ? ` From zero, this goal takes about ${approxWeeks(estimatedHours, hours)} weeks at ${hours} h/week; your assessment can shorten that.` : ''}</p>
           {errors.hoursPerWeek && <p role="alert" className="mt-1.5 text-xs font-medium text-error">{errors.hoursPerWeek}</p>}
         </div>
         <div>

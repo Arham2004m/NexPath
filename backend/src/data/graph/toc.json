@@ -1,0 +1,280 @@
+{
+  "nodes": [
+    {
+      "id": "toc",
+      "name": "Theory of Computation",
+      "domain": "toc",
+      "level": 2,
+      "prerequisites": [
+        "maths-discrete"
+      ],
+      "estimatedHours": 20,
+      "topics": [
+        {
+          "id": "toc-1",
+          "title": "Finite automata and regular languages",
+          "hours": 7
+        },
+        {
+          "id": "toc-2",
+          "title": "Context-free languages and pushdown automata",
+          "hours": 7
+        },
+        {
+          "id": "toc-3",
+          "title": "Turing machines, decidability and complexity",
+          "hours": 6
+        }
+      ],
+      "miniTasks": [
+        "Design DFAs and NFAs for 10 languages and convert one NFA to a DFA.",
+        "Write grammars and PDAs for 8 languages and prove one language is not regular.",
+        "Classify 10 problems as decidable, semi-decidable or undecidable and justify each."
+      ],
+      "resources": [
+        {
+          "id": "CSFG-YT-056",
+          "type": "video",
+          "title": "Gate Smashers – Theory of Computation Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiFM9Lj5G9G_76adtyb4ef7i",
+          "provider": "Gate Smashers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Exam-focused",
+          "time": "12–20 hours",
+          "why": "Specific TOC playlist for automata, formal languages, grammars and machine models.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-044",
+          "type": "practice",
+          "title": "Automata Tutor – Getting Started",
+          "url": "https://automata-tutor.live-lab.fi.muni.cz/getting_started",
+          "provider": "Automata Tutor / Masaryk University",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "2–10 hours",
+          "why": "Live Automata Tutor page with student registration, course enrollment and exercise access for automata/formal-language practice.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-045",
+          "type": "reference",
+          "title": "JFLAP",
+          "url": "https://www.jflap.org/",
+          "provider": "JFLAP / Susan H. Rodger & Duke University",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "4–10 hours",
+          "why": "Visual tool for building and experimenting with finite automata, CFGs, PDAs, and Turing machines.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-046",
+          "type": "article",
+          "title": "GeeksforGeeks Theory of Computation",
+          "url": "https://www.geeksforgeeks.org/theory-of-computation-gq/",
+          "provider": "GeeksforGeeks",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "10–20 hours",
+          "why": "Compact reference collection for automata, regular languages, CFGs, PDA, and Turing machines.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-061",
+          "type": "course",
+          "title": "NPTEL – Theory of Computation",
+          "url": "https://onlinecourses-archive.nptel.ac.in/noc17_cs34/preview",
+          "provider": "NPTEL / IIT Kanpur",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "12 weeks",
+          "why": "IIT-backed lectures on automata, formal languages, computability, and complexity.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-YT-052",
+          "type": "video",
+          "title": "Gate Smashers – Graph Theory Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiG0M5FqjyoqB20Edk0tyzVt",
+          "provider": "Gate Smashers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "10–15 hours",
+          "why": "Specific graph-theory playlist useful for discrete mathematics and algorithm preparation.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-043",
+          "type": "reference",
+          "title": "Stanford Theoretical Computer Science",
+          "url": "https://theory.stanford.edu/",
+          "provider": "Stanford University",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "Ongoing reference",
+          "why": "Stanford’s theory site provides access to university-level theoretical computer science material and faculty resources useful for extending formal reasoning beyond the core syllabus.",
+          "priority": "Supplementary"
+        }
+      ]
+    },
+    {
+      "id": "compiler",
+      "name": "Compiler Design",
+      "domain": "toc",
+      "level": 3,
+      "prerequisites": [
+        "toc"
+      ],
+      "estimatedHours": 19,
+      "topics": [
+        {
+          "id": "compiler-1",
+          "title": "Lexical analysis and parsing (LL and LR)",
+          "hours": 8
+        },
+        {
+          "id": "compiler-2",
+          "title": "Syntax-directed translation and intermediate code",
+          "hours": 6
+        },
+        {
+          "id": "compiler-3",
+          "title": "Code optimisation and run-time environments",
+          "hours": 5
+        }
+      ],
+      "miniTasks": [
+        "Build FIRST/FOLLOW sets and an LL(1) table for two grammars.",
+        "Generate three-address code for 5 expressions and control-flow statements.",
+        "Apply common optimisations to a basic block and draw its DAG."
+      ],
+      "resources": [
+        {
+          "id": "CSFG-048",
+          "type": "book",
+          "title": "Crafting Interpreters",
+          "url": "https://craftinginterpreters.com/",
+          "provider": "Robert Nystrom",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "40–80 hours",
+          "why": "Build a language implementation step by step; excellent project-oriented compiler learning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-089",
+          "type": "project",
+          "title": "Crafting Interpreters – Scanning",
+          "url": "https://craftinginterpreters.com/scanning.html",
+          "provider": "Robert Nystrom",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "8–15 hours",
+          "why": "Walks learners through building a scanner/lexer for Lox, giving a concrete first compiler front-end implementation rather than only conceptual explanations.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-136",
+          "type": "project",
+          "title": "Nand2Tetris Project 7 – VM I",
+          "url": "https://www.nand2tetris.org/project07",
+          "provider": "Nand2Tetris / Noam Nisan & Shimon Schocken",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "10–20 hours",
+          "why": "Implement a stack-based virtual-machine translator to understand intermediate representations and function-level code generation.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-137",
+          "type": "project",
+          "title": "Nand2Tetris Project 8 – VM II",
+          "url": "https://www.nand2tetris.org/project08",
+          "provider": "Nand2Tetris / Noam Nisan & Shimon Schocken",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "10–20 hours",
+          "why": "Extends the VM translator with program flow, function calls, and bootstrap logic, exposing runtime abstractions beneath high-level languages.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-139",
+          "type": "project",
+          "title": "Nand2Tetris Project 10 – Compiler I",
+          "url": "https://www.nand2tetris.org/project10",
+          "provider": "Nand2Tetris / Noam Nisan & Shimon Schocken",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "8–15 hours",
+          "why": "Builds the compiler front end through lexical analysis, parsing, and syntax-tree-oriented translation.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-047",
+          "type": "article",
+          "title": "GeeksforGeeks Compiler Design",
+          "url": "https://www.geeksforgeeks.org/compiler-design-tutorials/",
+          "provider": "GeeksforGeeks",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "10–20 hours",
+          "why": "Topic-wise notes for lexical analysis, parsing, syntax trees, intermediate code, and optimization.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-049",
+          "type": "reference",
+          "title": "LLVM Kaleidoscope Tutorial",
+          "url": "https://llvm.org/docs/tutorial/",
+          "provider": "LLVM / Chris Lattner community",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "8–20 hours",
+          "why": "Practical tutorial for building a small language frontend using LLVM.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-060",
+          "type": "course",
+          "title": "NPTEL – Compiler Design",
+          "url": "https://archive.nptel.ac.in/noc/courses/noc21/SEM1/noc21-cs07/",
+          "provider": "NPTEL / IIT",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "12 weeks",
+          "why": "Lecture catalog for compiler architecture and language-processing fundamentals.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-YT-048",
+          "type": "video",
+          "title": "Gate Smashers – Compiler Design Complete Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiEKtKSIHYusizkESC42diyc",
+          "provider": "Gate Smashers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Exam-focused",
+          "time": "15–25 hours",
+          "why": "Specific compiler-design playlist covering lexical analysis, parsing and later compiler topics.",
+          "priority": "Recommended"
+        }
+      ]
+    }
+  ]
+}

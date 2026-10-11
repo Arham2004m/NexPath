@@ -1,0 +1,256 @@
+{
+  "nodes": [
+    {
+      "id": "research-methods",
+      "name": "Research Skills and Academic Writing",
+      "domain": "research",
+      "level": 2,
+      "prerequisites": [
+        "prog-basics"
+      ],
+      "estimatedHours": 17,
+      "topics": [
+        {
+          "id": "research-methods-1",
+          "title": "Reading research papers and writing a literature review",
+          "hours": 6
+        },
+        {
+          "id": "research-methods-2",
+          "title": "Research methods and planning",
+          "hours": 5
+        },
+        {
+          "id": "research-methods-3",
+          "title": "Academic and technical writing",
+          "hours": 6
+        }
+      ],
+      "miniTasks": [
+        "Read 5 papers in one area and write a two-page literature summary.",
+        "Write a one-page research question, method and timeline.",
+        "Write a short technical report on a project and revise it twice."
+      ],
+      "resources": [
+        {
+          "id": "MSAB-040",
+          "type": "course",
+          "title": "Learning How to Learn",
+          "url": "https://www.coursera.org/learn/learning-how-to-learn",
+          "provider": "Coursera",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Varies by course",
+          "why": "Selected for MS-abroad preparation because it directly supports study skills and learning strategies and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-041",
+          "type": "course",
+          "title": "Writing in the Sciences",
+          "url": "https://www.coursera.org/learn/sciwrite",
+          "provider": "Coursera",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Varies by course",
+          "why": "Selected for MS-abroad preparation because it directly supports academic and scientific writing and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-042",
+          "type": "course",
+          "title": "Academic English: Writing Specialization",
+          "url": "https://www.coursera.org/specializations/academic-english",
+          "provider": "Coursera",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Varies by course",
+          "why": "Selected for MS-abroad preparation because it directly supports academic english and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-043",
+          "type": "course",
+          "title": "Advanced Writing",
+          "url": "https://www.coursera.org/learn/advanced-writing",
+          "provider": "Coursera",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Varies by course",
+          "why": "Selected for MS-abroad preparation because it directly supports advanced academic writing and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-055",
+          "type": "article",
+          "title": "Research Your Options",
+          "url": "https://educationusa.state.gov/your-5-steps-us-study/research-your-options",
+          "provider": "EducationUSA",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "15–30 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports university research and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-084",
+          "type": "book",
+          "title": "Using Research",
+          "url": "https://owl.purdue.edu/owl/research_and_citation/using_research/index.html",
+          "provider": "Purdue OWL",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports research skills and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-085",
+          "type": "book",
+          "title": "Academic Writing",
+          "url": "https://owl.purdue.edu/owl/general_writing/academic_writing/index.html",
+          "provider": "Purdue OWL",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports academic writing and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-086",
+          "type": "book",
+          "title": "Thesis Statements",
+          "url": "https://writingcenter.unc.edu/tips-and-tools/thesis-statements",
+          "provider": "UNC Writing Center",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports thesis / purpose and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-087",
+          "type": "book",
+          "title": "Paragraphs",
+          "url": "https://writingcenter.unc.edu/tips-and-tools/paragraphs",
+          "provider": "UNC Writing Center",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports academic paragraph structure and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "ms-portfolio",
+      "name": "Projects and Research Portfolio",
+      "domain": "research",
+      "level": 2,
+      "prerequisites": [
+        "dsa-trees",
+        "prog-oop",
+        "research-methods"
+      ],
+      "estimatedHours": 28,
+      "topics": [
+        {
+          "id": "ms-portfolio-1",
+          "title": "Portfolio project: a substantial technical build",
+          "hours": 12
+        },
+        {
+          "id": "ms-portfolio-2",
+          "title": "Second project or paper replication",
+          "hours": 12
+        },
+        {
+          "id": "ms-portfolio-3",
+          "title": "Publishing your work: GitHub, write-ups and posters",
+          "hours": 4
+        }
+      ],
+      "miniTasks": [
+        "Ship one project with clean code, a README and a short write-up.",
+        "Reproduce the results of one paper or build a second project in a different area.",
+        "Publish both projects with documentation and a one-page summary each."
+      ],
+      "resources": [
+        {
+          "id": "MSAB-108",
+          "type": "project",
+          "title": "Project-Based Learning Repository",
+          "url": "https://github.com/practical-tutorials/project-based-learning",
+          "provider": "practical-tutorials",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "1–4 weeks",
+          "why": "Selected for MS-abroad preparation because it directly supports project-based technical portfolio ideas and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-109",
+          "type": "project",
+          "title": "OSSU Computer Science",
+          "url": "https://github.com/ossu/computer-science",
+          "provider": "OSSU",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "1–4 weeks",
+          "why": "Selected for MS-abroad preparation because it directly supports structured cs project roadmap and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-110",
+          "type": "project",
+          "title": "OSSU Data Science",
+          "url": "https://github.com/ossu/data-science",
+          "provider": "OSSU",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "1–4 weeks",
+          "why": "Selected for MS-abroad preparation because it directly supports data-science portfolio ideas and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-111",
+          "type": "project",
+          "title": "The Algorithms - Python",
+          "url": "https://github.com/TheAlgorithms/Python",
+          "provider": "TheAlgorithms",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "1–4 weeks",
+          "why": "Selected for MS-abroad preparation because it directly supports algorithm implementation portfolio and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-120",
+          "type": "paper",
+          "title": "Dropout: A Simple Way to Prevent Neural Networks from Overfitting",
+          "url": "https://www.jmlr.org/papers/v15/srivastava14a.html",
+          "provider": "JMLR",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "2–6 hours",
+          "why": "Selected for MS-abroad preparation because it directly supports machine-learning regularization and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Supplementary"
+        }
+      ]
+    }
+  ]
+}

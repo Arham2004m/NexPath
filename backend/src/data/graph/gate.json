@@ -1,0 +1,195 @@
+{
+  "nodes": [
+    {
+      "id": "gate-aptitude",
+      "name": "General Aptitude for GATE",
+      "domain": "gate",
+      "level": 1,
+      "prerequisites": [],
+      "estimatedHours": 16,
+      "topics": [
+        {
+          "id": "gate-aptitude-1",
+          "title": "Quantitative aptitude",
+          "hours": 6
+        },
+        {
+          "id": "gate-aptitude-2",
+          "title": "Logical reasoning and data interpretation",
+          "hours": 6
+        },
+        {
+          "id": "gate-aptitude-3",
+          "title": "Verbal ability",
+          "hours": 4
+        }
+      ],
+      "miniTasks": [
+        "Solve 20 quantitative questions and note the formulas you forgot.",
+        "Take one timed reasoning set and review each wrong answer.",
+        "Do 3 verbal practice sets and keep a list of new words and rules."
+      ],
+      "resources": [
+        {
+          "id": "CSFG-YT-067",
+          "type": "video",
+          "title": "GATE CSE – Aptitude Playlist (community recommendation)",
+          "url": "https://www.youtube.com/playlist?list=PLvTTv60o7qj-PgF3DhvvTK6_-g_FU8wCT",
+          "provider": "GATE CSE",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Exam-focused",
+          "time": "10–20 hours",
+          "why": "Specific GATE aptitude playlist surfaced in a community resource thread.",
+          "priority": "Recommended"
+        }
+      ],
+      "needsReview": true
+    },
+    {
+      "id": "gate-practice",
+      "name": "GATE Strategy, Previous Papers and Mock Tests",
+      "domain": "gate",
+      "level": 3,
+      "prerequisites": [
+        "os-concurrency",
+        "dbms-design",
+        "cn-transport",
+        "coa-basics",
+        "toc",
+        "dsa-graphs",
+        "maths-gate",
+        "maths-discrete"
+      ],
+      "estimatedHours": 24,
+      "topics": [
+        {
+          "id": "gate-practice-1",
+          "title": "Syllabus mapping and previous-year paper analysis",
+          "hours": 6
+        },
+        {
+          "id": "gate-practice-2",
+          "title": "Subject-wise timed practice",
+          "hours": 10
+        },
+        {
+          "id": "gate-practice-3",
+          "title": "Full-length mocks and revision",
+          "hours": 8
+        }
+      ],
+      "miniTasks": [
+        "Make a subject-wise weightage table from the last 8 years of GATE papers.",
+        "Finish one timed practice set per subject and log every mistake by cause.",
+        "Take 3 full-length mocks, then revise only your weakest chapters."
+      ],
+      "resources": [
+        {
+          "id": "CSFG-050",
+          "type": "practice",
+          "title": "GATE Overflow – Algorithms Questions",
+          "url": "https://gateoverflow.in/questions/algorithms",
+          "provider": "GATE Overflow",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Exam-focused",
+          "time": "Ongoing",
+          "why": "Collects GATE-focused algorithm questions covering sorting, hashing, asymptotic analysis, greedy methods, dynamic programming, graph search, MSTs, and shortest paths.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-091",
+          "type": "reference",
+          "title": "GATE 2026 Official FAQ",
+          "url": "https://gate2026.iitg.ac.in/faqs.html",
+          "provider": "IIT Guwahati / GATE 2026",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Exam-focused",
+          "time": "30–60 minutes",
+          "why": "Provides the official answers to common candidate questions about applications, scorecards, eligibility, corrections, and examination procedures.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-092",
+          "type": "practice",
+          "title": "GATE 2026 Previous-Year Question Papers",
+          "url": "https://gate2026.iitg.ac.in/download.html",
+          "provider": "IIT Guwahati / GATE 2026",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Exam-focused",
+          "time": "30–100+ hours",
+          "why": "Official GATE download area for previous papers and related exam documents, allowing candidates to practice against authentic exam material.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-093",
+          "type": "reference",
+          "title": "GATE 2026 Exam Papers and Syllabus",
+          "url": "https://gate2026.iitg.ac.in/exam-papers-and-syllabus.html",
+          "provider": "IIT Guwahati / GATE 2026",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Exam-focused",
+          "time": "1–2 hours",
+          "why": "Gives the official exam-paper and syllabus source, so learners can align preparation directly with the organizing institute's published coverage.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-094",
+          "type": "practice",
+          "title": "GATE Overflow – Operating System Questions",
+          "url": "https://gateoverflow.in/questions/operating-system",
+          "provider": "GATE Overflow",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Exam-focused",
+          "time": "Ongoing",
+          "why": "Question discussions are useful for understanding why GATE distractors and alternatives are wrong.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-085",
+          "type": "practice",
+          "title": "GeeksforGeeks Computer Architecture",
+          "url": "https://www.geeksforgeeks.org/computer-organization-and-architecture-tutorials/",
+          "provider": "GeeksforGeeks",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Exam-focused",
+          "time": "10–20 hours",
+          "why": "Use topic-wise articles and practice questions for GATE COA revision.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-097",
+          "type": "article",
+          "title": "GATE Overflow – Databases Subject Page",
+          "url": "https://gateoverflow.in/subject/databases",
+          "provider": "GATE Overflow",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Exam-focused",
+          "time": "Ongoing",
+          "why": "Consolidates the GATE database syllabus with topic explanations and problem-solving material on ER models, relational algebra, SQL, normalization, indexing, and transactions.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-095",
+          "type": "book",
+          "title": "GATE 2026 Information Brochure",
+          "url": "https://gate2026.iitg.ac.in/doc/IB/GATE2026-IB-10102025.pdf",
+          "provider": "IIT Guwahati / GATE 2026",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Exam-focused",
+          "time": "1–2 hours",
+          "why": "The official brochure consolidates exam structure, eligibility, dates, paper details, and application information that candidates need for accurate planning.",
+          "priority": "Supplementary"
+        }
+      ]
+    }
+  ]
+}

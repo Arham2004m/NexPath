@@ -26,6 +26,26 @@
       "kept": 7,
       "needsReview": false
     },
+    "career-aptitude": {
+      "candidates": 0,
+      "kept": 0,
+      "needsReview": true
+    },
+    "career-cs-core": {
+      "candidates": 5,
+      "kept": 5,
+      "needsReview": false
+    },
+    "career-resume-hr": {
+      "candidates": 8,
+      "kept": 8,
+      "needsReview": false
+    },
+    "career-online-tests": {
+      "candidates": 0,
+      "kept": 0,
+      "needsReview": true
+    },
     "cn-basics": {
       "candidates": 14,
       "kept": 12,
@@ -36,14 +56,19 @@
       "kept": 2,
       "needsReview": true
     },
+    "coa-basics": {
+      "candidates": 19,
+      "kept": 12,
+      "needsReview": false
+    },
     "dbms-sql": {
       "candidates": 12,
       "kept": 11,
       "needsReview": false
     },
     "dbms-design": {
-      "candidates": 12,
-      "kept": 10,
+      "candidates": 11,
+      "kept": 9,
       "needsReview": false
     },
     "dbms-advanced": {
@@ -52,8 +77,8 @@
       "needsReview": true
     },
     "dsa-arrays": {
-      "candidates": 29,
-      "kept": 11,
+      "candidates": 28,
+      "kept": 10,
       "needsReview": false
     },
     "dsa-linear": {
@@ -62,8 +87,8 @@
       "needsReview": false
     },
     "dsa-sorting-search": {
-      "candidates": 15,
-      "kept": 10,
+      "candidates": 14,
+      "kept": 9,
       "needsReview": false
     },
     "dsa-trees": {
@@ -87,13 +112,33 @@
       "needsReview": false
     },
     "dsa-interview": {
-      "candidates": 34,
+      "candidates": 31,
       "kept": 12,
       "needsReview": false
     },
-    "maths-ml": {
+    "gate-aptitude": {
+      "candidates": 1,
+      "kept": 1,
+      "needsReview": true
+    },
+    "gate-practice": {
       "candidates": 11,
       "kept": 8,
+      "needsReview": false
+    },
+    "maths-ml": {
+      "candidates": 3,
+      "kept": 3,
+      "needsReview": false
+    },
+    "maths-discrete": {
+      "candidates": 5,
+      "kept": 5,
+      "needsReview": false
+    },
+    "maths-gate": {
+      "candidates": 6,
+      "kept": 6,
       "needsReview": false
     },
     "mobile-kotlin": {
@@ -161,6 +206,26 @@
       "kept": 0,
       "needsReview": true
     },
+    "ms-gre": {
+      "candidates": 15,
+      "kept": 9,
+      "needsReview": false
+    },
+    "ms-shortlist": {
+      "candidates": 22,
+      "kept": 9,
+      "needsReview": false
+    },
+    "ms-application": {
+      "candidates": 25,
+      "kept": 10,
+      "needsReview": false
+    },
+    "ms-visa": {
+      "candidates": 19,
+      "kept": 9,
+      "needsReview": false
+    },
     "os-basics": {
       "candidates": 22,
       "kept": 12,
@@ -171,8 +236,33 @@
       "kept": 5,
       "needsReview": false
     },
+    "ent-ideas": {
+      "candidates": 30,
+      "kept": 12,
+      "needsReview": false
+    },
+    "ent-model": {
+      "candidates": 27,
+      "kept": 12,
+      "needsReview": false
+    },
+    "ent-mvp": {
+      "candidates": 4,
+      "kept": 4,
+      "needsReview": false
+    },
+    "ent-growth": {
+      "candidates": 23,
+      "kept": 12,
+      "needsReview": false
+    },
+    "ent-funding": {
+      "candidates": 16,
+      "kept": 12,
+      "needsReview": false
+    },
     "prog-basics": {
-      "candidates": 13,
+      "candidates": 12,
       "kept": 12,
       "needsReview": false
     },
@@ -184,6 +274,16 @@
     "prog-git": {
       "candidates": 7,
       "kept": 7,
+      "needsReview": false
+    },
+    "research-methods": {
+      "candidates": 26,
+      "kept": 9,
+      "needsReview": false
+    },
+    "ms-portfolio": {
+      "candidates": 13,
+      "kept": 5,
       "needsReview": false
     },
     "sd-basics": {
@@ -199,6 +299,16 @@
     "sd-distributed": {
       "candidates": 33,
       "kept": 12,
+      "needsReview": false
+    },
+    "toc": {
+      "candidates": 7,
+      "kept": 7,
+      "needsReview": false
+    },
+    "compiler": {
+      "candidates": 14,
+      "kept": 9,
       "needsReview": false
     },
     "web-html-css": {
@@ -253,49 +363,16 @@
     }
   },
   "unmappedByTrack": {
-    "CS Foundations/GATE": 12,
-    "CS Foundations": 25,
-    "GATE": 12,
+    "CS Foundations": 3,
     "Web development": 2,
     "Mobile App development": 29,
-    "FAANG": 33,
-    "MS Abroad": 120,
-    "Entrepreneurship": 100
+    "FAANG": 23
   },
   "rulesWithUnknownNode": [],
   "unmappedSamples": [
-    "CS Foundations/GATE | Computer Organization",
-    "CS Foundations/GATE | Computer Organization",
-    "CS Foundations/GATE | Computer Systems",
-    "CS Foundations/GATE | Theory Foundations",
-    "CS Foundations/GATE | Theory of Computation",
-    "CS Foundations/GATE | Theory of Computation",
-    "CS Foundations/GATE | Theory of Computation",
-    "CS Foundations/GATE | Compiler Design",
-    "CS Foundations | Compiler / Language Design",
-    "CS Foundations | Compiler Design",
-    "CS Foundations/GATE | COA",
-    "CS Foundations/GATE | Compiler Design",
-    "CS Foundations/GATE | Theory of Computation",
-    "GATE | COA Revision",
-    "CS Foundations | Computer Systems Project",
     "CS Foundations | CS Projects",
     "CS Foundations | OS Project",
-    "CS Foundations | Compiler Project",
-    "GATE | GATE Official",
-    "GATE | GATE PYQs",
-    "GATE | GATE CS Syllabus",
-    "GATE | GATE OS Practice",
-    "GATE | GATE Exam Strategy",
-    "GATE | GATE CS Topic Practice",
-    "CS Foundations/GATE | CS Revision Questions",
-    "GATE | Computer Organization & Architecture",
-    "GATE | Compiler Design",
-    "GATE | Digital Logic",
     "CS Foundations | Artificial Intelligence Foundations",
-    "GATE | Theory of Computation",
-    "CS Foundations | Computer Organization & Architecture",
-    "GATE | GATE General Aptitude",
     "Web development | WebAssembly Research",
     "Web development | Reproducible Web Research",
     "Mobile App development | React Native with Expo",
@@ -303,6 +380,35 @@
     "Mobile App development | React Native fundamentals",
     "Mobile App development | React Native first app",
     "Mobile App development | React Native backend integration",
-    "Mobile App development | React Native authentication"
+    "Mobile App development | React Native authentication",
+    "Mobile App development | React Native authentication project",
+    "Mobile App development | React Native debugging",
+    "Mobile App development | React Native FlatList",
+    "Mobile App development | Full-stack React Native",
+    "Mobile App development | Cross-platform mobile development",
+    "Mobile App development | React Native production development",
+    "Mobile App development | React Native performant lists",
+    "Mobile App development | React Native image handling",
+    "Mobile App development | React Native animations",
+    "Mobile App development | React Native sectioned lists",
+    "Mobile App development | React Native accessibility",
+    "Mobile App development | React Native performance",
+    "Mobile App development | React Native setup and fundamentals",
+    "Mobile App development | Expo mobile development platform",
+    "Mobile App development | React Native components",
+    "Mobile App development | React Native state",
+    "Mobile App development | React Native deep links",
+    "Mobile App development | React Native browser playground",
+    "Mobile App development | Financial dashboard UI sample",
+    "Mobile App development | React Native component and API sample app",
+    "Mobile App development | Cross-platform mobile quality",
+    "Mobile App development | Mobile accessibility",
+    "Mobile App development | Native vs cross-platform mobile quality",
+    "FAANG | Product Sense",
+    "FAANG | Product Sense / Mock Interview",
+    "FAANG | Product Management / Strategy",
+    "FAANG | Software Engineering / Performance",
+    "FAANG | Product Analytics",
+    "FAANG | Software Engineering / Code Review"
   ]
 }

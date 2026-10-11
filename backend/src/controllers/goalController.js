@@ -1,25 +1,29 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import AssessmentAttempt from '../models/AssessmentAttempt.js';
 import User from '../models/User.js';
-import { GOALS, HOURS_PER_WEEK, MAX_TARGET_WEEKS, minimumWeeks } from '../data/goals.js';
+import { GOALS, HOURS_PER_WEEK, MAX_TARGET_WEEKS } from '../data/goals.js';
 import { validateGoalSelection } from '../utils/validators.js';
-import { loadGraph } from '../services/graphStore.js';
-import { resolveGoalPath } from '../engine/graph.js';
+import { beginnerHours } from '../services/goalEstimates.js';
 import { DOMAIN_LABELS } from '../data/domains.js';
 import { recommendGoals } from '../engine/goalRecommender.js';
 import { profile } from './authController.js';
 
-// A goal (or sub-track) is "ready" once the knowledge graph defines a path for it.
-const withReadiness = () => {
-  const { goalPaths } = loadGraph();
-  return GOALS.map((goal) => ({
-    ...goal,
-    roadmapReady: !!resolveGoalPath(goalPaths, goal.id, goal.subTracks?.[0]?.id),
-    ...(goal.subTracks ? { subTracks: goal.subTracks.map((track) => ({ ...track, roadmapReady: !!resolveGoalPath(goalPaths, goal.id, track.id) })) } : {})
-  }));
-};
+// Each goal and sub-track reports how many hours its roadmap takes a beginner; `roadmapReady` is false
+// only if the knowledge graph has no path for it.
+const withEstimates = () => GOALS.map((goal) => {
+  if (!goal.subTracks) {
+    const estimatedHours = beginnerHours(goal.id);
+    return { ...goal, estimatedHours, roadmapReady: estimatedHours !== null };
+  }
+  const subTracks = goal.subTracks.map((track) => {
+    const estimatedHours = beginnerHours(goal.id, track.id);
+    return { ...track, estimatedHours, roadmapReady: estimatedHours !== null };
+  });
+  const hours = subTracks.map((track) => track.estimatedHours).filter((h) => h !== null);
+  return { ...goal, subTracks, roadmapReady: hours.length > 0, estimatedHours: hours.length ? [Math.min(...hours), Math.max(...hours)] : null };
+});
 
-export const listGoals = (req, res) => res.json({ goals: withReadiness(), limits: { hoursPerWeek: HOURS_PER_WEEK, maxTargetWeeks: MAX_TARGET_WEEKS } });
+export const listGoals = (req, res) => res.json({ goals: withEstimates(), limits: { hoursPerWeek: HOURS_PER_WEEK, maxTargetWeeks: MAX_TARGET_WEEKS } });
 
 export const saveGoal = asyncHandler(async (req, res) => {
   const { goalId, subTrack, hoursPerWeek, targetWeeks } = req.body;
@@ -32,9 +36,10 @@ export const saveGoal = asyncHandler(async (req, res) => {
   await user.save();
 
   // A deadline shorter than the goal realistically needs is allowed, but the student should know.
-  const needed = targetWeeks ? minimumWeeks(goalId, subTrack, hoursPerWeek) : null;
+  const hours = targetWeeks ? beginnerHours(goalId, subTrack || null) : null;
+  const needed = hours ? Math.ceil(hours / hoursPerWeek) : null;
   const warning = needed && targetWeeks < needed
-    ? `Most students need about ${needed} weeks for this goal at ${hoursPerWeek} hours a week. Your ${targetWeeks}-week target may need more hours.`
+    ? `A beginner needs about ${needed} weeks for this goal at ${hoursPerWeek} hours a week. Your ${targetWeeks}-week target may need more hours (your assessment can shorten it).`
     : null;
   res.json({ user: profile(user), warning });
 });

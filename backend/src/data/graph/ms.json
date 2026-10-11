@@ -1,0 +1,619 @@
+{
+  "nodes": [
+    {
+      "id": "ms-gre",
+      "name": "GRE and English Proficiency Tests",
+      "domain": "ms",
+      "level": 1,
+      "prerequisites": [],
+      "estimatedHours": 22,
+      "topics": [
+        {
+          "id": "ms-gre-1",
+          "title": "GRE format, quantitative reasoning and diagnostics",
+          "hours": 8
+        },
+        {
+          "id": "ms-gre-2",
+          "title": "GRE verbal reasoning and analytical writing",
+          "hours": 8
+        },
+        {
+          "id": "ms-gre-3",
+          "title": "TOEFL or IELTS preparation and full-length tests",
+          "hours": 6
+        }
+      ],
+      "miniTasks": [
+        "Take a full diagnostic test and write your target score for each section.",
+        "Write two timed analytical-writing essays and learn 10 new words daily.",
+        "Take two full-length English tests and book your real exam date."
+      ],
+      "resources": [
+        {
+          "id": "MSAB-099",
+          "type": "practice",
+          "title": "POWERPREP Online",
+          "url": "https://www.ets.org/gre/test-takers/general-test/prepare/powerprep.html",
+          "provider": "ETS",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports gre practice tests and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "High"
+        },
+        {
+          "id": "MSAB-100",
+          "type": "practice",
+          "title": "GRE Prep Videos",
+          "url": "https://www.ets.org/gre/test-takers/general-test/prepare/prep-videos.html",
+          "provider": "ETS",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports gre guided practice and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "High"
+        },
+        {
+          "id": "MSAB-101",
+          "type": "practice",
+          "title": "GRE General Test About",
+          "url": "https://www.ets.org/gre/test-takers/general-test/about.html",
+          "provider": "ETS",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports gre format familiarization and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "High"
+        },
+        {
+          "id": "MSAB-102",
+          "type": "practice",
+          "title": "GRE Content and Structure",
+          "url": "https://www.ets.org/gre/score-users/about/general-test/content-structure.html",
+          "provider": "ETS",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports gre section familiarization and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "High"
+        },
+        {
+          "id": "MSAB-062",
+          "type": "article",
+          "title": "Prepare for U.S. Standardized Tests",
+          "url": "https://educationusa.state.gov/your-5-steps-us-study/research-your-options/graduate/prepare-us-standardized-tests",
+          "provider": "EducationUSA",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "15–30 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports gre/english test planning and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-064",
+          "type": "article",
+          "title": "What Graduate Programs Are Available",
+          "url": "https://educationusa.state.gov/your-5-steps-us-study/research-your-options/graduate/what-graduate-programs-are-available",
+          "provider": "EducationUSA",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "15–30 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports graduate degree options and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-067",
+          "type": "article",
+          "title": "GRE Graduate Test Preparation",
+          "url": "https://www.ets.org/gre/test-takers/general-test/prepare.html",
+          "provider": "ETS",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "15–30 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports gre preparation and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-068",
+          "type": "article",
+          "title": "TOEFL Test Preparation",
+          "url": "https://www.ets.org/toefl/test-takers/ibt/prepare.html",
+          "provider": "ETS",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "15–30 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports toefl preparation and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-097",
+          "type": "book",
+          "title": "GRE General Test Prep Books and Services",
+          "url": "https://www.ets.org/gre/test-takers/general-test/prepare/prep-books-services.html",
+          "provider": "ETS",
+          "free": false,
+          "pricing": "Varies",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports gre study books and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "ms-shortlist",
+      "name": "Programs, Universities and Funding",
+      "domain": "ms",
+      "level": 2,
+      "prerequisites": [],
+      "estimatedHours": 13,
+      "topics": [
+        {
+          "id": "ms-shortlist-1",
+          "title": "Choosing countries and programs",
+          "hours": 5
+        },
+        {
+          "id": "ms-shortlist-2",
+          "title": "University shortlisting and deadlines",
+          "hours": 4
+        },
+        {
+          "id": "ms-shortlist-3",
+          "title": "Funding: scholarships, assistantships and loans",
+          "hours": 4
+        }
+      ],
+      "miniTasks": [
+        "List 3 countries and compare cost, work rights and program types.",
+        "Build a spreadsheet of 10 universities (ambitious, target, safe) with deadlines and requirements.",
+        "Estimate total cost for your top 5 universities and list 3 funding options each."
+      ],
+      "resources": [
+        {
+          "id": "MSAB-005",
+          "type": "video",
+          "title": "Top 10 Best Universities In USA | MS in USA",
+          "url": "https://www.youtube.com/watch?v=LhTUbd_gvBQ",
+          "provider": "Yocket",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "30–120 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports university shortlisting and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-008",
+          "type": "video",
+          "title": "Your 5 Steps to U.S Study - EducationUSA",
+          "url": "https://www.youtube.com/watch?v=R411FpA8mFQ",
+          "provider": "EducationUSA",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "30–120 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports u.s. study roadmap and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-010",
+          "type": "video",
+          "title": "Studying in the USA(1): Ultimate Guide for International Students",
+          "url": "https://www.youtube.com/watch?v=Cg6oPUBFtq0",
+          "provider": "IDP India",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "30–120 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports study in the usa and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-011",
+          "type": "video",
+          "title": "Want to Study in Australia? Stop Guessing—Ask IDP",
+          "url": "https://www.youtube.com/watch?v=8OOp5BOBVEM",
+          "provider": "IDP India",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "30–120 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports australia postgraduate study and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-056",
+          "type": "article",
+          "title": "Finance Your U.S. Studies",
+          "url": "https://educationusa.state.gov/your-5-steps-us-study/finance-your-us-studies",
+          "provider": "EducationUSA",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "15–30 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports graduate funding and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-059",
+          "type": "article",
+          "title": "Research and Narrow Your Options: Graduate",
+          "url": "https://educationusa.state.gov/your-5-steps-us-study/research-your-options/graduate/research-and-narrow-your-options-graduate",
+          "provider": "EducationUSA",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "15–30 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports graduate program selection and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-061",
+          "type": "article",
+          "title": "How to Search for Your Graduate College",
+          "url": "https://educationusa.state.gov/your-5-steps-us-study/research-your-options/graduate/how-search-your-graduate-college",
+          "provider": "EducationUSA",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "15–30 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports graduate university search and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-065",
+          "type": "article",
+          "title": "Graduate Study Funding",
+          "url": "https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies/graduate",
+          "provider": "EducationUSA",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "15–30 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports graduate funding and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-098",
+          "type": "book",
+          "title": "Define Your Priorities - Graduate",
+          "url": "https://educationusa.state.gov/sites/default/files/define_your_priorities_-_graduate_v2.pdf",
+          "provider": "EducationUSA",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports graduate school priorities and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "ms-application",
+      "name": "Applications: SOP, Recommendations and Resume",
+      "domain": "ms",
+      "level": 3,
+      "prerequisites": [
+        "ms-shortlist",
+        "ms-portfolio",
+        "ms-gre"
+      ],
+      "estimatedHours": 16,
+      "topics": [
+        {
+          "id": "ms-application-1",
+          "title": "Statement of purpose",
+          "hours": 7
+        },
+        {
+          "id": "ms-application-2",
+          "title": "Letters of recommendation and academic CV",
+          "hours": 5
+        },
+        {
+          "id": "ms-application-3",
+          "title": "Application forms and submission",
+          "hours": 4
+        }
+      ],
+      "miniTasks": [
+        "Write three SOP drafts and get feedback from a faculty member or senior.",
+        "Ask three recommenders with a brief packet and finish a one-page academic CV.",
+        "Submit one application end to end and keep a checklist for the rest."
+      ],
+      "resources": [
+        {
+          "id": "MSAB-001",
+          "type": "reference",
+          "title": "Your 5 Steps to U.S. Study",
+          "url": "https://educationusa.state.gov/your-5-steps-us-study",
+          "provider": "EducationUSA / U.S. Department of State",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "30–60 minutes",
+          "why": "EducationUSA’s official five-step framework covers research, financing, applications, student visas, and departure preparation for international students considering U.S. study.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MSAB-002",
+          "type": "video",
+          "title": "How to Write SOP? | Writing SOP for Masters in USA",
+          "url": "https://www.youtube.com/watch?v=J5lzS4qBuJg",
+          "provider": "Yocket",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "30–120 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports statement of purpose and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-003",
+          "type": "video",
+          "title": "5 HUGE Mistakes To Avoid In SOP | MS in USA",
+          "url": "https://www.youtube.com/watch?v=U8shYiON0JA",
+          "provider": "Yocket",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "30–120 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports statement of purpose and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-004",
+          "type": "video",
+          "title": "How to write a Statement of Purpose that wins Top Admits | MS in USA",
+          "url": "https://www.youtube.com/watch?v=gYNuC5erdTI",
+          "provider": "AdmitEDGE",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "30–120 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports statement of purpose and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-006",
+          "type": "video",
+          "title": "How to Apply for MS in USA: Step by Step Application Process",
+          "url": "https://www.youtube.com/watch?v=5HBCKyNW4hI",
+          "provider": "Yocket",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "30–120 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports ms application process and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-045",
+          "type": "course",
+          "title": "Career Development",
+          "url": "https://www.coursera.org/learn/careerdevelopment",
+          "provider": "Coursera",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Varies by course",
+          "why": "Selected for MS-abroad preparation because it directly supports career planning and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-046",
+          "type": "course",
+          "title": "Negotiation Skills",
+          "url": "https://www.coursera.org/learn/negotiation-skills",
+          "provider": "Coursera",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Varies by course",
+          "why": "Selected for MS-abroad preparation because it directly supports negotiation and offers and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-047",
+          "type": "course",
+          "title": "How to Write a Resume",
+          "url": "https://www.coursera.org/learn/how-to-write-a-resume",
+          "provider": "Coursera",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Varies by course",
+          "why": "Selected for MS-abroad preparation because it directly supports resume / cv and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-060",
+          "type": "article",
+          "title": "Complete Your Application",
+          "url": "https://educationusa.state.gov/your-5-steps-us-study/complete-your-application",
+          "provider": "EducationUSA",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "15–30 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports application completion and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-066",
+          "type": "article",
+          "title": "Complete Your U.S. Application: Graduate",
+          "url": "https://educationusa.state.gov/complete-your-us-application-graduate",
+          "provider": "EducationUSA",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "15–30 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports graduate application checklist and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "ms-visa",
+      "name": "Visa and Pre-departure",
+      "domain": "ms",
+      "level": 3,
+      "prerequisites": [
+        "ms-application"
+      ],
+      "estimatedHours": 11,
+      "topics": [
+        {
+          "id": "ms-visa-1",
+          "title": "Visa process (US F-1, UK, others)",
+          "hours": 5
+        },
+        {
+          "id": "ms-visa-2",
+          "title": "Financial evidence and documents",
+          "hours": 3
+        },
+        {
+          "id": "ms-visa-3",
+          "title": "Pre-departure planning",
+          "hours": 3
+        }
+      ],
+      "miniTasks": [
+        "Write a step-by-step visa checklist for your top country.",
+        "Collect every required financial and academic document in one folder.",
+        "Plan accommodation, travel, insurance and the first month budget."
+      ],
+      "resources": [
+        {
+          "id": "MSAB-070",
+          "type": "reference",
+          "title": "Student Visa",
+          "url": "https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html",
+          "provider": "U.S. Department of State",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "10–30 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports u.s. f-1 student visa and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MSAB-071",
+          "type": "reference",
+          "title": "Study & Exchange",
+          "url": "https://travel.state.gov/content/travel/en/us-visas/study.html",
+          "provider": "U.S. Department of State",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "10–30 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports u.s. study and exchange visas and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MSAB-072",
+          "type": "reference",
+          "title": "DS-160 Online Nonimmigrant Visa Application",
+          "url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/forms/ds-160-online-nonimmigrant-visa-application.html",
+          "provider": "U.S. Department of State",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "10–30 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports ds-160 visa form and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MSAB-073",
+          "type": "reference",
+          "title": "DS-160 FAQs",
+          "url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/forms/ds-160-online-nonimmigrant-visa-application/ds-160-faqs.html",
+          "provider": "U.S. Department of State",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "10–30 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports ds-160 guidance and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MSAB-007",
+          "type": "video",
+          "title": "Student Visas (2019)",
+          "url": "https://www.youtube.com/watch?v=l8c5BFo_2M8",
+          "provider": "EducationUSA",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "30–120 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports f-1 student visa and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-009",
+          "type": "video",
+          "title": "Student Visa Interview | USA Trainers",
+          "url": "https://www.youtube.com/watch?v=sLaeenmyqWI",
+          "provider": "Beyond Education & Immigration Services",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "30–120 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports visa interview and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-057",
+          "type": "article",
+          "title": "Prepare Your Departure",
+          "url": "https://educationusa.state.gov/your-5-steps-us-study/prepare-your-departure",
+          "provider": "EducationUSA",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "15–30 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports pre-departure planning and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-058",
+          "type": "article",
+          "title": "Apply for Your Student Visa",
+          "url": "https://educationusa.state.gov/your-5-steps-us-study/apply-your-student-visa",
+          "provider": "EducationUSA",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "15–30 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports student visa preparation and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MSAB-063",
+          "type": "article",
+          "title": "Gather Pre-Departure Materials and Information",
+          "url": "https://educationusa.state.gov/your-5-steps-us-study/prepare-your-departure/graduate/gather-pre-departure-materials-and",
+          "provider": "EducationUSA",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "15–30 minutes",
+          "why": "Selected for MS-abroad preparation because it directly supports pre-departure documents and can strengthen an applicant’s preparation, application quality, or academic readiness.",
+          "priority": "Recommended"
+        }
+      ]
+    }
+  ]
+}

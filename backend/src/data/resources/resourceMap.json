@@ -1,65 +1,579 @@
 {
-  "_comment": "Ordered rules: the first rule whose track and pattern match a CSV row assigns that row to a graph node. Patterns are case-insensitive regexes tested against the 'Skill / Topic' column (or the title when \"on\" is \"title\"). Rows that match nothing are listed in import-report.json, never guessed.",
+  "_comment": "Ordered rules: the first rule whose track and pattern match a CSV row assigns that row to a graph node. Patterns are case-insensitive regexes tested against the 'Skill / Topic' column (or the title when \"on\" is \"title\"). Rows that match nothing are listed in import-report.json, never guessed. A rule may list \"also\": [nodeIds] to give the same row to extra nodes.",
   "rules": [
-    { "node": "mobile-flutter-backend", "tracks": ["Mobile App development"], "match": "^flutter (firebase|networking)" },
-    { "node": "mobile-flutter-state", "tracks": ["Mobile App development"], "match": "^flutter (state|clean|local storage|sqlite|architecture)|state-management sample|architecture notes" },
-    { "node": "mobile-flutter-ui", "tracks": ["Mobile App development"], "match": "flutter" },
-    { "node": "mobile-dart", "tracks": ["Mobile App development"], "match": "^dart" },
-    { "node": "mobile-ios-data", "tracks": ["Mobile App development"], "match": "swiftdata|core data|photosui" },
-    { "node": "mobile-swiftui", "tracks": ["Mobile App development"], "match": "swiftui|xcode" },
-    { "node": "mobile-swift", "tracks": ["Mobile App development"], "match": "^swift" },
-    { "node": "mobile-android-release", "tracks": ["Mobile App development"], "match": "android (testing|mobile security)|compose (testing|accessibility)|android energy|foreground service (declarations|launch)" },
-    { "node": "mobile-android-net", "tracks": ["Mobile App development"], "match": "firebase|networking|background|workmanager|services?$|foreground" },
-    { "node": "mobile-android-arch", "tracks": ["Mobile App development"], "match": "viewmodel|room|navigation|architecture|persistence|settings storage|compose state|state management|side effects" },
-    { "node": "mobile-kotlin", "tracks": ["Mobile App development"], "match": "kotlin" },
-    { "node": "mobile-android-core", "tracks": ["Mobile App development"], "match": "android|compose|jetpack|activity|intents|manifest" },
-
-    { "node": "web-auth", "tracks": ["Web development"], "match": "security|authentication" },
-    { "node": "web-fullstack-projects", "tracks": ["Web development"], "match": "full.?stack" },
-    { "node": "web-db", "tracks": ["Web development"], "match": "mongodb" },
-    { "node": "web-node", "tracks": ["Web development"], "match": "node\\.?js|express|http server" },
-    { "node": "web-portfolio", "tracks": ["Web development"], "match": "project|challenges|guided frontend|card ui|product ui|card and layout|frontend practice" },
-    { "node": "web-state-ts", "tracks": ["Web development"], "match": "typescript|state management|performance|architecture|design patterns" },
-    { "node": "web-react", "tracks": ["Web development"], "match": "react|next\\.?js|vue|routing" },
-    { "node": "web-html-css", "tracks": ["Web development"], "match": "^html|css|flexbox|responsive|accessibility|bootstrap|tailwind|forms|semantic|web components|^web development foundations" },
-    { "node": "web-js", "tracks": ["Web development"], "match": "javascript|^dom|async|fetch|promise|iterators|closures|prototypes|destructuring|regular expressions|modules|git|getting started|networking|programming languages" },
-
-    { "node": "aiml-mlops", "tracks": ["AIML"], "match": "mlops|production|serializ|automl|pipelines|model sharing|model documentation|explainab|ethics" },
-    { "node": "aiml-nlp", "tracks": ["AIML"], "match": "nlp|transformer|tokeniz|bert|llm|language model|embedding|fine-tuning|rlhf|summariz|translation|question answering|agents|vector search|masked|peft|parameter-efficient|pretrained|dataset|token classification|cosine" },
-    { "node": "aiml-dl", "tracks": ["AIML"], "match": "neural|deep|pytorch|tensor|torch|cnn|resnet|vision|image|autoencoder|gan|batch norm|relu|backprop|gradient descent|differentiation|optimization|reinforcement|data loading|data transforms|model architecture|segmentation|transfer learning|matrix algebra" },
-    { "node": "aiml-ml", "tracks": ["AIML"], "match": "." },
-
-    { "node": "maths-ml", "tracks": ["CS Foundations/GATE", "CS Foundations", "GATE"], "match": "linear algebra|probability|statistics|engineering math|discrete|graph theory|number systems" },
-    { "node": "aiml-python", "tracks": ["CS Foundations/GATE", "CS Foundations", "GATE"], "match": "^python" },
-    { "node": "dbms-advanced", "tracks": ["CS Foundations/GATE", "CS Foundations", "GATE"], "match": "nosql" },
-    { "node": "dbms-sql", "tracks": ["CS Foundations/GATE", "CS Foundations", "GATE"], "match": "sql|postgres" },
-    { "node": "dbms-design", "tracks": ["CS Foundations/GATE", "CS Foundations", "GATE"], "match": "dbms|database|relational" },
-    { "node": "cn-transport", "tracks": ["CS Foundations/GATE", "CS Foundations", "GATE"], "match": "network programming|security" },
-    { "node": "cn-basics", "tracks": ["CS Foundations/GATE", "CS Foundations", "GATE"], "match": "network|http|internet" },
-    { "node": "os-concurrency", "tracks": ["CS Foundations/GATE", "CS Foundations", "GATE"], "match": "kernel|unix|operating system libraries|systems programming|distributed" },
-    { "node": "os-basics", "tracks": ["CS Foundations/GATE", "CS Foundations", "GATE"], "match": "operating system|linux|command-line" },
-    { "node": "prog-git", "tracks": ["CS Foundations/GATE", "CS Foundations", "GATE"], "match": "^git|developer tools|open source" },
-    { "node": "prog-oop", "tracks": ["CS Foundations/GATE", "CS Foundations", "GATE"], "match": "java|c\\+\\+|rust|software engineering|abstraction" },
-    { "node": "dsa-interview", "tracks": ["CS Foundations/GATE", "CS Foundations", "GATE"], "match": "competitive|dsa practice|problem solving" },
-    { "node": "dsa-arrays", "tracks": ["CS Foundations/GATE", "CS Foundations", "GATE"], "match": "complexity|dsa roadmap|data structures|visualization" },
-    { "node": "dsa-sorting-search", "tracks": ["CS Foundations/GATE", "CS Foundations", "GATE"], "match": "algorithms" },
-    { "node": "prog-basics", "tracks": ["CS Foundations/GATE", "CS Foundations", "GATE"], "match": "programming|cs roadmap|c programming|regular expressions" },
-
-    { "node": "dsa-arrays", "tracks": ["FAANG"], "match": "hashing|strings|matrix|arrays|two pointers|sliding window" },
-    { "node": "dsa-linear", "tracks": ["FAANG"], "match": "stacks|linked|monotonic" },
-    { "node": "dsa-sorting-search", "tracks": ["FAANG"], "match": "binary search|backtracking" },
-    { "node": "dsa-trees", "tracks": ["FAANG"], "match": "trees" },
-    { "node": "dsa-graphs", "tracks": ["FAANG"], "match": "graphs|bfs" },
-    { "node": "dsa-dp", "tracks": ["FAANG"], "match": "dynamic programming" },
-    { "node": "dsa-advanced", "tracks": ["FAANG"], "match": "advanced algorithms|competitive|intervals|greedy" },
-    { "node": "dsa-interview", "tracks": ["FAANG"], "match": "coding interviews|mock interviews|problem solving|^dsa /|algorithms|^cs fundamentals / coding" },
-    { "node": "sd-lld", "tracks": ["FAANG"], "match": "lld|ood|software engineering / (design|code quality)" },
-    { "node": "sd-distributed", "tracks": ["FAANG"], "match": "distributed|consistent hashing|reliability|sre|capacity|observability|kubernetes|cluster|big data" },
-    { "node": "web-deploy", "tracks": ["FAANG"], "match": "containers|devops|ci-cd|serverless" },
-    { "node": "sd-basics", "tracks": ["FAANG"], "match": "hld|load balancing|caching|backend|api|microservices|rpc|cloud|^databases|storage|software architecture" },
-    { "node": "cn-basics", "tracks": ["FAANG"], "match": "^computer networks" },
-    { "node": "os-basics", "tracks": ["FAANG"], "match": "^operating systems" },
-    { "node": "dbms-sql", "tracks": ["FAANG"], "match": "databases / sql" }
+    {
+      "node": "gate-practice",
+      "tracks": [
+        "GATE"
+      ],
+      "match": "^gate (official|pyqs|cs syllabus|exam strategy|cs topic|os practice|dbms revision|data structures|algorithms practice)|coa revision"
+    },
+    {
+      "node": "gate-practice",
+      "tracks": [
+        "CS Foundations/GATE"
+      ],
+      "match": "revision questions"
+    },
+    {
+      "node": "gate-aptitude",
+      "tracks": [
+        "GATE"
+      ],
+      "match": "aptitude"
+    },
+    {
+      "node": "compiler",
+      "tracks": [
+        "CS Foundations/GATE",
+        "CS Foundations",
+        "GATE"
+      ],
+      "match": "compiler|assemblers|parsing|virtual machine|jack programming"
+    },
+    {
+      "node": "toc",
+      "tracks": [
+        "CS Foundations/GATE",
+        "CS Foundations",
+        "GATE"
+      ],
+      "match": "theory|computation"
+    },
+    {
+      "node": "coa-basics",
+      "tracks": [
+        "CS Foundations/GATE",
+        "CS Foundations",
+        "GATE"
+      ],
+      "match": "organization|computer systems|^coa|architecture|digital logic|number systems|memory systems|assembly|cpu|alu|computer systems design"
+    },
+    {
+      "node": "maths-discrete",
+      "tracks": [
+        "CS Foundations/GATE",
+        "CS Foundations",
+        "GATE"
+      ],
+      "match": "discrete|graph theory",
+      "also": [
+        "maths-gate"
+      ]
+    },
+    {
+      "node": "maths-gate",
+      "tracks": [
+        "GATE"
+      ],
+      "match": "engineering math"
+    },
+    {
+      "node": "career-resume-hr",
+      "tracks": [
+        "FAANG"
+      ],
+      "match": "behavioral|resume|software engineering / communication|mock interviews$"
+    },
+    {
+      "node": "career-cs-core",
+      "tracks": [
+        "FAANG"
+      ],
+      "match": "^cs fundamentals / (computer architecture|security|algorithms)|coding interviews / cs fundamentals|computer security"
+    },
+    {
+      "node": "ms-visa",
+      "tracks": [
+        "MS Abroad"
+      ],
+      "match": "visa|ds-160|pre-departure|post-study|uk (financial|graduate)"
+    },
+    {
+      "node": "ms-gre",
+      "tracks": [
+        "MS Abroad"
+      ],
+      "match": "gre|toefl|ielts"
+    },
+    {
+      "node": "ms-application",
+      "tracks": [
+        "MS Abroad"
+      ],
+      "match": "statement of purpose|admissions essay|recommendation|application|resume|negotiation|career planning|portfolio preparation|admissions process"
+    },
+    {
+      "node": "ms-portfolio",
+      "tracks": [
+        "MS Abroad"
+      ],
+      "match": "portfolio|project|machine-learning|programming|python|javascript|algorithm|full-stack|data-science"
+    },
+    {
+      "node": "research-methods",
+      "tracks": [
+        "MS Abroad"
+      ],
+      "match": "research|writing|literature|thesis|apa|mla|academic|study skills|communication|presentations|english|paragraph"
+    },
+    {
+      "node": "ms-shortlist",
+      "tracks": [
+        "MS Abroad"
+      ],
+      "match": "."
+    },
+    {
+      "node": "ent-funding",
+      "tracks": [
+        "Entrepreneurship"
+      ],
+      "match": "pitch|funding|fundrais|valuation|co-founder|finance|investor|negotiation"
+    },
+    {
+      "node": "ent-model",
+      "tracks": [
+        "Entrepreneurship"
+      ],
+      "match": "pricing|business model|canvas|experiment|hypothes|business planning|subscription|validation|evidence|customer-learning|customer-value"
+    },
+    {
+      "node": "ent-growth",
+      "tracks": [
+        "Entrepreneurship"
+      ],
+      "match": "acquisition|product-market|growth|launch|operations|tax|records|compliance|advertising|payroll|billing|setup|transaction|marketing|saas"
+    },
+    {
+      "node": "ent-mvp",
+      "tracks": [
+        "Entrepreneurship"
+      ],
+      "match": "minimum viable|development|startup ideation project"
+    },
+    {
+      "node": "ent-ideas",
+      "tracks": [
+        "Entrepreneurship"
+      ],
+      "match": "."
+    },
+    {
+      "node": "mobile-flutter-backend",
+      "tracks": [
+        "Mobile App development"
+      ],
+      "match": "^flutter (firebase|networking)"
+    },
+    {
+      "node": "mobile-flutter-state",
+      "tracks": [
+        "Mobile App development"
+      ],
+      "match": "^flutter (state|clean|local storage|sqlite|architecture)|state-management sample|architecture notes"
+    },
+    {
+      "node": "mobile-flutter-ui",
+      "tracks": [
+        "Mobile App development"
+      ],
+      "match": "flutter"
+    },
+    {
+      "node": "mobile-dart",
+      "tracks": [
+        "Mobile App development"
+      ],
+      "match": "^dart"
+    },
+    {
+      "node": "mobile-ios-data",
+      "tracks": [
+        "Mobile App development"
+      ],
+      "match": "swiftdata|core data|photosui"
+    },
+    {
+      "node": "mobile-swiftui",
+      "tracks": [
+        "Mobile App development"
+      ],
+      "match": "swiftui|xcode"
+    },
+    {
+      "node": "mobile-swift",
+      "tracks": [
+        "Mobile App development"
+      ],
+      "match": "^swift"
+    },
+    {
+      "node": "mobile-android-release",
+      "tracks": [
+        "Mobile App development"
+      ],
+      "match": "android (testing|mobile security)|compose (testing|accessibility)|android energy|foreground service (declarations|launch)"
+    },
+    {
+      "node": "mobile-android-net",
+      "tracks": [
+        "Mobile App development"
+      ],
+      "match": "firebase|networking|background|workmanager|services?$|foreground"
+    },
+    {
+      "node": "mobile-android-arch",
+      "tracks": [
+        "Mobile App development"
+      ],
+      "match": "viewmodel|room|navigation|architecture|persistence|settings storage|compose state|state management|side effects"
+    },
+    {
+      "node": "mobile-kotlin",
+      "tracks": [
+        "Mobile App development"
+      ],
+      "match": "kotlin"
+    },
+    {
+      "node": "mobile-android-core",
+      "tracks": [
+        "Mobile App development"
+      ],
+      "match": "android|compose|jetpack|activity|intents|manifest"
+    },
+    {
+      "node": "web-auth",
+      "tracks": [
+        "Web development"
+      ],
+      "match": "security|authentication"
+    },
+    {
+      "node": "web-fullstack-projects",
+      "tracks": [
+        "Web development"
+      ],
+      "match": "full.?stack"
+    },
+    {
+      "node": "web-db",
+      "tracks": [
+        "Web development"
+      ],
+      "match": "mongodb"
+    },
+    {
+      "node": "web-node",
+      "tracks": [
+        "Web development"
+      ],
+      "match": "node\\.?js|express|http server"
+    },
+    {
+      "node": "web-portfolio",
+      "tracks": [
+        "Web development"
+      ],
+      "match": "project|challenges|guided frontend|card ui|product ui|card and layout|frontend practice"
+    },
+    {
+      "node": "web-state-ts",
+      "tracks": [
+        "Web development"
+      ],
+      "match": "typescript|state management|performance|architecture|design patterns"
+    },
+    {
+      "node": "web-react",
+      "tracks": [
+        "Web development"
+      ],
+      "match": "react|next\\.?js|vue|routing"
+    },
+    {
+      "node": "web-html-css",
+      "tracks": [
+        "Web development"
+      ],
+      "match": "^html|css|flexbox|responsive|accessibility|bootstrap|tailwind|forms|semantic|web components|^web development foundations"
+    },
+    {
+      "node": "web-js",
+      "tracks": [
+        "Web development"
+      ],
+      "match": "javascript|^dom|async|fetch|promise|iterators|closures|prototypes|destructuring|regular expressions|modules|git|getting started|networking|programming languages"
+    },
+    {
+      "node": "aiml-mlops",
+      "tracks": [
+        "AIML"
+      ],
+      "match": "mlops|production|serializ|automl|pipelines|model sharing|model documentation|explainab|ethics"
+    },
+    {
+      "node": "aiml-nlp",
+      "tracks": [
+        "AIML"
+      ],
+      "match": "nlp|transformer|tokeniz|bert|llm|language model|embedding|fine-tuning|rlhf|summariz|translation|question answering|agents|vector search|masked|peft|parameter-efficient|pretrained|dataset|token classification|cosine"
+    },
+    {
+      "node": "aiml-dl",
+      "tracks": [
+        "AIML"
+      ],
+      "match": "neural|deep|pytorch|tensor|torch|cnn|resnet|vision|image|autoencoder|gan|batch norm|relu|backprop|gradient descent|differentiation|optimization|reinforcement|data loading|data transforms|model architecture|segmentation|transfer learning|matrix algebra"
+    },
+    {
+      "node": "aiml-ml",
+      "tracks": [
+        "AIML"
+      ],
+      "match": "."
+    },
+    {
+      "node": "maths-ml",
+      "tracks": [
+        "CS Foundations/GATE",
+        "CS Foundations",
+        "GATE"
+      ],
+      "match": "linear algebra|probability|statistics|engineering math|discrete|graph theory|number systems"
+    },
+    {
+      "node": "aiml-python",
+      "tracks": [
+        "CS Foundations/GATE",
+        "CS Foundations",
+        "GATE"
+      ],
+      "match": "^python"
+    },
+    {
+      "node": "dbms-advanced",
+      "tracks": [
+        "CS Foundations/GATE",
+        "CS Foundations",
+        "GATE"
+      ],
+      "match": "nosql"
+    },
+    {
+      "node": "dbms-sql",
+      "tracks": [
+        "CS Foundations/GATE",
+        "CS Foundations",
+        "GATE"
+      ],
+      "match": "sql|postgres"
+    },
+    {
+      "node": "dbms-design",
+      "tracks": [
+        "CS Foundations/GATE",
+        "CS Foundations",
+        "GATE"
+      ],
+      "match": "dbms|database|relational"
+    },
+    {
+      "node": "cn-transport",
+      "tracks": [
+        "CS Foundations/GATE",
+        "CS Foundations",
+        "GATE"
+      ],
+      "match": "network programming|security"
+    },
+    {
+      "node": "cn-basics",
+      "tracks": [
+        "CS Foundations/GATE",
+        "CS Foundations",
+        "GATE"
+      ],
+      "match": "network|http|internet"
+    },
+    {
+      "node": "os-concurrency",
+      "tracks": [
+        "CS Foundations/GATE",
+        "CS Foundations",
+        "GATE"
+      ],
+      "match": "kernel|unix|operating system libraries|systems programming|distributed"
+    },
+    {
+      "node": "os-basics",
+      "tracks": [
+        "CS Foundations/GATE",
+        "CS Foundations",
+        "GATE"
+      ],
+      "match": "operating system|linux|command-line"
+    },
+    {
+      "node": "prog-git",
+      "tracks": [
+        "CS Foundations/GATE",
+        "CS Foundations",
+        "GATE"
+      ],
+      "match": "^git|developer tools|open source"
+    },
+    {
+      "node": "prog-oop",
+      "tracks": [
+        "CS Foundations/GATE",
+        "CS Foundations",
+        "GATE"
+      ],
+      "match": "java|c\\+\\+|rust|software engineering|abstraction"
+    },
+    {
+      "node": "dsa-interview",
+      "tracks": [
+        "CS Foundations/GATE",
+        "CS Foundations",
+        "GATE"
+      ],
+      "match": "competitive|dsa practice|problem solving"
+    },
+    {
+      "node": "dsa-arrays",
+      "tracks": [
+        "CS Foundations/GATE",
+        "CS Foundations",
+        "GATE"
+      ],
+      "match": "complexity|dsa roadmap|data structures|visualization"
+    },
+    {
+      "node": "dsa-sorting-search",
+      "tracks": [
+        "CS Foundations/GATE",
+        "CS Foundations",
+        "GATE"
+      ],
+      "match": "algorithms"
+    },
+    {
+      "node": "prog-basics",
+      "tracks": [
+        "CS Foundations/GATE",
+        "CS Foundations",
+        "GATE"
+      ],
+      "match": "programming|cs roadmap|c programming|regular expressions"
+    },
+    {
+      "node": "dsa-arrays",
+      "tracks": [
+        "FAANG"
+      ],
+      "match": "hashing|strings|matrix|arrays|two pointers|sliding window"
+    },
+    {
+      "node": "dsa-linear",
+      "tracks": [
+        "FAANG"
+      ],
+      "match": "stacks|linked|monotonic"
+    },
+    {
+      "node": "dsa-sorting-search",
+      "tracks": [
+        "FAANG"
+      ],
+      "match": "binary search|backtracking"
+    },
+    {
+      "node": "dsa-trees",
+      "tracks": [
+        "FAANG"
+      ],
+      "match": "trees"
+    },
+    {
+      "node": "dsa-graphs",
+      "tracks": [
+        "FAANG"
+      ],
+      "match": "graphs|bfs"
+    },
+    {
+      "node": "dsa-dp",
+      "tracks": [
+        "FAANG"
+      ],
+      "match": "dynamic programming"
+    },
+    {
+      "node": "dsa-advanced",
+      "tracks": [
+        "FAANG"
+      ],
+      "match": "advanced algorithms|competitive|intervals|greedy"
+    },
+    {
+      "node": "dsa-interview",
+      "tracks": [
+        "FAANG"
+      ],
+      "match": "coding interviews|mock interviews|problem solving|^dsa /|algorithms|^cs fundamentals / coding"
+    },
+    {
+      "node": "sd-lld",
+      "tracks": [
+        "FAANG"
+      ],
+      "match": "lld|ood|software engineering / (design|code quality)"
+    },
+    {
+      "node": "sd-distributed",
+      "tracks": [
+        "FAANG"
+      ],
+      "match": "distributed|consistent hashing|reliability|sre|capacity|observability|kubernetes|cluster|big data"
+    },
+    {
+      "node": "web-deploy",
+      "tracks": [
+        "FAANG"
+      ],
+      "match": "containers|devops|ci-cd|serverless"
+    },
+    {
+      "node": "sd-basics",
+      "tracks": [
+        "FAANG"
+      ],
+      "match": "hld|load balancing|caching|backend|api|microservices|rpc|cloud|^databases|storage|software architecture"
+    },
+    {
+      "node": "cn-basics",
+      "tracks": [
+        "FAANG"
+      ],
+      "match": "^computer networks"
+    },
+    {
+      "node": "os-basics",
+      "tracks": [
+        "FAANG"
+      ],
+      "match": "^operating systems"
+    },
+    {
+      "node": "dbms-sql",
+      "tracks": [
+        "FAANG"
+      ],
+      "match": "databases / sql"
+    }
   ],
   "maxPerNode": 12,
   "maxPerType": 4

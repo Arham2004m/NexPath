@@ -174,17 +174,17 @@
           "priority": "Recommended"
         },
         {
-          "id": "CSFG-138",
-          "type": "project",
-          "title": "Nand2Tetris Project 9 – High-Level Language",
-          "url": "https://www.nand2tetris.org/project09",
-          "provider": "Nand2Tetris / Noam Nisan & Shimon Schocken",
+          "id": "CSFG-129",
+          "type": "practice",
+          "title": "RegexOne",
+          "url": "https://regexone.com/",
+          "provider": "RegexOne",
           "free": true,
           "pricing": "Free",
-          "difficulty": "Intermediate",
-          "time": "6–12 hours",
-          "why": "Writing a nontrivial Jack application gives practice with program structure and the language/runtime abstractions supported by the platform.",
-          "priority": "Recommended"
+          "difficulty": "Beginner",
+          "time": "2–4 hours",
+          "why": "Short interactive lessons provide immediate regex practice and build pattern-matching skills useful for text processing and software tooling.",
+          "priority": "Supplementary"
         }
       ]
     },

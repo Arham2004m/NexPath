@@ -150,19 +150,6 @@
           "priority": "Recommended"
         },
         {
-          "id": "CSFG-098",
-          "type": "practice",
-          "title": "GATE Overflow – Data Structures Questions",
-          "url": "https://db.gateoverflow.in/questions/programming-in-c/data-structures",
-          "provider": "GATE Overflow",
-          "free": true,
-          "pricing": "Free",
-          "difficulty": "Exam-focused",
-          "time": "Ongoing",
-          "why": "Focuses directly on GATE data-structure questions involving arrays, stacks, queues, linked lists, trees, heaps, and graphs, making it useful for targeted exam practice.",
-          "priority": "Recommended"
-        },
-        {
           "id": "FAANG-141",
           "type": "practice",
           "title": "Two Sum",
@@ -332,19 +319,6 @@
           "difficulty": "Intermediate",
           "time": "~30 minutes",
           "why": "Exact Abdul Bari lecture on recursive Merge Sort, tracing, analysis and drawbacks; useful for understanding merge sort rather than browsing a channel homepage.",
-          "priority": "Must-have"
-        },
-        {
-          "id": "CSFG-050",
-          "type": "practice",
-          "title": "GATE Overflow – Algorithms Questions",
-          "url": "https://gateoverflow.in/questions/algorithms",
-          "provider": "GATE Overflow",
-          "free": true,
-          "pricing": "Free",
-          "difficulty": "Exam-focused",
-          "time": "Ongoing",
-          "why": "Collects GATE-focused algorithm questions covering sorting, hashing, asymptotic analysis, greedy methods, dynamic programming, graph search, MSTs, and shortest paths.",
           "priority": "Must-have"
         },
         {

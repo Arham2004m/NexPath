@@ -1,0 +1,194 @@
+{
+  "nodes": [
+    {
+      "id": "coa-basics",
+      "name": "Computer Organization and Architecture",
+      "domain": "coa",
+      "level": 2,
+      "prerequisites": [
+        "prog-basics"
+      ],
+      "estimatedHours": 19,
+      "topics": [
+        {
+          "id": "coa-basics-1",
+          "title": "Digital logic and number systems",
+          "hours": 6
+        },
+        {
+          "id": "coa-basics-2",
+          "title": "CPU design, instruction sets and pipelining",
+          "hours": 7
+        },
+        {
+          "id": "coa-basics-3",
+          "title": "Memory hierarchy, cache and I/O",
+          "hours": 6
+        }
+      ],
+      "miniTasks": [
+        "Design a half adder, full adder and a 4-bit counter on paper, then in a simulator.",
+        "Trace a small program through a 5-stage pipeline and mark every hazard.",
+        "Compute hit ratios and average access time for 10 cache problems."
+      ],
+      "resources": [
+        {
+          "id": "CSFG-020",
+          "type": "course",
+          "title": "Nand2Tetris",
+          "url": "https://www.nand2tetris.org/",
+          "provider": "Nand2Tetris / Hebrew University",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "3–6 months",
+          "why": "Build a computer from logic gates upward, connecting hardware concepts with software systems.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-022",
+          "type": "book",
+          "title": "Computer Systems: A Programmer's Perspective",
+          "url": "https://csapp.cs.cmu.edu/",
+          "provider": "CMU / Randal E. Bryant & David R. O'Hallaron",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "10–14 weeks",
+          "why": "Strong systems foundation connecting machine representation, assembly, memory, linking, and performance.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-054",
+          "type": "practice",
+          "title": "GATE Overflow – Computer Organization & Architecture",
+          "url": "https://gateoverflow.in/subject/co-and-architecture",
+          "provider": "GATE Overflow",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "Ongoing",
+          "why": "Organizes GATE-relevant COA concepts such as addressing modes, memory hierarchy, pipelining, I/O, and performance into a focused subject reference with problem-solving guidance.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-086",
+          "type": "project",
+          "title": "Nand2Tetris Project 1 – Boolean Logic",
+          "url": "https://www.nand2tetris.org/project01",
+          "provider": "Nand2Tetris",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "8–12 hours",
+          "why": "Requires learners to implement and test a complete set of basic logic gates from primitive NAND, turning digital-logic concepts into an executable hardware-design task.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-YT-043",
+          "type": "video",
+          "title": "Gate Smashers – Computer Organization and Architecture Complete Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiHMonh3G6QNKq53C6oNXGrX",
+          "provider": "Gate Smashers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Exam-focused",
+          "time": "15–25 hours",
+          "why": "Specific COA playlist from Gate Smashers, suitable for GATE-focused coverage.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-YT-053",
+          "type": "video",
+          "title": "Gate Smashers – Digital Logic Complete Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiGmXg4NoX6R31AsC5LeCPHe",
+          "provider": "Gate Smashers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "12–20 hours",
+          "why": "Specific digital-logic playlist for Boolean algebra, gates, combinational and sequential concepts.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-105",
+          "type": "course",
+          "title": "MIT OpenCourseWare – 6.004 Computation Structures",
+          "url": "https://ocw.mit.edu/courses/6-004-computation-structures-spring-2009/",
+          "provider": "MIT OpenCourseWare",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "12–14 weeks",
+          "why": "Connects digital logic, processors, memory, assembly, and computer architecture so learners understand how software maps onto hardware.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-107",
+          "type": "course",
+          "title": "15-213 Introduction to Computer Systems",
+          "url": "https://csd.cs.cmu.edu/15213-introduction-to-computer-systems",
+          "provider": "Carnegie Mellon University",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "12–14 weeks",
+          "why": "CMU’s systems course covers data representation, machine-level code, memory hierarchy, linking, exceptional control flow, and system-level programming.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-108",
+          "type": "course",
+          "title": "CS107 Computer Organization & Systems",
+          "url": "https://web.stanford.edu/class/cs107/",
+          "provider": "Stanford University",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "10 weeks",
+          "why": "Builds strong understanding of C, pointers, memory, machine representation, assembly, and performance-oriented systems programming.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-131",
+          "type": "project",
+          "title": "Nand2Tetris Project 2 – Boolean Arithmetic",
+          "url": "https://www.nand2tetris.org/project02",
+          "provider": "Nand2Tetris / Noam Nisan & Shimon Schocken",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "6–10 hours",
+          "why": "Implementing arithmetic and logic chips turns Boolean algebra into a working ALU and reinforces digital-computer foundations.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-132",
+          "type": "project",
+          "title": "Nand2Tetris Project 3 – Memory",
+          "url": "https://www.nand2tetris.org/project03",
+          "provider": "Nand2Tetris / Noam Nisan & Shimon Schocken",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "6–10 hours",
+          "why": "Build memory chips from lower-level components to understand registers, RAM hierarchy, and addressing.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-133",
+          "type": "project",
+          "title": "Nand2Tetris Project 4 – Machine Language",
+          "url": "https://www.nand2tetris.org/project04",
+          "provider": "Nand2Tetris / Noam Nisan & Shimon Schocken",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "4–8 hours",
+          "why": "Writing assembly programs for the Hack platform connects instruction sets, registers, memory addresses, and control flow.",
+          "priority": "Must-have"
+        }
+      ]
+    }
+  ]
+}

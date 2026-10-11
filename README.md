@@ -32,7 +32,7 @@ The brain of the app is a prerequisite graph of skills in `backend/src/data/grap
 - `npm run validate-graph`: checks ids, prerequisites, cycles, topic hours, mini tasks and goal references; the server also refuses to start on an invalid graph.
 - `npm run import-resources`: rebuilds each skill's curated resources from `backend/src/data/resources/nexpath-resources.csv` using the rules in `resourceMap.json`, and writes `import-report.json` (unmapped rows, skills with fewer than 3 resources are flagged `needsReview`). Resource links are never invented.
 - `npm test`: engine tests (ordering, determinism, mastery, packing, deadlines, recommender).
-- Roadmaps exist for Product Company Placement, AI/ML, Web (frontend, backend, full stack) and Mobile (Android, Flutter, iOS). Other goals show "Roadmap coming soon".
+- Every goal and sub-track has a roadmap path (`goalPaths.json`). Durations shown on the goal page are computed from the graph, not typed in. Skills with thin resources (aptitude, deployment, iOS release, trees) are flagged `needsReview`; send more CSV rows for them and re-run the importer.
 
 ## API
 

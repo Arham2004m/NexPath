@@ -1,0 +1,856 @@
+{
+  "nodes": [
+    {
+      "id": "ent-ideas",
+      "name": "Opportunity and Idea Validation",
+      "domain": "product",
+      "level": 1,
+      "prerequisites": [],
+      "estimatedHours": 16,
+      "topics": [
+        {
+          "id": "ent-ideas-1",
+          "title": "Opportunity recognition and idea evaluation",
+          "hours": 5
+        },
+        {
+          "id": "ent-ideas-2",
+          "title": "Customer discovery and interviews",
+          "hours": 6
+        },
+        {
+          "id": "ent-ideas-3",
+          "title": "Market research and value proposition",
+          "hours": 5
+        }
+      ],
+      "miniTasks": [
+        "List 10 problems you have seen first-hand and score each idea.",
+        "Interview 10 potential customers and summarise what surprised you.",
+        "Write a value proposition and size your target market with sources."
+      ],
+      "resources": [
+        {
+          "id": "ENT-087",
+          "type": "project",
+          "title": "Creating Change through Social Entrepreneurship",
+          "url": "https://www.coursera.org/learn/creating-change-through-social-entrepreneurship",
+          "provider": "Coursera",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Intermediate",
+          "time": "1–4 weeks",
+          "why": "An applied learning resource that can be turned into a scoped venture, innovation, validation, or finance project.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-088",
+          "type": "project",
+          "title": "Social Entrepreneurship Opportunities",
+          "url": "https://www.coursera.org/learn/social-entrepreneurship-opportunities",
+          "provider": "Coursera",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Intermediate",
+          "time": "1–4 weeks",
+          "why": "An applied learning resource that can be turned into a scoped venture, innovation, validation, or finance project.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-091",
+          "type": "project",
+          "title": "Creative Enterprises",
+          "url": "https://www.coursera.org/learn/creative-enterprises",
+          "provider": "Coursera",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Intermediate",
+          "time": "1–4 weeks",
+          "why": "An applied learning resource that can be turned into a scoped venture, innovation, validation, or finance project.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-093",
+          "type": "project",
+          "title": "Innovation & Entrepreneurship – From Design Thinking to Funding",
+          "url": "https://www.coursera.org/learn/innovation-entrepreneurship-from-design-thinking-to-funding",
+          "provider": "Coursera",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Intermediate",
+          "time": "1–4 weeks",
+          "why": "An applied learning resource that can be turned into a scoped venture, innovation, validation, or finance project.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-003",
+          "type": "video",
+          "title": "How To Talk To Users | Startup School",
+          "url": "https://www.youtube.com/watch?v=z1iF1c8w5Lg",
+          "provider": "Y Combinator",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Video duration varies",
+          "why": "Focused founder, validation, pitching, or business-model video content that directly develops an entrepreneurship skill.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "ENT-007",
+          "type": "video",
+          "title": "Should You Start A Startup? | Startup School",
+          "url": "https://www.youtube.com/watch?v=BUE-icVYRFU",
+          "provider": "Y Combinator",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Video duration varies",
+          "why": "Focused founder, validation, pitching, or business-model video content that directly develops an entrepreneurship skill.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "ENT-011",
+          "type": "video",
+          "title": "Value Proposition Canvas Explained",
+          "url": "https://www.youtube.com/watch?v=aN36EcTE54Q",
+          "provider": "Strategyzer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Video duration varies",
+          "why": "Focused founder, validation, pitching, or business-model video content that directly develops an entrepreneurship skill.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "ENT-012",
+          "type": "video",
+          "title": "Stanford eCorner: Where Entrepreneurs Find Inspiration",
+          "url": "https://www.youtube.com/watch?v=2i61DdQEGn8",
+          "provider": "Stanford eCorner",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Video duration varies",
+          "why": "Focused founder, validation, pitching, or business-model video content that directly develops an entrepreneurship skill.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "ENT-028",
+          "type": "course",
+          "title": "Innovation and Entrepreneurship Specialization",
+          "url": "https://www.coursera.org/specializations/innovation-entrepreneurship",
+          "provider": "Coursera",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Varies by course",
+          "why": "Structured instruction covering core entrepreneurship knowledge, frameworks, or startup finance in a guided learning path.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "ENT-030",
+          "type": "course",
+          "title": "Entrepreneurship",
+          "url": "https://www.coursera.org/learn/entrepreneurship",
+          "provider": "The Chinese University of Hong Kong",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Varies by course",
+          "why": "Structured instruction covering core entrepreneurship knowledge, frameworks, or startup finance in a guided learning path.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "ENT-032",
+          "type": "course",
+          "title": "Basics of entrepreneurship: thinking and doing",
+          "url": "https://www.coursera.org/learn/basics-of-entrepreneurship-thinking-and-doing",
+          "provider": "Coursera",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Varies by course",
+          "why": "Structured instruction covering core entrepreneurship knowledge, frameworks, or startup finance in a guided learning path.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "ENT-034",
+          "type": "course",
+          "title": "Entrepreneurship Strategy: From Ideation to Exit",
+          "url": "https://www.coursera.org/learn/entrepreneurship-strategy",
+          "provider": "Coursera",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Varies by course",
+          "why": "Structured instruction covering core entrepreneurship knowledge, frameworks, or startup finance in a guided learning path.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "ent-model",
+      "name": "Business Model, Pricing and Experiments",
+      "domain": "product",
+      "level": 2,
+      "prerequisites": [
+        "ent-ideas"
+      ],
+      "estimatedHours": 14,
+      "topics": [
+        {
+          "id": "ent-model-1",
+          "title": "Business model canvas and lean planning",
+          "hours": 5
+        },
+        {
+          "id": "ent-model-2",
+          "title": "Pricing, packaging and revenue models",
+          "hours": 4
+        },
+        {
+          "id": "ent-model-3",
+          "title": "Experiments and hypothesis testing",
+          "hours": 5
+        }
+      ],
+      "miniTasks": [
+        "Complete a canvas for your idea and mark the riskiest assumption.",
+        "Test three price points with real people and record their reactions.",
+        "Run one cheap experiment (landing page or pre-order) and write the result."
+      ],
+      "resources": [
+        {
+          "id": "ENT-046",
+          "type": "reference",
+          "title": "Plan Your Business",
+          "url": "https://www.sba.gov/counseling/plan-your-business/",
+          "provider": "U.S. Small Business Administration",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "10–30 minutes",
+          "why": "Authoritative guidance for planning, launching, operating, growing, or complying with a business.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "ENT-071",
+          "type": "practice",
+          "title": "Experiment Library",
+          "url": "https://www.strategyzer.com/library/experiment-library",
+          "provider": "Strategyzer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "A concrete experiment, worksheet, checklist, or guided application for practicing entrepreneurship skills.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-072",
+          "type": "practice",
+          "title": "Validate Your Ideas with the Test Card",
+          "url": "https://www.strategyzer.com/library/validate-your-ideas-with-the-test-card",
+          "provider": "Strategyzer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "A concrete experiment, worksheet, checklist, or guided application for practicing entrepreneurship skills.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-073",
+          "type": "practice",
+          "title": "Capture Customer Insights and Actions with the Learning Card",
+          "url": "https://www.strategyzer.com/library/capture-customer-insights-and-actions-with-the-learning-card",
+          "provider": "Strategyzer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "A concrete experiment, worksheet, checklist, or guided application for practicing entrepreneurship skills.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-074",
+          "type": "practice",
+          "title": "Designing Strong Experiments",
+          "url": "https://www.strategyzer.com/library/designing-strong-experiments",
+          "provider": "Strategyzer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "A concrete experiment, worksheet, checklist, or guided application for practicing entrepreneurship skills.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-010",
+          "type": "video",
+          "title": "Strategyzer's Value Proposition Canvas Explained",
+          "url": "https://www.youtube.com/watch?v=ReM1uqmVfP0",
+          "provider": "Strategyzer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Video duration varies",
+          "why": "Focused founder, validation, pitching, or business-model video content that directly develops an entrepreneurship skill.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "ENT-019",
+          "type": "video",
+          "title": "IMD Business School: A Short Video Series on the Business Model Canvas",
+          "url": "https://www.strategyzer.com/library/imd-business-school-a-short-video-series-on-the-business-model-canvas",
+          "provider": "IMD / Strategyzer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Video duration varies",
+          "why": "Focused founder, validation, pitching, or business-model video content that directly develops an entrepreneurship skill.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "ENT-022",
+          "type": "video",
+          "title": "Mastering Business Testing: Formulating Strong Hypotheses",
+          "url": "https://www.strategyzer.com/library/mastering-business-testing-formulating-strong-hypotheses",
+          "provider": "Strategyzer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Video duration varies",
+          "why": "Focused founder, validation, pitching, or business-model video content that directly develops an entrepreneurship skill.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "ENT-023",
+          "type": "video",
+          "title": "How Your Team Produces Evidence for Their Ideas",
+          "url": "https://www.strategyzer.com/library/how-your-team-produces-evidence-for-their-ideas",
+          "provider": "Strategyzer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Video duration varies",
+          "why": "Focused founder, validation, pitching, or business-model video content that directly develops an entrepreneurship skill.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "ENT-027",
+          "type": "course",
+          "title": "Action-Driven Business Plan: From the Classroom to the World",
+          "url": "https://www.coursera.org/learn/startup-entrepreneurship-capstone",
+          "provider": "Technion – Israel Institute of Technology",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Varies by course",
+          "why": "Structured instruction covering core entrepreneurship knowledge, frameworks, or startup finance in a guided learning path.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "ENT-033",
+          "type": "course",
+          "title": "Business Model for Entrepreneurs",
+          "url": "https://www.coursera.org/learn/business-model-entrepreneurs",
+          "provider": "Coursera",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Varies by course",
+          "why": "Structured instruction covering core entrepreneurship knowledge, frameworks, or startup finance in a guided learning path.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "ENT-036",
+          "type": "article",
+          "title": "SaaS pricing models 101: Your options and how to pick the right one",
+          "url": "https://stripe.com/resources/more/saas-pricing-models-101",
+          "provider": "Stripe",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "10–25 minutes",
+          "why": "Actionable reading on a concrete startup, pricing, marketing, planning, or SaaS business problem.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "ent-mvp",
+      "name": "Scoping and Shipping Your MVP",
+      "domain": "product",
+      "level": 3,
+      "prerequisites": [
+        "ent-model",
+        "web-deploy",
+        "web-react"
+      ],
+      "estimatedHours": 25,
+      "topics": [
+        {
+          "id": "ent-mvp-1",
+          "title": "Scoping an MVP and prioritising features",
+          "hours": 5
+        },
+        {
+          "id": "ent-mvp-2",
+          "title": "Building the MVP: backend, data and core flows",
+          "hours": 7
+        },
+        {
+          "id": "ent-mvp-3",
+          "title": "Building the MVP: interface, polish and shipping",
+          "hours": 7
+        },
+        {
+          "id": "ent-mvp-4",
+          "title": "Launch, feedback and iteration",
+          "hours": 6
+        }
+      ],
+      "miniTasks": [
+        "Cut your idea to a one-sentence promise and a five-feature list.",
+        "Get the core flow working end to end with real data.",
+        "Ship the MVP to a public URL and share it with five people.",
+        "Get 10 real users, collect feedback and ship one improvement."
+      ],
+      "resources": [
+        {
+          "id": "ENT-076",
+          "type": "practice",
+          "title": "Develop a Business Idea",
+          "url": "https://www.shopify.com/blog/develop-business-idea",
+          "provider": "Shopify",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "A concrete experiment, worksheet, checklist, or guided application for practicing entrepreneurship skills.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-086",
+          "type": "project",
+          "title": "Design Thinking and Global Startup",
+          "url": "https://www.coursera.org/learn/design-thinking-and-global-startup",
+          "provider": "Coursera",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Intermediate",
+          "time": "1–4 weeks",
+          "why": "An applied learning resource that can be turned into a scoped venture, innovation, validation, or finance project.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-005",
+          "type": "video",
+          "title": "How to Build An MVP | Startup School",
+          "url": "https://www.youtube.com/watch?v=QRZ_l7cVzzU",
+          "provider": "Y Combinator",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Video duration varies",
+          "why": "Focused founder, validation, pitching, or business-model video content that directly develops an entrepreneurship skill.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "ENT-031",
+          "type": "course",
+          "title": "Startup Entrepreneurship Specialization",
+          "url": "https://www.coursera.org/specializations/startup-entrepreneurship",
+          "provider": "Technion – Israel Institute of Technology",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Varies by course",
+          "why": "Structured instruction covering core entrepreneurship knowledge, frameworks, or startup finance in a guided learning path.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "ent-growth",
+      "name": "Customers, Growth and Operations",
+      "domain": "product",
+      "level": 3,
+      "prerequisites": [
+        "ent-mvp"
+      ],
+      "estimatedHours": 15,
+      "topics": [
+        {
+          "id": "ent-growth-1",
+          "title": "Customer acquisition and marketing basics",
+          "hours": 5
+        },
+        {
+          "id": "ent-growth-2",
+          "title": "Product-market fit and metrics",
+          "hours": 5
+        },
+        {
+          "id": "ent-growth-3",
+          "title": "Business operations: registration, tax and records",
+          "hours": 5
+        }
+      ],
+      "miniTasks": [
+        "Acquire your first 20 users through two different channels and compare them.",
+        "Define your activation and retention metrics and measure them for a week.",
+        "List the registrations, taxes and records your business needs in your country."
+      ],
+      "resources": [
+        {
+          "id": "ENT-047",
+          "type": "reference",
+          "title": "Launch Your Business",
+          "url": "https://www.sba.gov/counseling/launch-your-business/",
+          "provider": "U.S. Small Business Administration",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "10–30 minutes",
+          "why": "Authoritative guidance for planning, launching, operating, growing, or complying with a business.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "ENT-048",
+          "type": "reference",
+          "title": "Manage Your Business",
+          "url": "https://www.sba.gov/counseling/manage-your-business/",
+          "provider": "U.S. Small Business Administration",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "10–30 minutes",
+          "why": "Authoritative guidance for planning, launching, operating, growing, or complying with a business.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "ENT-049",
+          "type": "reference",
+          "title": "Grow Your Business",
+          "url": "https://www.sba.gov/counseling/grow-your-business/",
+          "provider": "U.S. Small Business Administration",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "10–30 minutes",
+          "why": "Authoritative guidance for planning, launching, operating, growing, or complying with a business.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "ENT-050",
+          "type": "reference",
+          "title": "Starting a Business",
+          "url": "https://www.irs.gov/businesses/small-businesses-self-employed/starting-a-business",
+          "provider": "Internal Revenue Service",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "10–30 minutes",
+          "why": "Authoritative guidance for planning, launching, operating, growing, or complying with a business.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "ENT-077",
+          "type": "practice",
+          "title": "Employment Tax Recordkeeping",
+          "url": "https://www.irs.gov/businesses/small-businesses-self-employed/employment-tax-recordkeeping",
+          "provider": "Internal Revenue Service",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "A concrete experiment, worksheet, checklist, or guided application for practicing entrepreneurship skills.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-078",
+          "type": "practice",
+          "title": "Small Businesses & Self-Employed",
+          "url": "https://www.irs.gov/businesses/small-businesses-self-employed",
+          "provider": "Internal Revenue Service",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "A concrete experiment, worksheet, checklist, or guided application for practicing entrepreneurship skills.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-079",
+          "type": "practice",
+          "title": "Complying with the Telemarketing Sales Rule",
+          "url": "https://www.ftc.gov/business-guidance/resources/complying-telemarketing-sales-rule",
+          "provider": "Federal Trade Commission",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "A concrete experiment, worksheet, checklist, or guided application for practicing entrepreneurship skills.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-080",
+          "type": "practice",
+          "title": "Business Guidance",
+          "url": "https://www.ftc.gov/business-guidance",
+          "provider": "Federal Trade Commission",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "A concrete experiment, worksheet, checklist, or guided application for practicing entrepreneurship skills.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-004",
+          "type": "video",
+          "title": "How to Get Your First Customers | Startup School",
+          "url": "https://www.youtube.com/watch?v=hyYCn_kAngI",
+          "provider": "Y Combinator",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Video duration varies",
+          "why": "Focused founder, validation, pitching, or business-model video content that directly develops an entrepreneurship skill.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "ENT-006",
+          "type": "video",
+          "title": "David Rusenko – How To Find Product Market Fit",
+          "url": "https://www.youtube.com/watch?v=0LNQxT9LvM0",
+          "provider": "Y Combinator",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Video duration varies",
+          "why": "Focused founder, validation, pitching, or business-model video content that directly develops an entrepreneurship skill.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "ENT-021",
+          "type": "video",
+          "title": "Achieve Product-Market Fit with the Value Proposition Designer Canvas",
+          "url": "https://www.strategyzer.com/library/achieve-product-market-fit-with-our-brand-new-value-proposition-designer-canvas",
+          "provider": "Strategyzer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Video duration varies",
+          "why": "Focused founder, validation, pitching, or business-model video content that directly develops an entrepreneurship skill.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "ENT-026",
+          "type": "course",
+          "title": "From Idea to Startup",
+          "url": "https://www.coursera.org/learn/startup-entrepreneurship-from-idea-to-startup",
+          "provider": "Technion – Israel Institute of Technology",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Varies by course",
+          "why": "Structured instruction covering core entrepreneurship knowledge, frameworks, or startup finance in a guided learning path.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "ent-funding",
+      "name": "Teams, Funding and Pitching",
+      "domain": "product",
+      "level": 3,
+      "prerequisites": [
+        "ent-model"
+      ],
+      "estimatedHours": 14,
+      "topics": [
+        {
+          "id": "ent-funding-1",
+          "title": "Finding co-founders and building a team",
+          "hours": 4
+        },
+        {
+          "id": "ent-funding-2",
+          "title": "Startup finance, valuation and funding options",
+          "hours": 5
+        },
+        {
+          "id": "ent-funding-3",
+          "title": "Investor pitch and negotiation",
+          "hours": 5
+        }
+      ],
+      "miniTasks": [
+        "Write the roles your startup needs and the traits you look for.",
+        "Build a simple 12-month budget and compare three funding routes.",
+        "Deliver a 5-minute pitch to two people and revise the deck."
+      ],
+      "resources": [
+        {
+          "id": "ENT-082",
+          "type": "practice",
+          "title": "Startup Funding",
+          "url": "https://www.coursera.org/learn/startup-funding",
+          "provider": "Coursera",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "A concrete experiment, worksheet, checklist, or guided application for practicing entrepreneurship skills.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-083",
+          "type": "practice",
+          "title": "Startup Valuation Methods",
+          "url": "https://www.coursera.org/learn/startup-valuation-methods",
+          "provider": "Coursera",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "A concrete experiment, worksheet, checklist, or guided application for practicing entrepreneurship skills.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-084",
+          "type": "practice",
+          "title": "Structure, Funding and Negotiation For Startups",
+          "url": "https://www.coursera.org/learn/structure-funding-and-negotiation-for-startups",
+          "provider": "Coursera",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "A concrete experiment, worksheet, checklist, or guided application for practicing entrepreneurship skills.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-085",
+          "type": "practice",
+          "title": "Entrepreneurship: Financial Literacy & Fundraising Readiness",
+          "url": "https://www.coursera.org/learn/entrepreneurship-financial-literacy-and-fundraising-readiness",
+          "provider": "Coursera",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–90 minutes",
+          "why": "A concrete experiment, worksheet, checklist, or guided application for practicing entrepreneurship skills.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-089",
+          "type": "project",
+          "title": "Life Sciences Venture Funding",
+          "url": "https://www.coursera.org/learn/life-sciences-venture-funding",
+          "provider": "Coursera",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Intermediate",
+          "time": "1–4 weeks",
+          "why": "An applied learning resource that can be turned into a scoped venture, innovation, validation, or finance project.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-090",
+          "type": "project",
+          "title": "Financing and Profiting from Innovation",
+          "url": "https://www.coursera.org/learn/financing-and-profiting-from-innovation",
+          "provider": "Coursera",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Intermediate",
+          "time": "1–4 weeks",
+          "why": "An applied learning resource that can be turned into a scoped venture, innovation, validation, or finance project.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-092",
+          "type": "project",
+          "title": "Financial Management for Product Leaders",
+          "url": "https://www.coursera.org/learn/financial-management-for-product-leaders",
+          "provider": "Coursera",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Intermediate",
+          "time": "1–4 weeks",
+          "why": "An applied learning resource that can be turned into a scoped venture, innovation, validation, or finance project.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-095",
+          "type": "project",
+          "title": "New Venture Finance: Startup Funding for Entrepreneurs",
+          "url": "https://www.coursera.org/learn/new-venture-finance",
+          "provider": "Coursera",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Intermediate",
+          "time": "1–4 weeks",
+          "why": "An applied learning resource that can be turned into a scoped venture, innovation, validation, or finance project.",
+          "priority": "High"
+        },
+        {
+          "id": "ENT-001",
+          "type": "video",
+          "title": "How To Find A Co-Founder | Startup School",
+          "url": "https://www.youtube.com/watch?v=Fk9BCr5pLTU",
+          "provider": "Y Combinator",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Video duration varies",
+          "why": "Focused founder, validation, pitching, or business-model video content that directly develops an entrepreneurship skill.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "ENT-002",
+          "type": "video",
+          "title": "How to Get and Evaluate Startup Ideas | Startup School",
+          "url": "https://www.youtube.com/watch?v=Th8JoIan4dg",
+          "provider": "Y Combinator",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Video duration varies",
+          "why": "Focused founder, validation, pitching, or business-model video content that directly develops an entrepreneurship skill.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "ENT-008",
+          "type": "video",
+          "title": "How To Perfectly Pitch Your Seed Stage Startup With Y Combinator's Michael Seibel",
+          "url": "https://www.youtube.com/watch?v=lw2X3PxKlAY",
+          "provider": "SaaStr / Y Combinator",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Video duration varies",
+          "why": "Focused founder, validation, pitching, or business-model video content that directly develops an entrepreneurship skill.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "ENT-009",
+          "type": "video",
+          "title": "How to Pitch Your Seed Stage Startup with Y Combinator's Michael Seibel | SaaStr Annual",
+          "url": "https://www.youtube.com/watch?v=ldLFx9gMIFQ",
+          "provider": "SaaStr",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "Video duration varies",
+          "why": "Focused founder, validation, pitching, or business-model video content that directly develops an entrepreneurship skill.",
+          "priority": "Recommended"
+        }
+      ]
+    }
+  ]
+}

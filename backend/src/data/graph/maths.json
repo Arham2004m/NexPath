@@ -31,32 +31,6 @@
       ],
       "resources": [
         {
-          "id": "CSFG-011",
-          "type": "course",
-          "title": "MIT Mathematics for Computer Science",
-          "url": "https://courses.csail.mit.edu/6.042/spring18/",
-          "provider": "MIT / Eric Lehman, F. Thomson Leighton & Albert Meyer",
-          "free": true,
-          "pricing": "Free",
-          "difficulty": "Intermediate",
-          "time": "12–16 weeks",
-          "why": "Core discrete math for proofs, combinatorics, graphs, recurrences, and CS reasoning.",
-          "priority": "Must-have"
-        },
-        {
-          "id": "CSFG-YT-047",
-          "type": "video",
-          "title": "Gate Smashers – Discrete Mathematics Playlist",
-          "url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiH2wwES9vPWsEL6ipTaUSl3",
-          "provider": "Gate Smashers",
-          "free": true,
-          "pricing": "Free",
-          "difficulty": "Intermediate",
-          "time": "12–20 hours",
-          "why": "Specific GATE-focused discrete mathematics playlist for logic, sets, combinatorics and graphs.",
-          "priority": "Must-have"
-        },
-        {
           "id": "CSFG-012",
           "type": "course",
           "title": "Khan Academy Probability & Statistics",
@@ -94,6 +68,64 @@
           "time": "12–16 weeks",
           "why": "Full lecture sequence with problem-solving emphasis and downloadable materials.",
           "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "maths-discrete",
+      "name": "Discrete Mathematics and Graph Theory",
+      "domain": "maths",
+      "level": 1,
+      "prerequisites": [],
+      "estimatedHours": 18,
+      "topics": [
+        {
+          "id": "maths-discrete-1",
+          "title": "Propositional and predicate logic, sets, relations and functions",
+          "hours": 6
+        },
+        {
+          "id": "maths-discrete-2",
+          "title": "Combinatorics, recurrences and probability",
+          "hours": 6
+        },
+        {
+          "id": "maths-discrete-3",
+          "title": "Graph theory and algebraic structures",
+          "hours": 6
+        }
+      ],
+      "miniTasks": [
+        "Solve 15 logic and set-theory problems from GATE previous-year papers.",
+        "Solve 10 counting and recurrence problems and verify two with code.",
+        "Solve 10 graph-theory and group/lattice questions and summarise the formulas on one page."
+      ],
+      "resources": [
+        {
+          "id": "CSFG-011",
+          "type": "course",
+          "title": "MIT Mathematics for Computer Science",
+          "url": "https://courses.csail.mit.edu/6.042/spring18/",
+          "provider": "MIT / Eric Lehman, F. Thomson Leighton & Albert Meyer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "12–16 weeks",
+          "why": "Core discrete math for proofs, combinatorics, graphs, recurrences, and CS reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-YT-047",
+          "type": "video",
+          "title": "Gate Smashers – Discrete Mathematics Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiH2wwES9vPWsEL6ipTaUSl3",
+          "provider": "Gate Smashers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "12–20 hours",
+          "why": "Specific GATE-focused discrete mathematics playlist for logic, sets, combinatorics and graphs.",
+          "priority": "Must-have"
         },
         {
           "id": "CSFG-062",
@@ -109,29 +141,139 @@
           "priority": "Recommended"
         },
         {
-          "id": "CSFG-YT-049",
+          "id": "CSFG-YT-060",
           "type": "video",
-          "title": "Gate Smashers – Number System Playlist",
-          "url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiFOet6KEEqDff1aXEGLdUzn",
-          "provider": "Gate Smashers",
+          "title": "Neso Academy – Discrete Mathematics Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLBlnK6fEyqRhqJPDXcvYlLfXPh37L89g3",
+          "provider": "Neso Academy",
           "free": true,
           "pricing": "Free",
-          "difficulty": "Beginner",
-          "time": "6–10 hours",
-          "why": "Specific number-system playlist supporting digital logic and GATE preparation.",
+          "difficulty": "Intermediate",
+          "time": "15–25 hours",
+          "why": "Specific Neso Academy discrete-math playlist with a focused mathematical sequence.",
           "priority": "Recommended"
         },
         {
-          "id": "CSFG-YT-052",
+          "id": "CSFG-YT-069",
           "type": "video",
-          "title": "Gate Smashers – Graph Theory Playlist",
-          "url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiG0M5FqjyoqB20Edk0tyzVt",
+          "title": "GATE CSE – Discrete Mathematics Playlist (community recommendation)",
+          "url": "https://www.youtube.com/playlist?list=PLC36xJgs4dxEYmhzVBW7nBdftFZ4xmiF1",
+          "provider": "GATE CSE",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Exam-focused",
+          "time": "15–25 hours",
+          "why": "Specific GATE discrete-mathematics playlist surfaced in a community resource thread.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "maths-gate",
+      "name": "Engineering Mathematics for GATE",
+      "domain": "maths",
+      "level": 1,
+      "prerequisites": [],
+      "estimatedHours": 16,
+      "topics": [
+        {
+          "id": "maths-gate-1",
+          "title": "Linear algebra: matrices, determinants and eigenvalues",
+          "hours": 5
+        },
+        {
+          "id": "maths-gate-2",
+          "title": "Calculus: limits, derivatives and integrals",
+          "hours": 5
+        },
+        {
+          "id": "maths-gate-3",
+          "title": "Probability and statistics",
+          "hours": 6
+        }
+      ],
+      "miniTasks": [
+        "Solve 12 matrix and eigenvalue problems by hand.",
+        "Solve 12 calculus problems covering maxima, minima and definite integrals.",
+        "Solve 12 probability and distribution problems under a time limit."
+      ],
+      "resources": [
+        {
+          "id": "CSFG-011",
+          "type": "course",
+          "title": "MIT Mathematics for Computer Science",
+          "url": "https://courses.csail.mit.edu/6.042/spring18/",
+          "provider": "MIT / Eric Lehman, F. Thomson Leighton & Albert Meyer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "12–16 weeks",
+          "why": "Core discrete math for proofs, combinatorics, graphs, recurrences, and CS reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-YT-047",
+          "type": "video",
+          "title": "Gate Smashers – Discrete Mathematics Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiH2wwES9vPWsEL6ipTaUSl3",
           "provider": "Gate Smashers",
           "free": true,
           "pricing": "Free",
           "difficulty": "Intermediate",
-          "time": "10–15 hours",
-          "why": "Specific graph-theory playlist useful for discrete mathematics and algorithm preparation.",
+          "time": "12–20 hours",
+          "why": "Specific GATE-focused discrete mathematics playlist for logic, sets, combinatorics and graphs.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-062",
+          "type": "course",
+          "title": "NPTEL – Discrete Mathematics for CS",
+          "url": "https://nptel.ac.in/courses/106104573",
+          "provider": "NPTEL / IIT Kanpur",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "12 weeks",
+          "why": "Course catalog for logic, sets, combinatorics, graph theory, recurrence, and discrete structures.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-YT-060",
+          "type": "video",
+          "title": "Neso Academy – Discrete Mathematics Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLBlnK6fEyqRhqJPDXcvYlLfXPh37L89g3",
+          "provider": "Neso Academy",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15–25 hours",
+          "why": "Specific Neso Academy discrete-math playlist with a focused mathematical sequence.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-YT-068",
+          "type": "video",
+          "title": "GATE CSE – Engineering Mathematics Playlist (community recommendation)",
+          "url": "https://www.youtube.com/playlist?list=PLvTTv60o7qj_tdY9zH7YceES7jfXiZkAz",
+          "provider": "GATE CSE",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Exam-focused",
+          "time": "20–30 hours",
+          "why": "Specific GATE engineering-mathematics playlist surfaced in a community resource thread.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-YT-069",
+          "type": "video",
+          "title": "GATE CSE – Discrete Mathematics Playlist (community recommendation)",
+          "url": "https://www.youtube.com/playlist?list=PLC36xJgs4dxEYmhzVBW7nBdftFZ4xmiF1",
+          "provider": "GATE CSE",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Exam-focused",
+          "time": "15–25 hours",
+          "why": "Specific GATE discrete-mathematics playlist surfaced in a community resource thread.",
           "priority": "Recommended"
         }
       ]

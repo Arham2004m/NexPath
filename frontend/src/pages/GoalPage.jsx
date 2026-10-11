@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { AlertTriangle, CheckCircle2 } from 'lucide-react';
 import Sidebar from '../components/home/Sidebar';
 import Topbar from '../components/home/Topbar';
@@ -15,6 +15,7 @@ import { summarizeAttempt } from '../lib/assessmentSummary';
 
 export default function GoalPage() {
   const { user, refreshUser } = useAuth();
+  const navigate = useNavigate();
   const [menu, setMenu] = useState(false);
   const [catalog, setCatalog] = useState(null);
   const [attempt, setAttempt] = useState(undefined); // undefined = loading, null = never assessed
@@ -47,7 +48,9 @@ export default function GoalPage() {
     try {
       const result = await saveGoal({ goalId, subTrack: subTrack || undefined, hoursPerWeek: hours, targetWeeks: targetWeeks === '' ? undefined : Number(targetWeeks) });
       await refreshUser();
-      setSaved({ warning: result.warning });
+      // The roadmap is the point of choosing a goal, so go straight to it; its summary explains a tight deadline.
+      if (goal.roadmapReady === false || (goal.subTracks && goal.subTracks.find((s) => s.id === subTrack)?.roadmapReady === false)) setSaved({ warning: result.warning });
+      else navigate('/roadmap');
     } catch (e) {
       setErrors(e.errors || { form: e.message });
     } finally { setSaving(false); }
@@ -92,12 +95,13 @@ export default function GoalPage() {
 
                 {goal?.subTracks && <SubTrackPicker goal={goal} value={subTrack} error={errors.subTrack} onChange={(id) => { setSubTrack(id); setSaved(null); }} />}
 
-                {goal && <TimeCommitment hours={hours} targetWeeks={targetWeeks} limits={catalog.limits.hoursPerWeek} errors={errors} onHours={(v) => { setHours(v); setSaved(null); }} onTargetWeeks={(v) => { setTargetWeeks(v); setSaved(null); }} />}
+                {goal && <TimeCommitment estimatedHours={(goal.subTracks ? goal.subTracks.find((s) => s.id === subTrack)?.estimatedHours : goal.estimatedHours) || null} hours={hours} targetWeeks={targetWeeks} limits={catalog.limits.hoursPerWeek} errors={errors} onHours={(v) => { setHours(v); setSaved(null); }} onTargetWeeks={(v) => { setTargetWeeks(v); setSaved(null); }} />}
 
                 {errors.form && <p role="alert" className="text-sm font-bold text-error">{errors.form}</p>}
 
                 <div className="flex flex-wrap items-center gap-5 border-t-2 section-rule pt-7">
-                  <Button type="submit" loading={saving} disabled={!goal}>{user?.goalId ? 'Update my goal' : 'Save my goal'}</Button>
+                  <Button type="submit" loading={saving} disabled={!goal}>{user?.goalId ? 'Update goal and view roadmap' : 'Save goal and view roadmap'}</Button>
+                  {user?.goalId && <Link to="/roadmap" className="control-transition inline-flex min-h-12 items-center border border-pale bg-white px-5 text-sm font-extrabold text-ink hover:border-mid hover:text-mid">View current roadmap</Link>}
                   {!goal && <p className="text-sm text-muted">Choose a goal to continue.</p>}
                   <Link to="/home" className="control-transition inline-flex min-h-12 items-center border border-pale bg-white px-5 text-sm font-extrabold text-ink hover:border-mid hover:text-mid">Back to dashboard</Link>
                 </div>

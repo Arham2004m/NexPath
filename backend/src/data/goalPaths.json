@@ -132,5 +132,99 @@
         ]
       }
     }
+  },
+  "gate": {
+    "required": [
+      "prog-basics",
+      "maths-gate",
+      "maths-discrete",
+      "gate-aptitude",
+      "dsa-arrays",
+      "dsa-linear",
+      "dsa-sorting-search",
+      "dsa-trees",
+      "dsa-graphs",
+      "dsa-dp",
+      "os-basics",
+      "os-concurrency",
+      "dbms-sql",
+      "dbms-design",
+      "cn-basics",
+      "cn-transport",
+      "coa-basics",
+      "toc",
+      "compiler",
+      "gate-practice"
+    ],
+    "optional": [
+      "dbms-advanced",
+      "dsa-advanced",
+      "sd-basics"
+    ]
+  },
+  "campus_placement": {
+    "required": [
+      "prog-basics",
+      "career-aptitude",
+      "dsa-arrays",
+      "dsa-linear",
+      "dsa-sorting-search",
+      "prog-oop",
+      "dbms-sql",
+      "career-cs-core",
+      "career-resume-hr",
+      "career-online-tests"
+    ],
+    "optional": [
+      "dsa-trees",
+      "dbms-design",
+      "web-js",
+      "prog-git"
+    ]
+  },
+  "ms_abroad": {
+    "required": [
+      "prog-basics",
+      "ms-gre",
+      "dsa-arrays",
+      "dsa-sorting-search",
+      "dsa-trees",
+      "dsa-graphs",
+      "os-basics",
+      "dbms-sql",
+      "cn-basics",
+      "prog-oop",
+      "research-methods",
+      "ms-portfolio",
+      "ms-shortlist",
+      "ms-application",
+      "ms-visa"
+    ],
+    "optional": [
+      "aiml-ml",
+      "dsa-dp",
+      "maths-ml"
+    ]
+  },
+  "entrepreneur": {
+    "required": [
+      "ent-ideas",
+      "ent-model",
+      "web-html-css",
+      "web-js",
+      "web-react",
+      "web-node",
+      "web-db",
+      "web-auth",
+      "web-deploy",
+      "ent-mvp",
+      "ent-growth",
+      "ent-funding"
+    ],
+    "optional": [
+      "sd-basics",
+      "web-state-ts",
+      "web-fullstack-projects"
+    ]
   }
 }

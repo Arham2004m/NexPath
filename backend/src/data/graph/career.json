@@ -1,0 +1,314 @@
+{
+  "nodes": [
+    {
+      "id": "career-aptitude",
+      "name": "Aptitude and Reasoning for Campus Drives",
+      "domain": "career",
+      "level": 1,
+      "prerequisites": [],
+      "estimatedHours": 18,
+      "topics": [
+        {
+          "id": "career-aptitude-1",
+          "title": "Quantitative aptitude",
+          "hours": 7
+        },
+        {
+          "id": "career-aptitude-2",
+          "title": "Logical and analytical reasoning",
+          "hours": 6
+        },
+        {
+          "id": "career-aptitude-3",
+          "title": "Verbal ability and reading comprehension",
+          "hours": 5
+        }
+      ],
+      "miniTasks": [
+        "Solve 30 quantitative questions across percentages, ratios, time-work and probability.",
+        "Solve 25 puzzles, arrangement and data-sufficiency questions under a timer.",
+        "Complete 4 verbal sections and review grammar mistakes."
+      ],
+      "resources": [],
+      "needsReview": true
+    },
+    {
+      "id": "career-cs-core",
+      "name": "CS Fundamentals for Interviews",
+      "domain": "career",
+      "level": 2,
+      "prerequisites": [
+        "prog-oop",
+        "dbms-sql"
+      ],
+      "estimatedHours": 13,
+      "topics": [
+        {
+          "id": "career-cs-core-1",
+          "title": "OS and DBMS interview essentials",
+          "hours": 5
+        },
+        {
+          "id": "career-cs-core-2",
+          "title": "Networks and OOP interview essentials",
+          "hours": 4
+        },
+        {
+          "id": "career-cs-core-3",
+          "title": "SQL query practice for online tests",
+          "hours": 4
+        }
+      ],
+      "miniTasks": [
+        "Answer 25 common OS and DBMS interview questions aloud, in under a minute each.",
+        "Explain 15 OOP and networking concepts using real examples.",
+        "Solve 15 SQL problems in the style used by campus assessments."
+      ],
+      "resources": [
+        {
+          "id": "FAANG-057",
+          "type": "course",
+          "title": "Computation Structures",
+          "url": "https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/",
+          "provider": "MIT OpenCourseWare",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20 hr+",
+          "why": "Computation Structures directly supports cs fundamentals / computer architecture preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-064",
+          "type": "course",
+          "title": "CS161 Computer Security",
+          "url": "https://cs161.org/",
+          "provider": "Stanford University",
+          "free": false,
+          "pricing": "Paid",
+          "difficulty": "Advanced",
+          "time": "20 hr+",
+          "why": "CS161 Computer Security directly supports computer security / systems preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-131",
+          "type": "book",
+          "title": "The Art of Computer Programming",
+          "url": "https://www-cs-faculty.stanford.edu/~knuth/taocp.html",
+          "provider": "Donald E. Knuth",
+          "free": false,
+          "pricing": "Varies",
+          "difficulty": "Advanced",
+          "time": "25 hr+",
+          "why": "The Art of Computer Programming directly supports cs fundamentals / algorithms preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-163",
+          "type": "practice",
+          "title": "Tech Interview Handbook",
+          "url": "https://www.techinterviewhandbook.org/",
+          "provider": "Yangshun Tay",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "1 hr+",
+          "why": "Tech Interview Handbook directly supports coding interviews / cs fundamentals preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-058",
+          "type": "course",
+          "title": "Computer Systems Security",
+          "url": "https://ocw.mit.edu/courses/6-1810-computer-systems-security-fall-2023/",
+          "provider": "MIT OpenCourseWare",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "20 hr+",
+          "why": "Computer Systems Security directly supports cs fundamentals / security preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "career-resume-hr",
+      "name": "Resume, Communication and HR Interviews",
+      "domain": "career",
+      "level": 1,
+      "prerequisites": [],
+      "estimatedHours": 18,
+      "topics": [
+        {
+          "id": "career-resume-hr-1",
+          "title": "Resume, LinkedIn and GitHub profile",
+          "hours": 4
+        },
+        {
+          "id": "career-resume-hr-2",
+          "title": "Communication skills and group discussions",
+          "hours": 5
+        },
+        {
+          "id": "career-resume-hr-3",
+          "title": "HR and behavioural interviews",
+          "hours": 5
+        },
+        {
+          "id": "career-resume-hr-4",
+          "title": "Mock interviews and offer basics",
+          "hours": 4
+        }
+      ],
+      "miniTasks": [
+        "Write a one-page resume and get it reviewed by two people.",
+        "Record yourself on two group-discussion topics and note filler words.",
+        "Write STAR answers for 8 common behavioural questions.",
+        "Do two mock interviews with a friend or senior and act on the feedback."
+      ],
+      "resources": [
+        {
+          "id": "FAANG-038",
+          "type": "video",
+          "title": "The Amazon Leadership Principles Interview",
+          "url": "https://www.youtube.com/watch?v=I_uadP83Wwc",
+          "provider": "Exponent",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of Behavioral / Leadership, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-082",
+          "type": "article",
+          "title": "Our hiring process",
+          "url": "https://www.google.com/about/careers/applications/how-we-hire",
+          "provider": "Google",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20 min",
+          "why": "Our hiring process directly supports behavioral / interview process preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-083",
+          "type": "article",
+          "title": "Amazon's 16 Leadership Principles: Interview Guide",
+          "url": "https://www.tryexponent.com/blog/amazon-leadership-principles-interview",
+          "provider": "Exponent",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20 min",
+          "why": "Amazon's 16 Leadership Principles: Interview Guide directly supports behavioral / leadership preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-169",
+          "type": "practice",
+          "title": "Product Manager Interview Questions",
+          "url": "https://igotanoffer.com/blogs/product-manager/product-manager-interview-questions",
+          "provider": "IGotAnOffer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "1 hr+",
+          "why": "Product Manager Interview Questions directly supports product management / behavioral preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-080",
+          "type": "article",
+          "title": "Technical Writing One introduction",
+          "url": "https://developers.google.com/tech-writing/one",
+          "provider": "Google",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20 min",
+          "why": "Technical Writing One introduction directly supports software engineering / communication preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-081",
+          "type": "article",
+          "title": "Overview of technical writing courses",
+          "url": "https://developers.google.com/tech-writing/overview",
+          "provider": "Google",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20 min",
+          "why": "Overview of technical writing courses directly supports software engineering / communication preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-158",
+          "type": "practice",
+          "title": "Pramp",
+          "url": "https://www.pramp.com/",
+          "provider": "Pramp",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Intermediate",
+          "time": "1 hr+",
+          "why": "Pramp directly supports mock interviews preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-170",
+          "type": "practice",
+          "title": "Resume Worded",
+          "url": "https://www.resumeworded.com/",
+          "provider": "Resume Worded",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Intermediate",
+          "time": "1 hr+",
+          "why": "Resume Worded directly supports resume / portfolio preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "career-online-tests",
+      "name": "Online Assessments and Mock Drives",
+      "domain": "career",
+      "level": 3,
+      "prerequisites": [
+        "career-aptitude",
+        "dsa-linear",
+        "dbms-sql"
+      ],
+      "estimatedHours": 17,
+      "topics": [
+        {
+          "id": "career-online-tests-1",
+          "title": "Test patterns of mass recruiters (TCS NQT, Infosys, Wipro)",
+          "hours": 5
+        },
+        {
+          "id": "career-online-tests-2",
+          "title": "Timed coding practice",
+          "hours": 8
+        },
+        {
+          "id": "career-online-tests-3",
+          "title": "Full mock drives",
+          "hours": 4
+        }
+      ],
+      "miniTasks": [
+        "Take one official sample test per company and map each section to a study topic.",
+        "Solve 15 easy-medium coding questions at 20 minutes each.",
+        "Complete two full mock drives under real conditions and review every section."
+      ],
+      "resources": [],
+      "needsReview": true
+    }
+  ]
+}

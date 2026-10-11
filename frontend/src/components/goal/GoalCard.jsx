@@ -1,4 +1,5 @@
 import { Check } from 'lucide-react';
+import { effortLabel } from '../../lib/format';
 
 export default function GoalCard({ goal, selected, match, onSelect }) {
   return (
@@ -11,7 +12,7 @@ export default function GoalCard({ goal, selected, match, onSelect }) {
       <ul className="mt-4 flex flex-wrap gap-1.5">
         {goal.focus.map((item) => <li key={item} className="bg-[#E7F4FC] px-2 py-1 font-mono text-[10px] font-medium uppercase tracking-[.1em] text-mid">{item}</li>)}
       </ul>
-      <p className="mt-auto pt-5 font-mono text-[11px] uppercase tracking-[.12em] text-muted">{goal.weeks[0]}–{goal.weeks[1]} weeks{goal.roadmapReady === false ? ' · Roadmap coming soon' : ''}</p>
+      <p className="mt-auto pt-5 font-mono text-[11px] uppercase tracking-[.12em] text-muted">{goal.roadmapReady === false ? 'Roadmap coming soon' : effortLabel(goal.estimatedHours)}</p>
     </button>
   );
 }

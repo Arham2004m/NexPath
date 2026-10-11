@@ -314,19 +314,6 @@
           "priority": "Recommended"
         },
         {
-          "id": "CSFG-097",
-          "type": "article",
-          "title": "GATE Overflow – Databases Subject Page",
-          "url": "https://gateoverflow.in/subject/databases",
-          "provider": "GATE Overflow",
-          "free": true,
-          "pricing": "Free",
-          "difficulty": "Exam-focused",
-          "time": "Ongoing",
-          "why": "Consolidates the GATE database syllabus with topic explanations and problem-solving material on ER models, relational algebra, SQL, normalization, indexing, and transactions.",
-          "priority": "Recommended"
-        },
-        {
           "id": "CSFG-YT-063",
           "type": "video",
           "title": "Asha Khilrani – DBMS Complete Playlist",

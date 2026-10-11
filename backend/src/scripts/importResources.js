@@ -64,8 +64,10 @@ export function assignRows(rows, map) {
   for (const row of rows) {
     const rule = rules.find((r) => r.tracks.includes(row.Track) && r.re.test(r.on === 'title' ? row['Resource Title'] : row['Skill / Topic']));
     if (!rule) { unmapped.push(row); continue; }
-    if (!assigned.has(rule.node)) assigned.set(rule.node, []);
-    assigned.get(rule.node).push(row);
+    for (const node of [rule.node, ...(rule.also || [])]) {
+      if (!assigned.has(node)) assigned.set(node, []);
+      assigned.get(node).push(row);
+    }
   }
   return { assigned, unmapped };
 }
@@ -109,7 +111,7 @@ async function main() {
     }
     await writeFile(filePath, `${JSON.stringify(data, null, 2)}\n`);
   }
-  report.rulesWithUnknownNode = [...new Set(map.rules.map((r) => r.node))].filter((id) => !nodeIds.has(id));
+  report.rulesWithUnknownNode = [...new Set(map.rules.flatMap((r) => [r.node, ...(r.also || [])]))].filter((id) => !nodeIds.has(id));
   for (const row of unmapped) report.unmappedByTrack[row.Track] = (report.unmappedByTrack[row.Track] || 0) + 1;
   report.unmappedSamples = unmapped.slice(0, 40).map((r) => `${r.Track} | ${r['Skill / Topic']}`);
   await writeFile(path.join(dataDir, 'resources', 'import-report.json'), `${JSON.stringify(report, null, 2)}\n`);

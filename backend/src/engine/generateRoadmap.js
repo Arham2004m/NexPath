@@ -51,33 +51,30 @@ function topologicalOrder(byId, needed, priority) {
   return order;
 }
 
-// Greedy packing: a topic never splits unless it is longer than a whole week; at most maxTopicsPerWeek per week.
+// Greedy packing that keeps every week full: a topic may continue into the next week, but never as a sliver
+// smaller than MIN_CHUNK hours, and a week holds at most maxTopicsPerWeek different topics.
+const MIN_CHUNK = 2;
 function packWeeks(units, hoursPerWeek, maxTopicsPerWeek) {
+  const minChunk = Math.min(MIN_CHUNK, hoursPerWeek);
   const weeks = [];
   let week = null;
   const open = () => { week = { entries: [], hours: 0, topicIds: new Set() }; weeks.push(week); };
-  const place = (unit, hours) => {
-    week.entries.push({ unit, hours });
-    week.hours += hours;
-    week.topicIds.add(unit.topic.id);
-  };
   for (const unit of units) {
-    const hours = unit.topic.hours;
-    if (hours <= hoursPerWeek) {
-      if (!week || week.topicIds.size >= maxTopicsPerWeek || week.hours + hours > hoursPerWeek) open();
-      place(unit, hours);
-      unit.weeks = [weeks.length, weeks.length];
-    } else {
-      if (!week || week.hours > 0) open();
-      let left = hours;
-      const first = weeks.length;
-      while (left > 0) {
-        const chunk = Math.min(left, hoursPerWeek);
-        place(unit, chunk);
-        left -= chunk;
-        if (left > 0) open();
-      }
-      unit.weeks = [first, weeks.length];
+    let left = unit.topic.hours;
+    unit.weeks = [null, null];
+    while (left > 0) {
+      if (!week) open();
+      const space = hoursPerWeek - week.hours;
+      const newTopic = !week.topicIds.has(unit.topic.id);
+      // Start a new week when this one is full, has too many topics, or would take only a tiny slice of a longer topic.
+      if (space <= 0 || (newTopic && week.topicIds.size >= maxTopicsPerWeek) || (left > space && space < minChunk && week.hours > 0)) { open(); continue; }
+      const chunk = Math.min(left, space);
+      week.entries.push({ unit, hours: chunk });
+      week.hours += chunk;
+      week.topicIds.add(unit.topic.id);
+      if (unit.weeks[0] === null) unit.weeks[0] = weeks.length;
+      unit.weeks[1] = weeks.length;
+      left -= chunk;
     }
   }
   return weeks;
@@ -132,7 +129,8 @@ export function generateRoadmap({
     const span = placed.get(id);
     return {
       id, name: node.name, domain: node.domain, level: node.level, estimatedHours: node.estimatedHours,
-      prerequisites: node.prerequisites.filter((p) => included.has(p)),
+      // A skill the student already has only links to other known skills, so the tree never shows a known skill below a planned one.
+      prerequisites: node.prerequisites.filter((p) => (isKnown ? known.has(p) : included.has(p))),
       status: isKnown ? 'mastered' : span.start === 1 ? 'next' : 'upcoming',
       order: position, startWeek: isKnown ? null : span.start, endWeek: isKnown ? null : span.end,
       topics: node.topics.map((topic) => ({ id: topic.id, title: topic.title, hours: topic.hours, ...(isKnown ? {} : { startWeek: unitWeeks.get(topic.id)[0], endWeek: unitWeeks.get(topic.id)[1] }) })),

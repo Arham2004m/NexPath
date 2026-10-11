@@ -1,3 +1,5 @@
+import { effortLabel } from '../../lib/format';
+
 export default function SubTrackPicker({ goal, value, error, onChange }) {
   return (
     <fieldset>
@@ -13,7 +15,7 @@ export default function SubTrackPicker({ goal, value, error, onChange }) {
                 {track.recommended && <span className="bg-mid px-2 py-0.5 font-mono text-[10px] uppercase tracking-[.1em] text-cream">Recommended for beginners</span>}
               </span>
               <span className="mt-2 block text-sm leading-6 text-muted">{track.description}</span>
-              <span className="mt-3 block font-mono text-[11px] uppercase tracking-[.12em] text-muted">{track.weeks[0]}–{track.weeks[1]} weeks{track.roadmapReady === false ? ' · Roadmap coming soon' : ''}</span>
+              <span className="mt-3 block font-mono text-[11px] uppercase tracking-[.12em] text-muted">{track.roadmapReady === false ? 'Roadmap coming soon' : effortLabel(track.estimatedHours)}</span>
             </button>
           );
         })}

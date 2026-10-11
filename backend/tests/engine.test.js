@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { readGraphFiles } from '../src/services/graphStore.js';
-import { computeGraphVersion, findCycle, validateGraph } from '../src/engine/graph.js';
+import { allGoalPaths, computeGraphVersion, findCycle, resolveGoalPath, validateGraph } from '../src/engine/graph.js';
+import { GOALS } from '../src/data/goals.js';
 import { masteredNodeIds } from '../src/engine/mastery.js';
 import { generateRoadmap, RoadmapError } from '../src/engine/generateRoadmap.js';
 import { recommendGoals } from '../src/engine/goalRecommender.js';
@@ -67,7 +68,8 @@ describe('generateRoadmap', () => {
   const frontend = { ...base, goalId: 'web_dev', subTrack: 'frontend' };
 
   it('orders every prerequisite before the skills that need it, for every goal and sub-track', () => {
-    const cases = [['faang', null], ['ai_ml', null], ['web_dev', 'frontend'], ['web_dev', 'backend'], ['web_dev', 'fullstack'], ['mobile_dev', 'android'], ['mobile_dev', 'flutter'], ['mobile_dev', 'ios']];
+    const cases = [...allGoalPaths(goalPaths)].map(({ goalId, subTrack }) => [goalId, subTrack]);
+    expect(cases.length).toBeGreaterThanOrEqual(GOALS.length);
     for (const [goalId, subTrack] of cases) {
       const roadmap = generateRoadmap({ ...base, goalId, subTrack });
       const planned = roadmap.nodes.filter((n) => n.status !== 'mastered');
@@ -105,6 +107,15 @@ describe('generateRoadmap', () => {
     expect(generateRoadmap({ ...custom, mastered: [] }).nodes.map((n) => n.id)).toContain('web-js');
   });
 
+  it('links a known skill only to other known skills', () => {
+    const roadmap = generateRoadmap({ ...base, goalId: 'web_dev', subTrack: 'fullstack', mastered: ['web-react', 'web-html-css'] });
+    const known = new Set(roadmap.nodes.filter((n) => n.status === 'mastered').map((n) => n.id));
+    for (const node of roadmap.nodes.filter((n) => known.has(n.id))) {
+      for (const prerequisite of node.prerequisites) expect(known.has(prerequisite)).toBe(true);
+    }
+    for (const edge of roadmap.edges) expect(known.has(edge.to) && !known.has(edge.from)).toBe(false);
+  });
+
   it('respects weekly capacity and the topics-per-week cap', () => {
     for (const hoursPerWeek of [4, 10, 25]) {
       const roadmap = generateRoadmap({ ...frontend, hoursPerWeek });
@@ -120,6 +131,14 @@ describe('generateRoadmap', () => {
     const roadmap = generateRoadmap({ ...frontend, hoursPerWeek: 4 });
     expect(roadmap.weeks.some((w) => w.topics.some((t) => t.continued))).toBe(true);
     expect(roadmap.weeks.reduce((sum, w) => sum + w.plannedHours, 0)).toBe(roadmap.totalHours);
+  });
+
+  it('keeps weeks well filled instead of wasting capacity', () => {
+    for (const goalId of ['faang', 'gate', 'campus_placement']) {
+      const roadmap = generateRoadmap({ ...base, goalId });
+      expect(roadmap.totalHours / (roadmap.totalWeeks * 10), goalId).toBeGreaterThan(0.9);
+      expect(roadmap.totalWeeks).toBeLessThanOrEqual(Math.ceil(roadmap.totalHours / 10) + 1);
+    }
   });
 
   it('takes more weeks at fewer hours per week', () => {
@@ -143,8 +162,17 @@ describe('generateRoadmap', () => {
     expect(generateRoadmap(frontend).weeks.every((w) => w.resources.length > 0)).toBe(true);
   });
 
-  it('rejects goals without a defined path and invalid hours', () => {
-    expect(() => generateRoadmap({ ...base, goalId: 'gate' })).toThrow(RoadmapError);
+  it('has a roadmap path for every goal and sub-track offered to students', () => {
+    for (const goal of GOALS) {
+      for (const subTrack of goal.subTracks ? goal.subTracks.map((t) => t.id) : [null]) {
+        expect(resolveGoalPath(goalPaths, goal.id, subTrack), `${goal.id}/${subTrack}`).not.toBeNull();
+        expect(generateRoadmap({ ...base, goalId: goal.id, subTrack }).weeks.length).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it('rejects unknown goals and invalid hours', () => {
+    expect(() => generateRoadmap({ ...base, goalId: 'astronaut' })).toThrow(RoadmapError);
     expect(() => generateRoadmap({ ...frontend, hoursPerWeek: 0 })).toThrow(/hoursPerWeek/);
   });
 
