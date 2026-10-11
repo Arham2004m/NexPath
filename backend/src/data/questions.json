@@ -1,0 +1,1640 @@
+{
+ "prog": [
+  {
+   "id": "prog-e1",
+   "difficulty": "easy",
+   "question": "What is a 'variable' in programming?",
+   "options": [
+    "A named storage location for data",
+    "A type of loop",
+    "A syntax error",
+    "A compiled file"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "prog-e2",
+   "difficulty": "easy",
+   "question": "Which symbol starts a single-line comment in JavaScript?",
+   "options": [
+    "#",
+    "//",
+    "<!--",
+    "**"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "prog-e3",
+   "difficulty": "easy",
+   "question": "What data type does a comparison like 5 == 5 return?",
+   "options": [
+    "Integer",
+    "String",
+    "Boolean",
+    "Array"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "prog-e4",
+   "difficulty": "easy",
+   "question": "Which loop guarantees the body executes at least once?",
+   "options": [
+    "for loop",
+    "while loop",
+    "do-while loop",
+    "forEach loop"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "prog-e5",
+   "difficulty": "easy",
+   "question": "What is the standard file extension for a Python script?",
+   "options": [
+    ".py",
+    ".pt",
+    ".pyt",
+    ".p"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "prog-m1",
+   "difficulty": "medium",
+   "question": "What is the time complexity of accessing an array element by index?",
+   "options": [
+    "O(n)",
+    "O(log n)",
+    "O(1)",
+    "O(n^2)"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "prog-m2",
+   "difficulty": "medium",
+   "question": "In OOP, what does 'encapsulation' mean?",
+   "options": [
+    "Bundling data and the methods that operate on it",
+    "Inheriting from a parent class",
+    "Overloading a function",
+    "Compiling code faster"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "prog-m3",
+   "difficulty": "medium",
+   "question": "What does 'pass by reference' mean in a function call?",
+   "options": [
+    "A copy of the value is passed",
+    "The function receives a reference to the actual variable",
+    "The function cannot modify the argument",
+    "The argument is converted to a string"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "prog-m4",
+   "difficulty": "medium",
+   "question": "What is a recursive function?",
+   "options": [
+    "A function with no return value",
+    "A function that calls itself",
+    "A function that runs only once",
+    "A function with static variables"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "prog-m5",
+   "difficulty": "medium",
+   "question": "What does the 'static' keyword typically do to a variable?",
+   "options": [
+    "Deletes it after use",
+    "Makes it retain its value across function calls",
+    "Converts it to a constant",
+    "Makes it global automatically"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "prog-h1",
+   "difficulty": "hard",
+   "question": "What is 'tail call optimization'?",
+   "options": [
+    "A way to remove unused imports",
+    "A compiler reusing the current stack frame for a recursive call at the tail position",
+    "A method to sort arrays faster",
+    "A memory leak prevention technique for loops"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "prog-h2",
+   "difficulty": "hard",
+   "question": "What is the key difference between a deep copy and a shallow copy?",
+   "options": [
+    "Deep copy is always faster",
+    "Shallow copy duplicates nested objects, deep copy does not",
+    "Deep copy duplicates nested objects too, shallow copy only copies top-level references",
+    "There is no real difference"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "prog-h3",
+   "difficulty": "hard",
+   "question": "What commonly causes a 'stack overflow' error?",
+   "options": [
+    "Too many variables declared",
+    "Excessive or infinite recursion",
+    "Using too many comments",
+    "Slow network calls"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "prog-h4",
+   "difficulty": "hard",
+   "question": "What is 'memoization' used for?",
+   "options": [
+    "Formatting code automatically",
+    "Caching computed results to avoid recomputation",
+    "Compiling code ahead of time",
+    "Managing memory allocation manually"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "prog-h5",
+   "difficulty": "hard",
+   "question": "What best describes 'closures' in JavaScript?",
+   "options": [
+    "A function bundled with references to its surrounding lexical scope",
+    "A way to close a running process",
+    "A type of loop that terminates early",
+    "A syntax for importing modules"
+   ],
+   "correct": 0
+  }
+ ],
+ "dsa": [
+  {
+   "id": "dsa-e1",
+   "difficulty": "easy",
+   "question": "Which data structure follows FIFO (First In First Out) order?",
+   "options": [
+    "Stack",
+    "Queue",
+    "Tree",
+    "Graph"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "dsa-e2",
+   "difficulty": "easy",
+   "question": "Which data structure follows LIFO (Last In First Out) order?",
+   "options": [
+    "Queue",
+    "Stack",
+    "Linked List",
+    "Heap"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "dsa-e3",
+   "difficulty": "easy",
+   "question": "What is the time complexity of binary search on a sorted array?",
+   "options": [
+    "O(n)",
+    "O(log n)",
+    "O(n^2)",
+    "O(1)"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "dsa-e4",
+   "difficulty": "easy",
+   "question": "Which data structure is used internally to implement recursion (the call stack)?",
+   "options": [
+    "Queue",
+    "Stack",
+    "Array",
+    "Hash Map"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "dsa-e5",
+   "difficulty": "easy",
+   "question": "A singly linked list node typically contains which two parts?",
+   "options": [
+    "Key and value",
+    "Data and a pointer to the next node",
+    "Row and column",
+    "Parent and child index"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "dsa-m1",
+   "difficulty": "medium",
+   "question": "What is the worst-case time complexity of Quicksort?",
+   "options": [
+    "O(n log n)",
+    "O(n)",
+    "O(n^2)",
+    "O(log n)"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "dsa-m2",
+   "difficulty": "medium",
+   "question": "Which traversal order visits Root, then Left, then Right?",
+   "options": [
+    "Inorder",
+    "Postorder",
+    "Preorder",
+    "Level-order"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "dsa-m3",
+   "difficulty": "medium",
+   "question": "Which of these is an example of a self-balancing binary search tree?",
+   "options": [
+    "Linked List",
+    "AVL Tree",
+    "Array",
+    "Stack"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "dsa-m4",
+   "difficulty": "medium",
+   "question": "What is the auxiliary space complexity of standard Merge Sort?",
+   "options": [
+    "O(1)",
+    "O(log n)",
+    "O(n)",
+    "O(n^2)"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "dsa-m5",
+   "difficulty": "medium",
+   "question": "Which data structure is best suited for implementing a priority queue?",
+   "options": [
+    "Heap",
+    "Stack",
+    "Simple array (unsorted)",
+    "Linked list"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "dsa-h1",
+   "difficulty": "hard",
+   "question": "What is the time complexity of Dijkstra's algorithm using a min-heap?",
+   "options": [
+    "O(V^2)",
+    "O((V+E) log V)",
+    "O(E log E log V)",
+    "O(V + E)"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "dsa-h2",
+   "difficulty": "hard",
+   "question": "What is the primary purpose of a Disjoint Set (Union-Find) data structure?",
+   "options": [
+    "Sorting elements quickly",
+    "Efficiently tracking connected components / groups",
+    "Storing key-value pairs",
+    "Balancing a binary tree"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "dsa-h3",
+   "difficulty": "hard",
+   "question": "What is the amortized time complexity of inserting into a dynamic array (like ArrayList)?",
+   "options": [
+    "O(n)",
+    "O(log n)",
+    "O(1)",
+    "O(n^2)"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "dsa-h4",
+   "difficulty": "hard",
+   "question": "Topological sort of a DAG can be computed using which approach?",
+   "options": [
+    "Only DFS",
+    "Only BFS",
+    "DFS-based or Kahn's (BFS with in-degree) algorithm",
+    "Binary search"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "dsa-h5",
+   "difficulty": "hard",
+   "question": "What best distinguishes Dynamic Programming from a plain Greedy approach?",
+   "options": [
+    "DP never uses recursion",
+    "Greedy always finds the global optimum",
+    "DP considers overlapping subproblems and optimal substructure, Greedy makes locally optimal choices",
+    "There is no real difference"
+   ],
+   "correct": 2
+  }
+ ],
+ "os": [
+  {
+   "id": "os-e1",
+   "difficulty": "easy",
+   "question": "What does CPU stand for?",
+   "options": [
+    "Central Processing Unit",
+    "Computer Personal Unit",
+    "Central Program Utility",
+    "Core Processing Utility"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "os-e2",
+   "difficulty": "easy",
+   "question": "What is a 'process' in an operating system?",
+   "options": [
+    "A file on disk",
+    "A program in execution",
+    "A type of hardware",
+    "A network connection"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "os-e3",
+   "difficulty": "easy",
+   "question": "What is RAM primarily used for?",
+   "options": [
+    "Permanent storage",
+    "Temporary storage for running programs",
+    "Cooling the CPU",
+    "Displaying graphics"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "os-e4",
+   "difficulty": "easy",
+   "question": "What is a core role of an operating system?",
+   "options": [
+    "Writing application code",
+    "Managing hardware and software resources",
+    "Designing websites",
+    "Compiling programs only"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "os-e5",
+   "difficulty": "easy",
+   "question": "What is a 'thread'?",
+   "options": [
+    "A separate program entirely",
+    "The smallest unit of execution within a process",
+    "A type of file system",
+    "A hardware component"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "os-m1",
+   "difficulty": "medium",
+   "question": "What is a 'deadlock'?",
+   "options": [
+    "A process running very fast",
+    "A situation where processes wait indefinitely for each other's resources",
+    "A crashed operating system",
+    "A type of memory leak"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "os-m2",
+   "difficulty": "medium",
+   "question": "What is 'virtual memory'?",
+   "options": [
+    "Memory that doesn't physically exist anywhere",
+    "A technique giving the illusion of more RAM using disk space",
+    "A type of cache memory",
+    "Memory reserved only for the OS kernel"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "os-m3",
+   "difficulty": "medium",
+   "question": "Which scheduling algorithm gives each process a fixed time slice in rotation?",
+   "options": [
+    "First-Come-First-Served",
+    "Shortest Job First",
+    "Round Robin",
+    "Priority Scheduling"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "os-m4",
+   "difficulty": "medium",
+   "question": "What is a 'semaphore' primarily used for?",
+   "options": [
+    "Speeding up disk reads",
+    "Synchronization between processes/threads",
+    "Rendering graphics",
+    "Compressing files"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "os-m5",
+   "difficulty": "medium",
+   "question": "What is 'paging' in memory management?",
+   "options": [
+    "Printing memory contents to paper logs",
+    "Dividing memory into fixed-size blocks for allocation",
+    "Deleting unused files",
+    "Encrypting memory contents"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "os-h1",
+   "difficulty": "hard",
+   "question": "Which of these is NOT one of the four necessary conditions for deadlock?",
+   "options": [
+    "Mutual exclusion",
+    "Hold and wait",
+    "Preemption allowed",
+    "Circular wait"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "os-h2",
+   "difficulty": "hard",
+   "question": "What is 'thrashing'?",
+   "options": [
+    "A CPU overheating issue",
+    "Excessive paging that severely degrades system performance",
+    "A type of deadlock",
+    "A network congestion issue"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "os-h3",
+   "difficulty": "hard",
+   "question": "What best distinguishes preemptive from non-preemptive scheduling?",
+   "options": [
+    "Preemptive scheduling can interrupt a running process, non-preemptive cannot",
+    "Non-preemptive is always faster",
+    "Preemptive only works on single-core CPUs",
+    "There is no real difference"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "os-h4",
+   "difficulty": "hard",
+   "question": "What is a 'race condition'?",
+   "options": [
+    "A CPU benchmark test",
+    "An outcome that depends on the uncontrolled timing/order of events",
+    "A scheduling algorithm",
+    "A type of memory allocation error"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "os-h5",
+   "difficulty": "hard",
+   "question": "What is the Banker's Algorithm used for?",
+   "options": [
+    "Deadlock avoidance",
+    "File compression",
+    "CPU temperature control",
+    "Network routing"
+   ],
+   "correct": 0
+  }
+ ],
+ "dbms": [
+  {
+   "id": "dbms-e1",
+   "difficulty": "easy",
+   "question": "What does SQL stand for?",
+   "options": [
+    "Structured Query Language",
+    "Simple Query Logic",
+    "Structured Question Language",
+    "System Query Language"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "dbms-e2",
+   "difficulty": "easy",
+   "question": "What is a 'primary key'?",
+   "options": [
+    "A key that unlocks the database",
+    "A unique identifier for a table row",
+    "A password field",
+    "A type of index only"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "dbms-e3",
+   "difficulty": "easy",
+   "question": "Which SQL command retrieves data from a table?",
+   "options": [
+    "GET",
+    "SELECT",
+    "FETCH",
+    "SHOW"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "dbms-e4",
+   "difficulty": "easy",
+   "question": "What is a 'foreign key'?",
+   "options": [
+    "A key from another country's database",
+    "A field that links to the primary key of another table",
+    "An encrypted key",
+    "A duplicate primary key"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "dbms-e5",
+   "difficulty": "easy",
+   "question": "What is a database 'schema'?",
+   "options": [
+    "A backup file",
+    "The structure/blueprint of the database",
+    "A query result",
+    "A user account"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "dbms-m1",
+   "difficulty": "medium",
+   "question": "What is 'normalization' in database design?",
+   "options": [
+    "Making all fields uppercase",
+    "Organizing data to reduce redundancy and improve integrity",
+    "Encrypting all tables",
+    "Deleting old records automatically"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "dbms-m2",
+   "difficulty": "medium",
+   "question": "What is a SQL 'JOIN' used for?",
+   "options": [
+    "Deleting a table",
+    "Combining rows from two or more tables based on a related column",
+    "Creating a backup",
+    "Renaming a column"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "dbms-m3",
+   "difficulty": "medium",
+   "question": "What does the 'A' in ACID (database transactions) stand for?",
+   "options": [
+    "Availability",
+    "Atomicity",
+    "Authentication",
+    "Aggregation"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "dbms-m4",
+   "difficulty": "medium",
+   "question": "What is a database 'index' primarily used for?",
+   "options": [
+    "Storing backups",
+    "Speeding up data retrieval",
+    "Enforcing passwords",
+    "Compressing storage"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "dbms-m5",
+   "difficulty": "medium",
+   "question": "What is a key difference between DELETE and TRUNCATE?",
+   "options": [
+    "They are identical in every way",
+    "DELETE can be filtered/rolled back, TRUNCATE removes all rows quickly without filtering",
+    "TRUNCATE is slower than DELETE always",
+    "DELETE removes the table structure too"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "dbms-h1",
+   "difficulty": "hard",
+   "question": "What does moving from 2NF to 3NF primarily eliminate?",
+   "options": [
+    "Duplicate primary keys",
+    "Transitive dependency on non-key attributes",
+    "All foreign keys",
+    "Multi-valued attributes only"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "dbms-h2",
+   "difficulty": "hard",
+   "question": "A deadlock between two database transactions typically occurs when...",
+   "options": [
+    "Both transactions read the same row",
+    "Two transactions each hold a lock the other needs, and wait on each other",
+    "One transaction commits before the other starts",
+    "Indexes are missing"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "dbms-h3",
+   "difficulty": "hard",
+   "question": "Which isolation level prevents dirty reads but still allows non-repeatable reads?",
+   "options": [
+    "Read Uncommitted",
+    "Read Committed",
+    "Serializable",
+    "Snapshot"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "dbms-h4",
+   "difficulty": "hard",
+   "question": "Why would a system intentionally use 'denormalization'?",
+   "options": [
+    "To save disk space only",
+    "To improve read performance at the cost of some redundancy",
+    "To enforce stricter constraints",
+    "It is never intentional"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "dbms-h5",
+   "difficulty": "hard",
+   "question": "What is a 'composite key'?",
+   "options": [
+    "A key generated by AI",
+    "A primary key made up of two or more columns together",
+    "A foreign key with a default value",
+    "An encrypted key"
+   ],
+   "correct": 1
+  }
+ ],
+ "web": [
+  {
+   "id": "web-e1",
+   "difficulty": "easy",
+   "question": "What does HTML stand for?",
+   "options": [
+    "HyperText Markup Language",
+    "High Text Modern Language",
+    "HyperTransfer Markup Language",
+    "Home Tool Markup Language"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "web-e2",
+   "difficulty": "easy",
+   "question": "What does CSS primarily control on a web page?",
+   "options": [
+    "Server logic",
+    "Styling and layout",
+    "Database queries",
+    "Network requests"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "web-e3",
+   "difficulty": "easy",
+   "question": "Which HTML tag is used to create a hyperlink?",
+   "options": [
+    "<link>",
+    "<a>",
+    "<href>",
+    "<url>"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "web-e4",
+   "difficulty": "easy",
+   "question": "Which HTTP method is typically used to retrieve data from a server?",
+   "options": [
+    "POST",
+    "GET",
+    "DELETE",
+    "PUT"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "web-e5",
+   "difficulty": "easy",
+   "question": "What does JS commonly refer to?",
+   "options": [
+    "Java Syntax",
+    "JavaScript",
+    "Just Style",
+    "Java Server"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "web-m1",
+   "difficulty": "medium",
+   "question": "What is the DOM?",
+   "options": [
+    "A database management system",
+    "A programming interface representing a page's structure as a tree",
+    "A CSS preprocessor",
+    "A type of web server"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "web-m2",
+   "difficulty": "medium",
+   "question": "What is the main purpose of a REST API?",
+   "options": [
+    "To style web pages",
+    "To provide a standardized way for systems to communicate over HTTP",
+    "To store passwords",
+    "To compile JavaScript"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "web-m3",
+   "difficulty": "medium",
+   "question": "What does CSS Flexbox primarily help with?",
+   "options": [
+    "Database queries",
+    "Flexible one-dimensional layouts",
+    "Encrypting styles",
+    "Server-side rendering"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "web-m4",
+   "difficulty": "medium",
+   "question": "What is JSON commonly used for?",
+   "options": [
+    "Styling pages",
+    "A lightweight data-interchange format",
+    "Compiling code",
+    "Managing databases directly"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "web-m5",
+   "difficulty": "medium",
+   "question": "What does CORS control?",
+   "options": [
+    "Font rendering",
+    "Cross-origin resource access between different domains",
+    "Database indexing",
+    "CSS animations"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "web-h1",
+   "difficulty": "hard",
+   "question": "What is the key difference between localStorage and sessionStorage?",
+   "options": [
+    "They are identical",
+    "localStorage persists after the browser closes, sessionStorage clears when the tab closes",
+    "sessionStorage is larger in size",
+    "localStorage only works over HTTPS"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "web-h2",
+   "difficulty": "hard",
+   "question": "What is 'event bubbling' in the DOM?",
+   "options": [
+    "Events firing randomly",
+    "An event propagating from the target element up through its ancestors",
+    "A way to prevent all events",
+    "A CSS animation technique"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "web-h3",
+   "difficulty": "hard",
+   "question": "What is Server-Side Rendering (SSR)?",
+   "options": [
+    "Rendering HTML on the server before sending it to the client",
+    "Rendering only in the browser",
+    "A database caching technique",
+    "A CSS framework"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "web-h4",
+   "difficulty": "hard",
+   "question": "What is the main purpose of a JWT (JSON Web Token)?",
+   "options": [
+    "Styling components",
+    "Stateless, token-based authentication and information exchange",
+    "Compressing images",
+    "Managing CSS variables"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "web-h5",
+   "difficulty": "hard",
+   "question": "What commonly causes a race condition in asynchronous JavaScript code?",
+   "options": [
+    "Using too many CSS classes",
+    "The result depending on the unpredictable order/timing of async operations",
+    "Using semicolons incorrectly",
+    "Having too many HTML tags"
+   ],
+   "correct": 1
+  }
+ ],
+ "aiml": [
+  {
+   "id": "aiml-e1",
+   "difficulty": "easy",
+   "question": "What does AI stand for?",
+   "options": [
+    "Artificial Intelligence",
+    "Automated Integration",
+    "Applied Informatics",
+    "Algorithmic Interface"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "aiml-e2",
+   "difficulty": "easy",
+   "question": "Machine Learning is best described as a subset of...",
+   "options": [
+    "Web Development",
+    "Artificial Intelligence",
+    "Database Management",
+    "Computer Networks"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "aiml-e3",
+   "difficulty": "easy",
+   "question": "What is a 'dataset' used for in Machine Learning?",
+   "options": [
+    "Styling a UI",
+    "Training and testing models",
+    "Managing servers",
+    "Encrypting data"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "aiml-e4",
+   "difficulty": "easy",
+   "question": "What is 'supervised learning'?",
+   "options": [
+    "Learning without any data",
+    "Learning from labeled data with known outputs",
+    "Learning only from images",
+    "A type of database query"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "aiml-e5",
+   "difficulty": "easy",
+   "question": "Which Python library is commonly used for numerical computing?",
+   "options": [
+    "NumPy",
+    "React",
+    "Express",
+    "Bootstrap"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "aiml-m1",
+   "difficulty": "medium",
+   "question": "What is 'overfitting' in Machine Learning?",
+   "options": [
+    "A model that trains too fast",
+    "A model that performs well on training data but poorly on new/unseen data",
+    "A model with too few parameters",
+    "A dataset that is too large"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "aiml-m2",
+   "difficulty": "medium",
+   "question": "What is the purpose of a 'loss function'?",
+   "options": [
+    "To style model output",
+    "To measure the error between predicted and actual output",
+    "To store training data",
+    "To visualize the dataset"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "aiml-m3",
+   "difficulty": "medium",
+   "question": "What is 'gradient descent' used for?",
+   "options": [
+    "Sorting datasets",
+    "Optimizing model parameters to minimize the loss function",
+    "Cleaning missing data",
+    "Splitting data into batches only"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "aiml-m4",
+   "difficulty": "medium",
+   "question": "What is a 'confusion matrix' used to evaluate?",
+   "options": [
+    "Model training speed",
+    "Classification model performance",
+    "Dataset size",
+    "Server load"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "aiml-m5",
+   "difficulty": "medium",
+   "question": "Why is 'feature scaling' commonly applied to input data?",
+   "options": [
+    "To make the dataset smaller",
+    "To normalize input features for better model performance",
+    "To remove all outliers automatically",
+    "It is purely cosmetic"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "aiml-h1",
+   "difficulty": "hard",
+   "question": "What is the 'vanishing gradient problem'?",
+   "options": [
+    "A dataset losing rows during training",
+    "Gradients becoming extremely small in deep networks, slowing or stalling training",
+    "A GPU running out of memory",
+    "A type of overfitting"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "aiml-h2",
+   "difficulty": "hard",
+   "question": "What best distinguishes bagging from boosting?",
+   "options": [
+    "They are the same technique",
+    "Bagging trains models in parallel independently, boosting trains sequentially correcting prior errors",
+    "Boosting only works on images",
+    "Bagging requires labeled data, boosting does not"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "aiml-h3",
+   "difficulty": "hard",
+   "question": "What is the main purpose of a convolutional layer in a CNN?",
+   "options": [
+    "Encrypting image data",
+    "Extracting spatial features from images",
+    "Sorting the training dataset",
+    "Managing database connections"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "aiml-h4",
+   "difficulty": "hard",
+   "question": "What does the attention mechanism in Transformers primarily do?",
+   "options": [
+    "Compresses the model file size",
+    "Weighs the importance of different input tokens relative to each other",
+    "Encrypts model weights",
+    "Splits training into batches"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "aiml-h5",
+   "difficulty": "hard",
+   "question": "What is the main purpose of L1/L2 regularization?",
+   "options": [
+    "Speeding up data loading",
+    "Preventing overfitting by penalizing large weights",
+    "Increasing model size",
+    "Visualizing training loss"
+   ],
+   "correct": 1
+  }
+ ],
+ "cn": [
+  {
+   "id": "cn-e1",
+   "difficulty": "easy",
+   "question": "Which layer of the OSI model is responsible for routing packets between networks?",
+   "options": [
+    "Transport",
+    "Network",
+    "Session",
+    "Data Link"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "cn-e2",
+   "difficulty": "easy",
+   "question": "What does DNS do?",
+   "options": [
+    "Filters spam email",
+    "Assigns IP addresses to devices",
+    "Encrypts web traffic",
+    "Translates domain names to IP addresses"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "cn-e3",
+   "difficulty": "easy",
+   "question": "Which protocol is used to browse websites securely?",
+   "options": [
+    "FTP",
+    "SMTP",
+    "HTTPS",
+    "HTTP"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "cn-e4",
+   "difficulty": "easy",
+   "question": "How many bits are in an IPv4 address?",
+   "options": [
+    "32",
+    "64",
+    "16",
+    "128"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "cn-e5",
+   "difficulty": "easy",
+   "question": "Which device forwards packets between different networks?",
+   "options": [
+    "Switch",
+    "Router",
+    "Repeater",
+    "Hub"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "cn-m1",
+   "difficulty": "medium",
+   "question": "Which protocol provides reliable, connection-oriented delivery?",
+   "options": [
+    "TCP",
+    "ICMP",
+    "IP",
+    "UDP"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "cn-m2",
+   "difficulty": "medium",
+   "question": "How many steps are in the TCP connection establishment handshake?",
+   "options": [
+    "4",
+    "3",
+    "2",
+    "5"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "cn-m3",
+   "difficulty": "medium",
+   "question": "What is the default port number for HTTPS?",
+   "options": [
+    "21",
+    "25",
+    "80",
+    "443"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "cn-m4",
+   "difficulty": "medium",
+   "question": "Which protocol dynamically assigns IP addresses to hosts on a network?",
+   "options": [
+    "DNS",
+    "DHCP",
+    "ARP",
+    "NAT"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "cn-m5",
+   "difficulty": "medium",
+   "question": "What does ARP resolve?",
+   "options": [
+    "A MAC address to a port",
+    "A port to a process",
+    "An IP address to a MAC address",
+    "A domain name to an IP address"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "cn-h1",
+   "difficulty": "hard",
+   "question": "How many usable host addresses does a /26 IPv4 subnet provide?",
+   "options": [
+    "30",
+    "64",
+    "126",
+    "62"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "cn-h2",
+   "difficulty": "hard",
+   "question": "In TCP, what does the sliding window mechanism primarily provide?",
+   "options": [
+    "Error-correcting codes",
+    "Encryption strength",
+    "Flow control of data in flight",
+    "Routing path selection"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "cn-h3",
+   "difficulty": "hard",
+   "question": "Which algorithm does the link-state routing protocol OSPF use to compute shortest paths?",
+   "options": [
+    "Prim",
+    "Dijkstra",
+    "Bellman-Ford",
+    "Floyd-Warshall"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "cn-h4",
+   "difficulty": "hard",
+   "question": "Which TCP congestion control phase grows the congestion window exponentially each RTT?",
+   "options": [
+    "Fast recovery",
+    "Timeout backoff",
+    "Slow start",
+    "Congestion avoidance"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "cn-h5",
+   "difficulty": "hard",
+   "question": "In RIP, a route with what hop count is treated as unreachable (infinity)?",
+   "options": [
+    "15",
+    "16",
+    "255",
+    "30"
+   ],
+   "correct": 1
+  }
+ ],
+ "sd": [
+  {
+   "id": "sd-e1",
+   "difficulty": "easy",
+   "question": "What does horizontal scaling mean?",
+   "options": [
+    "Moving servers to another region",
+    "Adding a more powerful CPU to one server",
+    "Compressing stored data",
+    "Adding more machines to share the load"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "sd-e2",
+   "difficulty": "easy",
+   "question": "What is the main purpose of a load balancer?",
+   "options": [
+    "Distribute incoming requests across multiple servers",
+    "Compile application code",
+    "Encrypt database backups",
+    "Store user sessions permanently"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "sd-e3",
+   "difficulty": "easy",
+   "question": "What is caching used for?",
+   "options": [
+    "Permanently archiving old data",
+    "Splitting databases",
+    "Storing frequently accessed data for faster reads",
+    "Authenticating users"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "sd-e4",
+   "difficulty": "easy",
+   "question": "What is a common use of a CDN?",
+   "options": [
+    "Hashing passwords",
+    "Managing source control",
+    "Running database transactions",
+    "Serving static content from locations near users"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "sd-e5",
+   "difficulty": "easy",
+   "question": "What does latency measure?",
+   "options": [
+    "Requests handled per second",
+    "Time taken to respond to a request",
+    "Storage capacity",
+    "Number of servers"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "sd-m1",
+   "difficulty": "medium",
+   "question": "During a network partition, the CAP theorem says a distributed system must trade off between which two properties?",
+   "options": [
+    "Consistency and Availability",
+    "Concurrency and Atomicity",
+    "Caching and Persistence",
+    "Cost and Performance"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "sd-m2",
+   "difficulty": "medium",
+   "question": "Which technique splits a large database into smaller pieces spread across servers?",
+   "options": [
+    "Replication",
+    "Normalization",
+    "Indexing",
+    "Sharding"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "sd-m3",
+   "difficulty": "medium",
+   "question": "What is the main benefit of putting a message queue between two services?",
+   "options": [
+    "It removes the need for a database",
+    "It guarantees zero latency",
+    "It makes every call synchronous",
+    "It decouples producers from consumers and absorbs traffic bursts"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "sd-m4",
+   "difficulty": "medium",
+   "question": "Which statement about database replication is correct?",
+   "options": [
+    "It removes the need for backups",
+    "It always guarantees strong consistency",
+    "It keeps copies of data on multiple nodes for availability and read scaling",
+    "It splits a table into smaller tables by column"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "sd-m5",
+   "difficulty": "medium",
+   "question": "What does it mean for a service to be stateless?",
+   "options": [
+    "It cannot call other services",
+    "It stores no data at all",
+    "It keeps no per-client session state on the server between requests",
+    "It never uses a database"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "sd-h1",
+   "difficulty": "hard",
+   "question": "In which caching pattern is data written to both the cache and the database as part of the same write operation?",
+   "options": [
+    "Write-around",
+    "Cache eviction",
+    "Write-through",
+    "Lazy loading"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "sd-h2",
+   "difficulty": "hard",
+   "question": "What is consistent hashing mainly used for?",
+   "options": [
+    "Guaranteeing exactly-once delivery",
+    "Sorting keys alphabetically",
+    "Encrypting keys at rest",
+    "Minimising key remapping when nodes are added or removed"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "sd-h3",
+   "difficulty": "hard",
+   "question": "What does an idempotent API operation guarantee?",
+   "options": [
+    "It always runs in constant time",
+    "It is never cached",
+    "Repeating it leaves the same resulting state as doing it once",
+    "It can never fail"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "sd-h4",
+   "difficulty": "hard",
+   "question": "A system must handle 10,000 requests per second and each server handles 500 requests per second. What is the minimum number of servers, ignoring redundancy?",
+   "options": [
+    "200",
+    "20",
+    "10",
+    "50"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "sd-h5",
+   "difficulty": "hard",
+   "question": "Which pattern stops a failing downstream service from being called repeatedly and causing cascading failures?",
+   "options": [
+    "Circuit breaker",
+    "Sharding",
+    "Blue-green deployment",
+    "Write-behind caching"
+   ],
+   "correct": 0
+  }
+ ],
+ "mobile": [
+  {
+   "id": "mobile-e1",
+   "difficulty": "easy",
+   "question": "Which language is Google's preferred language for Android development?",
+   "options": [
+    "Dart",
+    "Kotlin",
+    "Objective-C",
+    "Swift"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "mobile-e2",
+   "difficulty": "easy",
+   "question": "Which language are Flutter apps written in?",
+   "options": [
+    "Kotlin",
+    "JavaScript",
+    "Swift",
+    "Dart"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "mobile-e3",
+   "difficulty": "easy",
+   "question": "Which is Apple's modern language for building iOS apps?",
+   "options": [
+    "Java",
+    "Swift",
+    "Kotlin",
+    "C#"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "mobile-e4",
+   "difficulty": "easy",
+   "question": "In Flutter, almost everything you see on screen is a...",
+   "options": [
+    "Activity",
+    "Controller",
+    "Widget",
+    "Fragment"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "mobile-e5",
+   "difficulty": "easy",
+   "question": "Which file declares an Android app's permissions and components?",
+   "options": [
+    "AndroidManifest.xml",
+    "MainActivity.kt",
+    "build.gradle",
+    "strings.xml"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "mobile-m1",
+   "difficulty": "medium",
+   "question": "In Android, which component represents a single screen with a user interface?",
+   "options": [
+    "Activity",
+    "BroadcastReceiver",
+    "ContentProvider",
+    "Service"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "mobile-m2",
+   "difficulty": "medium",
+   "question": "What is the key difference between StatelessWidget and StatefulWidget in Flutter?",
+   "options": [
+    "Stateless widgets cannot display text",
+    "Stateful widgets hold mutable state that can change and trigger rebuilds",
+    "Stateful widgets cannot have children",
+    "They are identical"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "mobile-m3",
+   "difficulty": "medium",
+   "question": "Which Android library provides an abstraction layer over SQLite for local persistence?",
+   "options": [
+    "Room",
+    "Glide",
+    "Retrofit",
+    "Hilt"
+   ],
+   "correct": 0
+  },
+  {
+   "id": "mobile-m4",
+   "difficulty": "medium",
+   "question": "What is Retrofit used for in Android?",
+   "options": [
+    "Loading images",
+    "Making type-safe HTTP API calls",
+    "UI animation",
+    "Dependency injection"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "mobile-m5",
+   "difficulty": "medium",
+   "question": "Where do you normally inflate the UI and do one-time setup for an Android Activity?",
+   "options": [
+    "onRestart",
+    "onPause",
+    "onDestroy",
+    "onCreate"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "mobile-h1",
+   "difficulty": "hard",
+   "question": "Why does an Android ViewModel survive configuration changes such as screen rotation?",
+   "options": [
+    "It is a global singleton",
+    "It is saved in SharedPreferences",
+    "It is retained in a ViewModelStore that outlives the recreated Activity",
+    "It runs in a separate process"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "mobile-h2",
+   "difficulty": "hard",
+   "question": "In Jetpack Compose, what causes a composable to recompose?",
+   "options": [
+    "A Gradle sync",
+    "Calling onCreate",
+    "A change to State that it reads",
+    "Any network call"
+   ],
+   "correct": 2
+  },
+  {
+   "id": "mobile-h3",
+   "difficulty": "hard",
+   "question": "Which Flutter state management package is built on InheritedWidget and ChangeNotifier?",
+   "options": [
+    "Coroutines",
+    "Room",
+    "Retrofit",
+    "Provider"
+   ],
+   "correct": 3
+  },
+  {
+   "id": "mobile-h4",
+   "difficulty": "hard",
+   "question": "What is the main benefit of Kotlin coroutines on Android?",
+   "options": [
+    "Native iOS support",
+    "Writing asynchronous code sequentially without blocking the main thread",
+    "Automatic UI layout",
+    "Faster compile times"
+   ],
+   "correct": 1
+  },
+  {
+   "id": "mobile-h5",
+   "difficulty": "hard",
+   "question": "What does Swift's ARC (Automatic Reference Counting) manage?",
+   "options": [
+    "Network retries",
+    "Memory for class instances",
+    "App Store review",
+    "UI constraints"
+   ],
+   "correct": 1
+  }
+ ]
+}
