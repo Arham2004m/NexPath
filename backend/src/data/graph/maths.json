@@ -1,0 +1,140 @@
+{
+  "nodes": [
+    {
+      "id": "maths-ml",
+      "name": "Maths for Computing and ML",
+      "domain": "maths",
+      "level": 1,
+      "prerequisites": [],
+      "estimatedHours": 20,
+      "topics": [
+        {
+          "id": "maths-ml-1",
+          "title": "Linear algebra: vectors, matrices, transformations",
+          "hours": 7
+        },
+        {
+          "id": "maths-ml-2",
+          "title": "Calculus: derivatives, gradients and optimisation",
+          "hours": 5
+        },
+        {
+          "id": "maths-ml-3",
+          "title": "Probability and statistics",
+          "hours": 8
+        }
+      ],
+      "miniTasks": [
+        "Implement matrix multiplication and a dot-product based similarity check from scratch.",
+        "Minimise a simple function with gradient descent in code and plot the steps.",
+        "Simulate dice and coin experiments and compare results with the theory."
+      ],
+      "resources": [
+        {
+          "id": "CSFG-011",
+          "type": "course",
+          "title": "MIT Mathematics for Computer Science",
+          "url": "https://courses.csail.mit.edu/6.042/spring18/",
+          "provider": "MIT / Eric Lehman, F. Thomson Leighton & Albert Meyer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "12–16 weeks",
+          "why": "Core discrete math for proofs, combinatorics, graphs, recurrences, and CS reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-YT-047",
+          "type": "video",
+          "title": "Gate Smashers – Discrete Mathematics Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiH2wwES9vPWsEL6ipTaUSl3",
+          "provider": "Gate Smashers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "12–20 hours",
+          "why": "Specific GATE-focused discrete mathematics playlist for logic, sets, combinatorics and graphs.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-012",
+          "type": "course",
+          "title": "Khan Academy Probability & Statistics",
+          "url": "https://www.khanacademy.org/math/statistics-probability",
+          "provider": "Khan Academy",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "20–40 hours",
+          "why": "Structured fundamentals for probability, distributions, expectation, and statistics.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-013",
+          "type": "video",
+          "title": "3Blue1Brown – Essence of Linear Algebra",
+          "url": "https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab",
+          "provider": "3Blue1Brown / Grant Sanderson",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "2–4 hours",
+          "why": "Verified linear-algebra playlist. Covers vectors, span, linear transformations, matrices, determinants, eigenvalues and related visual intuition.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-014",
+          "type": "course",
+          "title": "MIT OpenCourseWare Linear Algebra",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/",
+          "provider": "MIT OpenCourseWare / Gilbert Strang",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "12–16 weeks",
+          "why": "Full lecture sequence with problem-solving emphasis and downloadable materials.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-062",
+          "type": "course",
+          "title": "NPTEL – Discrete Mathematics for CS",
+          "url": "https://nptel.ac.in/courses/106104573",
+          "provider": "NPTEL / IIT Kanpur",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "12 weeks",
+          "why": "Course catalog for logic, sets, combinatorics, graph theory, recurrence, and discrete structures.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-YT-049",
+          "type": "video",
+          "title": "Gate Smashers – Number System Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiFOet6KEEqDff1aXEGLdUzn",
+          "provider": "Gate Smashers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "6–10 hours",
+          "why": "Specific number-system playlist supporting digital logic and GATE preparation.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-YT-052",
+          "type": "video",
+          "title": "Gate Smashers – Graph Theory Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiG0M5FqjyoqB20Edk0tyzVt",
+          "provider": "Gate Smashers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "10–15 hours",
+          "why": "Specific graph-theory playlist useful for discrete mathematics and algorithm preparation.",
+          "priority": "Recommended"
+        }
+      ]
+    }
+  ]
+}

@@ -2,10 +2,13 @@ import 'dotenv/config';
 import app from './app.js';
 import { connectDatabase, disconnectDatabase } from './config/db.js';
 import { seedQuestions } from './scripts/seedQuestions.js';
+import { loadGraph } from './services/graphStore.js';
 
 const port = process.env.PORT || 5000;
 
 try {
+  const { nodes, graphVersion } = loadGraph(); // refuses to start on an invalid knowledge graph
+  console.log(`Knowledge graph ${graphVersion}: ${nodes.length} skills`);
   await connectDatabase();
   await seedQuestions();
 } catch (error) {

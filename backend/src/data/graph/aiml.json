@@ -1,0 +1,774 @@
+{
+  "nodes": [
+    {
+      "id": "aiml-python",
+      "name": "Python for Data",
+      "domain": "aiml",
+      "level": 1,
+      "prerequisites": [
+        "prog-basics"
+      ],
+      "estimatedHours": 17,
+      "topics": [
+        {
+          "id": "aiml-python-1",
+          "title": "Python language essentials",
+          "hours": 6
+        },
+        {
+          "id": "aiml-python-2",
+          "title": "NumPy and Pandas",
+          "hours": 7
+        },
+        {
+          "id": "aiml-python-3",
+          "title": "Data visualisation with Matplotlib and Seaborn",
+          "hours": 4
+        }
+      ],
+      "miniTasks": [
+        "Solve 15 Python exercises covering data structures and functions.",
+        "Clean and analyse a real CSV dataset with Pandas.",
+        "Produce five meaningful charts from your dataset."
+      ],
+      "resources": [
+        {
+          "id": "CSFG-101",
+          "type": "course",
+          "title": "CS50’s Introduction to Programming with Python",
+          "url": "https://cs50.harvard.edu/python/",
+          "provider": "Harvard University / CS50",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "8–12 weeks",
+          "why": "Harvard CS50’s Python course builds programming fundamentals with hands-on problem sets and projects, making it a structured starting point for core CS skills.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-065",
+          "type": "reference",
+          "title": "Python Official Tutorial",
+          "url": "https://docs.python.org/3/tutorial/",
+          "provider": "Python.org",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "10–20 hours",
+          "why": "Authoritative tutorial covering Python syntax and core language features.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-117",
+          "type": "practice",
+          "title": "Exercism Python Track",
+          "url": "https://exercism.org/tracks/python",
+          "provider": "Exercism",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "30–60 hours",
+          "why": "Large set of progressively structured Python exercises reinforces language fundamentals, clean implementations, and problem-solving habits.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "aiml-ml",
+      "name": "Machine Learning",
+      "domain": "aiml",
+      "level": 2,
+      "prerequisites": [
+        "aiml-python",
+        "maths-ml"
+      ],
+      "estimatedHours": 21,
+      "topics": [
+        {
+          "id": "aiml-ml-1",
+          "title": "The ML workflow: regression and classification",
+          "hours": 8
+        },
+        {
+          "id": "aiml-ml-2",
+          "title": "Trees, ensembles, SVMs and clustering",
+          "hours": 7
+        },
+        {
+          "id": "aiml-ml-3",
+          "title": "Model evaluation and feature engineering",
+          "hours": 6
+        }
+      ],
+      "miniTasks": [
+        "Build and evaluate a regression model on a real dataset.",
+        "Compare four models on one classification task.",
+        "Improve your model with cross-validation and feature engineering and report the gain."
+      ],
+      "resources": [
+        {
+          "id": "AIML-101",
+          "type": "course",
+          "title": "Google ML Crash Course – Linear Regression",
+          "url": "https://developers.google.com/machine-learning/crash-course/linear-regression",
+          "provider": "Google for Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "30–45 min",
+          "why": "Covers loss, gradient descent, model parameters and hyperparameter tuning through a practical ML module.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-102",
+          "type": "course",
+          "title": "Google ML Crash Course – Logistic Regression",
+          "url": "https://developers.google.com/machine-learning/crash-course/logistic-regression",
+          "provider": "Google for Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "30–45 min",
+          "why": "Explains sigmoid probabilities, log loss and regularization for binary classification.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-103",
+          "type": "course",
+          "title": "Google ML Crash Course – Classification",
+          "url": "https://developers.google.com/machine-learning/crash-course/classification",
+          "provider": "Google for Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "30–45 min",
+          "why": "Covers thresholds, confusion matrices, precision, recall, ROC and AUC for classification evaluation.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-104",
+          "type": "course",
+          "title": "Google ML Crash Course – Working with Numerical Data",
+          "url": "https://developers.google.com/machine-learning/crash-course/numerical-data",
+          "provider": "Google for Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "20–30 min",
+          "why": "Focuses on scaling, normalization, binning and preparing numerical features for ML models.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-111",
+          "type": "reference",
+          "title": "scikit-learn – Preprocessing data",
+          "url": "https://scikit-learn.org/stable/modules/preprocessing.html",
+          "provider": "scikit-learn",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–45 min",
+          "why": "Exact API guide for scaling, normalization, encoding, imputation and polynomial feature transforms before modeling.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-113",
+          "type": "reference",
+          "title": "scikit-learn – Metrics and scoring",
+          "url": "https://scikit-learn.org/stable/modules/model_evaluation.html",
+          "provider": "scikit-learn",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–45 min",
+          "why": "Specific API reference for regression and classification metrics, scoring functions, probability metrics and custom scorers.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-114",
+          "type": "reference",
+          "title": "scikit-learn – Cross-validation",
+          "url": "https://scikit-learn.org/stable/modules/cross_validation.html",
+          "provider": "scikit-learn",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20–30 min",
+          "why": "Explains K-fold, stratified and repeated cross-validation and how to evaluate estimators on unseen folds.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-115",
+          "type": "reference",
+          "title": "scikit-learn – Ensemble methods",
+          "url": "https://scikit-learn.org/stable/modules/ensemble.html",
+          "provider": "scikit-learn",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–45 min",
+          "why": "Covers random forests, gradient boosting, bagging, voting and stacking, including practical estimator APIs.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-190",
+          "type": "practice",
+          "title": "Google Machine Learning Crash Course – Exercises",
+          "url": "https://developers.google.com/machine-learning/crash-course/exercises",
+          "provider": "Google for Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "1–3 hours",
+          "why": "Current exercise hub with browser-based programming, interactives and quizzes for regression, classification, preprocessing, neural networks, embeddings, LLMs, production ML and fairness.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-205",
+          "type": "video",
+          "title": "StatQuest: PCA Step-by-Step",
+          "url": "https://www.youtube.com/watch?v=FgakZw6K1QQ",
+          "provider": "StatQuest with Josh Starmer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20–25 min",
+          "why": "Walks through PCA step-by-step, including variance, components, SVD, eigenvectors, and dimensionality reduction.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-209",
+          "type": "video",
+          "title": "StatQuest: K-means clustering",
+          "url": "https://www.youtube.com/watch?v=4b5d3muPQmA",
+          "provider": "StatQuest with Josh Starmer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "10–15 min",
+          "why": "Explains K-means, choosing K, assigning points, updating centroids, and interpreting clusters.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-210",
+          "type": "video",
+          "title": "Machine Learning Fundamentals: Cross Validation",
+          "url": "https://www.youtube.com/watch?v=fSytzGwwBVw",
+          "provider": "StatQuest with Josh Starmer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "5–10 min",
+          "why": "Explains how cross-validation compares models and supports model selection and hyperparameter tuning.",
+          "priority": "Must-have"
+        }
+      ]
+    },
+    {
+      "id": "aiml-dl",
+      "name": "Deep Learning",
+      "domain": "aiml",
+      "level": 2,
+      "prerequisites": [
+        "aiml-ml"
+      ],
+      "estimatedHours": 22,
+      "topics": [
+        {
+          "id": "aiml-dl-1",
+          "title": "Neural networks and backpropagation",
+          "hours": 8
+        },
+        {
+          "id": "aiml-dl-2",
+          "title": "PyTorch fundamentals",
+          "hours": 7
+        },
+        {
+          "id": "aiml-dl-3",
+          "title": "CNNs and computer vision",
+          "hours": 7
+        }
+      ],
+      "miniTasks": [
+        "Implement a small neural network from scratch on a toy dataset.",
+        "Reimplement your network in PyTorch and train it.",
+        "Train an image classifier and report accuracy with a confusion matrix."
+      ],
+      "resources": [
+        {
+          "id": "AIML-106",
+          "type": "course",
+          "title": "Google ML Crash Course – Neural Networks",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks",
+          "provider": "Google for Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "45–60 min",
+          "why": "Explains nodes, hidden layers, activation functions, inference and backpropagation for neural-network training.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-126",
+          "type": "course",
+          "title": "PyTorch – Learn the Basics",
+          "url": "https://docs.pytorch.org/tutorials/beginner/basics/intro",
+          "provider": "PyTorch",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "60–90 min",
+          "why": "End-to-end beginner path covering tensors, datasets, transforms, model building, autograd, optimization and saving models.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-127",
+          "type": "course",
+          "title": "PyTorch – Quickstart",
+          "url": "https://docs.pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html",
+          "provider": "PyTorch",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "30–45 min",
+          "why": "Builds a complete small classification workflow using Dataset, DataLoader, model definition, training and evaluation.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-128",
+          "type": "reference",
+          "title": "PyTorch – Tensors",
+          "url": "https://docs.pytorch.org/tutorials/beginner/basics/tensor_tutorial.html",
+          "provider": "PyTorch",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "20–30 min",
+          "why": "Specific tutorial on tensor creation, attributes, indexing, arithmetic, concatenation and device movement.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-129",
+          "type": "reference",
+          "title": "PyTorch – Datasets & DataLoaders",
+          "url": "https://docs.pytorch.org/tutorials/beginner/basics/data_tutorial.html",
+          "provider": "PyTorch",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "25–40 min",
+          "why": "Shows how custom Dataset and DataLoader objects structure batches and feed training loops efficiently.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-131",
+          "type": "reference",
+          "title": "PyTorch – Build the Neural Network",
+          "url": "https://docs.pytorch.org/tutorials/beginner/basics/buildmodel_tutorial",
+          "provider": "PyTorch",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "30–45 min",
+          "why": "Constructs an nn.Module for image classification and demonstrates layers, parameters and accelerator selection.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-132",
+          "type": "reference",
+          "title": "PyTorch – Automatic Differentiation with torch.autograd",
+          "url": "https://docs.pytorch.org/tutorials/beginner/basics/autogradqs_tutorial.html",
+          "provider": "PyTorch",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20–30 min",
+          "why": "Explains gradient tracking, requires_grad and backpropagation mechanics used to train neural networks.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-135",
+          "type": "course",
+          "title": "PyTorch – Deep Learning: A 60 Minute Blitz",
+          "url": "https://docs.pytorch.org/tutorials/beginner/deep_learning_60min_blitz",
+          "provider": "PyTorch",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "60–90 min",
+          "why": "Compact official introduction to tensors, autograd, neural networks and training a small image classifier.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-193",
+          "type": "book",
+          "title": "Deep Residual Learning for Image Recognition",
+          "url": "https://arxiv.org/abs/1512.03385",
+          "provider": "He et al. / arXiv",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "60–120 min",
+          "why": "Introduces residual learning and skip connections that make very deep convolutional networks easier to optimize.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-194",
+          "type": "book",
+          "title": "Adam: A Method for Stochastic Optimization",
+          "url": "https://arxiv.org/abs/1412.6980",
+          "provider": "Kingma & Ba / arXiv",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "45–90 min",
+          "why": "Defines the Adam optimizer using adaptive estimates of gradient moments for efficient stochastic optimization.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-226",
+          "type": "video",
+          "title": "Neural Networks Pt. 2: Backpropagation Main Ideas",
+          "url": "https://www.youtube.com/watch?v=IN2XmBhILt4",
+          "provider": "StatQuest with Josh Starmer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "10–15 min",
+          "why": "Explains the core intuition of backpropagation and how gradients update neural-network parameters.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-230",
+          "type": "video",
+          "title": "Tensors for Neural Networks, Clearly Explained!!!",
+          "url": "https://www.youtube.com/watch?v=L35fFDpwIM4",
+          "provider": "StatQuest with Josh Starmer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "10–15 min",
+          "why": "Explains tensors as multidimensional arrays and connects them to neural-network data structures.",
+          "priority": "Must-have"
+        }
+      ]
+    },
+    {
+      "id": "aiml-nlp",
+      "name": "NLP and Transformers",
+      "domain": "aiml",
+      "level": 3,
+      "prerequisites": [
+        "aiml-dl"
+      ],
+      "estimatedHours": 21,
+      "topics": [
+        {
+          "id": "aiml-nlp-1",
+          "title": "Text processing and embeddings",
+          "hours": 5
+        },
+        {
+          "id": "aiml-nlp-2",
+          "title": "Transformer architecture",
+          "hours": 8
+        },
+        {
+          "id": "aiml-nlp-3",
+          "title": "Hugging Face and fine-tuning",
+          "hours": 8
+        }
+      ],
+      "miniTasks": [
+        "Build a sentiment analyser with word embeddings.",
+        "Explain self-attention and implement a minimal attention block.",
+        "Fine-tune a pretrained model on a small text task and evaluate it."
+      ],
+      "resources": [
+        {
+          "id": "AIML-107",
+          "type": "course",
+          "title": "Google ML Crash Course – Embeddings",
+          "url": "https://developers.google.com/machine-learning/crash-course/embeddings",
+          "provider": "Google for Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–45 min",
+          "why": "Introduces embedding vectors, embedding spaces and how high-dimensional categorical data can be represented compactly.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-147",
+          "type": "reference",
+          "title": "TensorFlow – Text Classification",
+          "url": "https://www.tensorflow.org/tutorials/text/classify_text",
+          "provider": "TensorFlow",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–45 min",
+          "why": "Implements binary sentiment classification with TensorFlow using text preprocessing, vectorization, embeddings and a neural model.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-148",
+          "type": "reference",
+          "title": "TensorFlow – Word Embeddings",
+          "url": "https://www.tensorflow.org/tutorials/text/word_embeddings",
+          "provider": "TensorFlow",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–45 min",
+          "why": "Shows how embedding layers turn token IDs into dense vectors and how embeddings are trained for text classification.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-152",
+          "type": "reference",
+          "title": "TensorFlow – Transformer",
+          "url": "https://www.tensorflow.org/text/tutorials/transformer",
+          "provider": "TensorFlow",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "60–90 min",
+          "why": "Implements a Transformer sequence-to-sequence model and exposes attention, encoder-decoder structure and masking.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-155",
+          "type": "course",
+          "title": "Hugging Face LLM Course – Introduction",
+          "url": "https://huggingface.co/learn/llm-course/chapter1/1",
+          "provider": "Hugging Face",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "30–45 min",
+          "why": "Introduces NLP, LLMs, Transformer model families and the pipeline API within the current Hugging Face course.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-156",
+          "type": "course",
+          "title": "Hugging Face LLM Course – How do Transformers work?",
+          "url": "https://huggingface.co/learn/llm-course/chapter1/4",
+          "provider": "Hugging Face",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–45 min",
+          "why": "Explains encoder-only, decoder-only and encoder-decoder architectures plus attention and causal versus masked language modeling.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-157",
+          "type": "course",
+          "title": "Hugging Face LLM Course – Transformers Library Introduction",
+          "url": "https://huggingface.co/learn/llm-course/chapter2/1",
+          "provider": "Hugging Face",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20–30 min",
+          "why": "Explains the Transformers library architecture, tokenizer/model pairing and the unified API for pretrained models.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-191",
+          "type": "book",
+          "title": "Attention Is All You Need",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "provider": "Vaswani et al. / arXiv",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "60–120 min",
+          "why": "Foundational Transformer paper introducing an architecture based solely on attention rather than recurrence or convolution for sequence transduction.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-192",
+          "type": "book",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "url": "https://arxiv.org/abs/1810.04805",
+          "provider": "Devlin et al. / arXiv",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "60–120 min",
+          "why": "Introduces bidirectional Transformer pretraining with masked language modeling and next-sentence prediction, followed by task-specific fine-tuning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-195",
+          "type": "book",
+          "title": "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale",
+          "url": "https://arxiv.org/abs/2010.11929",
+          "provider": "Dosovitskiy et al. / arXiv",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "60–120 min",
+          "why": "Introduces ViT, applying a pure Transformer to sequences of image patches for image classification.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-200",
+          "type": "book",
+          "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+          "url": "https://arxiv.org/abs/2106.09685",
+          "provider": "Hu et al. / arXiv",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "45–90 min",
+          "why": "Introduces low-rank trainable matrices that adapt frozen Transformer weights with far fewer trainable parameters than full fine-tuning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-223",
+          "type": "video",
+          "title": "Cosine Similarity, Clearly Explained!!!",
+          "url": "https://www.youtube.com/watch?v=e9U0QAFbfLI",
+          "provider": "StatQuest with Josh Starmer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "10–15 min",
+          "why": "Explains cosine similarity geometrically and why it is useful for comparing high-dimensional vectors.",
+          "priority": "Must-have"
+        }
+      ]
+    },
+    {
+      "id": "aiml-mlops",
+      "name": "MLOps and Deployment",
+      "domain": "aiml",
+      "level": 3,
+      "prerequisites": [
+        "aiml-ml",
+        "prog-git"
+      ],
+      "estimatedHours": 17,
+      "topics": [
+        {
+          "id": "aiml-mlops-1",
+          "title": "Model serialisation and serving through an API",
+          "hours": 6
+        },
+        {
+          "id": "aiml-mlops-2",
+          "title": "Docker and cloud deployment",
+          "hours": 6
+        },
+        {
+          "id": "aiml-mlops-3",
+          "title": "Monitoring, pipelines and reproducibility",
+          "hours": 5
+        }
+      ],
+      "miniTasks": [
+        "Serve a trained model through a REST API.",
+        "Containerise and deploy your model API with a public URL.",
+        "Add logging, a data-drift check and a reproducible training script."
+      ],
+      "resources": [
+        {
+          "id": "AIML-112",
+          "type": "reference",
+          "title": "scikit-learn – Pipelines and composite estimators",
+          "url": "https://scikit-learn.org/stable/modules/pipeline.html",
+          "provider": "scikit-learn",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–45 min",
+          "why": "Shows how to chain preprocessing and prediction safely and supports reproducible model workflows with Pipeline and ColumnTransformer.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "AIML-108",
+          "type": "course",
+          "title": "Google ML Crash Course – Production ML Systems",
+          "url": "https://developers.google.com/machine-learning/crash-course/production-ml-systems",
+          "provider": "Google for Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "30–45 min",
+          "why": "Covers production ML architecture, data pipelines, monitoring and deployment concerns beyond model training.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "AIML-109",
+          "type": "course",
+          "title": "Google ML Crash Course – Automated Machine Learning (AutoML)",
+          "url": "https://developers.google.com/machine-learning/crash-course/automl",
+          "provider": "Google for Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20–30 min",
+          "why": "Explains when automated model search is useful and the trade-offs involved in automated ML workflows.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "AIML-134",
+          "type": "reference",
+          "title": "PyTorch – Save and Load the Model",
+          "url": "https://docs.pytorch.org/tutorials/beginner/basics/saveloadrun_tutorial.html",
+          "provider": "PyTorch",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15–25 min",
+          "why": "Shows state_dict-based saving, loading and inference so trained models can be reused outside the training session.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "AIML-161",
+          "type": "course",
+          "title": "Hugging Face LLM Course – Sharing pretrained models",
+          "url": "https://huggingface.co/learn/llm-course/chapter4/3",
+          "provider": "Hugging Face",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20–30 min",
+          "why": "Shows push_to_hub workflows and how model repositories preserve trained weights, tokenizers and reproducibility metadata.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "AIML-162",
+          "type": "article",
+          "title": "Hugging Face – Building a model card",
+          "url": "https://huggingface.co/docs/course/chapter4/4",
+          "provider": "Hugging Face",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15–25 min",
+          "why": "Specific guidance on documenting training data, evaluation, limitations, biases and metadata in model cards.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "AIML-177",
+          "type": "course",
+          "title": "Kaggle – Machine Learning Explainability",
+          "url": "https://www.kaggle.com/learn/machine-learning-explainability",
+          "provider": "Kaggle",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "2–4 hours",
+          "why": "Teaches permutation importance, partial dependence and SHAP-style reasoning for interpreting model predictions.",
+          "priority": "Recommended"
+        }
+      ]
+    }
+  ]
+}

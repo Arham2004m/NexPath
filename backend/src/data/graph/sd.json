@@ -1,0 +1,550 @@
+{
+  "nodes": [
+    {
+      "id": "sd-basics",
+      "name": "System Design Basics",
+      "domain": "sd",
+      "level": 2,
+      "prerequisites": [
+        "dbms-design",
+        "os-basics",
+        "cn-basics"
+      ],
+      "estimatedHours": 17,
+      "topics": [
+        {
+          "id": "sd-basics-1",
+          "title": "Scalability, load balancing and caching",
+          "hours": 6
+        },
+        {
+          "id": "sd-basics-2",
+          "title": "Databases at scale: sharding and replication",
+          "hours": 6
+        },
+        {
+          "id": "sd-basics-3",
+          "title": "APIs, message queues and asynchronous processing",
+          "hours": 5
+        }
+      ],
+      "miniTasks": [
+        "Design a URL shortener, covering load, cache and storage choices.",
+        "Add a sharding and replication plan to your URL shortener design.",
+        "Design a notification service using a queue."
+      ],
+      "resources": [
+        {
+          "id": "FAANG-033",
+          "type": "video",
+          "title": "Design Youtube - System Design Interview",
+          "url": "https://www.youtube.com/watch?v=jPKTo1iGQiE",
+          "provider": "ByteByteGo",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of HLD / System Design, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-034",
+          "type": "video",
+          "title": "Design Leetcode - System Design Interview",
+          "url": "https://www.youtube.com/watch?v=NPg2iRtCr-I",
+          "provider": "ByteByteGo",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of HLD / System Design, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-035",
+          "type": "video",
+          "title": "System Design: Design YouTube",
+          "url": "https://www.youtube.com/watch?v=jWRW2xGMqSw",
+          "provider": "ByteByteGo",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of HLD / System Design, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-051",
+          "type": "course",
+          "title": "Introduction to Database CRUD Operations with Node.js",
+          "url": "https://learn.mongodb.com/courses/mongodb-crud-operations-in-nodejs",
+          "provider": "MongoDB",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20 hr+",
+          "why": "Introduction to Database CRUD Operations with Node.js directly supports backend / databases preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-060",
+          "type": "course",
+          "title": "Intro to Database Systems",
+          "url": "https://15445.courses.cs.cmu.edu/fall2024/",
+          "provider": "Carnegie Mellon University",
+          "free": false,
+          "pricing": "Paid",
+          "difficulty": "Intermediate",
+          "time": "20 hr+",
+          "why": "Intro to Database Systems directly supports databases preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-063",
+          "type": "course",
+          "title": "CS 186: Introduction to Database Systems",
+          "url": "https://cs186berkeley.net/",
+          "provider": "UC Berkeley",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20 hr+",
+          "why": "CS 186: Introduction to Database Systems directly supports databases preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-065",
+          "type": "course",
+          "title": "CS50's Introduction to Databases with SQL",
+          "url": "https://cs50.harvard.edu/sql/",
+          "provider": "Harvard University",
+          "free": false,
+          "pricing": "Paid",
+          "difficulty": "Intermediate",
+          "time": "20 hr+",
+          "why": "CS50's Introduction to Databases with SQL directly supports databases / sql preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-084",
+          "type": "article",
+          "title": "Design a URL Shortener: System Design Interview Answer",
+          "url": "https://www.systemexperts.io/blog/design-url-shortener",
+          "provider": "SystemExperts",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20 min",
+          "why": "Design a URL Shortener: System Design Interview Answer directly supports hld / system design preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-094",
+          "type": "reference",
+          "title": "PostgreSQL Documentation",
+          "url": "https://www.postgresql.org/docs/current/",
+          "provider": "PostgreSQL Global Development Group",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30 min",
+          "why": "PostgreSQL Documentation directly supports databases / sql preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-095",
+          "type": "reference",
+          "title": "MySQL 8.4 Reference Manual",
+          "url": "https://dev.mysql.com/doc/refman/8.4/en/",
+          "provider": "Oracle MySQL",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30 min",
+          "why": "MySQL 8.4 Reference Manual directly supports databases / sql preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-100",
+          "type": "reference",
+          "title": "AWS Well-Architected Framework",
+          "url": "https://aws.amazon.com/architecture/well-architected/",
+          "provider": "AWS",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30 min",
+          "why": "AWS Well-Architected Framework directly supports cloud / architecture preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-101",
+          "type": "reference",
+          "title": "Google Cloud Architecture Center",
+          "url": "https://docs.cloud.google.com/architecture",
+          "provider": "Google Cloud",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30 min",
+          "why": "Google Cloud Architecture Center directly supports cloud / architecture preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        }
+      ]
+    },
+    {
+      "id": "sd-lld",
+      "name": "Low-Level Design",
+      "domain": "sd",
+      "level": 2,
+      "prerequisites": [
+        "prog-oop"
+      ],
+      "estimatedHours": 17,
+      "topics": [
+        {
+          "id": "sd-lld-1",
+          "title": "SOLID principles and clean object design",
+          "hours": 5
+        },
+        {
+          "id": "sd-lld-2",
+          "title": "Common design patterns",
+          "hours": 6
+        },
+        {
+          "id": "sd-lld-3",
+          "title": "LLD case studies",
+          "hours": 6
+        }
+      ],
+      "miniTasks": [
+        "Refactor a messy class into SOLID-compliant classes.",
+        "Implement three patterns (factory, observer, strategy) in a small project.",
+        "Design a parking lot and an elevator system with class diagrams and code."
+      ],
+      "resources": [
+        {
+          "id": "FAANG-032",
+          "type": "video",
+          "title": "LRU Cache - Twitch Interview Question - Leetcode 146",
+          "url": "https://www.youtube.com/watch?v=7ABFKPK2hD4",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of LLD / Caching, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-037",
+          "type": "video",
+          "title": "LLD RoadMap | What to study for Low Level System Design Interviews | Object Oriented Design Round",
+          "url": "https://www.youtube.com/watch?v=9_7jDlmexME",
+          "provider": "Keerti Purswani",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of LLD / OOD, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-068",
+          "type": "course",
+          "title": "Grokking the Low Level Design Interview Using OOD Principles",
+          "url": "https://www.educative.io/courses/grokking-the-low-level-design-interview-using-ood-principles",
+          "provider": "Educative",
+          "free": false,
+          "pricing": "Paid",
+          "difficulty": "Intermediate",
+          "time": "20 hr+",
+          "why": "Grokking the Low Level Design Interview Using OOD Principles directly supports lld / ood preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-090",
+          "type": "article",
+          "title": "Dependency Injection",
+          "url": "https://martinfowler.com/articles/injection.html",
+          "provider": "Martin Fowler",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20 min",
+          "why": "Dependency Injection directly supports lld / ood preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-122",
+          "type": "book",
+          "title": "Refactoring",
+          "url": "https://martinfowler.com/books/refactoring.html",
+          "provider": "Martin Fowler",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "25 hr+",
+          "why": "Refactoring directly supports software engineering / lld preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-123",
+          "type": "book",
+          "title": "Design Patterns: Elements of Reusable Object-Oriented Software",
+          "url": "https://www.informit.com/store/design-patterns-elements-of-reusable-object-oriented-software-9780201633610",
+          "provider": "Gang of Four",
+          "free": false,
+          "pricing": "Varies",
+          "difficulty": "Advanced",
+          "time": "25 hr+",
+          "why": "Design Patterns: Elements of Reusable Object-Oriented Software directly supports lld / ood preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-129",
+          "type": "book",
+          "title": "Head First Design Patterns, 2nd Edition",
+          "url": "https://books.google.com/books/about/Head_First_Design_Patterns_2nd_Edition.html?id=luzwzQEACAAJ",
+          "provider": "Eric Freeman; Elisabeth Robson",
+          "free": false,
+          "pricing": "Varies",
+          "difficulty": "Advanced",
+          "time": "25 hr+",
+          "why": "Head First Design Patterns, 2nd Edition directly supports lld / ood preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-146",
+          "type": "practice",
+          "title": "LRU Cache",
+          "url": "https://leetcode.com/problems/lru-cache/",
+          "provider": "LeetCode",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Intermediate",
+          "time": "1 hr+",
+          "why": "LRU Cache directly supports lld / caching preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-056",
+          "type": "course",
+          "title": "Software Construction",
+          "url": "https://ocw.mit.edu/courses/6-031-software-construction-spring-2016/",
+          "provider": "MIT OpenCourseWare",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20 hr+",
+          "why": "Software Construction directly supports software engineering / design preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-120",
+          "type": "book",
+          "title": "Clean Code",
+          "url": "https://www.informit.com/store/clean-code-9780132350884",
+          "provider": "Robert C. Martin",
+          "free": false,
+          "pricing": "Varies",
+          "difficulty": "Advanced",
+          "time": "25 hr+",
+          "why": "Clean Code directly supports software engineering / code quality preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "sd-distributed",
+      "name": "Distributed Systems and High-Level Design",
+      "domain": "sd",
+      "level": 3,
+      "prerequisites": [
+        "sd-basics"
+      ],
+      "estimatedHours": 20,
+      "topics": [
+        {
+          "id": "sd-distributed-1",
+          "title": "Consistency, CAP and consensus",
+          "hours": 7
+        },
+        {
+          "id": "sd-distributed-2",
+          "title": "Reliability, observability and capacity planning",
+          "hours": 5
+        },
+        {
+          "id": "sd-distributed-3",
+          "title": "High-level design case studies",
+          "hours": 8
+        }
+      ],
+      "miniTasks": [
+        "Explain Raft in your own words with a leader-election diagram.",
+        "Write a capacity estimate for a service with 10M daily users.",
+        "Design a chat system and a news feed end to end."
+      ],
+      "resources": [
+        {
+          "id": "FAANG-097",
+          "type": "reference",
+          "title": "Apache Kafka Documentation",
+          "url": "https://kafka.apache.org/documentation/",
+          "provider": "Apache Kafka",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30 min",
+          "why": "Apache Kafka Documentation directly supports distributed systems / streaming preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-117",
+          "type": "book",
+          "title": "Designing Data-Intensive Applications",
+          "url": "https://dataintensive.net/",
+          "provider": "Martin Kleppmann",
+          "free": false,
+          "pricing": "Varies",
+          "difficulty": "Advanced",
+          "time": "25 hr+",
+          "why": "Designing Data-Intensive Applications directly supports distributed systems / databases preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-136",
+          "type": "book",
+          "title": "Handling Overload",
+          "url": "https://sre.google/sre-book/handling-overload/",
+          "provider": "Google SRE",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "25 hr+",
+          "why": "Handling Overload directly supports distributed systems / capacity preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-137",
+          "type": "book",
+          "title": "Cascading Failures",
+          "url": "https://sre.google/sre-book/addressing-cascading-failures/",
+          "provider": "Google SRE",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "25 hr+",
+          "why": "Cascading Failures directly supports distributed systems / reliability preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-191",
+          "type": "paper",
+          "title": "MapReduce: Simplified Data Processing on Large Clusters",
+          "url": "https://research.google/pubs/mapreduce-simplified-data-processing-on-large-clusters/",
+          "provider": "Google Research",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "30 min",
+          "why": "Research paper on distributed systems / big data, directly useful for understanding production-scale technology trade-offs in top-tier engineering interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-192",
+          "type": "paper",
+          "title": "Bigtable: A Distributed Storage System for Structured Data",
+          "url": "https://research.google/pubs/bigtable-a-distributed-storage-system-for-structured-data/",
+          "provider": "Google Research",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "30 min",
+          "why": "Research paper on distributed databases, directly useful for understanding production-scale technology trade-offs in top-tier engineering interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-193",
+          "type": "paper",
+          "title": "Spanner: Google's Globally Distributed Database",
+          "url": "https://research.google/pubs/spanner-googles-globally-distributed-database/",
+          "provider": "Google Research",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "30 min",
+          "why": "Research paper on distributed databases / hld, directly useful for understanding production-scale technology trade-offs in top-tier engineering interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-194",
+          "type": "paper",
+          "title": "Dapper, a Large-Scale Distributed Systems Tracing Infrastructure",
+          "url": "https://research.google/pubs/dapper-a-large-scale-distributed-systems-tracing-infrastructure/",
+          "provider": "Google Research",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "30 min",
+          "why": "Research paper on distributed systems / observability, directly useful for understanding production-scale technology trade-offs in top-tier engineering interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-059",
+          "type": "course",
+          "title": "Distributed Systems",
+          "url": "https://pdos.csail.mit.edu/6.824/",
+          "provider": "MIT",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "20 hr+",
+          "why": "Distributed Systems directly supports distributed systems / hld preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-071",
+          "type": "article",
+          "title": "Timeouts, retries and backoff with jitter",
+          "url": "https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter",
+          "provider": "AWS",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "20 min",
+          "why": "Timeouts, retries and backoff with jitter directly supports distributed systems / reliability preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-072",
+          "type": "article",
+          "title": "Avoiding fallback in distributed systems",
+          "url": "https://aws.amazon.com/builders-library/avoiding-fallback-in-distributed-systems",
+          "provider": "AWS",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "20 min",
+          "why": "Avoiding fallback in distributed systems directly supports distributed systems / reliability preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-073",
+          "type": "article",
+          "title": "Leader election in distributed systems",
+          "url": "https://aws.amazon.com/builders-library/leader-election-in-distributed-systems",
+          "provider": "AWS",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "20 min",
+          "why": "Leader election in distributed systems directly supports distributed systems / consensus preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        }
+      ]
+    }
+  ]
+}

@@ -25,10 +25,20 @@ The assessment question bank (`backend/src/data/questions.json`) is seeded into 
 
 `/assessment` runs a 25-minute timed test: across 9 domains (programming, DSA, OS, DBMS, web, AI/ML, networks, system design, mobile) the student either self-reports "never studied" or answers 3 sampled questions (1 easy, 1 medium, 1 hard), 27 in total. Questions are sampled and scored on the server, correct answers never reach the browser, and each attempt is saved against the signed-in user. Retakes prefer questions the user has not seen. To demo the auto-submit quickly, set `VITE_ASSESSMENT_MINUTES=1` in `frontend/.env` and restart the frontend.
 
+## Knowledge graph and roadmaps
+
+The brain of the app is a prerequisite graph of skills in `backend/src/data/graph/*.json` (one file per domain) plus `goalPaths.json` (which skills each goal and sub-track needs). The pure engine in `backend/src/engine/` turns an assessment, a goal and weekly hours into a deterministic week-by-week roadmap (Kahn topological sort + weekly packing); the roadmap page shows it as a skill tree or a week list.
+
+- `npm run validate-graph`: checks ids, prerequisites, cycles, topic hours, mini tasks and goal references; the server also refuses to start on an invalid graph.
+- `npm run import-resources`: rebuilds each skill's curated resources from `backend/src/data/resources/nexpath-resources.csv` using the rules in `resourceMap.json`, and writes `import-report.json` (unmapped rows, skills with fewer than 3 resources are flagged `needsReview`). Resource links are never invented.
+- `npm test`: engine tests (ordering, determinism, mastery, packing, deadlines, recommender).
+- Roadmaps exist for Product Company Placement, AI/ML, Web (frontend, backend, full stack) and Mobile (Android, Flutter, iOS). Other goals show "Roadmap coming soon".
+
 ## API
 
 - Auth: `POST /api/auth/register`, `/login`, `/refresh`, `/logout`, and protected `GET /api/auth/me`. Registration errors return `{ message, errors: { field: message } }`; login deliberately responds with generic invalid credentials.
 - Assessment (all require `Authorization: Bearer <access token>`): `GET /api/assessment/domains`, `POST /api/assessment/questions`, `POST /api/assessment/submit`, `GET /api/assessment/latest`.
+- Goals and roadmaps: `GET /api/goals`, `GET /api/goals/recommendations`, `PUT /api/me/goal`, `GET /api/graph`, `POST /api/roadmaps/preview` (generates without saving).
 - `GET /api/health`.
 
 ## Troubleshooting MongoDB

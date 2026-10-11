@@ -1,0 +1,393 @@
+{
+  "nodes": [
+    {
+      "id": "dbms-sql",
+      "name": "SQL and Relational Basics",
+      "domain": "dbms",
+      "level": 1,
+      "prerequisites": [
+        "prog-basics"
+      ],
+      "estimatedHours": 15,
+      "topics": [
+        {
+          "id": "dbms-sql-1",
+          "title": "SQL queries, filtering and joins",
+          "hours": 6
+        },
+        {
+          "id": "dbms-sql-2",
+          "title": "Aggregation, grouping and subqueries",
+          "hours": 5
+        },
+        {
+          "id": "dbms-sql-3",
+          "title": "Schema design basics and constraints",
+          "hours": 4
+        }
+      ],
+      "miniTasks": [
+        "Answer 15 query problems on a sample database.",
+        "Write 10 reporting queries using GROUP BY and subqueries.",
+        "Design and create a schema for a small app with keys and constraints."
+      ],
+      "resources": [
+        {
+          "id": "CSFG-026",
+          "type": "practice",
+          "title": "SQLBolt",
+          "url": "https://sqlbolt.com/",
+          "provider": "SQLBolt",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "2–4 hours",
+          "why": "Interactive SQL lessons with immediate practice on queries, joins, filtering, and aggregation.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-028",
+          "type": "reference",
+          "title": "PostgreSQL Documentation",
+          "url": "https://www.postgresql.org/docs/",
+          "provider": "PostgreSQL Global Development Group",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "Ongoing reference",
+          "why": "Reliable reference for SQL syntax, transactions, indexing, query planning, and database behavior.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-075",
+          "type": "reference",
+          "title": "PostgreSQL Tutorial",
+          "url": "https://www.postgresql.org/docs/current/tutorial.html",
+          "provider": "PostgreSQL Global Development Group",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "4–8 hours",
+          "why": "Official getting-started tutorial covering SQL queries, tables, joins, aggregates, and PostgreSQL basics.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-027",
+          "type": "article",
+          "title": "Mode SQL Tutorial",
+          "url": "https://mode.com/sql-tutorial/",
+          "provider": "Mode Analytics",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "4–8 hours",
+          "why": "Practical SQL tutorial with emphasis on analysis and query reasoning.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-073",
+          "type": "practice",
+          "title": "LeetCode SQL 50",
+          "url": "https://leetcode.com/studyplan/top-sql-50/",
+          "provider": "LeetCode",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Intermediate",
+          "time": "~1 month",
+          "why": "Focused practice on SQL querying, joins, grouping, subqueries, and database reasoning.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-074",
+          "type": "practice",
+          "title": "HackerRank SQL",
+          "url": "https://www.hackerrank.com/domains/sql",
+          "provider": "HackerRank",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "10–30 hours",
+          "why": "Progressive SQL exercises from basic queries through advanced query patterns.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-076",
+          "type": "reference",
+          "title": "MySQL 8.0 Reference Manual",
+          "url": "https://dev.mysql.com/doc/refman/8.0/en/",
+          "provider": "Oracle MySQL",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "Ongoing reference",
+          "why": "Comprehensive reference for SQL behavior, indexes, transactions, and database administration concepts.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-077",
+          "type": "practice",
+          "title": "SQLZoo",
+          "url": "https://sqlzoo.net/wiki/SQL_Tutorial",
+          "provider": "SQLZoo",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "4–10 hours",
+          "why": "Interactive SQL practice with immediate feedback across core query patterns.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-078",
+          "type": "course",
+          "title": "Kaggle – Intro to SQL",
+          "url": "https://www.kaggle.com/learn/intro-to-sql",
+          "provider": "Kaggle",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "3–5 hours",
+          "why": "Current Kaggle SQL course with BigQuery exercises covering SELECT, WHERE, GROUP BY, ORDER BY, CTEs and joins.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-YT-046",
+          "type": "video",
+          "title": "Gate Smashers – Structured Query Language (SQL) Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiHqU4HKL7-SITyuSIcD93id",
+          "provider": "Gate Smashers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "10–20 hours",
+          "why": "Specific SQL playlist for query fundamentals and database practice.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-079",
+          "type": "reference",
+          "title": "SQLite Documentation",
+          "url": "https://www.sqlite.org/docs.html",
+          "provider": "SQLite",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "Ongoing reference",
+          "why": "Compact official documentation that is useful for experimenting with relational database behavior.",
+          "priority": "Supplementary"
+        }
+      ]
+    },
+    {
+      "id": "dbms-design",
+      "name": "Database Design, Transactions and Indexing",
+      "domain": "dbms",
+      "level": 2,
+      "prerequisites": [
+        "dbms-sql"
+      ],
+      "estimatedHours": 15,
+      "topics": [
+        {
+          "id": "dbms-design-1",
+          "title": "ER modelling and normalisation",
+          "hours": 5
+        },
+        {
+          "id": "dbms-design-2",
+          "title": "Transactions, ACID and concurrency control",
+          "hours": 5
+        },
+        {
+          "id": "dbms-design-3",
+          "title": "Indexing and query optimisation",
+          "hours": 5
+        }
+      ],
+      "miniTasks": [
+        "Normalise a messy table to 3NF and explain each step.",
+        "Demonstrate two isolation anomalies with two database sessions.",
+        "Add an index to a slow query and compare the execution plans."
+      ],
+      "resources": [
+        {
+          "id": "CSFG-029",
+          "type": "book",
+          "title": "Database System Concepts",
+          "url": "https://db-book.com/",
+          "provider": "Silberschatz, Korth & Sudarshan",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–50 hours",
+          "why": "Provides the companion resources for a standard DBMS textbook, useful for systematic study of data models, relational systems, transactions, recovery, and indexing.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-052",
+          "type": "article",
+          "title": "GeeksforGeeks DBMS",
+          "url": "https://www.geeksforgeeks.org/dbms/",
+          "provider": "GeeksforGeeks",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20–40 hours",
+          "why": "Extensive notes for normalization, transactions, indexing, ER models, and database concepts.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-YT-041",
+          "type": "video",
+          "title": "Gate Smashers – DBMS Complete Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiFAN6I8CuViBuCdJgiOkT2Y",
+          "provider": "Gate Smashers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Exam-focused",
+          "time": "15–25 hours",
+          "why": "Specific Gate Smashers DBMS playlist documented in independent CS resource indexes.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-YT-062",
+          "type": "video",
+          "title": "Neso Academy – DBMS Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLBlnK6fEyqRiyryTrbKHX1Sh9luYI0dhX",
+          "provider": "Neso Academy",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15–30 hours",
+          "why": "Specific Neso Academy DBMS playlist documented by an academic resource guide.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-YT-065",
+          "type": "video",
+          "title": "Jenny's Lectures CS IT – DBMS Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLdo5W4Nhv31b33kF46f9aFjoJPOkdlsRc",
+          "provider": "Jenny's Lectures CS IT",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "15–30 hours",
+          "why": "Specific Jenny's Lectures DBMS playlist; channel videos direct learners to the complete DBMS series.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-147",
+          "type": "paper",
+          "title": "A Relational Model of Data for Large Shared Data Banks",
+          "url": "https://research.ibm.com/publications/a-relational-model-of-data-for-large-shared-data-banks",
+          "provider": "E.F. Codd / IBM Research",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "1–2 hours",
+          "why": "Foundational description of the relational data model and database relationships that underpin modern relational DBMS concepts.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-030",
+          "type": "course",
+          "title": "CMU Intro to Database Systems",
+          "url": "https://15445.courses.cs.cmu.edu/",
+          "provider": "Carnegie Mellon University",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "12–14 weeks",
+          "why": "Deep systems-oriented database course with lectures, labs, and implementation context.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-059",
+          "type": "course",
+          "title": "NPTEL – Data Base Management System",
+          "url": "https://nptel.ac.in/courses/106105175",
+          "provider": "NPTEL / IIT Kharagpur",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "12 weeks",
+          "why": "IIT-backed course catalog for relational databases, SQL, transactions, and database design.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-097",
+          "type": "article",
+          "title": "GATE Overflow – Databases Subject Page",
+          "url": "https://gateoverflow.in/subject/databases",
+          "provider": "GATE Overflow",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Exam-focused",
+          "time": "Ongoing",
+          "why": "Consolidates the GATE database syllabus with topic explanations and problem-solving material on ER models, relational algebra, SQL, normalization, indexing, and transactions.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-YT-063",
+          "type": "video",
+          "title": "Asha Khilrani – DBMS Complete Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLz8TdOA7NTzToibk7WXtD5qvBMnkZkwh7",
+          "provider": "Asha Khilrani",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15–25 hours",
+          "why": "Specific complete DBMS playlist cited in an academic student resource guide.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "dbms-advanced",
+      "name": "NoSQL and Distributed Databases",
+      "domain": "dbms",
+      "level": 3,
+      "prerequisites": [
+        "dbms-design"
+      ],
+      "estimatedHours": 15,
+      "topics": [
+        {
+          "id": "dbms-advanced-1",
+          "title": "NoSQL data models and when to use them",
+          "hours": 6
+        },
+        {
+          "id": "dbms-advanced-2",
+          "title": "Replication, partitioning and consistency",
+          "hours": 5
+        },
+        {
+          "id": "dbms-advanced-3",
+          "title": "Distributed database case studies",
+          "hours": 4
+        }
+      ],
+      "miniTasks": [
+        "Model one application in both a document store and a relational database.",
+        "Explain how a replicated database handles a node failure, with a diagram.",
+        "Write a one-page comparison of two distributed databases."
+      ],
+      "resources": [
+        {
+          "id": "CSFG-080",
+          "type": "course",
+          "title": "Introduction to MongoDB (For Students)",
+          "url": "https://learn.mongodb.com/learn/learning-path/introduction-to-mongodb-for-ict-students",
+          "provider": "MongoDB University",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "12 hours",
+          "why": "Covers document-model fundamentals plus CRUD, aggregation, indexes, data modeling, Atlas connectivity, and transactions in a dedicated student learning path.",
+          "priority": "Supplementary"
+        }
+      ],
+      "needsReview": true
+    }
+  ]
+}

@@ -1,0 +1,1238 @@
+{
+  "nodes": [
+    {
+      "id": "web-html-css",
+      "name": "HTML, CSS and Responsive Design",
+      "domain": "web",
+      "level": 1,
+      "prerequisites": [],
+      "estimatedHours": 17,
+      "topics": [
+        {
+          "id": "web-html-css-1",
+          "title": "Semantic HTML, forms and media",
+          "hours": 5
+        },
+        {
+          "id": "web-html-css-2",
+          "title": "CSS: box model, flexbox and grid",
+          "hours": 7
+        },
+        {
+          "id": "web-html-css-3",
+          "title": "Responsive design and accessibility",
+          "hours": 5
+        }
+      ],
+      "miniTasks": [
+        "Build a semantic, accessible landing page with a working form layout.",
+        "Recreate a real website's layout using flexbox and grid.",
+        "Make your landing page work from 360px to desktop and pass an accessibility audit."
+      ],
+      "resources": [
+        {
+          "id": "WEBDEV-001",
+          "type": "article",
+          "title": "MDN – Learn web development",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development",
+          "provider": "MDN Web Docs",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "20–40 hours",
+          "why": "Structured MDN curriculum covering essential web-development fundamentals for beginners.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-002",
+          "type": "video",
+          "title": "Learn HTML – Full Tutorial for Beginners",
+          "url": "https://www.youtube.com/watch?v=kUMe1FH4CHE",
+          "provider": "freeCodeCamp.org / Dave Gray",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "4–5 hours",
+          "why": "Comprehensive beginner HTML walkthrough covering structure, semantics, forms, links, images, tables, and practical page-building.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-003",
+          "type": "video",
+          "title": "CSS Tutorial - Zero to Hero (Complete Course)",
+          "url": "https://www.youtube.com/watch?v=1Rs2ND1ryYc",
+          "provider": "freeCodeCamp.org",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "3–4 hours",
+          "why": "Covers CSS syntax, selectors, layout, responsive styling, and core styling techniques in a complete beginner course.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-010",
+          "type": "video",
+          "title": "Web Development with HTML & CSS - Full Course for Beginners",
+          "url": "https://www.youtube.com/watch?v=dX8396ZmSPk",
+          "provider": "freeCodeCamp.org / Aakash N S",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "19 hours",
+          "why": "In-depth HTML/CSS course that also introduces Git, responsive design, Bootstrap, Express, deployment, assignments, and a portfolio project.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-012",
+          "type": "video",
+          "title": "Introduction To Responsive Web Design - HTML & CSS Tutorial",
+          "url": "https://www.youtube.com/watch?v=srvUrASNj0s",
+          "provider": "freeCodeCamp.org / Kevin Powell",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "4+ hours",
+          "why": "Four-hour responsive-design tutorial covering fluid units, Flexbox, media queries, navigation, mobile-first layouts, and a full site.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-040",
+          "type": "course",
+          "title": "CS50's Web Programming with Python and JavaScript",
+          "url": "https://cs50.harvard.edu/web/",
+          "provider": "Harvard CS50",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "80–120 hours",
+          "why": "Harvard's full-stack web course connects Python, Django, SQL, JavaScript, testing, scalability, and security in one curriculum.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-043",
+          "type": "course",
+          "title": "freeCodeCamp – Responsive Web Design",
+          "url": "https://www.freecodecamp.org/learn/2022/responsive-web-design/",
+          "provider": "freeCodeCamp",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "100+ hours",
+          "why": "Interactive HTML/CSS curriculum with accessibility, responsive layouts, and portfolio projects.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-046",
+          "type": "course",
+          "title": "web.dev Learn HTML",
+          "url": "https://web.dev/learn/html",
+          "provider": "web.dev / Google Chrome",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "8–12 hours",
+          "why": "Browser-focused HTML course covering semantics, forms, media, accessibility, and practical document patterns.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-047",
+          "type": "course",
+          "title": "web.dev Learn CSS",
+          "url": "https://web.dev/learn/css",
+          "provider": "web.dev / Google Chrome",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "10–15 hours",
+          "why": "Structured CSS course covering box model, selectors, layout, Flexbox, Grid, responsive design, and modern styling.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-056",
+          "type": "article",
+          "title": "MDN HTML: HyperText Markup Language",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTML",
+          "provider": "MDN Web Docs",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "1–2 hours",
+          "why": "Provides a broad standards-based entry point to HTML concepts and the language's role in web documents.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-057",
+          "type": "article",
+          "title": "MDN CSS: Cascading Style Sheets",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS",
+          "provider": "MDN Web Docs",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "1–2 hours",
+          "why": "Provides a broad reference and conceptual overview of CSS for styling and layout.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-074",
+          "type": "article",
+          "title": "MDN Web accessibility",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Accessibility",
+          "provider": "MDN Web Docs",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "1–2 hours",
+          "why": "Introduces accessible web design principles and practical techniques for inclusive HTML and interfaces.",
+          "priority": "Must-have"
+        }
+      ]
+    },
+    {
+      "id": "web-js",
+      "name": "JavaScript and the DOM",
+      "domain": "web",
+      "level": 1,
+      "prerequisites": [
+        "prog-basics"
+      ],
+      "estimatedHours": 19,
+      "topics": [
+        {
+          "id": "web-js-1",
+          "title": "JavaScript fundamentals (ES6+)",
+          "hours": 8
+        },
+        {
+          "id": "web-js-2",
+          "title": "DOM manipulation and events",
+          "hours": 5
+        },
+        {
+          "id": "web-js-3",
+          "title": "Async JavaScript, fetch and modules",
+          "hours": 6
+        }
+      ],
+      "miniTasks": [
+        "Solve 15 JavaScript exercises covering arrays, objects and functions.",
+        "Build a to-do app with add, edit, delete and filter.",
+        "Build a weather or movie search app using a public API."
+      ],
+      "resources": [
+        {
+          "id": "WEBDEV-004",
+          "type": "video",
+          "title": "Learn JavaScript - Full Course for Beginners",
+          "url": "https://www.youtube.com/watch?v=PkZNo7MFNFg",
+          "provider": "freeCodeCamp.org / Beau Carnes",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "3–4 hours",
+          "why": "A standalone 134-part JavaScript course covering variables, functions, arrays, objects, control flow, ES6 syntax, and modules.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-009",
+          "type": "video",
+          "title": "Git & GitHub Crash Course for Beginners [2026]",
+          "url": "https://www.youtube.com/watch?v=mAFoROnOfHs",
+          "provider": "freeCodeCamp.org",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "1.5–2 hours",
+          "why": "Covers repositories, staging, commits, branches, merges, rebase, stash, remote workflows, and pull requests for web projects.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-016",
+          "type": "video",
+          "title": "JavaScript DOM Manipulation - Full Course for Beginners",
+          "url": "https://www.youtube.com/watch?v=5fb2aPlgoys",
+          "provider": "freeCodeCamp.org / CodeLab",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "2.5–3 hours",
+          "why": "Covers DOM selection, styling, creating/removing elements, event listeners, propagation, delegation, and projects.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-025",
+          "type": "video",
+          "title": "JavaScript Promises In 10 Minutes",
+          "url": "https://www.youtube.com/watch?v=DHvZLI7Db8E",
+          "provider": "Web Dev Simplified",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "10–15 min",
+          "why": "Explains creating and chaining promises and why modern browser APIs use them for asynchronous work.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-044",
+          "type": "course",
+          "title": "freeCodeCamp – JavaScript Algorithms and Data Structures",
+          "url": "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/",
+          "provider": "freeCodeCamp",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "150+ hours",
+          "why": "Interactive JavaScript curriculum covering core language skills, functional and object-oriented programming, and data structures.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-053",
+          "type": "course",
+          "title": "JavaScript.info Tutorial",
+          "url": "https://javascript.info/",
+          "provider": "JavaScript.info",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "40–60 hours",
+          "why": "Deep browser-aware JavaScript tutorial covering language fundamentals, async programming, DOM, events, networking, classes, and advanced topics.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-055",
+          "type": "article",
+          "title": "MDN Getting started with the Web",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web",
+          "provider": "MDN Web Docs",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "1–2 hours",
+          "why": "Introduces practical web development from setup through coding and browser-based development workflow.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-058",
+          "type": "article",
+          "title": "MDN JavaScript",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+          "provider": "MDN Web Docs",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "1–2 hours",
+          "why": "Provides a standards-based overview of JavaScript concepts and how JavaScript powers web interactivity.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-059",
+          "type": "article",
+          "title": "MDN Document Object Model (DOM)",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model",
+          "provider": "MDN Web Docs",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–60 min",
+          "why": "Explains the DOM interface used to represent and manipulate web documents programmatically.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-060",
+          "type": "article",
+          "title": "MDN Fetch API",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API",
+          "provider": "MDN Web Docs",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30–60 min",
+          "why": "Details the browser Fetch API used for asynchronous HTTP requests and response handling.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-090",
+          "type": "reference",
+          "title": "MDN JavaScript Guide",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide",
+          "provider": "MDN Web Docs",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "4–8 hours",
+          "why": "Broad JavaScript language guide covering grammar, functions, objects, classes, promises, modules, and advanced syntax.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-091",
+          "type": "book",
+          "title": "Eloquent JavaScript",
+          "url": "https://eloquentjavascript.net/",
+          "provider": "Marijn Haverbeke",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "30–50 hours",
+          "why": "Free full-length book teaching JavaScript programming through explanations, examples, and hands-on chapters.",
+          "priority": "Must-have"
+        }
+      ]
+    },
+    {
+      "id": "web-react",
+      "name": "React",
+      "domain": "web",
+      "level": 2,
+      "prerequisites": [
+        "web-js",
+        "web-html-css"
+      ],
+      "estimatedHours": 19,
+      "topics": [
+        {
+          "id": "web-react-1",
+          "title": "Components, props and state",
+          "hours": 8
+        },
+        {
+          "id": "web-react-2",
+          "title": "Hooks and client-side routing",
+          "hours": 6
+        },
+        {
+          "id": "web-react-3",
+          "title": "Data fetching, forms and validation",
+          "hours": 5
+        }
+      ],
+      "miniTasks": [
+        "Rebuild your to-do app in React.",
+        "Build a multi-page app with React Router and custom hooks.",
+        "Build a dashboard that loads API data with loading and error states."
+      ],
+      "resources": [
+        {
+          "id": "WEBDEV-005",
+          "type": "video",
+          "title": "Learn React JS - Full Course for Beginners - Tutorial 2019",
+          "url": "https://www.youtube.com/watch?v=DLX62G4lc44",
+          "provider": "freeCodeCamp.org / Bob Ziroll",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "5+ hours",
+          "why": "Long-form React introduction covering JSX, components, props, state, events, forms, API fetching, and a capstone project.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-029",
+          "type": "video",
+          "title": "React Crash Course",
+          "url": "https://www.youtube.com/watch?v=LDB4uaJ87e0",
+          "provider": "Traversy Media",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "3 hours",
+          "why": "Builds a job-listing frontend while covering components, props, state, hooks, routing, fetching, forms, and CRUD.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-049",
+          "type": "course",
+          "title": "React Learn",
+          "url": "https://react.dev/learn",
+          "provider": "React",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "10–20 hours",
+          "why": "Official React learning path covering UI description, interactivity, state management, and escape hatches.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-050",
+          "type": "course",
+          "title": "Next.js Learn",
+          "url": "https://nextjs.org/learn",
+          "provider": "Vercel / Next.js",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15–25 hours",
+          "why": "Official hands-on Next.js curriculum covering routing, layouts, data fetching, rendering, styling, and deployment.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-013",
+          "type": "video",
+          "title": "Next.js for Beginners - Full Course",
+          "url": "https://www.youtube.com/watch?v=1WmNXEVia8I",
+          "provider": "freeCodeCamp.org / Kapehe",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "2.5–3 hours",
+          "why": "Builds a full-stack recipe app while teaching dynamic routes, data fetching, pre-rendering, serverless functions, and deployment.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "WEBDEV-014",
+          "type": "video",
+          "title": "Next js Tutorial for Beginners | Nextjs 13 (App Router) with TypeScript",
+          "url": "https://www.youtube.com/watch?v=ZVnjOPwW4ZA",
+          "provider": "Programming with Mosh",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "1 hour",
+          "why": "Introduces the Next.js App Router, TypeScript, routing, server/client components, data fetching, caching, styling, and deployment.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "web-state-ts",
+      "name": "State Management, TypeScript and Performance",
+      "domain": "web",
+      "level": 2,
+      "prerequisites": [
+        "web-react"
+      ],
+      "estimatedHours": 16,
+      "topics": [
+        {
+          "id": "web-state-ts-1",
+          "title": "TypeScript for React",
+          "hours": 7
+        },
+        {
+          "id": "web-state-ts-2",
+          "title": "State management: Redux and Zustand",
+          "hours": 5
+        },
+        {
+          "id": "web-state-ts-3",
+          "title": "Testing and web performance",
+          "hours": 4
+        }
+      ],
+      "miniTasks": [
+        "Convert one of your React apps to TypeScript.",
+        "Move your app's global state into Zustand or Redux Toolkit.",
+        "Add component tests and a Lighthouse performance pass to your app."
+      ],
+      "resources": [
+        {
+          "id": "WEBDEV-073",
+          "type": "article",
+          "title": "web.dev – Debug performance in the field",
+          "url": "https://web.dev/articles/debug-performance-in-the-field",
+          "provider": "web.dev / Google",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20–30 min",
+          "why": "Explains field performance diagnostics and LCP debugging using real-user measurements.",
+          "priority": "High"
+        },
+        {
+          "id": "WEBDEV-006",
+          "type": "video",
+          "title": "Learn TypeScript - Full Tutorial",
+          "url": "https://www.youtube.com/watch?v=30LWjhZzg50",
+          "provider": "freeCodeCamp.org / Hitesh Choudhary",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "4–5 hours",
+          "why": "Covers static typing, interfaces, generics, narrowing, classes, and TypeScript setup for real JavaScript projects.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "WEBDEV-052",
+          "type": "course",
+          "title": "TypeScript Documentation Handbook",
+          "url": "https://www.typescriptlang.org/docs/handbook/",
+          "provider": "TypeScript Team",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15–25 hours",
+          "why": "Guided TypeScript curriculum spanning basics, everyday types, narrowing, functions, classes, modules, and reference topics.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "WEBDEV-075",
+          "type": "article",
+          "title": "MDN Web performance",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Performance",
+          "provider": "MDN Web Docs",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "1–2 hours",
+          "why": "Introduces web-performance principles and optimization techniques that improve loading and runtime behavior.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "WEBDEV-097",
+          "type": "book",
+          "title": "Exploring TypeScript",
+          "url": "https://exploringjs.com/ts/",
+          "provider": "Axel Rauschmayer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15–25 hours",
+          "why": "Focused TypeScript book explaining type-system features and practical patterns relevant to application development.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "WEBDEV-099",
+          "type": "book",
+          "title": "Patterns.dev",
+          "url": "https://www.patterns.dev/",
+          "provider": "Patterns.dev contributors",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "8–15 hours",
+          "why": "Pattern-oriented reference for frontend architecture, rendering, performance, and maintainable component systems.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "WEBDEV-100",
+          "type": "book",
+          "title": "Refactoring Guru – JavaScript Design Patterns",
+          "url": "https://refactoring.guru/design-patterns/javascript",
+          "provider": "Refactoring.Guru",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "4–8 hours",
+          "why": "Visual guide to JavaScript design patterns with concise explanations and implementation examples.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "WEBDEV-127",
+          "type": "article",
+          "title": "web.dev – Optimize resource loading with the Fetch Priority API",
+          "url": "https://web.dev/articles/fetch-priority",
+          "provider": "web.dev / Google",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15–25 min",
+          "why": "Explains how Fetch Priority influences resource loading and can improve Core Web Vitals.",
+          "priority": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "web-portfolio",
+      "name": "Frontend Portfolio Projects",
+      "domain": "web",
+      "level": 2,
+      "prerequisites": [
+        "web-react"
+      ],
+      "estimatedHours": 16,
+      "topics": [
+        {
+          "id": "web-portfolio-1",
+          "title": "Portfolio project 1: a polished multi-page app",
+          "hours": 10
+        },
+        {
+          "id": "web-portfolio-2",
+          "title": "Accessibility and performance audit",
+          "hours": 6
+        }
+      ],
+      "miniTasks": [
+        "Ship a deployed, responsive app with a README and screenshots.",
+        "Fix every issue from a Lighthouse and axe audit and document the improvements."
+      ],
+      "resources": [
+        {
+          "id": "WEBDEV-035",
+          "type": "video",
+          "title": "Build 15 JavaScript Projects - Vanilla JavaScript Course",
+          "url": "https://www.youtube.com/watch?v=3PHXvlpOkf4",
+          "provider": "freeCodeCamp.org / John Smilga",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "8–10 hours",
+          "why": "Builds 15 browser projects to strengthen DOM manipulation, events, state, APIs, and practical JavaScript.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-111",
+          "type": "practice",
+          "title": "Frontend Mentor Challenges",
+          "url": "https://www.frontendmentor.io/challenges",
+          "provider": "Frontend Mentor",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Beginner",
+          "time": "5–20 hours per challenge",
+          "why": "Large set of frontend challenges using real design specifications to practice semantic HTML, CSS, responsive layouts, and UI implementation.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-122",
+          "type": "practice",
+          "title": "JavaScript30",
+          "url": "https://javascript30.com/",
+          "provider": "Wes Bos",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30 projects; 1–3 hours each",
+          "why": "Thirty browser projects provide practical repetition with DOM, events, APIs, audio, local storage, and UI behavior.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-124",
+          "type": "practice",
+          "title": "The Odin Project Foundations: Recipes",
+          "url": "https://www.theodinproject.com/lessons/foundations-recipes",
+          "provider": "The Odin Project",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "2–4 hours",
+          "why": "The Recipes project practices semantic HTML, page structure, links, images, and basic repository workflow.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-011",
+          "type": "video",
+          "title": "HTML and CSS Tutorial - Create a Website for Beginners",
+          "url": "https://www.youtube.com/watch?v=kMT54MPz9oE",
+          "provider": "freeCodeCamp.org / Web Dev Simplified",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "1.5–2 hours",
+          "why": "Teaches HTML and CSS through building a band website, making the concepts immediately applicable to a complete page.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "WEBDEV-054",
+          "type": "course",
+          "title": "Frontend Mentor – Learn and Build",
+          "url": "https://www.frontendmentor.io/",
+          "provider": "Frontend Mentor",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Beginner",
+          "time": "20–60 hours per project",
+          "why": "Provides guided real-world frontend projects that turn HTML/CSS/JS concepts into portfolio-quality builds with design briefs.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "WEBDEV-119",
+          "type": "practice",
+          "title": "CSSBattle",
+          "url": "https://cssbattle.dev/",
+          "provider": "CSSBattle",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15–60 min per challenge",
+          "why": "Pixel-matching CSS challenges develop shorthand, layout, positioning, and visual precision skills.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "WEBDEV-150",
+          "type": "project",
+          "title": "NFT Preview Card Component",
+          "url": "https://www.frontendmentor.io/challenges/nft-preview-card-component-SbdUL_w0U",
+          "provider": "Frontend Mentor",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "2–4 hours",
+          "why": "Focused frontend build for semantic HTML, responsive CSS, custom properties, and hover states.",
+          "priority": "Medium"
+        },
+        {
+          "id": "WEBDEV-151",
+          "type": "project",
+          "title": "Product Preview Card Component",
+          "url": "https://www.frontendmentor.io/challenges/product-preview-card-component-GO7UmttRfa",
+          "provider": "Frontend Mentor",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "2–4 hours",
+          "why": "Responsive layout project practicing Flexbox, semantic markup, media queries, and reusable CSS patterns.",
+          "priority": "Medium"
+        },
+        {
+          "id": "WEBDEV-152",
+          "type": "project",
+          "title": "Profile Card Component",
+          "url": "https://www.frontendmentor.io/challenges/profile-card-component-cfArpWshJ",
+          "provider": "Frontend Mentor",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "2–4 hours",
+          "why": "Compact responsive UI challenge for semantic HTML, CSS layout, positioning, and card composition.",
+          "priority": "Medium"
+        }
+      ]
+    },
+    {
+      "id": "web-node",
+      "name": "Node.js, Express and REST APIs",
+      "domain": "web",
+      "level": 2,
+      "prerequisites": [
+        "web-js"
+      ],
+      "estimatedHours": 17,
+      "topics": [
+        {
+          "id": "web-node-1",
+          "title": "Node.js and Express fundamentals",
+          "hours": 7
+        },
+        {
+          "id": "web-node-2",
+          "title": "REST API design",
+          "hours": 6
+        },
+        {
+          "id": "web-node-3",
+          "title": "Middleware, validation and error handling",
+          "hours": 4
+        }
+      ],
+      "miniTasks": [
+        "Build a CRUD API for notes with Express.",
+        "Document your API and add pagination, filtering and consistent errors.",
+        "Add request validation and a central error handler."
+      ],
+      "resources": [
+        {
+          "id": "WEBDEV-008",
+          "type": "video",
+          "title": "Node.js and Express.js - Full Course",
+          "url": "https://www.youtube.com/watch?v=Oe421EPjeBE",
+          "provider": "freeCodeCamp.org / John Smilga",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "8–10 hours",
+          "why": "Builds practical Node and Express knowledge through server setup, routing, middleware, APIs, authentication, and backend patterns.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-017",
+          "type": "video",
+          "title": "Node.js Crash Course",
+          "url": "https://www.youtube.com/watch?v=32M1al-Y6Ag",
+          "provider": "Traversy Media",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "2 hours",
+          "why": "Covers Node core modules, HTTP servers, routing, middleware, APIs, environment variables, file system, path, OS, URL, crypto, and events.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-140",
+          "type": "project",
+          "title": "Project: Basic Informational Site",
+          "url": "https://www.theodinproject.com/lessons/nodejs-basic-informational-site",
+          "provider": "The Odin Project",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "4–6 hours",
+          "why": "Creates a multi-page site served with Node.js, reinforcing HTTP, routing, files, and simple server-side rendering.",
+          "priority": "High"
+        },
+        {
+          "id": "WEBDEV-107",
+          "type": "book",
+          "title": "JavaScript.info Regular Expressions",
+          "url": "https://javascript.info/regexp",
+          "provider": "JavaScript.info",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "2–4 hours",
+          "why": "Practical guide to pattern matching for validation, parsing, search, and text processing in web applications.",
+          "priority": "Supplementary"
+        }
+      ]
+    },
+    {
+      "id": "web-db",
+      "name": "Databases for Web Apps",
+      "domain": "web",
+      "level": 2,
+      "prerequisites": [
+        "web-node",
+        "dbms-sql"
+      ],
+      "estimatedHours": 15,
+      "topics": [
+        {
+          "id": "web-db-1",
+          "title": "MongoDB and Mongoose",
+          "hours": 6
+        },
+        {
+          "id": "web-db-2",
+          "title": "SQL databases from Node",
+          "hours": 5
+        },
+        {
+          "id": "web-db-3",
+          "title": "Data modelling for real apps",
+          "hours": 4
+        }
+      ],
+      "miniTasks": [
+        "Persist your notes API in MongoDB.",
+        "Build the same API on PostgreSQL and compare the two.",
+        "Model users, posts and comments and justify your schema."
+      ],
+      "resources": [
+        {
+          "id": "WEBDEV-051",
+          "type": "course",
+          "title": "MongoDB with Node.js Learning Path",
+          "url": "https://learn.mongodb.com/learn/learning-path/using-mongodb-with-nodejs",
+          "provider": "MongoDB University",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "8–12 hours",
+          "why": "Structured learning for Node.js developers building CRUD-backed applications with MongoDB.",
+          "priority": "Recommended"
+        }
+      ],
+      "needsReview": true
+    },
+    {
+      "id": "web-auth",
+      "name": "Authentication and Web Security",
+      "domain": "web",
+      "level": 2,
+      "prerequisites": [
+        "web-db"
+      ],
+      "estimatedHours": 15,
+      "topics": [
+        {
+          "id": "web-auth-1",
+          "title": "Sessions, JWT and password handling",
+          "hours": 6
+        },
+        {
+          "id": "web-auth-2",
+          "title": "OAuth and authorisation",
+          "hours": 4
+        },
+        {
+          "id": "web-auth-3",
+          "title": "API security: OWASP top risks",
+          "hours": 5
+        }
+      ],
+      "miniTasks": [
+        "Add register, login and protected routes to your API.",
+        "Add Google sign-in and role-based access.",
+        "Add rate limiting and input sanitisation and test against common attacks."
+      ],
+      "resources": [
+        {
+          "id": "WEBDEV-065",
+          "type": "paper",
+          "title": "A Holistic Approach to Securing Web Applications",
+          "url": "https://arxiv.org/abs/1001.3479",
+          "provider": "Arxiv authors",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "60–120 min",
+          "why": "Research paper examining web application security as a holistic systems problem, useful for security-aware web architecture.",
+          "priority": "Supplementary"
+        },
+        {
+          "id": "WEBDEV-066",
+          "type": "paper",
+          "title": "A Study on Web Application Vulnerabilities to find an optimal Security Architecture",
+          "url": "https://arxiv.org/abs/2204.07107",
+          "provider": "Arxiv authors",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "60–120 min",
+          "why": "Research study of web application vulnerabilities and security-architecture considerations for secure systems.",
+          "priority": "Supplementary"
+        },
+        {
+          "id": "WEBDEV-067",
+          "type": "paper",
+          "title": "A Survey of Web Application Security Tutorials",
+          "url": "https://arxiv.org/abs/2603.21556",
+          "provider": "Arxiv authors",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "45–90 min",
+          "why": "Survey of educational material for web-application security tutorials, useful for understanding security-learning coverage and gaps.",
+          "priority": "Supplementary"
+        },
+        {
+          "id": "WEBDEV-069",
+          "type": "paper",
+          "title": "Fuzzing Frameworks for Server-side Web Applications: A Survey",
+          "url": "https://arxiv.org/abs/2406.03208",
+          "provider": "Arxiv authors",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "60–120 min",
+          "why": "Survey of fuzzing frameworks for server-side web applications and automated vulnerability discovery.",
+          "priority": "Supplementary"
+        }
+      ]
+    },
+    {
+      "id": "web-deploy",
+      "name": "Deployment and DevOps Basics",
+      "domain": "web",
+      "level": 2,
+      "prerequisites": [
+        "web-node"
+      ],
+      "estimatedHours": 14,
+      "topics": [
+        {
+          "id": "web-deploy-1",
+          "title": "Deploying frontend and backend (Vercel, Render, Railway)",
+          "hours": 5
+        },
+        {
+          "id": "web-deploy-2",
+          "title": "Environment config and CI/CD",
+          "hours": 4
+        },
+        {
+          "id": "web-deploy-3",
+          "title": "Docker basics",
+          "hours": 5
+        }
+      ],
+      "miniTasks": [
+        "Deploy a full app and share a live URL.",
+        "Set up a GitHub Actions workflow that tests and deploys on push.",
+        "Containerise your API and run it locally with Docker."
+      ],
+      "resources": [
+        {
+          "id": "FAANG-098",
+          "type": "reference",
+          "title": "Kubernetes Concepts",
+          "url": "https://kubernetes.io/docs/concepts/",
+          "provider": "Kubernetes",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30 min",
+          "why": "Kubernetes Concepts directly supports cloud / devops preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-099",
+          "type": "reference",
+          "title": "Docker Docs",
+          "url": "https://docs.docker.com/",
+          "provider": "Docker",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30 min",
+          "why": "Docker Docs directly supports cloud / containers preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-134",
+          "type": "book",
+          "title": "Release Engineering",
+          "url": "https://sre.google/sre-book/release-engineering/",
+          "provider": "Google SRE",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "25 hr+",
+          "why": "Release Engineering directly supports devops / release engineering preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-174",
+          "type": "project",
+          "title": "AWS Modern Application Workshop",
+          "url": "https://github.com/aws-samples/aws-modern-application-workshop",
+          "provider": "AWS",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "5 hr+",
+          "why": "AWS Modern Application Workshop directly supports cloud / devops / backend preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-177",
+          "type": "project",
+          "title": "Docker Getting Started Todo App",
+          "url": "https://github.com/docker/getting-started-todo-app",
+          "provider": "Docker",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "5 hr+",
+          "why": "Docker Getting Started Todo App directly supports backend / containers preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-180",
+          "type": "project",
+          "title": "Full Stack Open Part 11",
+          "url": "https://fullstackopen.com/en/part11/",
+          "provider": "University of Helsinki",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "5 hr+",
+          "why": "Full Stack Open Part 11 directly supports devops / ci-cd preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-181",
+          "type": "project",
+          "title": "Full Stack Open Part 12",
+          "url": "https://fullstackopen.com/en/part12/",
+          "provider": "University of Helsinki",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "5 hr+",
+          "why": "Full Stack Open Part 12 directly supports containers / devops preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "web-fullstack-projects",
+      "name": "Full-Stack Portfolio Projects",
+      "domain": "web",
+      "level": 3,
+      "prerequisites": [
+        "web-react",
+        "web-auth",
+        "web-deploy"
+      ],
+      "estimatedHours": 30,
+      "topics": [
+        {
+          "id": "web-fullstack-projects-1",
+          "title": "Full-stack project 1: product with auth and CRUD",
+          "hours": 12
+        },
+        {
+          "id": "web-fullstack-projects-2",
+          "title": "Full-stack project 2: real-time or data-heavy app",
+          "hours": 12
+        },
+        {
+          "id": "web-fullstack-projects-3",
+          "title": "Testing, polish and documentation",
+          "hours": 6
+        }
+      ],
+      "miniTasks": [
+        "Ship a deployed MERN app with authentication and a README.",
+        "Ship a second app with a different architecture or domain.",
+        "Add tests, an API doc and a demo video for both projects."
+      ],
+      "resources": [
+        {
+          "id": "WEBDEV-041",
+          "type": "course",
+          "title": "Full Stack Open",
+          "url": "https://fullstackopen.com/en/",
+          "provider": "University of Helsinki",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "100+ hours",
+          "why": "Project-heavy curriculum covering React, Node.js, MongoDB, GraphQL, TypeScript, testing, CI/CD, and modern JavaScript development.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-042",
+          "type": "course",
+          "title": "The Odin Project – Full Stack JavaScript Path",
+          "url": "https://www.theodinproject.com/paths/full-stack-javascript",
+          "provider": "The Odin Project",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "100+ hours",
+          "why": "Project-driven full-stack curriculum covering HTML/CSS, JavaScript, React, Node.js, databases, and deployment.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "WEBDEV-149",
+          "type": "project",
+          "title": "Project: Odin-Book",
+          "url": "https://www.theodinproject.com/lessons/node-path-nodejs-odin-book",
+          "provider": "The Odin Project",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "15–30+ hours",
+          "why": "Full-stack social-platform build covering Express, PostgreSQL, authentication, profiles, posts, follows, and likes.",
+          "priority": "High"
+        },
+        {
+          "id": "WEBDEV-015",
+          "type": "video",
+          "title": "Complete Next.js 13.4 Tutorial in Hindi🔥FullStack Website using NextJS, React Server Comp. & MongoDB",
+          "url": "https://www.youtube.com/watch?v=lpsLAP4x-tk",
+          "provider": "Thapa Technical",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "2.5–3 hours",
+          "why": "Builds a full-stack Next.js site with routing, APIs, MongoDB, Mongoose, forms, responsive design, and Vercel deployment.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "WEBDEV-034",
+          "type": "video",
+          "title": "Web Development Full Course - 12 Hours",
+          "url": "https://www.youtube.com/watch?v=zJSY8tbf_ys",
+          "provider": "SuperSimpleDev",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "12 hours",
+          "why": "Long-form web development coverage of HTML, CSS, JavaScript, responsive layouts, Git, APIs, and frontend practices.",
+          "priority": "Recommended"
+        }
+      ]
+    }
+  ]
+}

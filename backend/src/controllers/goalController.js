@@ -3,11 +3,23 @@ import AssessmentAttempt from '../models/AssessmentAttempt.js';
 import User from '../models/User.js';
 import { GOALS, HOURS_PER_WEEK, MAX_TARGET_WEEKS, minimumWeeks } from '../data/goals.js';
 import { validateGoalSelection } from '../utils/validators.js';
+import { loadGraph } from '../services/graphStore.js';
+import { resolveGoalPath } from '../engine/graph.js';
 import { DOMAIN_LABELS } from '../data/domains.js';
-import { recommendGoals } from '../services/goalRecommender.js';
+import { recommendGoals } from '../engine/goalRecommender.js';
 import { profile } from './authController.js';
 
-export const listGoals = (req, res) => res.json({ goals: GOALS, limits: { hoursPerWeek: HOURS_PER_WEEK, maxTargetWeeks: MAX_TARGET_WEEKS } });
+// A goal (or sub-track) is "ready" once the knowledge graph defines a path for it.
+const withReadiness = () => {
+  const { goalPaths } = loadGraph();
+  return GOALS.map((goal) => ({
+    ...goal,
+    roadmapReady: !!resolveGoalPath(goalPaths, goal.id, goal.subTracks?.[0]?.id),
+    ...(goal.subTracks ? { subTracks: goal.subTracks.map((track) => ({ ...track, roadmapReady: !!resolveGoalPath(goalPaths, goal.id, track.id) })) } : {})
+  }));
+};
+
+export const listGoals = (req, res) => res.json({ goals: withReadiness(), limits: { hoursPerWeek: HOURS_PER_WEEK, maxTargetWeeks: MAX_TARGET_WEEKS } });
 
 export const saveGoal = asyncHandler(async (req, res) => {
   const { goalId, subTrack, hoursPerWeek, targetWeeks } = req.body;

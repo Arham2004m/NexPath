@@ -1,0 +1,1607 @@
+{
+  "nodes": [
+    {
+      "id": "mobile-kotlin",
+      "name": "Kotlin Fundamentals",
+      "domain": "mobile",
+      "level": 1,
+      "prerequisites": [
+        "prog-basics"
+      ],
+      "estimatedHours": 16,
+      "topics": [
+        {
+          "id": "mobile-kotlin-1",
+          "title": "Kotlin syntax, OOP and null safety",
+          "hours": 7
+        },
+        {
+          "id": "mobile-kotlin-2",
+          "title": "Collections, lambdas and extension functions",
+          "hours": 4
+        },
+        {
+          "id": "mobile-kotlin-3",
+          "title": "Coroutines and Flow basics",
+          "hours": 5
+        }
+      ],
+      "miniTasks": [
+        "Solve 12 Kotlin exercises including classes and null handling.",
+        "Rewrite a data-processing script using Kotlin collection operations.",
+        "Fetch data concurrently with coroutines and expose it as a Flow."
+      ],
+      "resources": [
+        {
+          "id": "MOBILE-027",
+          "type": "video",
+          "title": "Kotlin Course - Tutorial for Beginners",
+          "url": "https://www.youtube.com/watch?v=F9UC9DY-vIU",
+          "provider": "freeCodeCamp.org",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "7 hr",
+          "why": "Specific video covering Kotlin fundamentals; useful for learning the implementation workflow from a concrete example.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-041",
+          "type": "course",
+          "title": "Android Kotlin Fundamentals",
+          "url": "https://developer.android.com/courses/kotlin-fundamentals/course",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "10 hr+",
+          "why": "Structured course covering Android with Kotlin with guided progression and hands-on mobile development work.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-084",
+          "type": "book",
+          "title": "Kotlin documentation",
+          "url": "https://kotlinlang.org/docs/home.html",
+          "provider": "Kotlin",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "2 hr+",
+          "why": "Conceptual notes/reference for Kotlin language reference; useful for revision and deeper understanding.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-085",
+          "type": "book",
+          "title": "Kotlin basic syntax",
+          "url": "https://kotlinlang.org/docs/basic-syntax.html",
+          "provider": "Kotlin",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "45 min",
+          "why": "Conceptual notes/reference for Kotlin syntax notes; useful for revision and deeper understanding.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-087",
+          "type": "book",
+          "title": "Kotlin coroutines basics",
+          "url": "https://kotlinlang.org/docs/coroutines-basics.html",
+          "provider": "Kotlin",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "45 min",
+          "why": "Conceptual notes/reference for Kotlin coroutines; useful for revision and deeper understanding.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-119",
+          "type": "practice",
+          "title": "Exercism Kotlin track",
+          "url": "https://exercism.org/tracks/kotlin/exercises",
+          "provider": "Exercism",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "2 hr+",
+          "why": "Hands-on exercise for Kotlin coding exercises; reinforces mobile-development concepts through implementation.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-124",
+          "type": "practice",
+          "title": "Kotlin Hello World",
+          "url": "https://exercism.org/tracks/kotlin/exercises/hello-world",
+          "provider": "Exercism",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "20 min",
+          "why": "Hands-on exercise for Kotlin introductory exercise; reinforces mobile-development concepts through implementation.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-051",
+          "type": "course",
+          "title": "Android Kotlin Developer Nanodegree",
+          "url": "https://www.udacity.com/course/android-kotlin-developer-nanodegree--nd940",
+          "provider": "Udacity",
+          "free": false,
+          "pricing": "Paid",
+          "difficulty": "Intermediate",
+          "time": "64 hr",
+          "why": "Structured course covering Modern Android development with Kotlin with guided progression and hands-on mobile development work.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-061",
+          "type": "article",
+          "title": "Coroutines performance",
+          "url": "https://developer.android.com/kotlin/coroutines/coroutines-adv",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "25 min",
+          "why": "Focused reference on Kotlin coroutines on Android from an established mobile-development documentation source.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-086",
+          "type": "book",
+          "title": "Kotlin classes",
+          "url": "https://kotlinlang.org/docs/classes.html",
+          "provider": "Kotlin",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "40 min",
+          "why": "Conceptual notes/reference for Kotlin classes and objects; useful for revision and deeper understanding.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-120",
+          "type": "practice",
+          "title": "Codewars Kotlin kata",
+          "url": "https://www.codewars.com/kata/search/kotlin",
+          "provider": "Codewars",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "1 hr+",
+          "why": "Hands-on exercise for Kotlin programming challenges; reinforces mobile-development concepts through implementation.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-121",
+          "type": "practice",
+          "title": "LeetCode Kotlin problems",
+          "url": "https://leetcode.com/problemset/?languageTags=kotlin",
+          "provider": "LeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "1 hr+",
+          "why": "Hands-on exercise for Kotlin problem solving; reinforces mobile-development concepts through implementation.",
+          "priority": "Recommended"
+        }
+      ],
+      "tracks": [
+        "android"
+      ]
+    },
+    {
+      "id": "mobile-android-core",
+      "name": "Android Core and Jetpack Compose",
+      "domain": "mobile",
+      "level": 2,
+      "prerequisites": [
+        "mobile-kotlin"
+      ],
+      "estimatedHours": 17,
+      "topics": [
+        {
+          "id": "mobile-android-core-1",
+          "title": "Android Studio, activities and the app lifecycle",
+          "hours": 5
+        },
+        {
+          "id": "mobile-android-core-2",
+          "title": "Intents, manifest and resources",
+          "hours": 5
+        },
+        {
+          "id": "mobile-android-core-3",
+          "title": "Jetpack Compose UI basics",
+          "hours": 7
+        }
+      ],
+      "miniTasks": [
+        "Build a first app with two screens.",
+        "Pass data between screens and handle a system intent.",
+        "Build a list-detail UI in Compose."
+      ],
+      "resources": [
+        {
+          "id": "MOBILE-001",
+          "type": "video",
+          "title": "Build your first Android app in Kotlin",
+          "url": "https://www.youtube.com/watch?v=7VG8b7FtTo0",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "45 min",
+          "why": "Specific video covering Android fundamentals; useful for learning the implementation workflow from a concrete example.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-039",
+          "type": "course",
+          "title": "Android Basics with Compose course",
+          "url": "https://developer.android.com/courses/android-basics-compose/course",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "21 hr",
+          "why": "Structured course covering Android development with Jetpack Compose with guided progression and hands-on mobile development work.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-042",
+          "type": "course",
+          "title": "Android Basics in Kotlin",
+          "url": "https://developer.android.com/courses/basic-android-kotlin-training/overview",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "15 hr+",
+          "why": "Structured course covering Android fundamentals with guided progression and hands-on mobile development work.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-049",
+          "type": "course",
+          "title": "Android Basics with Compose – Unit 1",
+          "url": "https://developer.android.com/courses/android-basics-compose/unit-1",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "8 hr",
+          "why": "Structured course covering Android first app foundations with guided progression and hands-on mobile development work.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-053",
+          "type": "course",
+          "title": "Jetpack Compose for Android Developers",
+          "url": "https://developer.android.com/courses/jetpack-compose/course",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "10 hr+",
+          "why": "Structured course covering Jetpack Compose app development with guided progression and hands-on mobile development work.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-062",
+          "type": "article",
+          "title": "Coroutines best practices",
+          "url": "https://developer.android.com/kotlin/coroutines/coroutines-best-practices",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "25 min",
+          "why": "Focused reference on Android coroutine best practices from an established mobile-development documentation source.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-075",
+          "type": "reference",
+          "title": "Compose layout basics",
+          "url": "https://developer.android.com/develop/ui/compose/layouts/basics",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "25 min",
+          "why": "Official documentation for Jetpack Compose layouts, suitable for accurate implementation and API guidance.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-079",
+          "type": "reference",
+          "title": "Jetpack Compose",
+          "url": "https://developer.android.com/develop/ui/compose",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "30 min",
+          "why": "Official documentation for Jetpack Compose toolkit, suitable for accurate implementation and API guidance.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-089",
+          "type": "book",
+          "title": "Activity lifecycle",
+          "url": "https://developer.android.com/guide/components/activities/activity-lifecycle",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "30 min",
+          "why": "Conceptual notes/reference for Android activity lifecycle; useful for revision and deeper understanding.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-090",
+          "type": "book",
+          "title": "Intents and intent filters",
+          "url": "https://developer.android.com/guide/components/intents-filters",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "35 min",
+          "why": "Conceptual notes/reference for Android intents; useful for revision and deeper understanding.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-093",
+          "type": "book",
+          "title": "Thinking in Compose",
+          "url": "https://developer.android.com/develop/ui/compose/mental-model",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30 min",
+          "why": "Conceptual notes/reference for Compose concepts; useful for revision and deeper understanding.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-106",
+          "type": "practice",
+          "title": "Build your first Android app codelab",
+          "url": "https://developer.android.google.cn/codelabs/basic-android-kotlin-compose-first-app?hl=en",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "1 hr",
+          "why": "Hands-on exercise for Android first app practice; reinforces mobile-development concepts through implementation.",
+          "priority": "Must-have"
+        }
+      ],
+      "tracks": [
+        "android"
+      ]
+    },
+    {
+      "id": "mobile-android-arch",
+      "name": "Android Architecture, Navigation and Room",
+      "domain": "mobile",
+      "level": 2,
+      "prerequisites": [
+        "mobile-android-core"
+      ],
+      "estimatedHours": 14,
+      "topics": [
+        {
+          "id": "mobile-android-arch-1",
+          "title": "ViewModel and state management",
+          "hours": 5
+        },
+        {
+          "id": "mobile-android-arch-2",
+          "title": "Navigation in Compose",
+          "hours": 4
+        },
+        {
+          "id": "mobile-android-arch-3",
+          "title": "Room local database",
+          "hours": 5
+        }
+      ],
+      "miniTasks": [
+        "Move your app's state into a ViewModel and survive rotation.",
+        "Add a multi-screen navigation graph.",
+        "Persist your app's data with Room."
+      ],
+      "resources": [
+        {
+          "id": "MOBILE-002",
+          "type": "video",
+          "title": "Jetpack Compose: State",
+          "url": "https://www.youtube.com/watch?v=mymWGMy9pYI",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "10 min",
+          "why": "Specific video covering Jetpack Compose state; useful for learning the implementation workflow from a concrete example.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-050",
+          "type": "course",
+          "title": "Android Basics with Compose – Unit 2 pathway 1",
+          "url": "https://developer.android.com/courses/pathways/android-basics-compose-unit-2-pathway-1",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "6 hr",
+          "why": "Structured course covering Compose and Kotlin state/navigation fundamentals with guided progression and hands-on mobile development work.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-073",
+          "type": "reference",
+          "title": "Android app architecture",
+          "url": "https://developer.android.com/topic/architecture",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "35 min",
+          "why": "Official documentation for Android app architecture, suitable for accurate implementation and API guidance.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-076",
+          "type": "reference",
+          "title": "ViewModel overview",
+          "url": "https://developer.android.com/topic/libraries/architecture/viewmodel",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20 min",
+          "why": "Official documentation for Android ViewModel, suitable for accurate implementation and API guidance.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-081",
+          "type": "reference",
+          "title": "Compose Navigation",
+          "url": "https://developer.android.com/develop/ui/compose/navigation",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "25 min",
+          "why": "Official documentation for Navigation in Compose, suitable for accurate implementation and API guidance.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-094",
+          "type": "book",
+          "title": "State in Compose",
+          "url": "https://developer.android.com/develop/ui/compose/state",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "35 min",
+          "why": "Conceptual notes/reference for Compose state management; useful for revision and deeper understanding.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-096",
+          "type": "book",
+          "title": "Navigation guide",
+          "url": "https://developer.android.com/guide/navigation",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "35 min",
+          "why": "Conceptual notes/reference for Android navigation; useful for revision and deeper understanding.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-097",
+          "type": "book",
+          "title": "Room persistence library",
+          "url": "https://developer.android.com/training/data-storage/room",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "35 min",
+          "why": "Conceptual notes/reference for Android Room database; useful for revision and deeper understanding.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-107",
+          "type": "practice",
+          "title": "Practice: Add ViewModel to Dessert Clicker",
+          "url": "https://developer.android.com/codelabs/basic-android-kotlin-compose-viewmodel-and-state",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "1 hr",
+          "why": "Hands-on exercise for Compose ViewModel practice; reinforces mobile-development concepts through implementation.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-108",
+          "type": "practice",
+          "title": "Navigate between screens with Compose",
+          "url": "https://developer.android.com/codelabs/basic-android-kotlin-compose-navigation",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "1 hr",
+          "why": "Hands-on exercise for Compose navigation practice; reinforces mobile-development concepts through implementation.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-111",
+          "type": "practice",
+          "title": "Room database codelab",
+          "url": "https://developer.android.com/codelabs/basic-android-kotlin-compose-persisting-data-room",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "1 hr 30 min",
+          "why": "Hands-on exercise for Android Room practice; reinforces mobile-development concepts through implementation.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-016",
+          "type": "video",
+          "title": "Setting up navigation for react native",
+          "url": "https://www.youtube.com/watch?v=6qSHnTXeUxI",
+          "provider": "Hitesh Choudhary",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "20 min",
+          "why": "Specific video covering React Native navigation; useful for learning the implementation workflow from a concrete example.",
+          "priority": "Recommended"
+        }
+      ],
+      "tracks": [
+        "android"
+      ]
+    },
+    {
+      "id": "mobile-android-net",
+      "name": "Android Networking, Firebase and Background Work",
+      "domain": "mobile",
+      "level": 2,
+      "prerequisites": [
+        "mobile-android-arch"
+      ],
+      "estimatedHours": 14,
+      "topics": [
+        {
+          "id": "mobile-android-net-1",
+          "title": "Retrofit and REST APIs",
+          "hours": 5
+        },
+        {
+          "id": "mobile-android-net-2",
+          "title": "Firebase: auth and database",
+          "hours": 6
+        },
+        {
+          "id": "mobile-android-net-3",
+          "title": "Background work with WorkManager",
+          "hours": 3
+        }
+      ],
+      "miniTasks": [
+        "Load data from a public API and show it with loading and error states.",
+        "Add sign-in and cloud storage to your app.",
+        "Schedule a periodic sync job."
+      ],
+      "resources": [
+        {
+          "id": "MOBILE-040",
+          "type": "course",
+          "title": "Android Basics with Compose and Firebase",
+          "url": "https://developer.android.com/courses/android-basics-compose-firebase/course",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "12 hr+",
+          "why": "Structured course covering Android + Firebase with guided progression and hands-on mobile development work.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-101",
+          "type": "book",
+          "title": "Networking",
+          "url": "https://reactnative.dev/docs/network",
+          "provider": "React Native",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30 min",
+          "why": "Conceptual notes/reference for React Native networking; useful for revision and deeper understanding.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-109",
+          "type": "practice",
+          "title": "Get data from the internet",
+          "url": "https://developer.android.com/codelabs/basic-android-kotlin-compose-getting-data-internet",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "1 hr",
+          "why": "Hands-on exercise for Android networking practice; reinforces mobile-development concepts through implementation.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-055",
+          "type": "article",
+          "title": "Background tasks overview",
+          "url": "https://developer.android.com/develop/background-work/background-tasks",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20 min",
+          "why": "Focused reference on Android background work from an established mobile-development documentation source.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-056",
+          "type": "article",
+          "title": "Services overview",
+          "url": "https://developer.android.com/develop/background-work/services",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "25 min",
+          "why": "Focused reference on Android services from an established mobile-development documentation source.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-057",
+          "type": "article",
+          "title": "Foreground service types",
+          "url": "https://developer.android.com/develop/background-work/services/fgs/service-types",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "20 min",
+          "why": "Focused reference on Android foreground services from an established mobile-development documentation source.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-098",
+          "type": "book",
+          "title": "Persistent background work",
+          "url": "https://developer.android.com/develop/background-work/background-tasks/persistent",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30 min",
+          "why": "Conceptual notes/reference for WorkManager and persistent work; useful for revision and deeper understanding.",
+          "priority": "Recommended"
+        }
+      ],
+      "tracks": [
+        "android"
+      ]
+    },
+    {
+      "id": "mobile-android-release",
+      "name": "Android Testing and Play Store Release",
+      "domain": "mobile",
+      "level": 3,
+      "prerequisites": [
+        "mobile-android-net"
+      ],
+      "estimatedHours": 8,
+      "topics": [
+        {
+          "id": "mobile-android-release-1",
+          "title": "Testing Android apps",
+          "hours": 4
+        },
+        {
+          "id": "mobile-android-release-2",
+          "title": "Signing, release builds and Play Store publishing",
+          "hours": 4
+        }
+      ],
+      "miniTasks": [
+        "Write unit and UI tests for one feature.",
+        "Produce a signed release build and a store listing draft."
+      ],
+      "resources": [
+        {
+          "id": "MOBILE-060",
+          "type": "article",
+          "title": "Testing fundamentals",
+          "url": "https://developer.android.com/training/testing/fundamentals",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "30 min",
+          "why": "Focused reference on Android testing fundamentals from an established mobile-development documentation source.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-077",
+          "type": "reference",
+          "title": "Compose testing",
+          "url": "https://developer.android.com/develop/ui/compose/testing",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "25 min",
+          "why": "Official documentation for Jetpack Compose testing, suitable for accurate implementation and API guidance.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-078",
+          "type": "reference",
+          "title": "Accessibility in Compose",
+          "url": "https://developer.android.com/develop/ui/compose/accessibility",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "25 min",
+          "why": "Official documentation for Compose accessibility, suitable for accurate implementation and API guidance.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-058",
+          "type": "article",
+          "title": "Declare foreground services",
+          "url": "https://developer.android.com/develop/background-work/services/fgs/declare",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Focused reference on Foreground service declarations from an established mobile-development documentation source.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-144",
+          "type": "paper",
+          "title": "Anti-patterns and the energy efficiency of Android applications",
+          "url": "https://arxiv.org/abs/1610.05711",
+          "provider": "Sergio Oliveira et al.",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "30 min",
+          "why": "Peer-reviewed/preprint research focused on Android energy efficiency; useful for understanding evidence and trade-offs in mobile development.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-145",
+          "type": "paper",
+          "title": "ARENA: A tool for measuring and analysing the energy efficiency of Android apps",
+          "url": "https://arxiv.org/abs/2510.01754",
+          "provider": "ARENA authors",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "30 min",
+          "why": "Peer-reviewed/preprint research focused on Android energy measurement; useful for understanding evidence and trade-offs in mobile development.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-146",
+          "type": "paper",
+          "title": "How do Developers Test Android Applications?",
+          "url": "https://arxiv.org/abs/1801.06268",
+          "provider": "Authors in arXiv record",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30 min",
+          "why": "Peer-reviewed/preprint research focused on Android testing practices; useful for understanding evidence and trade-offs in mobile development.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-147",
+          "type": "paper",
+          "title": "A Survey on the Detection of Android Malicious Apps",
+          "url": "https://arxiv.org/abs/1905.13747",
+          "provider": "Authors in arXiv record",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "35 min",
+          "why": "Peer-reviewed/preprint research focused on Android mobile security; useful for understanding evidence and trade-offs in mobile development.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-059",
+          "type": "article",
+          "title": "Background-start restrictions",
+          "url": "https://developer.android.com/develop/background-work/services/fgs/restrictions-bg-start",
+          "provider": "Android Developers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "15 min",
+          "why": "Focused reference on Foreground service launch restrictions from an established mobile-development documentation source.",
+          "priority": "Supplementary"
+        }
+      ],
+      "tracks": [
+        "android"
+      ]
+    },
+    {
+      "id": "mobile-dart",
+      "name": "Dart Fundamentals",
+      "domain": "mobile",
+      "level": 1,
+      "prerequisites": [
+        "prog-basics"
+      ],
+      "estimatedHours": 13,
+      "topics": [
+        {
+          "id": "mobile-dart-1",
+          "title": "Dart syntax and null safety",
+          "hours": 5
+        },
+        {
+          "id": "mobile-dart-2",
+          "title": "OOP and collections in Dart",
+          "hours": 4
+        },
+        {
+          "id": "mobile-dart-3",
+          "title": "Futures, streams and async programming",
+          "hours": 4
+        }
+      ],
+      "miniTasks": [
+        "Solve 12 Dart exercises.",
+        "Model a small domain with classes and collections.",
+        "Fetch and transform data with async/await and a stream."
+      ],
+      "resources": [
+        {
+          "id": "MOBILE-104",
+          "type": "book",
+          "title": "Dart language tour",
+          "url": "https://dart.dev/language",
+          "provider": "Dart",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "1 hr+",
+          "why": "Conceptual notes/reference for Dart language guide; useful for revision and deeper understanding.",
+          "priority": "Must-have"
+        }
+      ],
+      "tracks": [
+        "flutter"
+      ],
+      "needsReview": true
+    },
+    {
+      "id": "mobile-flutter-ui",
+      "name": "Flutter Widgets and Navigation",
+      "domain": "mobile",
+      "level": 2,
+      "prerequisites": [
+        "mobile-dart"
+      ],
+      "estimatedHours": 16,
+      "topics": [
+        {
+          "id": "mobile-flutter-ui-1",
+          "title": "Widgets, layouts and the widget tree",
+          "hours": 7
+        },
+        {
+          "id": "mobile-flutter-ui-2",
+          "title": "Navigation, forms and validation",
+          "hours": 5
+        },
+        {
+          "id": "mobile-flutter-ui-3",
+          "title": "Theming and animations",
+          "hours": 4
+        }
+      ],
+      "miniTasks": [
+        "Rebuild a real app screen pixel-faithfully in Flutter.",
+        "Build a multi-screen app with a validated sign-up form.",
+        "Add a custom theme with dark mode and one animation."
+      ],
+      "resources": [
+        {
+          "id": "MOBILE-005",
+          "type": "video",
+          "title": "Flutter Course - Full Tutorial for Beginners (Build iOS and Android Apps)",
+          "url": "https://www.youtube.com/watch?v=pTJJsmejUOQ",
+          "provider": "freeCodeCamp.org",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "10 hr",
+          "why": "Specific video covering Flutter development; useful for learning the implementation workflow from a concrete example.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-006",
+          "type": "video",
+          "title": "Flutter Tutorial For Beginners In 1 Hour",
+          "url": "https://www.youtube.com/watch?v=C-fKAzdTrLU",
+          "provider": "Flutter Mapp",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "1 hr",
+          "why": "Specific video covering Flutter fundamentals; useful for learning the implementation workflow from a concrete example.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-070",
+          "type": "reference",
+          "title": "Flutter Learn",
+          "url": "https://docs.flutter.dev/learn",
+          "provider": "Flutter",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "2 hr+",
+          "why": "Official documentation for Flutter learning path, suitable for accurate implementation and API guidance.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-113",
+          "type": "practice",
+          "title": "Flutter codelabs",
+          "url": "https://docs.flutter.dev/codelabs",
+          "provider": "Flutter",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "2 hr+",
+          "why": "Hands-on exercise for Flutter hands-on practice; reinforces mobile-development concepts through implementation.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-116",
+          "type": "practice",
+          "title": "Navigate to a new screen and back",
+          "url": "https://docs.flutter.dev/cookbook/navigation/navigation-basics",
+          "provider": "Flutter",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "30 min",
+          "why": "Hands-on exercise for Flutter navigation practice; reinforces mobile-development concepts through implementation.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-115",
+          "type": "practice",
+          "title": "Build a form with validation",
+          "url": "https://docs.flutter.dev/cookbook/forms/validation",
+          "provider": "Flutter",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "30 min",
+          "why": "Hands-on exercise for Flutter form validation; reinforces mobile-development concepts through implementation.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-138",
+          "type": "project",
+          "title": "Veggie Seasons",
+          "url": "https://github.com/flutter/samples/tree/main/veggieseasons",
+          "provider": "Flutter",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "3 hr+",
+          "why": "A buildable mobile app sample focused on Flutter seasonal produce sample app; useful for portfolio practice and architecture study.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-139",
+          "type": "project",
+          "title": "Place Tracker",
+          "url": "https://github.com/flutter/samples/tree/main/place_tracker",
+          "provider": "Flutter",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "4 hr+",
+          "why": "A buildable mobile app sample focused on Flutter location and place-tracking sample; useful for portfolio practice and architecture study.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-140",
+          "type": "project",
+          "title": "Form App",
+          "url": "https://github.com/flutter/samples/tree/main/form_app",
+          "provider": "Flutter",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "2 hr+",
+          "why": "A buildable mobile app sample focused on Flutter form-handling sample; useful for portfolio practice and architecture study.",
+          "priority": "Recommended"
+        }
+      ],
+      "tracks": [
+        "flutter"
+      ]
+    },
+    {
+      "id": "mobile-flutter-state",
+      "name": "Flutter State Management and Architecture",
+      "domain": "mobile",
+      "level": 2,
+      "prerequisites": [
+        "mobile-flutter-ui"
+      ],
+      "estimatedHours": 17,
+      "topics": [
+        {
+          "id": "mobile-flutter-state-1",
+          "title": "State management: Provider, Riverpod or Bloc",
+          "hours": 8
+        },
+        {
+          "id": "mobile-flutter-state-2",
+          "title": "Local storage and persistence",
+          "hours": 4
+        },
+        {
+          "id": "mobile-flutter-state-3",
+          "title": "Clean architecture and testing",
+          "hours": 5
+        }
+      ],
+      "miniTasks": [
+        "Rebuild your app with one state-management library.",
+        "Persist user data with SQLite or shared preferences.",
+        "Split your app into data, domain and presentation layers and add tests."
+      ],
+      "resources": [
+        {
+          "id": "MOBILE-004",
+          "type": "video",
+          "title": "Flutter Clean Architecture - Full Course",
+          "url": "https://www.youtube.com/watch?v=SmJB8cy8emU",
+          "provider": "Flutter Mapp",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "3 hr",
+          "why": "Specific video covering Flutter architecture; useful for learning the implementation workflow from a concrete example.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-007",
+          "type": "video",
+          "title": "Flutter Provider State Management - For Beginners",
+          "url": "https://www.youtube.com/watch?v=Mk3nsf3wTIs",
+          "provider": "Flutter Mapp",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "1 hr",
+          "why": "Specific video covering Flutter state management; useful for learning the implementation workflow from a concrete example.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-009",
+          "type": "video",
+          "title": "Learn Flutter Clean Architecture & TDD",
+          "url": "https://www.youtube.com/watch?v=dc3B_mMrZ-Q",
+          "provider": "Reso Coder",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "2 hr",
+          "why": "Specific video covering Flutter clean architecture and testing; useful for learning the implementation workflow from a concrete example.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-010",
+          "type": "video",
+          "title": "Flutter Clean Architecture | Data Layer",
+          "url": "https://www.youtube.com/watch?v=tACnip2S_mQ",
+          "provider": "Johannes Milke",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "40 min",
+          "why": "Specific video covering Flutter clean architecture data layer; useful for learning the implementation workflow from a concrete example.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-082",
+          "type": "reference",
+          "title": "Flutter app architecture",
+          "url": "https://docs.flutter.dev/app-architecture",
+          "provider": "Flutter",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "30 min",
+          "why": "Official documentation for Flutter architecture guidance, suitable for accurate implementation and API guidance.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-103",
+          "type": "book",
+          "title": "Flutter app architecture guide",
+          "url": "https://docs.flutter.dev/app-architecture/guide",
+          "provider": "Flutter",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "35 min",
+          "why": "Conceptual notes/reference for Flutter architecture notes; useful for revision and deeper understanding.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-117",
+          "type": "practice",
+          "title": "Persist data with SQLite",
+          "url": "https://docs.flutter.dev/cookbook/persistence/sqlite",
+          "provider": "Flutter",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "45 min",
+          "why": "Hands-on exercise for Flutter SQLite practice; reinforces mobile-development concepts through implementation.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-118",
+          "type": "practice",
+          "title": "Store key-value data",
+          "url": "https://docs.flutter.dev/cookbook/persistence/key-value",
+          "provider": "Flutter",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "30 min",
+          "why": "Hands-on exercise for Flutter local storage practice; reinforces mobile-development concepts through implementation.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-143",
+          "type": "project",
+          "title": "Provider Shopper",
+          "url": "https://github.com/flutter/samples/tree/main/provider_shopper",
+          "provider": "Flutter",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "3 hr+",
+          "why": "A buildable mobile app sample focused on Flutter state-management sample app; useful for portfolio practice and architecture study.",
+          "priority": "Recommended"
+        }
+      ],
+      "tracks": [
+        "flutter"
+      ]
+    },
+    {
+      "id": "mobile-flutter-backend",
+      "name": "Flutter Backend Integration and Release",
+      "domain": "mobile",
+      "level": 2,
+      "prerequisites": [
+        "mobile-flutter-state"
+      ],
+      "estimatedHours": 16,
+      "topics": [
+        {
+          "id": "mobile-flutter-backend-1",
+          "title": "REST API integration",
+          "hours": 5
+        },
+        {
+          "id": "mobile-flutter-backend-2",
+          "title": "Firebase integration",
+          "hours": 6
+        },
+        {
+          "id": "mobile-flutter-backend-3",
+          "title": "Releasing to Android and iOS",
+          "hours": 5
+        }
+      ],
+      "miniTasks": [
+        "Consume a public API with error handling.",
+        "Add authentication and cloud data with Firebase.",
+        "Produce release builds for both platforms."
+      ],
+      "resources": [
+        {
+          "id": "MOBILE-114",
+          "type": "practice",
+          "title": "Fetch data from the internet",
+          "url": "https://docs.flutter.dev/cookbook/networking/fetch-data",
+          "provider": "Flutter",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "45 min",
+          "why": "Hands-on exercise for Flutter networking practice; reinforces mobile-development concepts through implementation.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-008",
+          "type": "video",
+          "title": "Flutter Tutorial - Firebase Setup For Android 1/3 | Android, iOS, Web",
+          "url": "https://www.youtube.com/watch?v=CpyALC8Zpxo",
+          "provider": "HeyFlutter.com",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20 min",
+          "why": "Specific video covering Flutter Firebase integration; useful for learning the implementation workflow from a concrete example.",
+          "priority": "Recommended"
+        }
+      ],
+      "tracks": [
+        "flutter"
+      ],
+      "needsReview": true
+    },
+    {
+      "id": "mobile-swift",
+      "name": "Swift Fundamentals",
+      "domain": "mobile",
+      "level": 1,
+      "prerequisites": [
+        "prog-basics"
+      ],
+      "estimatedHours": 15,
+      "topics": [
+        {
+          "id": "mobile-swift-1",
+          "title": "Swift syntax, optionals and value types",
+          "hours": 6
+        },
+        {
+          "id": "mobile-swift-2",
+          "title": "Protocols and object-oriented Swift",
+          "hours": 5
+        },
+        {
+          "id": "mobile-swift-3",
+          "title": "Swift concurrency",
+          "hours": 4
+        }
+      ],
+      "miniTasks": [
+        "Solve 12 Swift exercises.",
+        "Model a domain with protocols and structs.",
+        "Fetch data concurrently with async/await."
+      ],
+      "resources": [
+        {
+          "id": "MOBILE-105",
+          "type": "book",
+          "title": "The Swift Programming Language",
+          "url": "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/",
+          "provider": "Swift",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "2 hr+",
+          "why": "Conceptual notes/reference for Swift language guide; useful for revision and deeper understanding.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-123",
+          "type": "practice",
+          "title": "Swift exercises",
+          "url": "https://exercism.org/tracks/swift/exercises",
+          "provider": "Exercism",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "2 hr+",
+          "why": "Hands-on exercise for Swift coding exercises; reinforces mobile-development concepts through implementation.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-038",
+          "type": "video",
+          "title": "WWDC25: Embracing Swift concurrency | Apple",
+          "url": "https://www.youtube.com/watch?v=u2rYp8AMuSg",
+          "provider": "Apple",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "40 min",
+          "why": "Specific video covering Swift concurrency; useful for learning the implementation workflow from a concrete example.",
+          "priority": "Recommended"
+        }
+      ],
+      "tracks": [
+        "ios"
+      ]
+    },
+    {
+      "id": "mobile-swiftui",
+      "name": "SwiftUI Fundamentals",
+      "domain": "mobile",
+      "level": 2,
+      "prerequisites": [
+        "mobile-swift"
+      ],
+      "estimatedHours": 16,
+      "topics": [
+        {
+          "id": "mobile-swiftui-1",
+          "title": "SwiftUI views and layout",
+          "hours": 7
+        },
+        {
+          "id": "mobile-swiftui-2",
+          "title": "Navigation and state (ObservableObject)",
+          "hours": 6
+        },
+        {
+          "id": "mobile-swiftui-3",
+          "title": "Animations and polish",
+          "hours": 3
+        }
+      ],
+      "miniTasks": [
+        "Build a list-detail app in SwiftUI.",
+        "Add multi-screen navigation and shared state.",
+        "Add one meaningful animation."
+      ],
+      "resources": [
+        {
+          "id": "MOBILE-028",
+          "type": "video",
+          "title": "Lecture 1: Getting started with SwiftUI",
+          "url": "https://www.youtube.com/watch?v=bqu6BquVi2M",
+          "provider": "Stanford",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "1 hr 20 min",
+          "why": "Specific video covering SwiftUI fundamentals; useful for learning the implementation workflow from a concrete example.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-029",
+          "type": "video",
+          "title": "Lecture 2: Learning more about SwiftUI",
+          "url": "https://www.youtube.com/watch?v=3lahkdHEhW8",
+          "provider": "Stanford",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "1 hr 15 min",
+          "why": "Specific video covering SwiftUI views and layout; useful for learning the implementation workflow from a concrete example.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-031",
+          "type": "video",
+          "title": "Stanford CS193p: iOS Development with SwiftUI | 2025 | L1: Intro to Xcode and SwiftUI",
+          "url": "https://www.youtube.com/watch?v=kCjDulwChRQ",
+          "provider": "Stanford",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "1 hr 30 min",
+          "why": "Specific video covering SwiftUI and Xcode; useful for learning the implementation workflow from a concrete example.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-044",
+          "type": "course",
+          "title": "Develop in Swift Tutorials",
+          "url": "https://developer.apple.com/tutorials/develop-in-swift",
+          "provider": "Apple Developer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "10 hr+",
+          "why": "Structured course covering Swift and Xcode app development with guided progression and hands-on mobile development work.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-045",
+          "type": "course",
+          "title": "App Dev Tutorials",
+          "url": "https://developer.apple.com/tutorials/app-dev-training",
+          "provider": "Apple Developer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "16 hr 40 min",
+          "why": "Structured course covering SwiftUI and UIKit app development with guided progression and hands-on mobile development work.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-046",
+          "type": "course",
+          "title": "Welcome to SwiftUI",
+          "url": "https://developer.apple.com/tutorials/develop-in-swift/welcome-to-swiftui",
+          "provider": "Apple Developer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "1 hr",
+          "why": "Structured course covering SwiftUI fundamentals with guided progression and hands-on mobile development work.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-071",
+          "type": "reference",
+          "title": "SwiftUI Get Started",
+          "url": "https://developer.apple.com/swiftui/get-started",
+          "provider": "Apple Developer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "45 min",
+          "why": "Official documentation for SwiftUI getting started, suitable for accurate implementation and API guidance.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "MOBILE-030",
+          "type": "video",
+          "title": "Lecture 3: MVVM and the Swift type system",
+          "url": "https://www.youtube.com/watch?v=--qKOhdgJAs",
+          "provider": "Stanford",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "1 hr 20 min",
+          "why": "Specific video covering SwiftUI architecture and MVVM; useful for learning the implementation workflow from a concrete example.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-047",
+          "type": "course",
+          "title": "Hello, SwiftUI",
+          "url": "https://developer.apple.com/tutorials/develop-in-swift/hello-swiftui",
+          "provider": "Apple Developer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "45 min",
+          "why": "Structured course covering Xcode and SwiftUI first app with guided progression and hands-on mobile development work.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "MOBILE-072",
+          "type": "reference",
+          "title": "SwiftUI Resources",
+          "url": "https://developer.apple.com/swiftui/resources",
+          "provider": "Apple Developer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner to Intermediate",
+          "time": "30 min",
+          "why": "Official documentation for SwiftUI official resources, suitable for accurate implementation and API guidance.",
+          "priority": "Recommended"
+        }
+      ],
+      "tracks": [
+        "ios"
+      ]
+    },
+    {
+      "id": "mobile-ios-data",
+      "name": "iOS Persistence, Networking and Firebase",
+      "domain": "mobile",
+      "level": 2,
+      "prerequisites": [
+        "mobile-swiftui"
+      ],
+      "estimatedHours": 16,
+      "topics": [
+        {
+          "id": "mobile-ios-data-1",
+          "title": "SwiftData or Core Data",
+          "hours": 6
+        },
+        {
+          "id": "mobile-ios-data-2",
+          "title": "Networking with URLSession",
+          "hours": 5
+        },
+        {
+          "id": "mobile-ios-data-3",
+          "title": "Firebase integration",
+          "hours": 5
+        }
+      ],
+      "miniTasks": [
+        "Persist your app's data locally.",
+        "Load data from a public API with error handling.",
+        "Add authentication and cloud data."
+      ],
+      "resources": [
+        {
+          "id": "MOBILE-048",
+          "type": "course",
+          "title": "Welcome to app development",
+          "url": "https://developer.apple.com/tutorials/develop-in-swift/welcome-to-app-development",
+          "provider": "Apple Developer",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "2 hr",
+          "why": "Structured course covering SwiftData, PhotosUI and app development with guided progression and hands-on mobile development work.",
+          "priority": "Recommended"
+        }
+      ],
+      "tracks": [
+        "ios"
+      ],
+      "needsReview": true
+    },
+    {
+      "id": "mobile-ios-release",
+      "name": "iOS Testing and App Store Release",
+      "domain": "mobile",
+      "level": 3,
+      "prerequisites": [
+        "mobile-ios-data"
+      ],
+      "estimatedHours": 9,
+      "topics": [
+        {
+          "id": "mobile-ios-release-1",
+          "title": "Testing iOS apps",
+          "hours": 4
+        },
+        {
+          "id": "mobile-ios-release-2",
+          "title": "TestFlight and App Store release",
+          "hours": 5
+        }
+      ],
+      "miniTasks": [
+        "Write unit and UI tests for one feature.",
+        "Prepare a TestFlight build and a store listing draft."
+      ],
+      "resources": [],
+      "tracks": [
+        "ios"
+      ],
+      "needsReview": true
+    }
+  ]
+}

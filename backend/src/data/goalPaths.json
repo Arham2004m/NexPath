@@ -1,0 +1,136 @@
+{
+  "faang": {
+    "required": [
+      "prog-basics",
+      "dsa-arrays",
+      "dsa-linear",
+      "dsa-sorting-search",
+      "dsa-trees",
+      "dsa-graphs",
+      "dsa-dp",
+      "dsa-interview",
+      "os-basics",
+      "dbms-sql",
+      "dbms-design",
+      "cn-basics",
+      "sd-basics",
+      "sd-lld"
+    ],
+    "optional": [
+      "dsa-advanced",
+      "sd-distributed",
+      "os-concurrency",
+      "cn-transport",
+      "dbms-advanced"
+    ]
+  },
+  "ai_ml": {
+    "required": [
+      "aiml-python",
+      "maths-ml",
+      "aiml-ml",
+      "aiml-dl",
+      "aiml-nlp",
+      "aiml-mlops"
+    ],
+    "optional": [
+      "dbms-sql",
+      "sd-basics",
+      "web-node"
+    ]
+  },
+  "web_dev": {
+    "subTracks": {
+      "frontend": {
+        "required": [
+          "web-html-css",
+          "web-js",
+          "web-react",
+          "web-state-ts",
+          "web-portfolio"
+        ],
+        "optional": [
+          "web-node",
+          "prog-git"
+        ]
+      },
+      "backend": {
+        "required": [
+          "web-js",
+          "web-node",
+          "web-db",
+          "web-auth",
+          "web-deploy",
+          "dbms-sql"
+        ],
+        "optional": [
+          "dbms-design",
+          "sd-basics",
+          "cn-basics"
+        ]
+      },
+      "fullstack": {
+        "required": [
+          "web-html-css",
+          "web-js",
+          "web-react",
+          "web-state-ts",
+          "web-node",
+          "web-db",
+          "web-auth",
+          "web-deploy",
+          "sd-basics",
+          "web-fullstack-projects"
+        ],
+        "optional": [
+          "dbms-design",
+          "sd-distributed"
+        ]
+      }
+    }
+  },
+  "mobile_dev": {
+    "subTracks": {
+      "android": {
+        "required": [
+          "mobile-kotlin",
+          "mobile-android-core",
+          "mobile-android-arch",
+          "mobile-android-net",
+          "mobile-android-release"
+        ],
+        "optional": [
+          "dbms-sql",
+          "dsa-arrays",
+          "prog-git"
+        ]
+      },
+      "flutter": {
+        "required": [
+          "mobile-dart",
+          "mobile-flutter-ui",
+          "mobile-flutter-state",
+          "mobile-flutter-backend"
+        ],
+        "optional": [
+          "dbms-sql",
+          "dsa-arrays",
+          "prog-git"
+        ]
+      },
+      "ios": {
+        "required": [
+          "mobile-swift",
+          "mobile-swiftui",
+          "mobile-ios-data",
+          "mobile-ios-release"
+        ],
+        "optional": [
+          "dbms-sql",
+          "dsa-arrays",
+          "prog-git"
+        ]
+      }
+    }
+  }
+}

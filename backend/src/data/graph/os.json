@@ -1,0 +1,293 @@
+{
+  "nodes": [
+    {
+      "id": "os-basics",
+      "name": "Operating System Fundamentals",
+      "domain": "os",
+      "level": 1,
+      "prerequisites": [
+        "prog-basics"
+      ],
+      "estimatedHours": 15,
+      "topics": [
+        {
+          "id": "os-basics-1",
+          "title": "Processes, threads and system calls",
+          "hours": 5
+        },
+        {
+          "id": "os-basics-2",
+          "title": "CPU scheduling algorithms",
+          "hours": 4
+        },
+        {
+          "id": "os-basics-3",
+          "title": "Memory management: paging and virtual memory",
+          "hours": 6
+        }
+      ],
+      "miniTasks": [
+        "Write a program that creates processes and threads and observe their behaviour.",
+        "Simulate FCFS, SJF and Round Robin and compare average waiting times.",
+        "Simulate a page-replacement algorithm (FIFO, LRU) and count faults."
+      ],
+      "resources": [
+        {
+          "id": "CSFG-023",
+          "type": "book",
+          "title": "OSTEP – Operating Systems: Three Easy Pieces",
+          "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/",
+          "provider": "Remzi H. Arpaci-Dusseau & Andrea C. Arpaci-Dusseau",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "12–16 weeks",
+          "why": "Free textbook covering virtualization, concurrency, persistence, and OS mechanisms.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-051",
+          "type": "article",
+          "title": "GeeksforGeeks Operating Systems",
+          "url": "https://www.geeksforgeeks.org/operating-systems/",
+          "provider": "GeeksforGeeks",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20–40 hours",
+          "why": "Broad topic-wise OS notes useful for revision of processes, threads, scheduling, synchronization, memory, and filesystems.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-055",
+          "type": "video",
+          "title": "Gate Smashers – Operating System Complete Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiGz9donHRrE9I3Mwn6XdP8p",
+          "provider": "Gate Smashers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Exam-focused",
+          "time": "15–25 hours",
+          "why": "Exact Gate Smashers OS playlist covering introduction, processes, threads, scheduling, synchronization, memory management, disk scheduling and file systems.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-YT-057",
+          "type": "video",
+          "title": "Neso Academy – Operating System Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O",
+          "provider": "Neso Academy",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15–30 hours",
+          "why": "Specific Neso Academy OS playlist with a structured sequence from fundamentals through process management and memory.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-YT-085",
+          "type": "video",
+          "title": "Gate Smashers – System Calls in Operating System",
+          "url": "https://www.youtube.com/watch?v=tWPa-rZiGM8",
+          "provider": "Gate Smashers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 minutes",
+          "why": "Specific lesson explaining system calls and the transition from user mode to kernel functionality.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-YT-086",
+          "type": "video",
+          "title": "Neso Academy – Introduction to Operating Systems",
+          "url": "https://www.youtube.com/watch?v=vBURTt97EkA",
+          "provider": "Neso Academy",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "15 minutes",
+          "why": "Specific Neso Academy lecture covering the definition, types, functions and goals of an operating system.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-024",
+          "type": "reference",
+          "title": "xv6 Operating System",
+          "url": "https://pdos.csail.mit.edu/6.828/2014/xv6.html",
+          "provider": "MIT PDOS",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "4–8 weeks",
+          "why": "Small educational Unix-like kernel useful for understanding processes, memory, system calls, and filesystems.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-025",
+          "type": "reference",
+          "title": "Linux man-pages",
+          "url": "https://man7.org/linux/man-pages/",
+          "provider": "Linux man-pages project",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "Ongoing reference",
+          "why": "Primary reference for system calls, processes, files, networking, and Linux interfaces.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-058",
+          "type": "course",
+          "title": "NPTEL – Operating System Fundamentals",
+          "url": "https://nptel.ac.in/courses/106105214",
+          "provider": "NPTEL / IIT Kharagpur",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "12 weeks",
+          "why": "IIT lecture catalog useful for process management, memory, synchronization, and OS internals.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-062",
+          "type": "course",
+          "title": "CS 162: Operating Systems and System Programming",
+          "url": "https://cs162.org/",
+          "provider": "UC Berkeley",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "20 hr+",
+          "why": "CS 162: Operating Systems and System Programming directly supports operating systems preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-128",
+          "type": "book",
+          "title": "Modern Operating Systems",
+          "url": "https://www.pearson.com/en-ca/subject-catalog/p/modern-operating-systems/P200000003295/9780137618880",
+          "provider": "Andrew S. Tanenbaum; Herbert Bos",
+          "free": false,
+          "pricing": "Varies",
+          "difficulty": "Advanced",
+          "time": "25 hr+",
+          "why": "Modern Operating Systems directly supports operating systems preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-130",
+          "type": "book",
+          "title": "The Linux Programming Interface",
+          "url": "https://man7.org/tlpi/",
+          "provider": "Michael Kerrisk",
+          "free": false,
+          "pricing": "Varies",
+          "difficulty": "Advanced",
+          "time": "25 hr+",
+          "why": "The Linux Programming Interface directly supports operating systems / linux preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "os-concurrency",
+      "name": "Concurrency, Deadlocks and File Systems",
+      "domain": "os",
+      "level": 2,
+      "prerequisites": [
+        "os-basics"
+      ],
+      "estimatedHours": 14,
+      "topics": [
+        {
+          "id": "os-concurrency-1",
+          "title": "Synchronisation: mutexes and semaphores",
+          "hours": 5
+        },
+        {
+          "id": "os-concurrency-2",
+          "title": "Deadlocks: detection, avoidance and prevention",
+          "hours": 4
+        },
+        {
+          "id": "os-concurrency-3",
+          "title": "File systems and I/O",
+          "hours": 5
+        }
+      ],
+      "miniTasks": [
+        "Solve the producer-consumer problem with semaphores.",
+        "Implement the banker's algorithm.",
+        "Write a small tool that walks a directory tree and reports file sizes."
+      ],
+      "resources": [
+        {
+          "id": "CSFG-109",
+          "type": "course",
+          "title": "CS110: Principles of Computer Systems",
+          "url": "https://web.stanford.edu/class/cs110/",
+          "provider": "Stanford University",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "10 weeks",
+          "why": "Covers processes, concurrency, threads, synchronization, networking, system calls, and Unix-oriented systems programming.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-141",
+          "type": "project",
+          "title": "Nand2Tetris Project 12 – Operating System",
+          "url": "https://www.nand2tetris.org/project12",
+          "provider": "Nand2Tetris / Noam Nisan & Shimon Schocken",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "10–20 hours",
+          "why": "Implement core Jack OS libraries to see how language abstractions map onto lower-level hardware and runtime services.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-142",
+          "type": "project",
+          "title": "OSDev Wiki – Bare Bones",
+          "url": "https://wiki.osdev.org/Barebones",
+          "provider": "OSDev Wiki Community",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "8–15 hours",
+          "why": "Guides the first bootable x86 kernel skeleton, exposing bootloading, cross-compilers, linking, and low-level systems concepts.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-150",
+          "type": "paper",
+          "title": "Time, Clocks, and the Ordering of Events in a Distributed System",
+          "url": "https://lamport.azurewebsites.net/pubs/time-clocks.pdf",
+          "provider": "Leslie Lamport",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "1–2 hours",
+          "why": "Introduces the happened-before relation and logical-clock ordering used to reason about events in distributed systems.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-148",
+          "type": "paper",
+          "title": "The UNIX Time-Sharing System",
+          "url": "https://doi.org/10.1145/361011.361061",
+          "provider": "Dennis M. Ritchie & Ken Thompson",
+          "free": false,
+          "pricing": "Varies",
+          "difficulty": "Advanced",
+          "time": "1–2 hours",
+          "why": "Historical systems paper describing the design principles of UNIX and its time-sharing environment, valuable for OS foundations.",
+          "priority": "Recommended"
+        }
+      ]
+    }
+  ]
+}

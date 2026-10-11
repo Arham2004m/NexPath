@@ -1,0 +1,988 @@
+{
+  "nodes": [
+    {
+      "id": "dsa-arrays",
+      "name": "Complexity, Arrays and Hashing",
+      "domain": "dsa",
+      "level": 1,
+      "prerequisites": [
+        "prog-basics"
+      ],
+      "estimatedHours": 14,
+      "topics": [
+        {
+          "id": "dsa-arrays-1",
+          "title": "Big-O analysis and array and string techniques",
+          "hours": 5
+        },
+        {
+          "id": "dsa-arrays-2",
+          "title": "Hashing: maps, sets and frequency counting",
+          "hours": 4
+        },
+        {
+          "id": "dsa-arrays-3",
+          "title": "Two pointers and sliding window",
+          "hours": 5
+        }
+      ],
+      "miniTasks": [
+        "Solve 8 array/string problems and state the complexity of each solution.",
+        "Solve 6 hash-map problems (two-sum, anagrams, subarray sums).",
+        "Solve 8 two-pointer and sliding-window problems."
+      ],
+      "resources": [
+        {
+          "id": "CSFG-003",
+          "type": "article",
+          "title": "GeeksforGeeks Data Structures",
+          "url": "https://www.geeksforgeeks.org/data-structures/",
+          "provider": "GeeksforGeeks",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "20–40 hours",
+          "why": "Large reference collection for stacks, queues, trees, graphs, heaps, hashing, and more.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-YT-051",
+          "type": "video",
+          "title": "Gate Smashers – Data Structure Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiEwaANNt3OqJPVIxwp2ebiT",
+          "provider": "Gate Smashers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15–25 hours",
+          "why": "Specific data-structures playlist covering stacks, queues, trees, graphs and related fundamentals.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-YT-059",
+          "type": "video",
+          "title": "Neso Academy – C Programming & Data Structures Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLBlnK6fEyqRhX6r2uhhlubuF5QextdCSM",
+          "provider": "Neso Academy",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "20–40 hours",
+          "why": "Specific Neso Academy playlist designed around C programming and data structures for GATE-oriented learning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-001",
+          "type": "video",
+          "title": "Two Sum - Leetcode 1 - HashMap - Python",
+          "url": "https://www.youtube.com/watch?v=KLlXCFG5TnA",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of DSA / Hashing, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-002",
+          "type": "video",
+          "title": "Contains Duplicate - Leetcode 217 - Python",
+          "url": "https://www.youtube.com/watch?v=3OamzN90kPg",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of DSA / Hashing, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-005",
+          "type": "reference",
+          "title": "VisuAlgo",
+          "url": "https://visualgo.net/en",
+          "provider": "VisuAlgo / National University of Singapore",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "2–6 hours",
+          "why": "Interactive visualizations make trees, graphs, sorting, and searching easier to understand.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-006",
+          "type": "reference",
+          "title": "Big-O Cheat Sheet",
+          "url": "https://www.bigocheatsheet.com/",
+          "provider": "Eric Rowell",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "30–60 minutes",
+          "why": "Fast reference for time and space complexity across common data structures and algorithms.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-009",
+          "type": "book",
+          "title": "Open Data Structures",
+          "url": "https://opendatastructures.org/",
+          "provider": "Pat Morin",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20–40 hours",
+          "why": "Free textbook with rigorous treatment of common data structures and implementations.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-040",
+          "type": "practice",
+          "title": "NeetCode Roadmap",
+          "url": "https://neetcode.io/roadmap",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "8–12 weeks",
+          "why": "Topic-by-topic problem progression that makes DSA practice easier to sequence.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "CSFG-098",
+          "type": "practice",
+          "title": "GATE Overflow – Data Structures Questions",
+          "url": "https://db.gateoverflow.in/questions/programming-in-c/data-structures",
+          "provider": "GATE Overflow",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Exam-focused",
+          "time": "Ongoing",
+          "why": "Focuses directly on GATE data-structure questions involving arrays, stacks, queues, linked lists, trees, heaps, and graphs, making it useful for targeted exam practice.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-141",
+          "type": "practice",
+          "title": "Two Sum",
+          "url": "https://leetcode.com/problems/two-sum/",
+          "provider": "LeetCode",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Intermediate",
+          "time": "1 hr+",
+          "why": "Two Sum directly supports coding interviews / hashing preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "dsa-linear",
+      "name": "Linked Lists, Stacks and Queues",
+      "domain": "dsa",
+      "level": 1,
+      "prerequisites": [
+        "dsa-arrays"
+      ],
+      "estimatedHours": 12,
+      "topics": [
+        {
+          "id": "dsa-linear-1",
+          "title": "Linked lists",
+          "hours": 5
+        },
+        {
+          "id": "dsa-linear-2",
+          "title": "Stacks and queues",
+          "hours": 4
+        },
+        {
+          "id": "dsa-linear-3",
+          "title": "Monotonic stack and deque patterns",
+          "hours": 3
+        }
+      ],
+      "miniTasks": [
+        "Implement a singly linked list and solve reverse, cycle detection and merge problems.",
+        "Solve 6 problems such as balanced brackets and queue using stacks.",
+        "Solve next-greater-element and sliding-window-maximum."
+      ],
+      "resources": [
+        {
+          "id": "FAANG-016",
+          "type": "video",
+          "title": "Valid Parentheses - Stack - Leetcode 20 - Python",
+          "url": "https://www.youtube.com/watch?v=WTzjTskDFMg",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of DSA / Stacks, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-017",
+          "type": "video",
+          "title": "Daily Temperatures - Monotonic Stack - Leetcode 739 - Python",
+          "url": "https://www.youtube.com/watch?v=cTBiBSnjO3c",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of DSA / Monotonic Stack, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-018",
+          "type": "video",
+          "title": "Car Fleet - Leetcode 853 - Python",
+          "url": "https://www.youtube.com/watch?v=Pr6T-3yB9RM",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of DSA / Stacks, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-049",
+          "type": "video",
+          "title": "Reverse Linked List - Iterative AND Recursive - Leetcode 206 - Python",
+          "url": "https://www.youtube.com/watch?v=G0_I-ZF0S38",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of DSA / Linked Lists, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-144",
+          "type": "practice",
+          "title": "Valid Parentheses",
+          "url": "https://leetcode.com/problems/valid-parentheses/",
+          "provider": "LeetCode",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Intermediate",
+          "time": "1 hr+",
+          "why": "Valid Parentheses directly supports coding interviews / stacks preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "dsa-sorting-search",
+      "name": "Sorting, Searching and Recursion",
+      "domain": "dsa",
+      "level": 1,
+      "prerequisites": [
+        "dsa-arrays"
+      ],
+      "estimatedHours": 14,
+      "topics": [
+        {
+          "id": "dsa-sorting-search-1",
+          "title": "Sorting algorithms and their trade-offs",
+          "hours": 4
+        },
+        {
+          "id": "dsa-sorting-search-2",
+          "title": "Binary search and its variants",
+          "hours": 4
+        },
+        {
+          "id": "dsa-sorting-search-3",
+          "title": "Recursion and backtracking",
+          "hours": 6
+        }
+      ],
+      "miniTasks": [
+        "Implement merge sort and quick sort and compare them on large inputs.",
+        "Solve 6 binary-search problems including search on the answer.",
+        "Generate subsets, permutations and solve N-Queens."
+      ],
+      "resources": [
+        {
+          "id": "CSFG-002",
+          "type": "course",
+          "title": "MIT 6.006 Introduction to Algorithms",
+          "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/",
+          "provider": "MIT OpenCourseWare / Erik Demaine & Srini Devadas",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "10–14 weeks",
+          "why": "University-level algorithms lectures, notes, assignments, and problem sets.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-007",
+          "type": "video",
+          "title": "Abdul Bari – 2.7.2. Merge Sort Algorithm",
+          "url": "https://www.youtube.com/watch?v=mB5HXBb_HY8",
+          "provider": "Abdul Bari",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "~30 minutes",
+          "why": "Exact Abdul Bari lecture on recursive Merge Sort, tracing, analysis and drawbacks; useful for understanding merge sort rather than browsing a channel homepage.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-050",
+          "type": "practice",
+          "title": "GATE Overflow – Algorithms Questions",
+          "url": "https://gateoverflow.in/questions/algorithms",
+          "provider": "GATE Overflow",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Exam-focused",
+          "time": "Ongoing",
+          "why": "Collects GATE-focused algorithm questions covering sorting, hashing, asymptotic analysis, greedy methods, dynamic programming, graph search, MSTs, and shortest paths.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-071",
+          "type": "practice",
+          "title": "MIT OCW – 6.006 Assignments",
+          "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/assignments/",
+          "provider": "MIT OpenCourseWare",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "20–40 hours",
+          "why": "Provides seven course assignments with theory and programming work, including asymptotic complexity, range queries, graph algorithms, and other hands-on algorithmic tasks.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-YT-042",
+          "type": "video",
+          "title": "Gate Smashers – Design and Analysis of Algorithms (DAA) Complete Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiHcmS4i14bI0VrMbZTUvlTa",
+          "provider": "Gate Smashers",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15–25 hours",
+          "why": "Specific DAA playlist from Gate Smashers for algorithm design and analysis.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-019",
+          "type": "video",
+          "title": "Binary Search - Leetcode 704 - Python",
+          "url": "https://www.youtube.com/watch?v=s4DPM8ct1pI",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of DSA / Binary Search, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-025",
+          "type": "video",
+          "title": "Combination Sum - Leetcode 39 - Python",
+          "url": "https://www.youtube.com/watch?v=GBKI9UZO-Dw",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of DSA / Backtracking, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-103",
+          "type": "course",
+          "title": "MIT OpenCourseWare – 6.0001 Introduction to Computer Science and Programming in Python",
+          "url": "https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/",
+          "provider": "MIT OpenCourseWare",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "9–12 weeks",
+          "why": "MIT’s introductory course develops computational thinking, algorithms, data structures, testing, and Python programming from first principles.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-113",
+          "type": "course",
+          "title": "Design and Analysis of Algorithms",
+          "url": "https://www.nptel.ac.in/courses/106101060",
+          "provider": "NPTEL",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "12 weeks",
+          "why": "Provides structured coverage of algorithm design techniques and complexity analysis from an academic computer-science perspective.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-016",
+          "type": "course",
+          "title": "freeCodeCamp – JavaScript Algorithms and Data Structures",
+          "url": "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/",
+          "provider": "freeCodeCamp",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Beginner",
+          "time": "300+ hours",
+          "why": "Hands-on curriculum with coding exercises and project-driven learning.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "dsa-trees",
+      "name": "Trees, Heaps and Tries",
+      "domain": "dsa",
+      "level": 2,
+      "prerequisites": [
+        "dsa-linear",
+        "dsa-sorting-search"
+      ],
+      "estimatedHours": 18,
+      "topics": [
+        {
+          "id": "dsa-trees-1",
+          "title": "Binary trees and traversals",
+          "hours": 6
+        },
+        {
+          "id": "dsa-trees-2",
+          "title": "Binary search trees and balancing ideas",
+          "hours": 4
+        },
+        {
+          "id": "dsa-trees-3",
+          "title": "Heaps, priority queues and tries",
+          "hours": 8
+        }
+      ],
+      "miniTasks": [
+        "Implement all traversals iteratively and recursively and solve 5 tree problems.",
+        "Implement BST insert, delete and search; validate a BST.",
+        "Solve top-K and merge-K-lists with a heap and build an autocomplete trie."
+      ],
+      "resources": [
+        {
+          "id": "FAANG-050",
+          "type": "video",
+          "title": "Invert Binary Tree - Leetcode 226 - Python",
+          "url": "https://www.youtube.com/watch?v=OnSn2XEQ4MY",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of DSA / Trees, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        }
+      ],
+      "needsReview": true
+    },
+    {
+      "id": "dsa-graphs",
+      "name": "Graph Algorithms",
+      "domain": "dsa",
+      "level": 2,
+      "prerequisites": [
+        "dsa-trees"
+      ],
+      "estimatedHours": 18,
+      "topics": [
+        {
+          "id": "dsa-graphs-1",
+          "title": "Graph representation, BFS and DFS",
+          "hours": 6
+        },
+        {
+          "id": "dsa-graphs-2",
+          "title": "Shortest paths: Dijkstra and Bellman-Ford",
+          "hours": 6
+        },
+        {
+          "id": "dsa-graphs-3",
+          "title": "Topological sort, MST and union-find",
+          "hours": 6
+        }
+      ],
+      "miniTasks": [
+        "Solve 6 problems such as number of islands and shortest path in a grid.",
+        "Implement Dijkstra with a heap and solve a weighted routing problem.",
+        "Solve course schedule and implement Kruskal with union-find."
+      ],
+      "resources": [
+        {
+          "id": "FAANG-027",
+          "type": "video",
+          "title": "Course Schedule - Graph Adjacency List - Leetcode 207 - Python",
+          "url": "https://www.youtube.com/watch?v=EgI5nU9etnU",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of DSA / Graphs, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-028",
+          "type": "video",
+          "title": "Number of Islands - Leetcode 200 - Python",
+          "url": "https://www.youtube.com/watch?v=pV2bpivwGD3g",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of DSA / Graphs, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-029",
+          "type": "video",
+          "title": "Clone Graph - Leetcode 133 - Python",
+          "url": "https://www.youtube.com/watch?v=mQKGRsJjggw",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of DSA / Graphs, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-030",
+          "type": "video",
+          "title": "Pacific Atlantic Water Flow - Leetcode 417 - Python",
+          "url": "https://www.youtube.com/watch?v=s-Vez3jxBmw",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of DSA / Graphs, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-147",
+          "type": "practice",
+          "title": "Number of Islands",
+          "url": "https://leetcode.com/problems/number-of-islands/",
+          "provider": "LeetCode",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Intermediate",
+          "time": "1 hr+",
+          "why": "Number of Islands directly supports coding interviews / graphs preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        },
+        {
+          "id": "FAANG-148",
+          "type": "practice",
+          "title": "Course Schedule",
+          "url": "https://leetcode.com/problems/course-schedule/",
+          "provider": "LeetCode",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Intermediate",
+          "time": "1 hr+",
+          "why": "Course Schedule directly supports coding interviews / graphs preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "dsa-dp",
+      "name": "Dynamic Programming",
+      "domain": "dsa",
+      "level": 3,
+      "prerequisites": [
+        "dsa-sorting-search"
+      ],
+      "estimatedHours": 22,
+      "topics": [
+        {
+          "id": "dsa-dp-1",
+          "title": "1D and 2D DP fundamentals",
+          "hours": 8
+        },
+        {
+          "id": "dsa-dp-2",
+          "title": "Knapsack, LCS and string DP patterns",
+          "hours": 8
+        },
+        {
+          "id": "dsa-dp-3",
+          "title": "DP on trees and bitmasks",
+          "hours": 6
+        }
+      ],
+      "miniTasks": [
+        "Solve climbing stairs, house robber, grid paths and coin change.",
+        "Solve 0/1 knapsack, LCS and edit distance with tabulation.",
+        "Solve one tree DP and one bitmask DP problem."
+      ],
+      "resources": [
+        {
+          "id": "FAANG-021",
+          "type": "video",
+          "title": "House Robber - Leetcode 198 - Python Dynamic Programming",
+          "url": "https://www.youtube.com/watch?v=73r3KWiEvyk",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of DSA / Dynamic Programming, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-022",
+          "type": "video",
+          "title": "Coin Change - Leetcode 322 - Python",
+          "url": "https://www.youtube.com/watch?v=H9bfqozjoqs",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of DSA / Dynamic Programming, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-023",
+          "type": "video",
+          "title": "Word Break - Leetcode 139 - Python",
+          "url": "https://www.youtube.com/watch?v=Sx9NNgInc3A",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of DSA / Dynamic Programming, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-024",
+          "type": "video",
+          "title": "Longest Increasing Subsequence - Leetcode 300 - Python",
+          "url": "https://www.youtube.com/watch?v=cjWnW0hdF1Y",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of DSA / Dynamic Programming, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        }
+      ]
+    },
+    {
+      "id": "dsa-advanced",
+      "name": "Advanced Algorithms and Competitive Programming",
+      "domain": "dsa",
+      "level": 3,
+      "prerequisites": [
+        "dsa-graphs",
+        "dsa-dp"
+      ],
+      "estimatedHours": 17,
+      "topics": [
+        {
+          "id": "dsa-advanced-1",
+          "title": "Greedy algorithms and interval problems",
+          "hours": 5
+        },
+        {
+          "id": "dsa-advanced-2",
+          "title": "Segment trees and Fenwick trees",
+          "hours": 6
+        },
+        {
+          "id": "dsa-advanced-3",
+          "title": "Number theory and string algorithms",
+          "hours": 6
+        }
+      ],
+      "miniTasks": [
+        "Solve 6 greedy and interval problems and justify each greedy choice.",
+        "Implement a segment tree and answer range queries.",
+        "Implement sieve, modular exponentiation and KMP."
+      ],
+      "resources": [
+        {
+          "id": "FAANG-020",
+          "type": "video",
+          "title": "Merge Intervals - Leetcode 56 - Python",
+          "url": "https://www.youtube.com/watch?v=44H3cEC2fFM",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of DSA / Intervals, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-042",
+          "type": "video",
+          "title": "Jump Game - Leetcode 55 - Python",
+          "url": "https://www.youtube.com/watch?v=Yan0cv2cLy8",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of DSA / Greedy, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-043",
+          "type": "video",
+          "title": "Non-overlapping Intervals - Leetcode 435 - Python",
+          "url": "https://www.youtube.com/watch?v=nONCGxWoUfM",
+          "provider": "NeetCode",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "15 min",
+          "why": "Interview-focused walkthrough of DSA / Greedy, demonstrating concrete problem-solving or design reasoning.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-054",
+          "type": "course",
+          "title": "Design and Analysis of Algorithms",
+          "url": "https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/",
+          "provider": "MIT OpenCourseWare",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "40 hr+",
+          "why": "MIT course focused on advanced algorithm design and analysis, strengthening the depth expected in top-tier coding interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-115",
+          "type": "book",
+          "title": "Competitive Programming",
+          "url": "https://cpbook.net/",
+          "provider": "Steven Halim et al.",
+          "free": false,
+          "pricing": "Varies",
+          "difficulty": "Advanced",
+          "time": "25 hr+",
+          "why": "Competitive Programming directly supports dsa / competitive programming preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-145",
+          "type": "practice",
+          "title": "Merge Intervals",
+          "url": "https://leetcode.com/problems/merge-intervals/",
+          "provider": "LeetCode",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Intermediate",
+          "time": "1 hr+",
+          "why": "Merge Intervals directly supports coding interviews / intervals preparation for top-tier technology and product interviews.",
+          "priority": "Recommended"
+        }
+      ]
+    },
+    {
+      "id": "dsa-interview",
+      "name": "Interview Problem Practice",
+      "domain": "dsa",
+      "level": 3,
+      "prerequisites": [
+        "dsa-graphs"
+      ],
+      "estimatedHours": 14,
+      "topics": [
+        {
+          "id": "dsa-interview-1",
+          "title": "Pattern-based problem drills",
+          "hours": 8
+        },
+        {
+          "id": "dsa-interview-2",
+          "title": "Timed practice and mock interviews",
+          "hours": 6
+        }
+      ],
+      "miniTasks": [
+        "Solve 20 mixed medium problems, noting the pattern each uses.",
+        "Complete 3 timed mock interviews and review your mistakes."
+      ],
+      "resources": [
+        {
+          "id": "CSFG-004",
+          "type": "practice",
+          "title": "LeetCode Problemset",
+          "url": "https://leetcode.com/problemset/",
+          "provider": "LeetCode",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Intermediate",
+          "time": "Ongoing",
+          "why": "Primary coding-practice bank for pattern recognition and interview-style problem solving.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-039",
+          "type": "practice",
+          "title": "CSES Problem Set",
+          "url": "https://cses.fi/problemset/",
+          "provider": "CSES Problem Set / Antti Laaksonen",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "40–100 hours",
+          "why": "Excellent structured set covering sorting, searching, graphs, dynamic programming, and mathematics.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-072",
+          "type": "practice",
+          "title": "LeetCode Top Interview 150",
+          "url": "https://leetcode.com/studyplan/top-interview-150/",
+          "provider": "LeetCode",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Intermediate",
+          "time": "3+ months",
+          "why": "Curated high-value problem set across major interview and algorithmic patterns.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-053",
+          "type": "course",
+          "title": "Algorithms Specialization",
+          "url": "https://www.coursera.org/specializations/algorithms",
+          "provider": "Stanford Online",
+          "free": false,
+          "pricing": "Paid",
+          "difficulty": "Advanced",
+          "time": "60 hr+",
+          "why": "Stanford algorithms specialization provides structured algorithmic problem-solving depth for top-tier coding interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-066",
+          "type": "course",
+          "title": "Grokking the Coding Interview Patterns in 2026",
+          "url": "https://www.educative.io/courses/grokking-coding-interview",
+          "provider": "Educative",
+          "free": false,
+          "pricing": "Paid",
+          "difficulty": "Intermediate",
+          "time": "20 hr+",
+          "why": "Grokking the Coding Interview Patterns in 2026 directly supports coding interviews / dsa preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-070",
+          "type": "course",
+          "title": "Data Structures and Algorithms Specialization",
+          "url": "https://www.coursera.org/specializations/data-structures-algorithms",
+          "provider": "University of California San Diego",
+          "free": false,
+          "pricing": "Paid",
+          "difficulty": "Intermediate",
+          "time": "20 hr+",
+          "why": "Data Structures and Algorithms Specialization directly supports dsa / coding interviews preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-111",
+          "type": "book",
+          "title": "Introduction to Algorithms, 4th Edition",
+          "url": "https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/",
+          "provider": "MIT Press",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Advanced",
+          "time": "25 hr+",
+          "why": "Introduction to Algorithms, 4th Edition directly supports dsa / algorithms preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-112",
+          "type": "book",
+          "title": "Elements of Programming Interviews",
+          "url": "https://elementsofprogramminginterviews.com/",
+          "provider": "EPI authors",
+          "free": false,
+          "pricing": "Varies",
+          "difficulty": "Advanced",
+          "time": "25 hr+",
+          "why": "Elements of Programming Interviews directly supports dsa / coding interviews preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-113",
+          "type": "book",
+          "title": "Cracking the Coding Interview",
+          "url": "https://www.crackingthecodinginterview.com/",
+          "provider": "Gayle Laakmann McDowell",
+          "free": false,
+          "pricing": "Varies",
+          "difficulty": "Advanced",
+          "time": "25 hr+",
+          "why": "Cracking the Coding Interview directly supports coding interviews / dsa preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-114",
+          "type": "book",
+          "title": "The Algorithm Design Manual",
+          "url": "https://www.algorist.com/",
+          "provider": "Steven S. Skiena",
+          "free": false,
+          "pricing": "Varies",
+          "difficulty": "Advanced",
+          "time": "25 hr+",
+          "why": "The Algorithm Design Manual directly supports dsa / problem solving preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "FAANG-142",
+          "type": "practice",
+          "title": "Top 100 Liked",
+          "url": "https://leetcode.com/studyplan/top-100-liked/",
+          "provider": "LeetCode",
+          "free": false,
+          "pricing": "Freemium",
+          "difficulty": "Intermediate",
+          "time": "1 hr+",
+          "why": "Top 100 Liked directly supports coding interviews / dsa preparation for top-tier technology and product interviews.",
+          "priority": "Must-have"
+        },
+        {
+          "id": "CSFG-036",
+          "type": "article",
+          "title": "CP-Algorithms",
+          "url": "https://cp-algorithms.com/",
+          "provider": "CP-Algorithms contributors",
+          "free": true,
+          "pricing": "Free",
+          "difficulty": "Intermediate",
+          "time": "Ongoing reference",
+          "why": "Concise reference for advanced graph, string, number-theory, and data-structure techniques.",
+          "priority": "Recommended"
+        }
+      ]
+    }
+  ]
+}
