@@ -5,7 +5,7 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import { validateLogin, validateRegistration } from '../utils/validators.js';
 import { createAccessToken, createRefreshToken, refreshCookieOptions } from '../utils/generateTokens.js';
 
-const profile = (user) => ({ id: user._id, name: user.name, email: user.email, goal: user.goal, skillLevel: user.skillLevel, onboardingComplete: user.onboardingComplete, createdAt: user.createdAt });
+export const profile = (user) => ({ id: user._id, name: user.name, email: user.email, goalId: user.goalId, subTrack: user.subTrack, hoursPerWeek: user.hoursPerWeek, targetWeeks: user.targetWeeks, onboardingComplete: user.onboardingComplete, createdAt: user.createdAt });
 const sendSession = (res, user, status = 200) => { res.cookie('refreshToken', createRefreshToken(user.id), refreshCookieOptions).status(status).json({ accessToken: createAccessToken(user.id), user: profile(user) }); };
 
 export const register = asyncHandler(async (req, res) => {

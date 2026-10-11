@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { AlarmClock, RotateCcw } from 'lucide-react';
+import { AlarmClock, ArrowRight, RotateCcw } from 'lucide-react';
 import Button from '../common/Button';
 
 // A light-to-deep blue scale keeps the three bands inside the NexPath palette.
@@ -94,6 +94,7 @@ export default function AssessmentResults({ attempt, domains = [], onRetake }) {
       </section>
 
       <div className="mt-10 flex flex-wrap items-center gap-4 border-t-2 section-rule pt-7">
+        <Link to="/goal" className="control-transition inline-flex min-h-12 items-center gap-2 bg-mid px-5 text-sm font-extrabold text-cream shadow-[0_8px_18px_rgba(15,76,117,.2)] hover:-translate-y-px hover:bg-deep">Choose your goal <ArrowRight size={16} /></Link>
         <Button onClick={onRetake} className="!bg-white !text-ink border border-pale !shadow-none hover:!bg-white hover:border-mid"><RotateCcw size={16} /> Take another assessment</Button>
         <Link to="/home" className="control-transition inline-flex min-h-12 items-center border border-pale bg-white px-5 text-sm font-extrabold text-ink hover:border-mid hover:text-mid">Back to dashboard</Link>
       </div>

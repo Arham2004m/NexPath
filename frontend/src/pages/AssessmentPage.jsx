@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { AlertTriangle } from 'lucide-react';
 import Sidebar from '../components/home/Sidebar';
 import Topbar from '../components/home/Topbar';
@@ -22,6 +23,7 @@ const TIME_LIMIT_SECONDS = Math.round((Number(import.meta.env.VITE_ASSESSMENT_MI
 
 export default function AssessmentPage() {
   const { user } = useAuth();
+  const notice = useLocation().state?.notice;
   const [menu, setMenu] = useState(false);
   const [domains, setDomains] = useState([]);
   const [loadingDomains, setLoadingDomains] = useState(true);
@@ -139,6 +141,7 @@ export default function AssessmentPage() {
             </div>
           )}
 
+          {notice && run.stage === 'intro' && <p role="status" className="surface-card mb-8 border-l-[5px] border-l-mid px-6 py-4 text-sm font-bold text-ink">{notice}</p>}
           {run.stage === 'intro' && <AssessmentIntro firstName={user?.name?.split(' ')[0]} domains={domains} loading={loadingDomains} minutes={TIME_LIMIT_SECONDS / 60} onStart={once(start)} />}
 
           {answering && domain && (

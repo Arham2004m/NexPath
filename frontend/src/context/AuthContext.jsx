@@ -7,6 +7,7 @@ export function AuthProvider({ children }) {
   const login = useCallback((values) => request('/auth/login', { method:'POST', body:JSON.stringify(values) }).then(apply), []);
   const register = useCallback((values) => request('/auth/register', { method:'POST', body:JSON.stringify(values) }).then(apply), []);
   const logout = useCallback(async () => { try { await request('/auth/logout', { method:'POST' }); } finally { setAccessToken(null); setToken(null); setUser(null); } }, []);
+  const refreshUser = useCallback(() => request('/auth/me').then((data) => setUser(data.user)), []);
   useEffect(() => { request('/auth/refresh', { method:'POST' }).then(apply).catch(() => {}).finally(() => setLoading(false)); }, []);
-  return <AuthContext.Provider value={{ user, token, loading, login, register, logout }}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{ user, token, loading, login, register, logout, refreshUser }}>{children}</AuthContext.Provider>;
 }
