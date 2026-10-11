@@ -107,7 +107,8 @@ export default function GoalPage() {
                     <CheckCircle2 size={22} className="mt-0.5 shrink-0 text-mid" aria-hidden="true" />
                     <div>
                       <p className="text-lg font-extrabold tracking-[-.04em] text-ink">Goal saved: {goal.label}{subTrack ? ` · ${goal.subTracks.find((s) => s.id === subTrack)?.label}` : ''}</p>
-                      <p className="mt-1 text-sm leading-6 text-muted">{hours} hours a week{targetWeeks ? `, aiming for ${targetWeeks} weeks` : ''}. Your personalized weekly roadmap is the next thing we are building.</p>
+                      <p className="mt-1 text-sm leading-6 text-muted">{hours} hours a week{targetWeeks ? `, aiming for ${targetWeeks} weeks` : ''}. </p>
+                      {goal.roadmapReady !== false && <Link to="/roadmap" className="control-transition mt-4 inline-flex min-h-11 items-center bg-mid px-5 text-sm font-extrabold text-cream hover:bg-deep">View your roadmap</Link>}
                       {saved.warning && <p className="mt-3 text-sm font-bold leading-6 text-ink">{saved.warning}</p>}
                     </div>
                   </div>

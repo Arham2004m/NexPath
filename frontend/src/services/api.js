@@ -20,6 +20,6 @@ export async function request(path, options = {}) {
     }
   }
   const body = response.status === 204 ? null : await response.json().catch(() => ({}));
-  if (!response.ok) { const error = new Error(body.message || 'Request failed'); error.errors = body.errors; error.status = response.status; throw error; }
+  if (!response.ok) { const error = new Error(body.message || 'Request failed'); error.errors = body.errors; error.code = body.code; error.status = response.status; throw error; }
   return body;
 }

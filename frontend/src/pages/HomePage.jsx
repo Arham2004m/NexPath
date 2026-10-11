@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Sidebar from '../components/home/Sidebar';
 import Topbar from '../components/home/Topbar';
 import OnboardingCard from '../components/home/OnboardingCard';
@@ -22,6 +23,7 @@ export default function HomePage() {
 
   const goal = goals.find((g) => g.id === user?.goalId);
   const track = goal?.subTracks?.find((s) => s.id === user?.subTrack);
+  const roadmapReady = goal ? (track ? track.roadmapReady : goal.roadmapReady) !== false : false;
   const summary = summarizeAttempt(attempt);
   const step = attempt === null ? 'assessment' : attempt && !user?.goalId ? 'goal' : null;
 
@@ -44,7 +46,7 @@ export default function HomePage() {
             <div className="summary-grid grid md:grid-cols-[1.2fr_.9fr_.9fr]">
               <SummaryCard index={0} label="Direction" value={goal ? (track ? `${goal.label} · ${track.label}` : goal.label) : 'Still open'} detail={goal ? `${user.hoursPerWeek} hours a week${user.targetWeeks ? `, aiming for ${user.targetWeeks} weeks` : ''}. Change it any time from Goal.` : 'Name a destination when you are ready; we will shape the work around it.'} />
               <SummaryCard index={1} label="Starting point" value={summary?.level || 'Not assessed'} detail={summary ? (summary.strongest ? `Strongest in ${summary.strongest}.` : 'Based on your latest assessment.') : 'A baseline makes your effort more intentional.'} />
-              <SummaryCard index={2} label="Path completed" value="0%" detail="Your first milestone is waiting." />
+              <SummaryCard index={2} label="Roadmap" value={goal ? (roadmapReady ? "Ready" : "Coming soon") : "Not started"} detail={goal && roadmapReady ? <Link to="/roadmap" className="font-bold text-mid underline-offset-4 hover:underline">Open your week-by-week roadmap</Link> : goal ? "We are still building the path for this goal." : "Choose a goal to see your path."} />
             </div>
           </section>
           <section className="mt-14 grid gap-5 border-t-2 section-rule pt-8 sm:grid-cols-[minmax(13rem,.55fr)_1fr]">
