@@ -3,7 +3,7 @@ import { readGraphFiles } from '../src/services/graphStore.js';
 import { allGoalPaths, computeGraphVersion, findCycle, resolveGoalPath, validateGraph } from '../src/engine/graph.js';
 import { GOALS } from '../src/data/goals.js';
 import { masteredNodeIds } from '../src/engine/mastery.js';
-import { generateRoadmap, RoadmapError } from '../src/engine/generateRoadmap.js';
+import { generateRoadmap, RoadmapError, weeklyTopicCap } from '../src/engine/generateRoadmap.js';
 import { recommendGoals } from '../src/engine/goalRecommender.js';
 
 const { nodes, goalPaths } = readGraphFiles();
@@ -117,11 +117,11 @@ describe('generateRoadmap', () => {
   });
 
   it('respects weekly capacity and the topics-per-week cap', () => {
-    for (const hoursPerWeek of [4, 10, 25]) {
+    for (const hoursPerWeek of [4, 10, 25, 40]) {
       const roadmap = generateRoadmap({ ...frontend, hoursPerWeek });
       for (const week of roadmap.weeks) {
         expect(week.plannedHours).toBeLessThanOrEqual(hoursPerWeek);
-        expect(new Set(week.topics.map((t) => t.topicId)).size).toBeLessThanOrEqual(3);
+        expect(new Set(week.topics.map((t) => t.topicId)).size).toBeLessThanOrEqual(weeklyTopicCap(hoursPerWeek));
         expect(week.miniTask.text).toBeTruthy();
       }
     }
@@ -145,11 +145,21 @@ describe('generateRoadmap', () => {
     expect(generateRoadmap({ ...frontend, hoursPerWeek: 5 }).totalWeeks).toBeGreaterThan(generateRoadmap({ ...frontend, hoursPerWeek: 20 }).totalWeeks);
   });
 
-  it('flags an infeasible deadline with the hours per week that would work', () => {
+  it('flags an infeasible deadline with the exact weekly load that would work', () => {
     const roadmap = generateRoadmap({ ...frontend, targetWeeks: 4 });
     expect(roadmap.feasible).toBe(false);
-    expect(roadmap.requiredHoursPerWeek).toBe(Math.ceil(roadmap.totalHours / 4));
+    expect(roadmap.achievable).toBe(true);
+    // The advice is verified by re-planning: that load fits the deadline and one hour less does not.
+    expect(generateRoadmap({ ...frontend, hoursPerWeek: roadmap.requiredHoursPerWeek }).totalWeeks).toBeLessThanOrEqual(4);
+    expect(generateRoadmap({ ...frontend, hoursPerWeek: roadmap.requiredHoursPerWeek - 1 }).totalWeeks).toBeGreaterThan(4);
     expect(generateRoadmap({ ...frontend, targetWeeks: 200 }).feasible).toBe(true);
+  });
+
+  it('says so when even the maximum weekly load cannot meet the deadline', () => {
+    const roadmap = generateRoadmap({ ...base, goalId: 'gate', targetWeeks: 3 });
+    expect(roadmap.feasible).toBe(false);
+    expect(roadmap.achievable).toBe(false);
+    expect(roadmap.requiredHoursPerWeek).toBeNull();
   });
 
   it('dates weeks from the start date', () => {

@@ -1,6 +1,6 @@
 // Roadmap generator: knowledge-graph traversal + topological sort + weekly scheduling.
 // Deterministic and pure: the same input always yields the same roadmap.
-import { indexNodes, resolveGoalPath } from './graph.js';
+import { capstonesOf, indexNodes, neededClosure, resolveGoalPath } from './graph.js';
 
 export const MAX_HOURS_PER_WEEK = 40;
 const DAY_MS = 86_400_000;
@@ -12,20 +12,6 @@ export class RoadmapError extends Error {
     this.name = 'RoadmapError';
     this.code = code;
   }
-}
-
-// Everything the goal needs, not descending below skills the student already has.
-function closure(byId, targets, mastered) {
-  const needed = new Set();
-  const known = new Set(); // mastered skills that the path builds on
-  const visit = (id) => {
-    if (needed.has(id) || known.has(id)) return;
-    if (mastered.has(id)) { known.add(id); return; }
-    needed.add(id);
-    for (const prerequisite of byId.get(id).prerequisites) visit(prerequisite);
-  };
-  targets.forEach(visit);
-  return { needed, known };
 }
 
 // Kahn's algorithm. Among ready nodes the choice is deterministic: lower level, then goal priority, then id.
@@ -51,11 +37,14 @@ function topologicalOrder(byId, needed, priority) {
   return order;
 }
 
+// A week holds 2-3 topics for a normal 8-15 hour week; heavier weeks (above 15 h) take one more topic per ~5 hours,
+// otherwise the plan would stop getting shorter however many hours the student has.
+export const weeklyTopicCap = (hoursPerWeek) => (hoursPerWeek <= 15 ? 3 : Math.ceil(hoursPerWeek / 5));
+
 // Greedy packing that keeps every week full: a topic may continue into the next week, but never as a sliver
-// smaller than MIN_CHUNK hours, and a week holds at most maxTopicsPerWeek different topics.
-const MIN_CHUNK = 2;
-function packWeeks(units, hoursPerWeek, maxTopicsPerWeek) {
-  const minChunk = Math.min(MIN_CHUNK, hoursPerWeek);
+// smaller than the minimum chunk, and a week holds at most `maxTopics` different topics.
+function packWeeks(units, hoursPerWeek, maxTopics) {
+  const minChunk = hoursPerWeek <= 4 ? 1 : 2;
   const weeks = [];
   let week = null;
   const open = () => { week = { entries: [], hours: 0, topicIds: new Set() }; weeks.push(week); };
@@ -67,7 +56,7 @@ function packWeeks(units, hoursPerWeek, maxTopicsPerWeek) {
       const space = hoursPerWeek - week.hours;
       const newTopic = !week.topicIds.has(unit.topic.id);
       // Start a new week when this one is full, has too many topics, or would take only a tiny slice of a longer topic.
-      if (space <= 0 || (newTopic && week.topicIds.size >= maxTopicsPerWeek) || (left > space && space < minChunk && week.hours > 0)) { open(); continue; }
+      if (space <= 0 || (newTopic && week.topicIds.size >= maxTopics) || (left > space && space < minChunk && week.hours > 0)) { open(); continue; }
       const chunk = Math.min(left, space);
       week.entries.push({ unit, hours: chunk });
       week.hours += chunk;
@@ -80,24 +69,44 @@ function packWeeks(units, hoursPerWeek, maxTopicsPerWeek) {
   return weeks;
 }
 
-const baselineHours = (byId, targets) => [...closure(byId, targets, new Set()).needed].reduce((sum, id) => sum + byId.get(id).estimatedHours, 0);
+// Weeks the same units would take at another weekly load (units are copied, so nothing is mutated).
+const weeksAt = (units, hours, maxTopicsOverride) => packWeeks(units.map((unit) => ({ ...unit })), hours, maxTopicsOverride ?? weeklyTopicCap(hours)).length;
 
+const baselineHours = (byId, targets) => [...neededClosure(byId, targets, new Set()).needed].reduce((sum, id) => sum + byId.get(id).estimatedHours, 0);
+
+// mastered: skills fully skipped. credits: { nodeId: n } skips the first n topics of a skill that is otherwise planned.
+// trims: { nodeId: { topicIndex, hours } } shortens one topic by that many hours (a lighter pass over half-known material).
+// sources: { nodeId: 'assessment' | 'self' } says why a skill is known (shown to the student).
+// Capstones are never skipped, so a roadmap always has real content.
 export function generateRoadmap({
-  nodes, goalPaths, goalId, subTrack = null, mastered = [], hoursPerWeek, targetWeeks = null,
-  startDate, graphVersion = null, maxTopicsPerWeek = 3
+  nodes, goalPaths, goalId, subTrack = null, mastered = [], credits = {}, trims = {}, sources = {}, hoursPerWeek, targetWeeks = null,
+  startDate, graphVersion = null, maxTopicsPerWeek = null
 }) {
   const path = resolveGoalPath(goalPaths, goalId, subTrack);
   if (!path) throw new RoadmapError('GOAL_NOT_READY', 'A roadmap for this goal is not available yet');
   if (!Number.isInteger(hoursPerWeek) || hoursPerWeek < 1 || hoursPerWeek > MAX_HOURS_PER_WEEK) throw new RoadmapError('INVALID_HOURS', `hoursPerWeek must be 1-${MAX_HOURS_PER_WEEK}`);
 
   const byId = indexNodes(nodes);
-  const masteredSet = new Set(mastered);
+  const capstones = new Set(capstonesOf(path));
+  const masteredSet = new Set(mastered.filter((id) => !capstones.has(id)));
   const priority = new Map(path.required.map((id, index) => [id, index]));
-  const { needed, known } = closure(byId, path.required, masteredSet);
+  const { needed, known } = neededClosure(byId, path.required, masteredSet);
   const order = topologicalOrder(byId, needed, priority);
 
-  const units = order.flatMap((id) => byId.get(id).topics.map((topic, index) => ({ node: byId.get(id), topic, index })));
-  const packed = packWeeks(units, hoursPerWeek, maxTopicsPerWeek);
+  // A skill is never fully credited: at least its last topic stays, and capstones get no credit at all.
+  const creditOf = (id) => (capstones.has(id) ? 0 : Math.max(0, Math.min(credits[id] ?? 0, byId.get(id).topics.length - 1)));
+  // A trim applies to one topic that is still planned, is not the skill's last topic, and keeps at least one hour.
+  const trimOf = (id, index) => {
+    const trim = trims[id];
+    const topic = byId.get(id).topics[index];
+    const valid = trim && !capstones.has(id) && trim.topicIndex === index && index >= creditOf(id) && index < byId.get(id).topics.length - 1 && trim.hours >= 1 && trim.hours < topic.hours;
+    return valid ? trim.hours : 0;
+  };
+  const units = order.flatMap((id) => byId.get(id).topics.map((topic, index) => {
+    const trimmed = trimOf(id, index);
+    return { node: byId.get(id), topic: trimmed ? { ...topic, hours: topic.hours - trimmed, trimmedHours: trimmed } : topic, index };
+  }).slice(creditOf(id)));
+  const packed = packWeeks(units, hoursPerWeek, maxTopicsPerWeek ?? weeklyTopicCap(hoursPerWeek));
 
   const weeks = packed.map((week, i) => {
     const touched = [...new Map(week.entries.map(({ unit }) => [unit.node.id, unit.node])).values()];
@@ -127,14 +136,22 @@ export function generateRoadmap({
     const node = byId.get(id);
     const isKnown = known.has(id);
     const span = placed.get(id);
+    const credited = isKnown ? 0 : creditOf(id);
+    const skippedHours = node.topics.slice(0, credited).reduce((sum, topic) => sum + topic.hours, 0) + node.topics.reduce((sum, _topic, index) => sum + (isKnown ? 0 : trimOf(id, index)), 0);
     return {
-      id, name: node.name, domain: node.domain, level: node.level, estimatedHours: node.estimatedHours,
+      id, name: node.name, domain: node.domain, level: node.level,
+      estimatedHours: isKnown ? node.estimatedHours : node.estimatedHours - skippedHours, fullHours: node.estimatedHours,
       // A skill the student already has only links to other known skills, so the tree never shows a known skill below a planned one.
       prerequisites: node.prerequisites.filter((p) => (isKnown ? known.has(p) : included.has(p))),
       status: isKnown ? 'mastered' : span.start === 1 ? 'next' : 'upcoming',
+      source: isKnown ? sources[id] || 'assessment' : null,
+      creditedTopics: credited, skippedHours,
       order: position, startWeek: isKnown ? null : span.start, endWeek: isKnown ? null : span.end,
-      topics: node.topics.map((topic) => ({ id: topic.id, title: topic.title, hours: topic.hours, ...(isKnown ? {} : { startWeek: unitWeeks.get(topic.id)[0], endWeek: unitWeeks.get(topic.id)[1] }) })),
-      miniTasks: node.miniTasks, resources: node.resources, needsReview: !!node.needsReview
+      topics: node.topics.map((topic, index) => ({
+        id: topic.id, title: topic.title, hours: topic.hours,
+        ...(isKnown ? {} : index < credited ? { credited: true } : { startWeek: unitWeeks.get(topic.id)[0], endWeek: unitWeeks.get(topic.id)[1], ...(trimOf(id, index) ? { trimmedHours: trimOf(id, index), plannedHours: topic.hours - trimOf(id, index) } : {}) })
+      })),
+      miniTasks: node.miniTasks, resources: node.resources, needsReview: !!node.needsReview, capstone: capstones.has(id)
     };
   };
   const knownIds = [...known].sort();
@@ -144,14 +161,20 @@ export function generateRoadmap({
   const totalHours = units.reduce((sum, unit) => sum + unit.topic.hours, 0);
   const baseline = baselineHours(byId, path.required);
   const feasible = !targetWeeks || weeks.length <= targetWeeks;
-  const requiredHoursPerWeek = feasible ? null : Math.ceil(totalHours / targetWeeks);
+  // The smallest weekly load that really fits the deadline, found by re-planning (not by dividing hours).
+  let requiredHoursPerWeek = null;
+  if (!feasible) {
+    for (let hours = hoursPerWeek + 1; hours <= MAX_HOURS_PER_WEEK; hours++) {
+      if (weeksAt(units, hours, maxTopicsPerWeek) <= targetWeeks) { requiredHoursPerWeek = hours; break; }
+    }
+  }
 
   return {
     goalId, subTrack, graphVersion, hoursPerWeek, targetWeeks, startDate,
     totalHours, totalWeeks: weeks.length,
     endDate: weeks.length ? weeks[weeks.length - 1].endDate : startDate,
     baselineHours: baseline, hoursSaved: baseline - totalHours,
-    feasible, requiredHoursPerWeek, achievable: feasible || requiredHoursPerWeek <= MAX_HOURS_PER_WEEK,
+    feasible, requiredHoursPerWeek, achievable: feasible || requiredHoursPerWeek !== null,
     masteredNodeIds: knownIds, optionalNodeIds: (path.optional || []).filter((id) => !masteredSet.has(id) && !needed.has(id)),
     nodes: roadmapNodes, edges, weeks
   };

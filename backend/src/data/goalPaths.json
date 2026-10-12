@@ -22,7 +22,8 @@
       "os-concurrency",
       "cn-transport",
       "dbms-advanced"
-    ]
+    ],
+    "capstone": "dsa-interview"
   },
   "ai_ml": {
     "required": [
@@ -37,7 +38,8 @@
       "dbms-sql",
       "sd-basics",
       "web-node"
-    ]
+    ],
+    "capstone": "aiml-mlops"
   },
   "web_dev": {
     "subTracks": {
@@ -52,7 +54,8 @@
         "optional": [
           "web-node",
           "prog-git"
-        ]
+        ],
+        "capstone": "web-portfolio"
       },
       "backend": {
         "required": [
@@ -67,7 +70,8 @@
           "dbms-design",
           "sd-basics",
           "cn-basics"
-        ]
+        ],
+        "capstone": "web-deploy"
       },
       "fullstack": {
         "required": [
@@ -85,7 +89,8 @@
         "optional": [
           "dbms-design",
           "sd-distributed"
-        ]
+        ],
+        "capstone": "web-fullstack-projects"
       }
     }
   },
@@ -103,7 +108,8 @@
           "dbms-sql",
           "dsa-arrays",
           "prog-git"
-        ]
+        ],
+        "capstone": "mobile-android-release"
       },
       "flutter": {
         "required": [
@@ -116,7 +122,8 @@
           "dbms-sql",
           "dsa-arrays",
           "prog-git"
-        ]
+        ],
+        "capstone": "mobile-flutter-backend"
       },
       "ios": {
         "required": [
@@ -129,7 +136,8 @@
           "dbms-sql",
           "dsa-arrays",
           "prog-git"
-        ]
+        ],
+        "capstone": "mobile-ios-release"
       }
     }
   },
@@ -160,7 +168,8 @@
       "dbms-advanced",
       "dsa-advanced",
       "sd-basics"
-    ]
+    ],
+    "capstone": "gate-practice"
   },
   "campus_placement": {
     "required": [
@@ -180,7 +189,8 @@
       "dbms-design",
       "web-js",
       "prog-git"
-    ]
+    ],
+    "capstone": "career-online-tests"
   },
   "ms_abroad": {
     "required": [
@@ -204,7 +214,8 @@
       "aiml-ml",
       "dsa-dp",
       "maths-ml"
-    ]
+    ],
+    "capstone": "ms-visa"
   },
   "entrepreneur": {
     "required": [
@@ -225,6 +236,7 @@
       "sd-basics",
       "web-state-ts",
       "web-fullstack-projects"
-    ]
+    ],
+    "capstone": "ent-mvp"
   }
 }

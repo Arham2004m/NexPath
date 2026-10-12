@@ -12,6 +12,7 @@ import useAuth from '../hooks/useAuth';
 import { getGoals, getRecommendations, saveGoal } from '../services/goalApi';
 import { getLatestAttempt } from '../services/assessmentApi';
 import { summarizeAttempt } from '../lib/assessmentSummary';
+import { weeksFor } from '../lib/format';
 
 export default function GoalPage() {
   const { user, refreshUser } = useAuth();
@@ -95,7 +96,7 @@ export default function GoalPage() {
 
                 {goal?.subTracks && <SubTrackPicker goal={goal} value={subTrack} error={errors.subTrack} onChange={(id) => { setSubTrack(id); setSaved(null); }} />}
 
-                {goal && <TimeCommitment estimatedHours={(goal.subTracks ? goal.subTracks.find((s) => s.id === subTrack)?.estimatedHours : goal.estimatedHours) || null} hours={hours} targetWeeks={targetWeeks} limits={catalog.limits.hoursPerWeek} errors={errors} onHours={(v) => { setHours(v); setSaved(null); }} onTargetWeeks={(v) => { setTargetWeeks(v); setSaved(null); }} />}
+                {goal && <TimeCommitment weeksLabel={weeksFor(goal, hours, subTrack)} trackPending={!!goal.subTracks && !subTrack} hours={hours} targetWeeks={targetWeeks} limits={catalog.limits.hoursPerWeek} errors={errors} onHours={(v) => { setHours(v); setSaved(null); }} onTargetWeeks={(v) => { setTargetWeeks(v); setSaved(null); }} />}
 
                 {errors.form && <p role="alert" className="text-sm font-bold text-error">{errors.form}</p>}
 

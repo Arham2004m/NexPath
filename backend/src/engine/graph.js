@@ -23,6 +23,24 @@ export function resolveGoalPath(goalPaths, goalId, subTrack) {
   return goal;
 }
 
+// Everything a goal needs, not descending below skills the student already has.
+// `needed` = skills still to learn; `known` = skills already had that the path builds on.
+export function neededClosure(byId, targets, mastered) {
+  const needed = new Set();
+  const known = new Set();
+  const visit = (id) => {
+    if (needed.has(id) || known.has(id)) return;
+    if (mastered.has(id)) { known.add(id); return; }
+    needed.add(id);
+    for (const prerequisite of byId.get(id).prerequisites) visit(prerequisite);
+  };
+  targets.forEach(visit);
+  return { needed, known };
+}
+
+// Capstones are the final, hands-on skills of a path; assessments and self-reports never skip them.
+export const capstonesOf = (path) => [].concat(path?.capstone ?? []);
+
 export function* allGoalPaths(goalPaths) {
   for (const [goalId, goal] of Object.entries(goalPaths)) {
     if (goal.subTracks) for (const [subTrack, path] of Object.entries(goal.subTracks)) yield { goalId, subTrack, path };
@@ -94,6 +112,8 @@ export function validateGraph(nodes, goalPaths = {}) {
   for (const { goalId, subTrack, path } of allGoalPaths(goalPaths)) {
     const label = subTrack ? `${goalId}/${subTrack}` : goalId;
     if (!path.required?.length) errors.push(`Goal ${label}: no required nodes`);
+    if (!capstonesOf(path).length) errors.push(`Goal ${label}: needs a capstone skill`);
+    for (const id of capstonesOf(path)) if (!path.required?.includes(id)) errors.push(`Goal ${label}: capstone "${id}" must be one of its required nodes`);
     for (const id of [...(path.required || []), ...(path.optional || [])]) {
       if (!ids.has(id)) errors.push(`Goal ${label}: unknown node "${id}"`);
     }
