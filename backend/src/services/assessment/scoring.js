@@ -20,3 +20,6 @@ export function scoreDomain(questions, answers) {
   const normalized = max > 0 ? score / max : 0;
   return { score, max, normalized: Number(normalized.toFixed(2)), band: bandFor(normalized) };
 }
+
+// Which questions were answered correctly, keyed to the skill each one tests.
+export const questionResults = (questions, answers) => questions.map((q) => ({ id: q.id, nodeId: q.nodeId ?? null, difficulty: q.difficulty, correct: answers[q.id] === q.correct }));

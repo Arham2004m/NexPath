@@ -10,7 +10,8 @@
     "A syntax error",
     "A compiled file"
    ],
-   "correct": 0
+   "correct": 0,
+   "nodeId": "prog-basics"
   },
   {
    "id": "prog-e2",
@@ -22,7 +23,8 @@
     "<!--",
     "**"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "prog-basics"
   },
   {
    "id": "prog-e3",
@@ -34,7 +36,8 @@
     "Boolean",
     "Array"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "prog-basics"
   },
   {
    "id": "prog-e4",
@@ -46,7 +49,8 @@
     "do-while loop",
     "forEach loop"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "prog-basics"
   },
   {
    "id": "prog-e5",
@@ -58,7 +62,8 @@
     ".pyt",
     ".p"
    ],
-   "correct": 0
+   "correct": 0,
+   "nodeId": "prog-basics"
   },
   {
    "id": "prog-m1",
@@ -70,7 +75,8 @@
     "O(1)",
     "O(n^2)"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "prog-basics"
   },
   {
    "id": "prog-m2",
@@ -82,7 +88,8 @@
     "Overloading a function",
     "Compiling code faster"
    ],
-   "correct": 0
+   "correct": 0,
+   "nodeId": "prog-oop"
   },
   {
    "id": "prog-m3",
@@ -94,7 +101,8 @@
     "The function cannot modify the argument",
     "The argument is converted to a string"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "prog-basics"
   },
   {
    "id": "prog-m4",
@@ -106,7 +114,8 @@
     "A function that runs only once",
     "A function with static variables"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "prog-basics"
   },
   {
    "id": "prog-m5",
@@ -118,7 +127,8 @@
     "Converts it to a constant",
     "Makes it global automatically"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "prog-oop"
   },
   {
    "id": "prog-h1",
@@ -130,7 +140,8 @@
     "A method to sort arrays faster",
     "A memory leak prevention technique for loops"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "prog-basics"
   },
   {
    "id": "prog-h2",
@@ -142,7 +153,8 @@
     "Deep copy duplicates nested objects too, shallow copy only copies top-level references",
     "There is no real difference"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "prog-oop"
   },
   {
    "id": "prog-h3",
@@ -154,7 +166,8 @@
     "Using too many comments",
     "Slow network calls"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "prog-basics"
   },
   {
    "id": "prog-h4",
@@ -166,7 +179,8 @@
     "Compiling code ahead of time",
     "Managing memory allocation manually"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "prog-basics"
   },
   {
    "id": "prog-h5",
@@ -178,7 +192,8 @@
     "A type of loop that terminates early",
     "A syntax for importing modules"
    ],
-   "correct": 0
+   "correct": 0,
+   "nodeId": "prog-oop"
   }
  ],
  "dsa": [
@@ -192,7 +207,8 @@
     "Tree",
     "Graph"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dsa-linear"
   },
   {
    "id": "dsa-e2",
@@ -204,7 +220,8 @@
     "Linked List",
     "Heap"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dsa-linear"
   },
   {
    "id": "dsa-e3",
@@ -216,7 +233,8 @@
     "O(n^2)",
     "O(1)"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dsa-sorting-search"
   },
   {
    "id": "dsa-e4",
@@ -228,7 +246,8 @@
     "Array",
     "Hash Map"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dsa-linear"
   },
   {
    "id": "dsa-e5",
@@ -240,7 +259,8 @@
     "Row and column",
     "Parent and child index"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dsa-linear"
   },
   {
    "id": "dsa-m1",
@@ -252,7 +272,8 @@
     "O(n^2)",
     "O(log n)"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "dsa-sorting-search"
   },
   {
    "id": "dsa-m2",
@@ -264,7 +285,8 @@
     "Preorder",
     "Level-order"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "dsa-trees"
   },
   {
    "id": "dsa-m3",
@@ -276,7 +298,8 @@
     "Array",
     "Stack"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dsa-trees"
   },
   {
    "id": "dsa-m4",
@@ -288,7 +311,8 @@
     "O(n)",
     "O(n^2)"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "dsa-sorting-search"
   },
   {
    "id": "dsa-m5",
@@ -300,7 +324,8 @@
     "Simple array (unsorted)",
     "Linked list"
    ],
-   "correct": 0
+   "correct": 0,
+   "nodeId": "dsa-trees"
   },
   {
    "id": "dsa-h1",
@@ -312,7 +337,8 @@
     "O(E log E log V)",
     "O(V + E)"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dsa-graphs"
   },
   {
    "id": "dsa-h2",
@@ -324,7 +350,8 @@
     "Storing key-value pairs",
     "Balancing a binary tree"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dsa-graphs"
   },
   {
    "id": "dsa-h3",
@@ -336,7 +363,8 @@
     "O(1)",
     "O(n^2)"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "dsa-arrays"
   },
   {
    "id": "dsa-h4",
@@ -348,7 +376,8 @@
     "DFS-based or Kahn's (BFS with in-degree) algorithm",
     "Binary search"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "dsa-graphs"
   },
   {
    "id": "dsa-h5",
@@ -360,7 +389,8 @@
     "DP considers overlapping subproblems and optimal substructure, Greedy makes locally optimal choices",
     "There is no real difference"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "dsa-dp"
   }
  ],
  "os": [
@@ -374,7 +404,8 @@
     "Central Program Utility",
     "Core Processing Utility"
    ],
-   "correct": 0
+   "correct": 0,
+   "nodeId": "os-basics"
   },
   {
    "id": "os-e2",
@@ -386,7 +417,8 @@
     "A type of hardware",
     "A network connection"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "os-basics"
   },
   {
    "id": "os-e3",
@@ -398,7 +430,8 @@
     "Cooling the CPU",
     "Displaying graphics"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "os-basics"
   },
   {
    "id": "os-e4",
@@ -410,7 +443,8 @@
     "Designing websites",
     "Compiling programs only"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "os-basics"
   },
   {
    "id": "os-e5",
@@ -422,7 +456,8 @@
     "A type of file system",
     "A hardware component"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "os-basics"
   },
   {
    "id": "os-m1",
@@ -434,7 +469,8 @@
     "A crashed operating system",
     "A type of memory leak"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "os-concurrency"
   },
   {
    "id": "os-m2",
@@ -446,7 +482,8 @@
     "A type of cache memory",
     "Memory reserved only for the OS kernel"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "os-basics"
   },
   {
    "id": "os-m3",
@@ -458,7 +495,8 @@
     "Round Robin",
     "Priority Scheduling"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "os-basics"
   },
   {
    "id": "os-m4",
@@ -470,7 +508,8 @@
     "Rendering graphics",
     "Compressing files"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "os-concurrency"
   },
   {
    "id": "os-m5",
@@ -482,7 +521,8 @@
     "Deleting unused files",
     "Encrypting memory contents"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "os-basics"
   },
   {
    "id": "os-h1",
@@ -494,7 +534,8 @@
     "Preemption allowed",
     "Circular wait"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "os-concurrency"
   },
   {
    "id": "os-h2",
@@ -506,7 +547,8 @@
     "A type of deadlock",
     "A network congestion issue"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "os-basics"
   },
   {
    "id": "os-h3",
@@ -518,7 +560,8 @@
     "Preemptive only works on single-core CPUs",
     "There is no real difference"
    ],
-   "correct": 0
+   "correct": 0,
+   "nodeId": "os-basics"
   },
   {
    "id": "os-h4",
@@ -530,7 +573,8 @@
     "A scheduling algorithm",
     "A type of memory allocation error"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "os-concurrency"
   },
   {
    "id": "os-h5",
@@ -542,7 +586,8 @@
     "CPU temperature control",
     "Network routing"
    ],
-   "correct": 0
+   "correct": 0,
+   "nodeId": "os-concurrency"
   }
  ],
  "dbms": [
@@ -556,7 +601,8 @@
     "Structured Question Language",
     "System Query Language"
    ],
-   "correct": 0
+   "correct": 0,
+   "nodeId": "dbms-sql"
   },
   {
    "id": "dbms-e2",
@@ -568,7 +614,8 @@
     "A password field",
     "A type of index only"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dbms-sql"
   },
   {
    "id": "dbms-e3",
@@ -580,7 +627,8 @@
     "FETCH",
     "SHOW"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dbms-sql"
   },
   {
    "id": "dbms-e4",
@@ -592,7 +640,8 @@
     "An encrypted key",
     "A duplicate primary key"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dbms-sql"
   },
   {
    "id": "dbms-e5",
@@ -604,7 +653,8 @@
     "A query result",
     "A user account"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dbms-sql"
   },
   {
    "id": "dbms-m1",
@@ -616,7 +666,8 @@
     "Encrypting all tables",
     "Deleting old records automatically"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dbms-design"
   },
   {
    "id": "dbms-m2",
@@ -628,7 +679,8 @@
     "Creating a backup",
     "Renaming a column"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dbms-sql"
   },
   {
    "id": "dbms-m3",
@@ -640,7 +692,8 @@
     "Authentication",
     "Aggregation"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dbms-design"
   },
   {
    "id": "dbms-m4",
@@ -652,7 +705,8 @@
     "Enforcing passwords",
     "Compressing storage"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dbms-design"
   },
   {
    "id": "dbms-m5",
@@ -664,7 +718,8 @@
     "TRUNCATE is slower than DELETE always",
     "DELETE removes the table structure too"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dbms-sql"
   },
   {
    "id": "dbms-h1",
@@ -676,7 +731,8 @@
     "All foreign keys",
     "Multi-valued attributes only"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dbms-design"
   },
   {
    "id": "dbms-h2",
@@ -688,7 +744,8 @@
     "One transaction commits before the other starts",
     "Indexes are missing"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dbms-design"
   },
   {
    "id": "dbms-h3",
@@ -700,7 +757,8 @@
     "Serializable",
     "Snapshot"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dbms-design"
   },
   {
    "id": "dbms-h4",
@@ -712,7 +770,8 @@
     "To enforce stricter constraints",
     "It is never intentional"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dbms-design"
   },
   {
    "id": "dbms-h5",
@@ -724,7 +783,8 @@
     "A foreign key with a default value",
     "An encrypted key"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "dbms-sql"
   }
  ],
  "web": [
@@ -738,7 +798,8 @@
     "HyperTransfer Markup Language",
     "Home Tool Markup Language"
    ],
-   "correct": 0
+   "correct": 0,
+   "nodeId": "web-html-css"
   },
   {
    "id": "web-e2",
@@ -750,7 +811,8 @@
     "Database queries",
     "Network requests"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "web-html-css"
   },
   {
    "id": "web-e3",
@@ -762,7 +824,8 @@
     "<href>",
     "<url>"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "web-html-css"
   },
   {
    "id": "web-e4",
@@ -774,7 +837,8 @@
     "DELETE",
     "PUT"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "web-node"
   },
   {
    "id": "web-e5",
@@ -786,7 +850,8 @@
     "Just Style",
     "Java Server"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "web-js"
   },
   {
    "id": "web-m1",
@@ -798,7 +863,8 @@
     "A CSS preprocessor",
     "A type of web server"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "web-js"
   },
   {
    "id": "web-m2",
@@ -810,7 +876,8 @@
     "To store passwords",
     "To compile JavaScript"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "web-node"
   },
   {
    "id": "web-m3",
@@ -822,7 +889,8 @@
     "Encrypting styles",
     "Server-side rendering"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "web-html-css"
   },
   {
    "id": "web-m4",
@@ -834,7 +902,8 @@
     "Compiling code",
     "Managing databases directly"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "web-js"
   },
   {
    "id": "web-m5",
@@ -846,7 +915,8 @@
     "Database indexing",
     "CSS animations"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "web-node"
   },
   {
    "id": "web-h1",
@@ -858,7 +928,8 @@
     "sessionStorage is larger in size",
     "localStorage only works over HTTPS"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "web-js"
   },
   {
    "id": "web-h2",
@@ -870,7 +941,8 @@
     "A way to prevent all events",
     "A CSS animation technique"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "web-js"
   },
   {
    "id": "web-h3",
@@ -882,7 +954,8 @@
     "A database caching technique",
     "A CSS framework"
    ],
-   "correct": 0
+   "correct": 0,
+   "nodeId": "web-react"
   },
   {
    "id": "web-h4",
@@ -894,7 +967,8 @@
     "Compressing images",
     "Managing CSS variables"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "web-auth"
   },
   {
    "id": "web-h5",
@@ -906,7 +980,8 @@
     "Using semicolons incorrectly",
     "Having too many HTML tags"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "web-js"
   }
  ],
  "aiml": [
@@ -920,7 +995,8 @@
     "Applied Informatics",
     "Algorithmic Interface"
    ],
-   "correct": 0
+   "correct": 0,
+   "nodeId": "aiml-ml"
   },
   {
    "id": "aiml-e2",
@@ -932,7 +1008,8 @@
     "Database Management",
     "Computer Networks"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "aiml-ml"
   },
   {
    "id": "aiml-e3",
@@ -944,7 +1021,8 @@
     "Managing servers",
     "Encrypting data"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "aiml-ml"
   },
   {
    "id": "aiml-e4",
@@ -956,7 +1034,8 @@
     "Learning only from images",
     "A type of database query"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "aiml-ml"
   },
   {
    "id": "aiml-e5",
@@ -968,7 +1047,8 @@
     "Express",
     "Bootstrap"
    ],
-   "correct": 0
+   "correct": 0,
+   "nodeId": "aiml-python"
   },
   {
    "id": "aiml-m1",
@@ -980,7 +1060,8 @@
     "A model with too few parameters",
     "A dataset that is too large"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "aiml-ml"
   },
   {
    "id": "aiml-m2",
@@ -992,7 +1073,8 @@
     "To store training data",
     "To visualize the dataset"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "aiml-ml"
   },
   {
    "id": "aiml-m3",
@@ -1004,7 +1086,8 @@
     "Cleaning missing data",
     "Splitting data into batches only"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "aiml-ml"
   },
   {
    "id": "aiml-m4",
@@ -1016,7 +1099,8 @@
     "Dataset size",
     "Server load"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "aiml-ml"
   },
   {
    "id": "aiml-m5",
@@ -1028,7 +1112,8 @@
     "To remove all outliers automatically",
     "It is purely cosmetic"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "aiml-ml"
   },
   {
    "id": "aiml-h1",
@@ -1040,7 +1125,8 @@
     "A GPU running out of memory",
     "A type of overfitting"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "aiml-dl"
   },
   {
    "id": "aiml-h2",
@@ -1052,7 +1138,8 @@
     "Boosting only works on images",
     "Bagging requires labeled data, boosting does not"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "aiml-ml"
   },
   {
    "id": "aiml-h3",
@@ -1064,7 +1151,8 @@
     "Sorting the training dataset",
     "Managing database connections"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "aiml-dl"
   },
   {
    "id": "aiml-h4",
@@ -1076,7 +1164,8 @@
     "Encrypts model weights",
     "Splits training into batches"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "aiml-nlp"
   },
   {
    "id": "aiml-h5",
@@ -1088,7 +1177,8 @@
     "Increasing model size",
     "Visualizing training loss"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "aiml-ml"
   }
  ],
  "cn": [
@@ -1102,7 +1192,8 @@
     "Session",
     "Data Link"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "cn-basics"
   },
   {
    "id": "cn-e2",
@@ -1114,7 +1205,8 @@
     "Encrypts web traffic",
     "Translates domain names to IP addresses"
    ],
-   "correct": 3
+   "correct": 3,
+   "nodeId": "cn-basics"
   },
   {
    "id": "cn-e3",
@@ -1126,7 +1218,8 @@
     "HTTPS",
     "HTTP"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "cn-basics"
   },
   {
    "id": "cn-e4",
@@ -1138,7 +1231,8 @@
     "16",
     "128"
    ],
-   "correct": 0
+   "correct": 0,
+   "nodeId": "cn-basics"
   },
   {
    "id": "cn-e5",
@@ -1150,7 +1244,8 @@
     "Repeater",
     "Hub"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "cn-basics"
   },
   {
    "id": "cn-m1",
@@ -1162,7 +1257,8 @@
     "IP",
     "UDP"
    ],
-   "correct": 0
+   "correct": 0,
+   "nodeId": "cn-transport"
   },
   {
    "id": "cn-m2",
@@ -1174,7 +1270,8 @@
     "2",
     "5"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "cn-transport"
   },
   {
    "id": "cn-m3",
@@ -1186,7 +1283,8 @@
     "80",
     "443"
    ],
-   "correct": 3
+   "correct": 3,
+   "nodeId": "cn-basics"
   },
   {
    "id": "cn-m4",
@@ -1198,7 +1296,8 @@
     "ARP",
     "NAT"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "cn-basics"
   },
   {
    "id": "cn-m5",
@@ -1210,7 +1309,8 @@
     "An IP address to a MAC address",
     "A domain name to an IP address"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "cn-basics"
   },
   {
    "id": "cn-h1",
@@ -1222,7 +1322,8 @@
     "126",
     "62"
    ],
-   "correct": 3
+   "correct": 3,
+   "nodeId": "cn-basics"
   },
   {
    "id": "cn-h2",
@@ -1234,7 +1335,8 @@
     "Flow control of data in flight",
     "Routing path selection"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "cn-transport"
   },
   {
    "id": "cn-h3",
@@ -1246,7 +1348,8 @@
     "Bellman-Ford",
     "Floyd-Warshall"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "cn-transport"
   },
   {
    "id": "cn-h4",
@@ -1258,7 +1361,8 @@
     "Slow start",
     "Congestion avoidance"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "cn-transport"
   },
   {
    "id": "cn-h5",
@@ -1270,7 +1374,8 @@
     "255",
     "30"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "cn-transport"
   }
  ],
  "sd": [
@@ -1284,7 +1389,8 @@
     "Compressing stored data",
     "Adding more machines to share the load"
    ],
-   "correct": 3
+   "correct": 3,
+   "nodeId": "sd-basics"
   },
   {
    "id": "sd-e2",
@@ -1296,7 +1402,8 @@
     "Encrypt database backups",
     "Store user sessions permanently"
    ],
-   "correct": 0
+   "correct": 0,
+   "nodeId": "sd-basics"
   },
   {
    "id": "sd-e3",
@@ -1308,7 +1415,8 @@
     "Storing frequently accessed data for faster reads",
     "Authenticating users"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "sd-basics"
   },
   {
    "id": "sd-e4",
@@ -1320,7 +1428,8 @@
     "Running database transactions",
     "Serving static content from locations near users"
    ],
-   "correct": 3
+   "correct": 3,
+   "nodeId": "sd-basics"
   },
   {
    "id": "sd-e5",
@@ -1332,7 +1441,8 @@
     "Storage capacity",
     "Number of servers"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "sd-basics"
   },
   {
    "id": "sd-m1",
@@ -1344,7 +1454,8 @@
     "Caching and Persistence",
     "Cost and Performance"
    ],
-   "correct": 0
+   "correct": 0,
+   "nodeId": "sd-distributed"
   },
   {
    "id": "sd-m2",
@@ -1356,7 +1467,8 @@
     "Indexing",
     "Sharding"
    ],
-   "correct": 3
+   "correct": 3,
+   "nodeId": "sd-basics"
   },
   {
    "id": "sd-m3",
@@ -1368,7 +1480,8 @@
     "It makes every call synchronous",
     "It decouples producers from consumers and absorbs traffic bursts"
    ],
-   "correct": 3
+   "correct": 3,
+   "nodeId": "sd-basics"
   },
   {
    "id": "sd-m4",
@@ -1380,7 +1493,8 @@
     "It keeps copies of data on multiple nodes for availability and read scaling",
     "It splits a table into smaller tables by column"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "sd-basics"
   },
   {
    "id": "sd-m5",
@@ -1392,7 +1506,8 @@
     "It keeps no per-client session state on the server between requests",
     "It never uses a database"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "sd-basics"
   },
   {
    "id": "sd-h1",
@@ -1404,7 +1519,8 @@
     "Write-through",
     "Lazy loading"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "sd-basics"
   },
   {
    "id": "sd-h2",
@@ -1416,7 +1532,8 @@
     "Encrypting keys at rest",
     "Minimising key remapping when nodes are added or removed"
    ],
-   "correct": 3
+   "correct": 3,
+   "nodeId": "sd-distributed"
   },
   {
    "id": "sd-h3",
@@ -1428,7 +1545,8 @@
     "Repeating it leaves the same resulting state as doing it once",
     "It can never fail"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "sd-basics"
   },
   {
    "id": "sd-h4",
@@ -1440,7 +1558,8 @@
     "10",
     "50"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "sd-distributed"
   },
   {
    "id": "sd-h5",
@@ -1452,7 +1571,8 @@
     "Blue-green deployment",
     "Write-behind caching"
    ],
-   "correct": 0
+   "correct": 0,
+   "nodeId": "sd-distributed"
   }
  ],
  "mobile": [
@@ -1466,7 +1586,8 @@
     "Objective-C",
     "Swift"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "mobile-kotlin"
   },
   {
    "id": "mobile-e2",
@@ -1478,7 +1599,8 @@
     "Swift",
     "Dart"
    ],
-   "correct": 3
+   "correct": 3,
+   "nodeId": "mobile-dart"
   },
   {
    "id": "mobile-e3",
@@ -1490,7 +1612,8 @@
     "Kotlin",
     "C#"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "mobile-swift"
   },
   {
    "id": "mobile-e4",
@@ -1502,7 +1625,8 @@
     "Widget",
     "Fragment"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "mobile-flutter-ui"
   },
   {
    "id": "mobile-e5",
@@ -1514,7 +1638,8 @@
     "build.gradle",
     "strings.xml"
    ],
-   "correct": 0
+   "correct": 0,
+   "nodeId": "mobile-android-core"
   },
   {
    "id": "mobile-m1",
@@ -1526,7 +1651,8 @@
     "ContentProvider",
     "Service"
    ],
-   "correct": 0
+   "correct": 0,
+   "nodeId": "mobile-android-core"
   },
   {
    "id": "mobile-m2",
@@ -1538,7 +1664,8 @@
     "Stateful widgets cannot have children",
     "They are identical"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "mobile-flutter-ui"
   },
   {
    "id": "mobile-m3",
@@ -1550,7 +1677,8 @@
     "Retrofit",
     "Hilt"
    ],
-   "correct": 0
+   "correct": 0,
+   "nodeId": "mobile-android-arch"
   },
   {
    "id": "mobile-m4",
@@ -1562,7 +1690,8 @@
     "UI animation",
     "Dependency injection"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "mobile-android-net"
   },
   {
    "id": "mobile-m5",
@@ -1574,7 +1703,8 @@
     "onDestroy",
     "onCreate"
    ],
-   "correct": 3
+   "correct": 3,
+   "nodeId": "mobile-android-core"
   },
   {
    "id": "mobile-h1",
@@ -1586,7 +1716,8 @@
     "It is retained in a ViewModelStore that outlives the recreated Activity",
     "It runs in a separate process"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "mobile-android-arch"
   },
   {
    "id": "mobile-h2",
@@ -1598,7 +1729,8 @@
     "A change to State that it reads",
     "Any network call"
    ],
-   "correct": 2
+   "correct": 2,
+   "nodeId": "mobile-android-core"
   },
   {
    "id": "mobile-h3",
@@ -1610,7 +1742,8 @@
     "Retrofit",
     "Provider"
    ],
-   "correct": 3
+   "correct": 3,
+   "nodeId": "mobile-flutter-state"
   },
   {
    "id": "mobile-h4",
@@ -1622,7 +1755,8 @@
     "Automatic UI layout",
     "Faster compile times"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "mobile-kotlin"
   },
   {
    "id": "mobile-h5",
@@ -1634,7 +1768,8 @@
     "App Store review",
     "UI constraints"
    ],
-   "correct": 1
+   "correct": 1,
+   "nodeId": "mobile-swift"
   }
  ]
 }

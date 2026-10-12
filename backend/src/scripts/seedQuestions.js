@@ -12,7 +12,7 @@ export async function seedQuestions({ onlyIfEmpty = false } = {}) {
   const ops = DOMAIN_KEYS.flatMap((domain) => (bank[domain] || []).map((q) => ({
     updateOne: {
       filter: { id: q.id },
-      update: { $set: { domain, difficulty: q.difficulty, question: q.question, options: q.options, correct: q.correct } },
+      update: { $set: { domain, nodeId: q.nodeId ?? null, difficulty: q.difficulty, question: q.question, options: q.options, correct: q.correct } },
       upsert: true
     }
   })));

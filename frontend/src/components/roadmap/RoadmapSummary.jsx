@@ -3,6 +3,8 @@ import SummaryCard from '../home/SummaryCard';
 import { longDate } from '../../lib/format';
 
 export default function RoadmapSummary({ roadmap, goalLabel, trackLabel }) {
+  const shortened = roadmap.nodes.filter((n) => n.status !== 'mastered' && n.skippedHours > 0);
+  const selfKnown = roadmap.nodes.filter((n) => n.source === 'self').length;
   return (
     <div>
       <header className="max-w-3xl">
@@ -14,7 +16,7 @@ export default function RoadmapSummary({ roadmap, goalLabel, trackLabel }) {
       <section className="summary-grid mt-9 grid md:grid-cols-[1.2fr_.9fr_.9fr]">
         <SummaryCard index={0} label="Duration" value={`${roadmap.totalWeeks} weeks`} detail={`${roadmap.totalHours} hours of focused work, finishing around ${longDate(roadmap.endDate)}.`} />
         <SummaryCard index={1} label="Skills to learn" value={roadmap.nodes.filter((n) => n.status !== 'mastered').length} detail={roadmap.masteredNodeIds.length ? `${roadmap.masteredNodeIds.length} skills you already know are marked, not repeated.` : 'Starting from the foundations.'} />
-        <SummaryCard index={2} label="Time saved" value={`${roadmap.hoursSaved} h`} detail={roadmap.hoursSaved > 0 ? 'Compared with the same goal for someone starting from zero.' : 'No prior skills were found, so this is the full path.'} />
+        <SummaryCard index={2} label="Time saved" value={`${roadmap.hoursSaved} h`} detail={roadmap.hoursSaved > 0 ? `Compared with the same goal from zero${shortened.length ? `; your answers shortened ${shortened.length} skill${shortened.length === 1 ? '' : 's'} partway` : ''}${selfKnown ? `; ${selfKnown} skill${selfKnown === 1 ? '' : 's'} you marked as known` : ''}.` : 'No prior skills were found, so this is the full path.'} />
       </section>
 
       {!roadmap.feasible && (

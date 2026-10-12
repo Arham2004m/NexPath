@@ -31,14 +31,22 @@ The brain of the app is a prerequisite graph of skills in `backend/src/data/grap
 
 - `npm run validate-graph`: checks ids, prerequisites, cycles, topic hours, mini tasks and goal references; the server also refuses to start on an invalid graph.
 - `npm run import-resources`: rebuilds each skill's curated resources from `backend/src/data/resources/nexpath-resources.csv` using the rules in `resourceMap.json`, and writes `import-report.json` (unmapped rows, skills with fewer than 3 resources are flagged `needsReview`). Resource links are never invented.
-- `npm test`: engine tests (ordering, determinism, mastery, packing, deadlines, recommender).
+- `npm test`: engine tests (ordering, determinism, mastery, partial credit, packing, deadlines, hours scaling, recommender).
 - Every goal and sub-track has a roadmap path (`goalPaths.json`). Durations shown on the goal page are computed from the graph, not typed in. Skills with thin resources (aptitude, deployment, iOS release, trees) are flagged `needsReview`; send more CSV rows for them and re-run the importer.
+
+### How a roadmap is personalised
+
+1. **Assessment bands:** Intermediate skips a domain's level-1 skills, Advanced skips levels 1 and 2. Level-3 skills are never skipped.
+2. **Partial credit by score:** inside a band, the score still counts. A student near the top of a band has also covered part of the next level, so the first topics of those skills are skipped, or the next topic is shortened (a lighter pass). Credit goes first to skills whose own questions (each question is tagged to a skill) were answered correctly and never to skills whose question was answered wrong. The last topic of a skill and every capstone are never skipped.
+3. **Capstones:** every goal path ends in a hands-on capstone skill that nothing can skip, so a roadmap is never empty.
+4. **"I already know this":** on the roadmap a student can mark a skill as known; this covers areas the assessment cannot (theory, aptitude, research, business) and can be undone.
+5. **Weekly hours:** the number of topics per week grows above 15 hours a week, so more hours always means fewer weeks, and the estimates on the goal page come from the same planner.
 
 ## API
 
 - Auth: `POST /api/auth/register`, `/login`, `/refresh`, `/logout`, and protected `GET /api/auth/me`. Registration errors return `{ message, errors: { field: message } }`; login deliberately responds with generic invalid credentials.
 - Assessment (all require `Authorization: Bearer <access token>`): `GET /api/assessment/domains`, `POST /api/assessment/questions`, `POST /api/assessment/submit`, `GET /api/assessment/latest`.
-- Goals and roadmaps: `GET /api/goals`, `GET /api/goals/recommendations`, `PUT /api/me/goal`, `GET /api/graph`, `POST /api/roadmaps/preview` (generates without saving).
+- Goals and roadmaps: `GET /api/goals`, `GET /api/goals/recommendations`, `PUT /api/me/goal`, `GET /api/graph`, `POST /api/roadmaps/preview` (generates without saving), `PUT /api/me/known-skills` (mark or unmark a skill as already known).
 - `GET /api/health`.
 
 ## Troubleshooting MongoDB

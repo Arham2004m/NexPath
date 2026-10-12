@@ -9,6 +9,8 @@ const userSchema = new mongoose.Schema({
   subTrack: { type: String, default: null },
   hoursPerWeek: { type: Number, default: null },
   targetWeeks: { type: Number, default: null },
+  // Skills the student says they already know (knowledge-graph node ids); skipped in their roadmap.
+  knownSkills: { type: [String], default: [] },
   // True once the student has both an assessment and a goal.
   onboardingComplete: { type: Boolean, default: false }
 }, { timestamps: { createdAt: true, updatedAt: false } });

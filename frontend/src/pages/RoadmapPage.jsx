@@ -8,7 +8,7 @@ import RoadmapSummary from '../components/roadmap/RoadmapSummary';
 import NodeDetails from '../components/roadmap/NodeDetails';
 import WeekList from '../components/roadmap/WeekList';
 import { getGoals } from '../services/goalApi';
-import { previewRoadmap } from '../services/roadmapApi';
+import { previewRoadmap, setKnownSkill } from '../services/roadmapApi';
 
 // React Flow is heavy, so the tree loads only when this page is opened.
 const RoadmapTree = lazy(() => import('../components/roadmap/RoadmapTree'));
@@ -26,6 +26,8 @@ export default function RoadmapPage() {
   const [goals, setGoals] = useState([]);
   const [problem, setProblem] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
+  const [busy, setBusy] = useState(false);
+  const [notice, setNotice] = useState(null);
   const [view, setView] = useState(() => (window.matchMedia('(max-width: 639px)').matches ? 'weeks' : 'tree'));
 
   const load = useCallback(() => {
@@ -36,10 +38,19 @@ export default function RoadmapPage() {
   }, []);
   useEffect(load, [load]);
 
+  // Marks or unmarks a skill as known, then regenerates the roadmap in place (the open skill stays selected).
+  const toggleKnown = useCallback(async (nodeId, known) => {
+    setBusy(true); setNotice(null);
+    try {
+      await setKnownSkill(nodeId, known);
+      setRoadmap(await previewRoadmap());
+    } catch (error) { setNotice(error.message); } finally { setBusy(false); }
+  }, []);
+
   const byId = useMemo(() => new Map((roadmap?.nodes || []).map((node) => [node.id, node])), [roadmap]);
   const nameOf = useCallback((id) => byId.get(id)?.name || id, [byId]);
   const select = useCallback((id) => setSelectedId((current) => (current === id ? null : id)), []);
-  const close = useCallback(() => setSelectedId(null), []);
+  const close = useCallback(() => { setSelectedId(null); setNotice(null); }, []);
   const selected = selectedId ? byId.get(selectedId) : null;
 
   const goal = goals.find((g) => g.id === roadmap?.goalId);
@@ -103,7 +114,7 @@ export default function RoadmapPage() {
                       ? <Suspense fallback={<div className="h-[72vh] animate-pulse bg-warm" aria-label="Loading skill tree" />}><RoadmapTree roadmap={roadmap} selectedId={selectedId} onSelect={select} /></Suspense>
                       : <WeekList roadmap={roadmap} />}
                   </div>
-                  {view === 'tree' && selected && <NodeDetails node={selected} nameOf={nameOf} onClose={close} />}
+                  {view === 'tree' && selected && <NodeDetails node={selected} nameOf={nameOf} onClose={close} onToggleKnown={toggleKnown} busy={busy} notice={notice} />}
                 </div>
               </>
             )}

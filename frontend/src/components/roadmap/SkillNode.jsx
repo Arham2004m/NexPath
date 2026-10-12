@@ -22,17 +22,17 @@ function SkillNode({ data }) {
         type="button"
         onClick={() => onSelect(node.id)}
         aria-pressed={selected}
-        aria-label={`${node.name}, ${node.status === 'mastered' ? 'already known' : weekRange(node)}, ${node.estimatedHours} hours. Open details`}
+        aria-label={`${node.name}, ${node.status === 'mastered' ? 'already known' : weekRange(node)}, ${node.estimatedHours} hours${node.skippedHours > 0 ? `, ${node.skippedHours} hours skipped` : ''}. Open details`}
         style={{ width: NODE_WIDTH, height: NODE_HEIGHT }}
         className={`control-transition relative flex flex-col justify-between overflow-hidden border px-5 py-3.5 text-left outline-none hover:-translate-y-px focus-visible:ring-2 focus-visible:ring-mid ${style.box} ${selected ? 'ring-2 ring-[var(--color-azure)] ring-offset-2' : ''}`}
       >
         <span className={`absolute inset-y-0 left-0 w-1.5 ${style.rail}`} aria-hidden="true" />
         <span className="flex items-center justify-between gap-2 font-mono text-[10px] font-medium uppercase tracking-[.12em] opacity-80">
-          <span>{style.tag || (node.startWeek ? weekRange(node) : '')}</span>
+          <span>{node.status === 'mastered' && node.source === 'self' ? 'Known · you marked' : style.tag || (node.startWeek ? weekRange(node) : '')}</span>
           {node.status === 'mastered' && <Check size={13} aria-hidden="true" />}
         </span>
         <span className="line-clamp-2 text-[15px] font-extrabold leading-tight tracking-[-.03em]">{node.name}</span>
-        <span className="font-mono text-[10px] uppercase tracking-[.1em] opacity-70">{node.status === 'next' && node.startWeek ? `${weekRange(node)} · ` : ''}{node.estimatedHours} h</span>
+        <span className="font-mono text-[10px] uppercase tracking-[.1em] opacity-70">{node.status === 'next' && node.startWeek ? `${weekRange(node)} · ` : ''}{node.estimatedHours} h{node.skippedHours > 0 ? ` · −${node.skippedHours} h skipped` : ''}</span>
       </button>
       <Handle type="source" position={Position.Bottom} style={hidden} isConnectable={false} />
     </>

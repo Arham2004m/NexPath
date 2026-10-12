@@ -3,7 +3,7 @@ import Question from '../models/Question.js';
 import AssessmentAttempt from '../models/AssessmentAttempt.js';
 import { DOMAIN_KEYS, DOMAIN_LABELS } from '../data/domains.js';
 import { sampleDomain } from '../services/assessment/sampler.js';
-import { scoreDomain } from '../services/assessment/scoring.js';
+import { questionResults, scoreDomain } from '../services/assessment/scoring.js';
 
 const MAX_QUESTIONS_PER_DOMAIN = 10;
 const isPlainObject = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
@@ -46,6 +46,7 @@ export const submitAttempt = asyncHandler(async (req, res) => {
 
   const profile = {};
   const questionIds = {};
+  const results = {};
   for (const key of DOMAIN_KEYS) {
     if (skippedDomains.includes(key)) {
       profile[key] = { label: DOMAIN_LABELS[key], band: 'Beginner', assessmentMethod: 'self-reported' };
@@ -59,7 +60,9 @@ export const submitAttempt = asyncHandler(async (req, res) => {
     const questions = await Question.find({ domain: key, id: { $in: ids } }).select('+correct').lean();
     if (questions.length !== new Set(ids).size) return bad(res, `Unknown questions for ${key}`);
     questionIds[key] = questions.map((q) => q.id);
-    profile[key] = { label: DOMAIN_LABELS[key], ...scoreDomain(questions, isPlainObject(answers[key]) ? answers[key] : {}), assessmentMethod: 'tested' };
+    const domainAnswers = isPlainObject(answers[key]) ? answers[key] : {};
+    profile[key] = { label: DOMAIN_LABELS[key], ...scoreDomain(questions, domainAnswers), assessmentMethod: 'tested' };
+    results[key] = questionResults(questions, domainAnswers);
   }
   if (!Object.keys(profile).length) return bad(res, 'Nothing to score');
 
@@ -67,6 +70,7 @@ export const submitAttempt = asyncHandler(async (req, res) => {
     userId: req.user._id,
     profile,
     questionIds,
+    results,
     ...(isPlainObject(timing) ? { timing: { limitSeconds: Number(timing.limitSeconds) || null, durationSeconds: Number(timing.durationSeconds) || 0, timedOut: timing.timedOut === true } } : {})
   });
   res.status(201).json({ attempt: toAttempt(attempt, req.user) });
