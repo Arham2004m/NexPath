@@ -64,3 +64,21 @@ export async function request(path, options = {}) {
   }
   return body;
 }
+
+// Opens a streaming answer (the mentor's replies). Same sign-in handling as `request`, but hands back the raw Response
+// so the caller can read the body as it arrives; the caller checks `response.ok`.
+export async function openStream(path, options = {}) {
+  const streaming = { ...options, headers: { Accept: 'text/event-stream', ...(options.headers || {}) } };
+  let response = await send(path, streaming);
+  if (response.status === 401 && accessToken) {
+    const renewed = await renewToken();
+    if (renewed) {
+      accessToken = renewed;
+      response = await send(path, streaming);
+    } else {
+      accessToken = null;
+      sessionExpiredHandler?.();
+    }
+  }
+  return response;
+}
