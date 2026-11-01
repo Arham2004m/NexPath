@@ -47,11 +47,22 @@ The brain of the app is a prerequisite graph of skills in `backend/src/data/grap
 
 The roadmap is saved per student (`Roadmap`, one active version at a time, older versions kept). It is regenerated as a new version when the goal, hours, target, assessment or known skills change, and finished topics are never scheduled again. Ticking a topic or logging time appends a `ProgressEvent`; progress (percentage by hours, weekly completion, time logged vs planned, learning velocity and lag in weeks) is computed from those events by the pure `engine/progress.js`. Open `/roadmap` to tick topics and `/progress` for the dashboard. The tests in `backend/tests` include route tests that run against an in-memory MongoDB (downloaded once on first run), so they never touch your Atlas data.
 
+### Adaptive replanning
+
+`backend/src/engine/replan.js` is a pure function that watches the learning velocity from `engine/progress.js` and adapts the plan:
+
+- **2 or more weeks behind:** every unfinished topic is rescheduled starting today, so the end date moves forward. Finished topics are never moved, and a deadline the student set stays as a date (the weeks left shrink; the app says what weekly load would still meet it, or that it has passed).
+- **1 or more weeks ahead** (a real lead beyond the current week, so finishing this week's work on pace never counts): optional advanced topics whose prerequisites are met are added as extras, up to the hours gained. Extras never change the finish date, the pace or the percentage.
+- **3 finished weeks in a row below 60% of the plan:** the app offers to plan for fewer hours a week. Nothing changes unless the student accepts (`POST /api/replans/accept-hours`, which only ever lowers the hours).
+- At most one automatic replan per 7 days. Every replan creates a new roadmap version (`cause` is `shift` or `enrich`) and a `ReplanEvent` with the trigger numbers, the before and after end dates and the explanation the student sees; nothing is ever deleted.
+
+Replanning is checked whenever the roadmap, dashboard or a tick is requested, so it works without a background job and catches students who stopped logging. `POST /api/roadmaps/replan` checks right now (skipping only the 7 day wait); `GET /api/replans` lists the history and `PATCH /api/replans/:id/seen` records that the student read an explanation. `tests/helpers/simulate.js` runs a day-by-day simulation of fast, steady, slow and intermittent students against the pure engine.
+
 ## API
 
 - Auth: `POST /api/auth/register`, `/login`, `/refresh`, `/logout`, and protected `GET /api/auth/me`. Registration errors return `{ message, errors: { field: message } }`; login deliberately responds with generic invalid credentials.
 - Assessment (all require `Authorization: Bearer <access token>`): `GET /api/assessment/domains`, `POST /api/assessment/questions`, `POST /api/assessment/submit`, `GET /api/assessment/latest`.
-- Goals and roadmaps: `GET /api/goals`, `GET /api/goals/recommendations`, `PUT /api/me/goal`, `GET /api/graph`, `POST /api/roadmaps/preview` (generates without saving), `GET /api/roadmaps/current` (saved roadmap plus progress), `POST /api/roadmaps/regenerate`, `PATCH /api/roadmaps/current/topics/:topicId` (`{ done, minutesSpent }`), `GET /api/dashboard`, `PUT /api/me/known-skills` (mark or unmark a skill as already known).
+- Goals and roadmaps: `GET /api/goals`, `GET /api/goals/recommendations`, `PUT /api/me/goal`, `GET /api/graph`, `POST /api/roadmaps/preview` (generates without saving), `GET /api/roadmaps/current` (saved roadmap plus progress), `POST /api/roadmaps/regenerate`, `PATCH /api/roadmaps/current/topics/:topicId` (`{ done, minutesSpent }`), `GET /api/dashboard`, `PUT /api/me/known-skills` (mark or unmark a skill as already known), `POST /api/roadmaps/replan`, `GET /api/replans`, `PATCH /api/replans/:id/seen`, `POST /api/replans/accept-hours`.
 - `GET /api/health`.
 
 ## Security notes

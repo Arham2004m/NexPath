@@ -7,7 +7,12 @@ import { capstonesOf, resolveGoalPath } from '../engine/graph.js';
 import { generateRoadmap, RoadmapError } from '../engine/generateRoadmap.js';
 import ProgressEvent from '../models/ProgressEvent.js';
 import { reduceEvents } from '../engine/progress.js';
-import { activeRoadmap, progressFor, roadmapDto, RoadmapProblem } from '../services/roadmapService.js';
+import mongoose from 'mongoose';
+import ReplanEvent from '../models/ReplanEvent.js';
+import { HOURS_PER_WEEK } from '../data/goals.js';
+import { profile } from './authController.js';
+import { activeRoadmap, currentWithReplan, eventDto, progressFor, roadmapDto, RoadmapProblem } from '../services/roadmapService.js';
+import { NO_CHANGE } from '../engine/replan.js';
 
 // Public skeleton of the graph (no resources) for visualisation.
 export const graphOverview = (req, res) => {
@@ -71,8 +76,8 @@ const withProblems = (handler) => asyncHandler(async (req, res, next) => {
 });
 
 export const currentRoadmap = withProblems(async (req, res) => {
-  const roadmap = await activeRoadmap(req.user._id, { today: req.today });
-  res.json({ roadmap: roadmapDto(roadmap), progress: await progressFor(roadmap, req.today) });
+  const { roadmap, progress, replan } = await currentWithReplan(req.user._id, { today: req.today });
+  res.json({ roadmap: roadmapDto(roadmap), progress, replan });
 });
 
 export const regenerateRoadmap = withProblems(async (req, res) => {
@@ -90,9 +95,10 @@ export const setTopicProgress = withProblems(async (req, res) => {
 
   let roadmap = await activeRoadmap(req.user._id, { today: req.today });
   const inPlan = roadmap.plan.weeks.some((week) => week.topics.some((topic) => topic.topicId === topicId));
+  const isExtra = (roadmap.plan.extras?.topics || []).some((topic) => topic.topicId === topicId); // optional topics added when ahead
   // A topic finished before the last regeneration is carried over; it can be un-ticked, which puts it back into the plan.
-  const carried = !inPlan && (roadmap.plan.completedTopics || []).some((topic) => topic.topicId === topicId);
-  if (!inPlan && !carried) return res.status(404).json({ message: 'That topic is not part of your current roadmap.' });
+  const carried = !inPlan && !isExtra && (roadmap.plan.completedTopics || []).some((topic) => topic.topicId === topicId);
+  if (!inPlan && !isExtra && !carried) return res.status(404).json({ message: 'That topic is not part of your current roadmap.' });
   if (carried && minutesSpent) return res.status(400).json({ message: 'That topic is already finished, so time cannot be logged on it.' });
 
   const events = await ProgressEvent.find({ userId: req.user._id }).sort({ at: 1 }).lean();
@@ -103,15 +109,60 @@ export const setTopicProgress = withProblems(async (req, res) => {
   if (minutesSpent) add.push({ type: 'time_logged', minutes: minutesSpent });
   if (add.length) await ProgressEvent.insertMany(add.map((event) => ({ ...event, userId: req.user._id, roadmapId: roadmap._id, topicId, day: req.today })));
   if (carried && add.length) roadmap = await activeRoadmap(req.user._id, { force: true, today: req.today });
-  res.json({ progress: await progressFor(roadmap, req.today), roadmapChanged: carried && add.length > 0 });
+  // Progress just changed, so this is also a moment to check whether the plan should adapt.
+  const result = await currentWithReplan(req.user._id, { today: req.today });
+  res.json({ progress: result.progress, roadmapChanged: (carried && add.length > 0) || !!result.replanned, replan: result.replan });
 });
 
 // Everything the progress page needs, without the heavy plan.
 export const dashboard = withProblems(async (req, res) => {
-  const roadmap = await activeRoadmap(req.user._id, { today: req.today });
+  const { roadmap, progress, replan } = await currentWithReplan(req.user._id, { today: req.today });
   const { plan } = roadmap;
+  const history = await ReplanEvent.find({ userId: req.user._id }).sort({ createdAt: -1 }).limit(5);
   res.json({
     roadmap: { id: roadmap.id, version: roadmap.version, createdAt: roadmap.createdAt, goalId: plan.goalId, subTrack: plan.subTrack, hoursPerWeek: plan.hoursPerWeek, targetWeeks: plan.targetWeeks, startDate: plan.startDate, endDate: plan.endDate, totalWeeks: plan.totalWeeks, totalHours: plan.totalHours },
-    progress: await progressFor(roadmap, req.today)
+    progress,
+    replan: { ...replan, history: history.map(eventDto) }
+  });
+});
+
+// ---- replan history, read receipts and the lower-hours offer ----
+
+export const listReplans = asyncHandler(async (req, res) => {
+  const events = await ReplanEvent.find({ userId: req.user._id }).sort({ createdAt: -1 }).limit(50);
+  res.json({ events: events.map(eventDto) });
+});
+
+// The student has read the banner about a replan.
+export const markReplanSeen = asyncHandler(async (req, res) => {
+  if (!mongoose.isValidObjectId(req.params.id)) return res.status(404).json({ message: 'Replan not found.' });
+  const event = await ReplanEvent.findOneAndUpdate({ _id: req.params.id, userId: req.user._id }, { $set: { seenAt: new Date() } }, { new: true });
+  if (!event) return res.status(404).json({ message: 'Replan not found.' });
+  res.json({ event: eventDto(event) });
+});
+
+// The student accepts the offer to plan for fewer hours. Only the weekly hours change, and only ever downwards.
+export const acceptSuggestedHours = asyncHandler(async (req, res) => {
+  const { hoursPerWeek } = req.body;
+  if (!Number.isInteger(hoursPerWeek) || hoursPerWeek < HOURS_PER_WEEK.min || hoursPerWeek > HOURS_PER_WEEK.max) {
+    return res.status(400).json({ message: `Enter whole hours between ${HOURS_PER_WEEK.min} and ${HOURS_PER_WEEK.max}.` });
+  }
+  const user = await User.findById(req.user._id);
+  if (!user.goalId || !user.hoursPerWeek) return res.status(400).json({ message: 'Choose a goal first.' });
+  if (hoursPerWeek >= user.hoursPerWeek) return res.status(400).json({ message: 'This only lowers your weekly hours. Use the goal page to raise them.' });
+  user.hoursPerWeek = hoursPerWeek;
+  await user.save();
+  await ReplanEvent.updateMany({ userId: user._id, seenAt: null }, { $set: { seenAt: new Date() } });
+  res.json({ user: profile(user) });
+});
+
+// The student asks for their plan to be checked right now. The same rules apply (a replan only happens when they are 2+
+// weeks behind or 1+ week ahead); only the 7 day wait is skipped. Always says what happened and why.
+export const replanNow = withProblems(async (req, res) => {
+  const { roadmap, progress, replanned, reason, replan } = await currentWithReplan(req.user._id, { today: req.today, ignoreGuard: true });
+  res.json({
+    replanned: !!replanned,
+    message: replanned ? replanned.message : (NO_CHANGE[reason] ?? 'Your plan is unchanged.'),
+    roadmap: roadmapDto(roadmap), progress, replan
   });
 });

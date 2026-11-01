@@ -66,13 +66,22 @@ describe('protected routes never crash on hostile input', () => {
       'PUT /me/known-skills': ['put', '/me/known-skills', ['nodeId', 'known'], { nodeId: 'web-js', known: true }],
       'POST /assessment/questions': ['post', '/assessment/questions', ['domains'], { domains: ['web'] }],
       'POST /assessment/submit': ['post', '/assessment/submit', ['skippedDomains', 'shownQuestions', 'answers', 'timing'], { skippedDomains: ['web'], shownQuestions: {}, answers: {}, timing: {} }],
-      'PATCH topic': ['patch', `/roadmaps/current/topics/${topicId}`, ['done', 'minutesSpent'], { done: true }]
+      'PATCH topic': ['patch', `/roadmaps/current/topics/${topicId}`, ['done', 'minutesSpent'], { done: true }],
+      'POST /replans/accept-hours': ['post', '/replans/accept-hours', ['hoursPerWeek'], { hoursPerWeek: 5 }],
+      'POST /roadmaps/replan': ['post', '/roadmaps/replan', ['anything'], {}]
     };
     for (const [label, [method, path, fields, valid]] of Object.entries(bodies)) {
       for (const field of fields) {
         for (const value of HOSTILE) notServerError(await student[method](path, { ...valid, [field]: value }), `${label} ${field}=${JSON.stringify(value)?.slice(0, 40)}`);
       }
       for (const body of HOSTILE) notServerError(await rawJson(method, `/api${path}`, body, student.auth), `${label} body=${JSON.stringify(body)?.slice(0, 40)}`);
+    }
+  });
+
+  it('odd replan ids in the url', async () => {
+    const student = await newStudent(app);
+    for (const id of ['%00', '%', '..%2F..%2Fetc', '%E0%A4%A', encodeURIComponent('<b>'), 'x'.repeat(3000), '__proto__', 'constructor', '507f1f77bcf86cd799439011']) {
+      notServerError(await student.patch(`/replans/${id}/seen`, {}), `replan ${id.slice(0, 20)}`);
     }
   });
 

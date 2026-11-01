@@ -75,12 +75,14 @@ const weeksAt = (units, hours, maxTopicsOverride) => packWeeks(units.map((unit) 
 const baselineHours = (byId, targets) => [...neededClosure(byId, targets, new Set()).needed].reduce((sum, id) => sum + byId.get(id).estimatedHours, 0);
 
 // mastered: skills fully skipped. credits: { nodeId: n } skips the first n topics of a skill that is otherwise planned.
+// deadlineDate: the calendar date a target refers to. Left out, it is startDate + targetWeeks; a replan passes the original
+// date so a rescheduled plan is still measured against the deadline the student set, not a moved one.
 // completedTopicIds: topics the student has already finished; they are never scheduled again (a regenerated plan keeps finished work).
 // trims: { nodeId: { topicIndex, hours } } shortens one topic by that many hours (a lighter pass over half-known material).
 // sources: { nodeId: 'assessment' | 'self' } says why a skill is known (shown to the student).
 // Capstones are never skipped, so a roadmap always has real content.
 export function generateRoadmap({
-  nodes, goalPaths, goalId, subTrack = null, mastered = [], credits = {}, trims = {}, sources = {}, completedTopicIds = [], hoursPerWeek, targetWeeks = null,
+  nodes, goalPaths, goalId, subTrack = null, mastered = [], credits = {}, trims = {}, sources = {}, completedTopicIds = [], hoursPerWeek, targetWeeks = null, deadlineDate = null,
   startDate, graphVersion = null, maxTopicsPerWeek = null
 }) {
   const path = resolveGoalPath(goalPaths, goalId, subTrack);
@@ -177,6 +179,7 @@ export function generateRoadmap({
 
   return {
     goalId, subTrack, graphVersion, hoursPerWeek, targetWeeks, startDate,
+    deadlineDate: targetWeeks ? (deadlineDate ?? addDays(startDate, targetWeeks * 7)) : null,
     totalHours, totalWeeks: weeks.length,
     endDate: weeks.length ? weeks[weeks.length - 1].endDate : startDate,
     completedHours, baselineHours: baseline, hoursSaved: baseline - totalHours - completedHours,

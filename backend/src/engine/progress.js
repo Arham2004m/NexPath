@@ -1,11 +1,15 @@
 // Progress and learning velocity from a saved roadmap plus an append-only list of progress events.
-// Pure: no database, clock or HTTP. The adaptive replanner reads these same numbers later.
+// Pure: no database, clock or HTTP. The adaptive replanner (engine/replan.js) reads these same numbers.
 //
 // Definitions (handoff section 7.3), measured over the current roadmap version:
 //   P = planned hours in weeks that have fully ended
 //   C = hours of the topics marked complete
 //   velocity = C / P (undefined until one week has ended)
 //   lagWeeks = (P - C) / hoursPerWeek (positive = behind, negative = ahead)
+//
+// P only counts weeks that have ended, while C includes work done in the week still running, so a student who finishes this
+// week's planned work looks up to a week ahead although they are exactly on pace. "Ahead" therefore also needs a real lead:
+//   leadHours = C - P - (planned hours of the current week), at least one weekly load.
 
 const round = (value, places = 2) => Number(value.toFixed(places));
 export const LAG_BEHIND_WEEKS = 2; // replanning threshold from the spec: 2+ weeks behind
@@ -44,6 +48,11 @@ export function computeProgress({ plan, events = [], now = new Date(), today: lo
     }
   }
 
+  // Optional extras (added by the replanner when the student is ahead) are tracked but never count towards the percentage,
+  // the pace or the finish date.
+  const extraTopics = plan.extras?.topics || [];
+  const extraIds = new Set(extraTopics.map((topic) => topic.topicId));
+
   const { done, minutes } = reduceEvents(events);
   const doneIds = new Set([...done.keys()].filter((id) => topics.has(id)));
   const weekState = (week) => (week.endDate < today ? 'ended' : week.startDate <= today ? 'current' : 'upcoming');
@@ -68,7 +77,7 @@ export function computeProgress({ plan, events = [], now = new Date(), today: lo
   // Logged minutes by calendar week (events before the start or after the end land in the first or last week).
   const minutesByWeek = new Map(weeks.map((week) => [week.index, 0]));
   for (const event of events) {
-    if (event.type !== 'time_logged' || !topics.has(event.topicId) || !weeks.length) continue;
+    if (event.type !== 'time_logged' || !(topics.has(event.topicId) || extraIds.has(event.topicId)) || !weeks.length) continue;
     const day = event.day || isoDay(event.at);
     const week = weeks.find((w) => day >= w.startDate && day <= w.endDate) || (day < weeks[0].startDate ? weeks[0] : weeks[weeks.length - 1]);
     minutesByWeek.set(week.index, minutesByWeek.get(week.index) + (event.minutes || 0));
@@ -84,12 +93,14 @@ export function computeProgress({ plan, events = [], now = new Date(), today: lo
     };
   });
 
-  const loggedMinutes = [...minutes].filter(([id]) => topics.has(id)).reduce((sum, [, value]) => sum + value, 0);
+  const loggedMinutes = [...minutes].filter(([id]) => topics.has(id) || extraIds.has(id)).reduce((sum, [, value]) => sum + value, 0);
   const plannedToDate = weeks.filter((week) => weekState(week) !== 'upcoming').reduce((sum, week) => sum + week.plannedHours, 0);
 
   const totalHours = carriedHours + (plan.totalHours || 0);
   const doneHours = carriedHours + C;
   const currentWeek = weeks.find((week) => weekState(week) === 'current');
+  // Hours finished beyond everything planned through the end of the current week.
+  const leadHours = round(C - P - (currentWeek ? currentWeek.plannedHours : 0));
 
   const nodes = {};
   for (const topic of topics.values()) {
@@ -98,6 +109,19 @@ export function computeProgress({ plan, events = [], now = new Date(), today: lo
     if (doneIds.has(topic.topicId)) entry.done += 1;
   }
   for (const entry of Object.values(nodes)) entry.complete = entry.done === entry.total;
+
+  const extras = { total: extraTopics.length, done: 0, hours: 0, doneHours: 0, topics: [], nodes: {} };
+  for (const topic of extraTopics) {
+    const isDone = done.has(topic.topicId);
+    extras.hours += topic.hours;
+    if (isDone) { extras.done += 1; extras.doneHours += topic.hours; }
+    extras.topics.push({ ...topic, done: isDone, minutes: minutes.get(topic.topicId) || 0 });
+    const entry = extras.nodes[topic.nodeId] || (extras.nodes[topic.nodeId] = { done: 0, total: 0 });
+    entry.total += 1;
+    if (isDone) entry.done += 1;
+  }
+  for (const [nodeId, entry] of Object.entries(extras.nodes)) { entry.complete = entry.done === entry.total; if (!nodes[nodeId]) nodes[nodeId] = entry; }
+  for (const topic of extraTopics) topicStatus[topic.topicId] = done.has(topic.topicId) ? 'done' : 'optional';
 
   const nextUp = [...topics.values()]
     .filter((topic) => !doneIds.has(topic.topicId))
@@ -109,7 +133,7 @@ export function computeProgress({ plan, events = [], now = new Date(), today: lo
   const pace = finished ? 'complete'
     : lagWeeks === null ? 'not_started'
       : lagWeeks >= LAG_BEHIND_WEEKS ? 'behind'
-        : lagWeeks <= LAG_AHEAD_WEEKS ? 'ahead' : 'on_track';
+        : lagWeeks <= LAG_AHEAD_WEEKS && leadHours >= plan.hoursPerWeek ? 'ahead' : 'on_track';
 
   return {
     // Rounded down so 99.6% never reads as 100% while work is left; only a finished roadmap shows 100.
@@ -120,8 +144,10 @@ export function computeProgress({ plan, events = [], now = new Date(), today: lo
     weeksEnded: endedWeeks.length, totalWeeks: weeks.length,
     plannedHoursToDate: plannedToDate, loggedHours: round(loggedMinutes / 60),
     velocity, lagWeeks, pace,
-    topicStatus, minutesByTopic: Object.fromEntries([...minutes].filter(([id]) => topics.has(id))),
-    nodes, weekly, nextUp
+    // The inputs of the pace measure itself: hours planned in finished weeks, and hours of plan topics completed.
+    endedPlannedHours: P, completedPlanHours: C, leadHours,
+    topicStatus, minutesByTopic: Object.fromEntries([...minutes].filter(([id]) => topics.has(id) || extraIds.has(id))),
+    nodes, weekly, nextUp, extras
   };
 }
 

@@ -5,6 +5,8 @@ const roadmapSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   version: { type: Number, required: true },
   status: { type: String, enum: ['active', 'superseded'], default: 'active' },
+  // Why this version exists: the student changed something ('inputs'), or the adaptive replanner acted ('shift', 'enrich').
+  cause: { type: String, enum: ['inputs', 'shift', 'enrich'], default: 'inputs' },
   // Everything the plan was generated from; when it changes, a new version is created.
   inputs: {
     goalId: String, subTrack: { type: String, default: null }, hoursPerWeek: Number, targetWeeks: { type: Number, default: null },

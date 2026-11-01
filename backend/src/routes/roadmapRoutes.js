@@ -1,12 +1,16 @@
 import { Router } from 'express';
-import { currentRoadmap, dashboard, graphOverview, previewRoadmap, regenerateRoadmap, setKnownSkill, setTopicProgress } from '../controllers/roadmapController.js';
+import { acceptSuggestedHours, currentRoadmap, dashboard, graphOverview, listReplans, markReplanSeen, previewRoadmap, regenerateRoadmap, replanNow, setKnownSkill, setTopicProgress } from '../controllers/roadmapController.js';
 import { requireAuth } from '../middleware/authMiddleware.js';
 const router = Router();
 router.get('/graph', graphOverview);
 router.post('/roadmaps/preview', requireAuth, previewRoadmap);
 router.get('/roadmaps/current', requireAuth, currentRoadmap);
 router.post('/roadmaps/regenerate', requireAuth, regenerateRoadmap);
+router.post('/roadmaps/replan', requireAuth, replanNow);
 router.patch('/roadmaps/current/topics/:topicId', requireAuth, setTopicProgress);
 router.get('/dashboard', requireAuth, dashboard);
+router.get('/replans', requireAuth, listReplans);
+router.post('/replans/accept-hours', requireAuth, acceptSuggestedHours);
+router.patch('/replans/:id/seen', requireAuth, markReplanSeen);
 router.put('/me/known-skills', requireAuth, setKnownSkill);
 export default router;
