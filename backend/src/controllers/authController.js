@@ -9,7 +9,7 @@ import { createAccessToken, createRefreshToken, refreshCookieOptions } from '../
 const DUMMY_HASH = bcrypt.hashSync('not-a-real-password', 12);
 
 export const profile = (user) => ({ id: user._id, name: user.name, email: user.email, goalId: user.goalId, subTrack: user.subTrack, hoursPerWeek: user.hoursPerWeek, targetWeeks: user.targetWeeks, onboardingComplete: user.onboardingComplete, createdAt: user.createdAt });
-const sendSession = (res, user, status = 200) => { res.cookie('refreshToken', createRefreshToken(user.id), refreshCookieOptions).status(status).json({ accessToken: createAccessToken(user.id), user: profile(user) }); };
+const sendSession = (res, user, status = 200) => { res.cookie('refreshToken', createRefreshToken(user.id, user.tokenVersion), refreshCookieOptions).status(status).json({ accessToken: createAccessToken(user.id, user.tokenVersion), user: profile(user) }); };
 
 export const register = asyncHandler(async (req, res) => {
   const { name, email, password, confirmPassword } = req.body;
@@ -29,10 +29,10 @@ export const login = asyncHandler(async (req, res) => {
 });
 export const refresh = asyncHandler(async (req, res) => {
   try {
-    const { sub } = jwt.verify(req.cookies.refreshToken, process.env.JWT_REFRESH_SECRET);
+    const { sub, v } = jwt.verify(req.cookies.refreshToken, process.env.JWT_REFRESH_SECRET);
     const user = await User.findById(sub);
-    if (!user) throw new Error();
-    res.json({ accessToken: createAccessToken(user.id), user: profile(user) });
+    if (!user || (v ?? 0) !== (user.tokenVersion ?? 0)) throw new Error();
+    res.json({ accessToken: createAccessToken(user.id, user.tokenVersion), user: profile(user) });
   } catch { res.status(401).json({ message: 'Session expired. Please sign in again.' }); }
 });
 // clearCookie must not receive maxAge (deprecated in Express 4, ignored in 5).
@@ -54,6 +54,8 @@ export const changePassword = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id).select('+passwordHash');
   if (!(await bcrypt.compare(req.body.currentPassword, user.passwordHash))) return res.status(400).json({ message: 'Please correct the highlighted fields', errors: { currentPassword: 'That is not your current password' } });
   user.passwordHash = await bcrypt.hash(req.body.newPassword, 12);
+  user.tokenVersion = (user.tokenVersion || 0) + 1; // every other signed-in device is signed out
   await user.save();
-  res.json({ message: 'Your password has been changed.' });
+  // This device stays signed in: it gets a fresh session under the new version.
+  res.cookie('refreshToken', createRefreshToken(user.id, user.tokenVersion), refreshCookieOptions).json({ message: 'Your password has been changed. Other devices were signed out.', accessToken: createAccessToken(user.id, user.tokenVersion) });
 });

@@ -12,7 +12,9 @@ const userSchema = new mongoose.Schema({
   // Skills the student says they already know (knowledge-graph node ids); skipped in their roadmap.
   knownSkills: { type: [String], default: [] },
   // True once the student has both an assessment and a goal.
-  onboardingComplete: { type: Boolean, default: false }
+  onboardingComplete: { type: Boolean, default: false },
+  // Raised whenever the password changes; sign-in tokens carry the number they were issued under, so older ones stop working.
+  tokenVersion: { type: Number, default: 0 }
 }, { timestamps: { createdAt: true, updatedAt: false } });
 
 export default mongoose.model('User', userSchema);

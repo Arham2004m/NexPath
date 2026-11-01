@@ -33,6 +33,8 @@ const authLimit = limiter(15 * 60_000, 30, 'Too many sign-in attempts. Try again
 app.use('/api/auth/login', authLimit);
 app.use('/api/auth/register', authLimit);
 app.use('/api/auth/change-password', authLimit);
+app.use('/api/auth/forgot-password', authLimit);
+app.use('/api/auth/reset-password', authLimit);
 
 app.use('/api/auth', authRoutes);
 app.use('/api/assessment', assessmentRoutes);

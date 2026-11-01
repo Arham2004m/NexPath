@@ -25,6 +25,21 @@ const passwordError = (password) => {
   return null;
 };
 
+export function validateEmail({ email } = {}) {
+  const errors = {};
+  if (!isText(email) || !emailPattern.test(email) || email.length > 254) errors.email = 'Enter a valid email address';
+  return errors;
+}
+
+export function validatePasswordReset({ token, newPassword, confirmPassword } = {}) {
+  const errors = {};
+  if (!isText(token) || !token || token.length > 200) errors.token = 'This reset link is not valid';
+  const problem = passwordError(newPassword);
+  if (problem) errors.newPassword = problem;
+  if (!isText(confirmPassword) || newPassword !== confirmPassword) errors.confirmPassword = 'Passwords do not match';
+  return errors;
+}
+
 export function validateNameChange({ name } = {}) {
   const errors = {};
   if (!isText(name) || name.trim().length < 2) errors.name = 'Enter your name (at least 2 characters)';

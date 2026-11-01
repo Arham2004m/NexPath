@@ -41,7 +41,8 @@ describe('account settings', () => {
 
     const ok = await change({ currentPassword: 'Passw0rdX', newPassword: 'Brand9Newer', confirmPassword: 'Brand9Newer' });
     expect(ok.status).toBe(200);
-    expect(JSON.stringify(ok.body)).not.toMatch(/hash|Brand9Newer/);
+    expect(JSON.stringify({ ...ok.body, accessToken: undefined })).not.toMatch(/hash|Brand9Newer/);
+    expect(ok.body.accessToken).toBeTruthy(); // this device stays signed in under the new session
     expect((await signIn(student.email, 'Passw0rdX')).status).toBe(401);
     expect((await signIn(student.email, 'Brand9Newer')).status).toBe(200);
   });

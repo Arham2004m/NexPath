@@ -2,7 +2,6 @@ import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import SettingsPage from '../src/pages/SettingsPage';
-import ForgotPasswordPage from '../src/pages/ForgotPasswordPage';
 import { changePassword, updateName } from '../src/services/authApi';
 import { clearHistory } from '../src/services/chatApi';
 import { deferred, renderPage, student } from './helpers';
@@ -109,13 +108,5 @@ describe('settings page', () => {
     await userEvent.click(screen.getByRole('button', { name: 'Sign out' }));
     await waitFor(() => expect(screen.getByText('Login screen')).toBeInTheDocument());
     expect(logout).toHaveBeenCalled();
-  });
-});
-
-describe('forgot password page', () => {
-  it('explains what to do instead of promising an email', () => {
-    renderPage(<ForgotPasswordPage />, { path: '/forgot-password' });
-    expect(screen.getByRole('heading')).toHaveTextContent(/not available yet/i);
-    expect(screen.getByRole('link', { name: 'Back to sign in' })).toHaveAttribute('href', '/login');
   });
 });
