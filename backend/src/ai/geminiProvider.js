@@ -3,7 +3,7 @@ import { GoogleGenAI } from '@google/genai';
 import { ProviderError } from './errors.js';
 
 // Names change as Google retires models, so this is only a fallback: set GEMINI_MODEL to pick the one you want.
-export const DEFAULT_MODEL = 'gemini-2.5-flash';
+export const DEFAULT_MODEL = 'gemini-3.5-flash';
 
 // Turns whatever the SDK threw into a ProviderError with a safe code. Raw provider text is never passed on.
 export function mapError(error) {
@@ -16,13 +16,26 @@ export function mapError(error) {
   return new ProviderError('unavailable', status ? `status ${status}` : error?.name || 'error');
 }
 
-export function createGeminiProvider({ apiKey, model, client } = {}) {
+export function createGeminiProvider({ apiKey, model, client, retryDelayMs = 800 } = {}) {
   const ai = client || new GoogleGenAI({ apiKey });
   const modelName = model || DEFAULT_MODEL;
   return {
     name: 'gemini',
     model: modelName,
-    async *stream({ system, contents, signal }) {
+    // A busy or briefly unavailable model is tried once more, but only while nothing has been shown yet.
+    async *stream(args) {
+      let produced = false;
+      for (let attempt = 0; ; attempt++) {
+        try {
+          for await (const piece of this.attempt(args)) { produced = true; yield piece; }
+          return;
+        } catch (error) {
+          if (produced || attempt >= 1 || error.code !== 'unavailable' || args.signal?.aborted) throw error;
+          await new Promise((resolve) => setTimeout(resolve, retryDelayMs));
+        }
+      }
+    },
+    async *attempt({ system, contents, signal }) {
       let stream;
       try {
         stream = await ai.models.generateContentStream({

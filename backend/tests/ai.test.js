@@ -44,7 +44,7 @@ describe('Gemini provider (SDK mocked: no network)', () => {
       const mapped = mapError(error);
       expect(mapped.code).toBe(code);
       expect(mapped.message).not.toContain('AIzaSECRET');
-      const provider = createGeminiProvider({ apiKey: 'k', client: { models: { generateContentStream: async () => { throw error; } } } });
+      const provider = createGeminiProvider({ apiKey: 'k', retryDelayMs: 0, client: { models: { generateContentStream: async () => { throw error; } } } });
       await expect(drain(provider.stream({ system: '', contents: [] }))).rejects.toMatchObject({ code });
     }
   });
@@ -66,6 +66,27 @@ describe('Gemini provider (SDK mocked: no network)', () => {
     const out = [];
     await expect((async () => { for await (const piece of provider.stream({ system: '', contents: [], signal: controller.signal })) { out.push(piece); controller.abort(); } })()).rejects.toMatchObject({ code: 'aborted' });
     expect(out).toEqual(['a']);
+  });
+});
+
+describe('retrying a busy model', () => {
+  const flaky = (failures, status) => { let calls = 0; return { calls: () => calls, client: { models: { generateContentStream: async () => { calls += 1; if (calls <= failures) throw Object.assign(new Error('busy'), { status }); return streamOf([{ text: 'ok' }]); } } } }; };
+  it('retries one transient failure before any text, but not quota, and gives up after one retry', async () => {
+    const once = flaky(1, 503);
+    expect(await drain(createGeminiProvider({ apiKey: 'k', retryDelayMs: 0, client: once.client }).stream({ system: '', contents: [] }))).toEqual(['ok']);
+    expect(once.calls()).toBe(2);
+    const twice = flaky(2, 503);
+    await expect(drain(createGeminiProvider({ apiKey: 'k', retryDelayMs: 0, client: twice.client }).stream({ system: '', contents: [] }))).rejects.toMatchObject({ code: 'unavailable' });
+    expect(twice.calls()).toBe(2);
+    const quota = flaky(1, 429);
+    await expect(drain(createGeminiProvider({ apiKey: 'k', retryDelayMs: 0, client: quota.client }).stream({ system: '', contents: [] }))).rejects.toMatchObject({ code: 'quota' });
+    expect(quota.calls()).toBe(1);
+  });
+  it('does not retry after text was already produced', async () => {
+    let calls = 0;
+    const client = { models: { generateContentStream: async () => { calls += 1; return (async function* () { yield { text: 'part' }; throw Object.assign(new Error('x'), { status: 503 }); })(); } } };
+    await expect(drain(createGeminiProvider({ apiKey: 'k', retryDelayMs: 0, client }).stream({ system: '', contents: [] }))).rejects.toMatchObject({ code: 'unavailable' });
+    expect(calls).toBe(1);
   });
 });
 
@@ -188,8 +209,8 @@ describe('Gemini provider with the real SDK against a local fake server', () => 
     const client = new GoogleGenAI({ apiKey: 'TESTKEY', httpOptions: { baseUrl: `http://127.0.0.1:${server.address().port}` } });
     return { seen, client, close: () => new Promise((resolve) => { server.closeAllConnections?.(); server.close(resolve); }) };
   };
-  const sseChunk = (text, extra = {}) => `data: ${JSON.stringify({ candidates: [{ content: { role: 'model', parts: [{ text }] }, ...extra }] })}
-
+  const sseChunk = (text, extra = {}) => `data: ${JSON.stringify({ candidates: [{ content: { role: 'model', parts: [{ text }] }, ...extra }] })}
+
 `;
 
   it('sends the system prompt as a system instruction and streams the text back', async () => {
