@@ -5,6 +5,9 @@ import { loadGraph } from '../services/graphStore.js';
 import { planMastery } from '../engine/mastery.js';
 import { capstonesOf, resolveGoalPath } from '../engine/graph.js';
 import { generateRoadmap, RoadmapError } from '../engine/generateRoadmap.js';
+import ProgressEvent from '../models/ProgressEvent.js';
+import { reduceEvents } from '../engine/progress.js';
+import { activeRoadmap, progressFor, roadmapDto, RoadmapProblem } from '../services/roadmapService.js';
 
 // Public skeleton of the graph (no resources) for visualisation.
 export const graphOverview = (req, res) => {
@@ -52,4 +55,59 @@ export const setKnownSkill = asyncHandler(async (req, res) => {
   user.knownSkills = [...current].sort();
   await user.save();
   res.json({ knownSkills: user.knownSkills });
+});
+
+// ---- saved roadmap and progress ----
+
+// Turns "cannot make a roadmap yet" problems into the same { code, message } answers the page already understands.
+const withProblems = (handler) => asyncHandler(async (req, res, next) => {
+  try {
+    await handler(req, res, next);
+  } catch (error) {
+    if (error instanceof RoadmapProblem) return res.status(error.status).json({ code: error.code, message: error.message });
+    if (error instanceof RoadmapError && error.code === 'GOAL_NOT_READY') return res.status(409).json({ code: error.code, message: 'The roadmap for this goal is coming soon. Choose another goal for now.' });
+    throw error;
+  }
+});
+
+export const currentRoadmap = withProblems(async (req, res) => {
+  const roadmap = await activeRoadmap(req.user._id);
+  res.json({ roadmap: roadmapDto(roadmap), progress: await progressFor(roadmap) });
+});
+
+export const regenerateRoadmap = withProblems(async (req, res) => {
+  const roadmap = await activeRoadmap(req.user._id, { force: true });
+  res.json({ roadmap: roadmapDto(roadmap), progress: await progressFor(roadmap) });
+});
+
+// Tick a topic done (or undo it) and optionally log the time spent. Only topics of the student's own plan are accepted.
+export const setTopicProgress = withProblems(async (req, res) => {
+  const { done, minutesSpent } = req.body;
+  const { topicId } = req.params;
+  if (done !== undefined && typeof done !== 'boolean') return res.status(400).json({ message: 'done must be true or false.' });
+  if (minutesSpent !== undefined && (!Number.isInteger(minutesSpent) || minutesSpent < 1 || minutesSpent > 1440)) return res.status(400).json({ message: 'minutesSpent must be a whole number between 1 and 1440.' });
+  if (done === undefined && minutesSpent === undefined) return res.status(400).json({ message: 'Send done and/or minutesSpent.' });
+
+  const roadmap = await activeRoadmap(req.user._id);
+  const inPlan = roadmap.plan.weeks.some((week) => week.topics.some((topic) => topic.topicId === topicId));
+  if (!inPlan) return res.status(404).json({ message: 'That topic is not part of your current roadmap.' });
+
+  const events = await ProgressEvent.find({ userId: req.user._id }).sort({ at: 1 }).lean();
+  const alreadyDone = reduceEvents(events).done.has(topicId);
+  const add = [];
+  if (done === true && !alreadyDone) add.push({ type: 'complete' });
+  if (done === false && alreadyDone) add.push({ type: 'uncomplete' });
+  if (minutesSpent) add.push({ type: 'time_logged', minutes: minutesSpent });
+  if (add.length) await ProgressEvent.insertMany(add.map((event) => ({ ...event, userId: req.user._id, roadmapId: roadmap._id, topicId })));
+  res.json({ progress: await progressFor(roadmap) });
+});
+
+// Everything the progress page needs, without the heavy plan.
+export const dashboard = withProblems(async (req, res) => {
+  const roadmap = await activeRoadmap(req.user._id);
+  const { plan } = roadmap;
+  res.json({
+    roadmap: { id: roadmap.id, version: roadmap.version, createdAt: roadmap.createdAt, goalId: plan.goalId, subTrack: plan.subTrack, hoursPerWeek: plan.hoursPerWeek, targetWeeks: plan.targetWeeks, startDate: plan.startDate, endDate: plan.endDate, totalWeeks: plan.totalWeeks, totalHours: plan.totalHours },
+    progress: await progressFor(roadmap)
+  });
 });

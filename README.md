@@ -42,11 +42,15 @@ The brain of the app is a prerequisite graph of skills in `backend/src/data/grap
 4. **"I already know this":** on the roadmap a student can mark a skill as known; this covers areas the assessment cannot (theory, aptitude, research, business) and can be undone.
 5. **Weekly hours:** the number of topics per week grows above 15 hours a week, so more hours always means fewer weeks, and the estimates on the goal page come from the same planner.
 
+### Saved roadmaps and progress
+
+The roadmap is saved per student (`Roadmap`, one active version at a time, older versions kept). It is regenerated as a new version when the goal, hours, target, assessment or known skills change, and finished topics are never scheduled again. Ticking a topic or logging time appends a `ProgressEvent`; progress (percentage by hours, weekly completion, time logged vs planned, learning velocity and lag in weeks) is computed from those events by the pure `engine/progress.js`. Open `/roadmap` to tick topics and `/progress` for the dashboard. The tests in `backend/tests` include route tests that run against an in-memory MongoDB (downloaded once on first run), so they never touch your Atlas data.
+
 ## API
 
 - Auth: `POST /api/auth/register`, `/login`, `/refresh`, `/logout`, and protected `GET /api/auth/me`. Registration errors return `{ message, errors: { field: message } }`; login deliberately responds with generic invalid credentials.
 - Assessment (all require `Authorization: Bearer <access token>`): `GET /api/assessment/domains`, `POST /api/assessment/questions`, `POST /api/assessment/submit`, `GET /api/assessment/latest`.
-- Goals and roadmaps: `GET /api/goals`, `GET /api/goals/recommendations`, `PUT /api/me/goal`, `GET /api/graph`, `POST /api/roadmaps/preview` (generates without saving), `PUT /api/me/known-skills` (mark or unmark a skill as already known).
+- Goals and roadmaps: `GET /api/goals`, `GET /api/goals/recommendations`, `PUT /api/me/goal`, `GET /api/graph`, `POST /api/roadmaps/preview` (generates without saving), `GET /api/roadmaps/current` (saved roadmap plus progress), `POST /api/roadmaps/regenerate`, `PATCH /api/roadmaps/current/topics/:topicId` (`{ done, minutesSpent }`), `GET /api/dashboard`, `PUT /api/me/known-skills` (mark or unmark a skill as already known).
 - `GET /api/health`.
 
 ## Troubleshooting MongoDB

@@ -75,11 +75,12 @@ const weeksAt = (units, hours, maxTopicsOverride) => packWeeks(units.map((unit) 
 const baselineHours = (byId, targets) => [...neededClosure(byId, targets, new Set()).needed].reduce((sum, id) => sum + byId.get(id).estimatedHours, 0);
 
 // mastered: skills fully skipped. credits: { nodeId: n } skips the first n topics of a skill that is otherwise planned.
+// completedTopicIds: topics the student has already finished; they are never scheduled again (a regenerated plan keeps finished work).
 // trims: { nodeId: { topicIndex, hours } } shortens one topic by that many hours (a lighter pass over half-known material).
 // sources: { nodeId: 'assessment' | 'self' } says why a skill is known (shown to the student).
 // Capstones are never skipped, so a roadmap always has real content.
 export function generateRoadmap({
-  nodes, goalPaths, goalId, subTrack = null, mastered = [], credits = {}, trims = {}, sources = {}, hoursPerWeek, targetWeeks = null,
+  nodes, goalPaths, goalId, subTrack = null, mastered = [], credits = {}, trims = {}, sources = {}, completedTopicIds = [], hoursPerWeek, targetWeeks = null,
   startDate, graphVersion = null, maxTopicsPerWeek = null
 }) {
   const path = resolveGoalPath(goalPaths, goalId, subTrack);
@@ -102,10 +103,13 @@ export function generateRoadmap({
     const valid = trim && !capstones.has(id) && trim.topicIndex === index && index >= creditOf(id) && index < byId.get(id).topics.length - 1 && trim.hours >= 1 && trim.hours < topic.hours;
     return valid ? trim.hours : 0;
   };
-  const units = order.flatMap((id) => byId.get(id).topics.map((topic, index) => {
+  const completedSet = new Set(completedTopicIds);
+  const allUnits = order.flatMap((id) => byId.get(id).topics.map((topic, index) => {
     const trimmed = trimOf(id, index);
     return { node: byId.get(id), topic: trimmed ? { ...topic, hours: topic.hours - trimmed, trimmedHours: trimmed } : topic, index };
   }).slice(creditOf(id)));
+  const units = allUnits.filter((unit) => !completedSet.has(unit.topic.id));
+  const finished = allUnits.filter((unit) => completedSet.has(unit.topic.id));
   const packed = packWeeks(units, hoursPerWeek, maxTopicsPerWeek ?? weeklyTopicCap(hoursPerWeek));
 
   const weeks = packed.map((week, i) => {
@@ -135,21 +139,22 @@ export function generateRoadmap({
   const describe = (id, position) => {
     const node = byId.get(id);
     const isKnown = known.has(id);
-    const span = placed.get(id);
+    const span = placed.get(id); // undefined when every remaining topic of this skill is already finished
     const credited = isKnown ? 0 : creditOf(id);
+    const finishedHours = finished.filter((unit) => unit.node.id === id).reduce((sum, unit) => sum + unit.topic.hours, 0);
     const skippedHours = node.topics.slice(0, credited).reduce((sum, topic) => sum + topic.hours, 0) + node.topics.reduce((sum, _topic, index) => sum + (isKnown ? 0 : trimOf(id, index)), 0);
     return {
       id, name: node.name, domain: node.domain, level: node.level,
-      estimatedHours: isKnown ? node.estimatedHours : node.estimatedHours - skippedHours, fullHours: node.estimatedHours,
+      estimatedHours: isKnown ? node.estimatedHours : node.estimatedHours - skippedHours - finishedHours, fullHours: node.estimatedHours, completedHours: finishedHours,
       // A skill the student already has only links to other known skills, so the tree never shows a known skill below a planned one.
       prerequisites: node.prerequisites.filter((p) => (isKnown ? known.has(p) : included.has(p))),
-      status: isKnown ? 'mastered' : span.start === 1 ? 'next' : 'upcoming',
+      status: isKnown ? 'mastered' : !span ? 'done' : span.start === 1 ? 'next' : 'upcoming',
       source: isKnown ? sources[id] || 'assessment' : null,
       creditedTopics: credited, skippedHours,
-      order: position, startWeek: isKnown ? null : span.start, endWeek: isKnown ? null : span.end,
+      order: position, startWeek: isKnown || !span ? null : span.start, endWeek: isKnown || !span ? null : span.end,
       topics: node.topics.map((topic, index) => ({
         id: topic.id, title: topic.title, hours: topic.hours,
-        ...(isKnown ? {} : index < credited ? { credited: true } : { startWeek: unitWeeks.get(topic.id)[0], endWeek: unitWeeks.get(topic.id)[1], ...(trimOf(id, index) ? { trimmedHours: trimOf(id, index), plannedHours: topic.hours - trimOf(id, index) } : {}) })
+        ...(isKnown ? {} : index < credited ? { credited: true } : completedSet.has(topic.id) ? { done: true } : { startWeek: unitWeeks.get(topic.id)[0], endWeek: unitWeeks.get(topic.id)[1], ...(trimOf(id, index) ? { trimmedHours: trimOf(id, index), plannedHours: topic.hours - trimOf(id, index) } : {}) })
       })),
       miniTasks: node.miniTasks, resources: node.resources, needsReview: !!node.needsReview, capstone: capstones.has(id)
     };
@@ -159,6 +164,7 @@ export function generateRoadmap({
   const edges = roadmapNodes.flatMap((node) => node.prerequisites.map((from) => ({ from, to: node.id })));
 
   const totalHours = units.reduce((sum, unit) => sum + unit.topic.hours, 0);
+  const completedHours = finished.reduce((sum, unit) => sum + unit.topic.hours, 0);
   const baseline = baselineHours(byId, path.required);
   const feasible = !targetWeeks || weeks.length <= targetWeeks;
   // The smallest weekly load that really fits the deadline, found by re-planning (not by dividing hours).
@@ -173,7 +179,8 @@ export function generateRoadmap({
     goalId, subTrack, graphVersion, hoursPerWeek, targetWeeks, startDate,
     totalHours, totalWeeks: weeks.length,
     endDate: weeks.length ? weeks[weeks.length - 1].endDate : startDate,
-    baselineHours: baseline, hoursSaved: baseline - totalHours,
+    completedHours, baselineHours: baseline, hoursSaved: baseline - totalHours - completedHours,
+    completedTopics: finished.map((unit) => ({ topicId: unit.topic.id, nodeId: unit.node.id, title: unit.topic.title, hours: unit.topic.hours })),
     feasible, requiredHoursPerWeek, achievable: feasible || requiredHoursPerWeek !== null,
     masteredNodeIds: knownIds, optionalNodeIds: (path.optional || []).filter((id) => !masteredSet.has(id) && !needed.has(id)),
     nodes: roadmapNodes, edges, weeks

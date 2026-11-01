@@ -1,6 +1,12 @@
 import { Router } from 'express';
-import { graphOverview, previewRoadmap, setKnownSkill } from '../controllers/roadmapController.js';
+import { currentRoadmap, dashboard, graphOverview, previewRoadmap, regenerateRoadmap, setKnownSkill, setTopicProgress } from '../controllers/roadmapController.js';
 import { requireAuth } from '../middleware/authMiddleware.js';
 const router = Router();
-router.get('/graph', graphOverview); router.post('/roadmaps/preview', requireAuth, previewRoadmap); router.put('/me/known-skills', requireAuth, setKnownSkill);
+router.get('/graph', graphOverview);
+router.post('/roadmaps/preview', requireAuth, previewRoadmap);
+router.get('/roadmaps/current', requireAuth, currentRoadmap);
+router.post('/roadmaps/regenerate', requireAuth, regenerateRoadmap);
+router.patch('/roadmaps/current/topics/:topicId', requireAuth, setTopicProgress);
+router.get('/dashboard', requireAuth, dashboard);
+router.put('/me/known-skills', requireAuth, setKnownSkill);
 export default router;
