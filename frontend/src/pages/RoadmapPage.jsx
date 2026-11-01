@@ -1,61 +1,81 @@
-import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { AlertTriangle, ListChecks, Network } from 'lucide-react';
+import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ListChecks, Network } from 'lucide-react';
 import Sidebar from '../components/home/Sidebar';
 import Topbar from '../components/home/Topbar';
-import Button from '../components/common/Button';
+import RoadmapBlocker from '../components/roadmap/RoadmapBlocker';
 import RoadmapSummary from '../components/roadmap/RoadmapSummary';
 import NodeDetails from '../components/roadmap/NodeDetails';
 import WeekList from '../components/roadmap/WeekList';
 import { getGoals } from '../services/goalApi';
-import { previewRoadmap, setKnownSkill } from '../services/roadmapApi';
+import { getCurrentRoadmap, setKnownSkill, updateTopic } from '../services/roadmapApi';
+import { withTopicDone } from '../lib/progress';
 
 // React Flow is heavy, so the tree loads only when this page is opened.
 const RoadmapTree = lazy(() => import('../components/roadmap/RoadmapTree'));
 
-// What to tell the student, and where to send them, for each reason a roadmap cannot be shown yet.
-const blockers = {
-  GOAL_REQUIRED: { title: 'Choose a goal first', text: 'Your roadmap is built around a goal.', to: '/goal', cta: 'Choose your goal' },
-  ASSESSMENT_REQUIRED: { title: 'Take the assessment first', text: 'It tells us where your roadmap should start.', to: '/assessment', cta: 'Begin assessment' },
-  GOAL_NOT_READY: { title: 'This roadmap is coming soon', text: 'We are still building the path for this goal. Choose another goal for now, or check back soon.', to: '/goal', cta: 'Change goal' }
-};
-
 export default function RoadmapPage() {
   const [menu, setMenu] = useState(false);
-  const [roadmap, setRoadmap] = useState(null);
+  const [saved, setSaved] = useState(null); // { roadmap: { id, version, plan }, progress }
   const [goals, setGoals] = useState([]);
   const [problem, setProblem] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState(null);
   const [view, setView] = useState(() => (window.matchMedia('(max-width: 639px)').matches ? 'weeks' : 'tree'));
+  const confirmed = useRef(null); // last progress the server confirmed, for rolling back a failed tick
+
+  const apply = useCallback((data) => { confirmed.current = data.progress; setSaved(data); }, []);
 
   const load = useCallback(() => {
-    setProblem(null); setRoadmap(null);
-    Promise.all([previewRoadmap(), getGoals()])
-      .then(([data, catalog]) => { setRoadmap(data); setGoals(catalog.goals); })
+    setProblem(null); setSaved(null);
+    Promise.all([getCurrentRoadmap(), getGoals()])
+      .then(([data, catalog]) => { apply(data); setGoals(catalog.goals); })
       .catch((error) => setProblem({ code: error.code, message: error.message }));
-  }, []);
+  }, [apply]);
   useEffect(load, [load]);
 
-  // Marks or unmarks a skill as known, then regenerates the roadmap in place (the open skill stays selected).
+  // Ticks a topic immediately, then replaces the guess with the server's numbers (or puts things back on failure).
+  const toggleTopic = useCallback(async (topicId, done) => {
+    setNotice(null);
+    setSaved((current) => (current ? { ...current, progress: withTopicDone(current.progress, topicId, done) } : current));
+    try {
+      const progress = await updateTopic(topicId, { done });
+      confirmed.current = progress;
+      setSaved((current) => (current ? { ...current, progress } : current));
+    } catch (error) {
+      setSaved((current) => (current ? { ...current, progress: confirmed.current } : current));
+      setNotice(error.message);
+    }
+  }, []);
+
+  const logTime = useCallback(async (topicId, minutesSpent) => {
+    setNotice(null);
+    try {
+      const progress = await updateTopic(topicId, { minutesSpent });
+      confirmed.current = progress;
+      setSaved((current) => (current ? { ...current, progress } : current));
+    } catch (error) { setNotice(error.message); }
+  }, []);
+
+  // Marks or unmarks a skill as known; the saved roadmap regenerates (finished topics stay finished) and the open skill stays selected.
   const toggleKnown = useCallback(async (nodeId, known) => {
     setBusy(true); setNotice(null);
     try {
       await setKnownSkill(nodeId, known);
-      setRoadmap(await previewRoadmap());
+      apply(await getCurrentRoadmap());
     } catch (error) { setNotice(error.message); } finally { setBusy(false); }
-  }, []);
+  }, [apply]);
 
-  const byId = useMemo(() => new Map((roadmap?.nodes || []).map((node) => [node.id, node])), [roadmap]);
+  const plan = saved?.roadmap.plan;
+  const progress = saved?.progress;
+  const byId = useMemo(() => new Map((plan?.nodes || []).map((node) => [node.id, node])), [plan]);
   const nameOf = useCallback((id) => byId.get(id)?.name || id, [byId]);
   const select = useCallback((id) => setSelectedId((current) => (current === id ? null : id)), []);
   const close = useCallback(() => { setSelectedId(null); setNotice(null); }, []);
   const selected = selectedId ? byId.get(selectedId) : null;
 
-  const goal = goals.find((g) => g.id === roadmap?.goalId);
-  const track = goal?.subTracks?.find((s) => s.id === roadmap?.subTrack);
-  const blocker = problem && blockers[problem.code];
+  const goal = goals.find((g) => g.id === plan?.goalId);
+  const track = goal?.subTracks?.find((s) => s.id === plan?.subTrack);
 
   return (
     <div className="app-shell min-h-screen lg:flex">
@@ -65,7 +85,7 @@ export default function RoadmapPage() {
         <Topbar onMenu={() => setMenu(true)} />
         <main className="mx-auto max-w-7xl p-6 sm:p-9 lg:p-12">
           <div className="dashboard-arrival">
-            {!roadmap && !problem && (
+            {!saved && !problem && (
               <div role="status" aria-label="Building your roadmap">
                 <div className="h-14 max-w-xl animate-pulse bg-warm" />
                 <div className="mt-8 h-48 animate-pulse bg-warm" />
@@ -73,28 +93,12 @@ export default function RoadmapPage() {
               </div>
             )}
 
-            {problem && (
-              <section role="alert" className="surface-card feature-card px-6 py-8 sm:px-10">
-                {blocker ? (
-                  <>
-                    <p className="font-mono text-[11px] font-medium uppercase tracking-[.14em] text-mid">Your roadmap</p>
-                    <h1 className="mt-3 text-3xl font-extrabold tracking-[-.055em] text-ink sm:text-4xl">{blocker.title}.</h1>
-                    <p className="mt-3 max-w-xl text-[16px] leading-7 text-muted">{blocker.text}</p>
-                    <Link to={blocker.to} className="control-transition mt-6 inline-flex min-h-12 items-center bg-mid px-5 text-sm font-extrabold text-cream hover:bg-deep">{blocker.cta}</Link>
-                  </>
-                ) : (
-                  <div className="flex flex-wrap items-center gap-4">
-                    <AlertTriangle size={20} className="text-error" aria-hidden="true" />
-                    <p className="flex-1 text-sm font-bold text-ink">{problem.message}</p>
-                    <Button onClick={load} className="min-h-10">Try again</Button>
-                  </div>
-                )}
-              </section>
-            )}
+            {problem && <RoadmapBlocker problem={problem} onRetry={load} />}
 
-            {roadmap && (
+            {saved && (
               <>
-                <RoadmapSummary roadmap={roadmap} goalLabel={goal?.label || 'Your goal'} trackLabel={track?.label} />
+                <RoadmapSummary roadmap={plan} progress={progress} version={saved.roadmap.version} goalLabel={goal?.label || 'Your goal'} trackLabel={track?.label} />
+                {notice && !selected && <p role="alert" className="mt-4 text-sm font-bold text-error">{notice}</p>}
 
                 <div className="mt-10 flex flex-wrap items-center justify-between gap-4">
                   <div role="group" aria-label="Roadmap view" className="inline-flex border border-pale bg-white">
@@ -105,16 +109,16 @@ export default function RoadmapPage() {
                       </button>
                     ))}
                   </div>
-                  {view === 'tree' && <p className="text-xs text-muted">Select a skill to see its topics, mini tasks and resources.</p>}
+                  {view === 'tree' && <p className="text-xs text-muted">Select a skill to see its topics, tick them off, and open resources.</p>}
                 </div>
 
                 <div className="mt-6 lg:flex lg:items-start lg:gap-6">
                   <div className="min-w-0 flex-1">
                     {view === 'tree'
-                      ? <Suspense fallback={<div className="h-[72vh] animate-pulse bg-warm" aria-label="Loading skill tree" />}><RoadmapTree roadmap={roadmap} selectedId={selectedId} onSelect={select} /></Suspense>
-                      : <WeekList roadmap={roadmap} />}
+                      ? <Suspense fallback={<div className="h-[72vh] animate-pulse bg-warm" aria-label="Loading skill tree" />}><RoadmapTree roadmap={plan} progress={progress} selectedId={selectedId} onSelect={select} /></Suspense>
+                      : <WeekList roadmap={plan} progress={progress} onToggleTopic={toggleTopic} />}
                   </div>
-                  {view === 'tree' && selected && <NodeDetails node={selected} nameOf={nameOf} onClose={close} onToggleKnown={toggleKnown} busy={busy} notice={notice} />}
+                  {view === 'tree' && selected && <NodeDetails node={selected} nameOf={nameOf} progress={progress} onClose={close} onToggleKnown={toggleKnown} onToggleTopic={toggleTopic} onLogTime={logTime} busy={busy} notice={notice} />}
                 </div>
               </>
             )}

@@ -1,8 +1,24 @@
 import { AlertTriangle } from 'lucide-react';
 import SummaryCard from '../home/SummaryCard';
 import { longDate } from '../../lib/format';
+import { paceSummary } from '../../lib/progress';
 
-export default function RoadmapSummary({ roadmap, goalLabel, trackLabel }) {
+// One whole bar for the whole roadmap: dark fill = done, light track = still to do.
+function OverallProgress({ progress, version }) {
+  const pace = paceSummary(progress);
+  return (
+    <div className="surface-card mt-6 px-6 py-5">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <p className="font-mono text-[11px] font-medium uppercase tracking-[.13em] text-mid">Progress · {progress.topicsDone} of {progress.topicsTotal} topics in this plan</p>
+        <p className="text-sm font-extrabold text-ink">{progress.percentComplete}% done</p>
+      </div>
+      <div className="mt-3 h-2 bg-pale/60" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress.percentComplete} aria-label="Roadmap progress"><div className="h-full bg-mid" style={{ width: `${progress.percentComplete}%` }} /></div>
+      <p className="mt-3 text-sm leading-6 text-muted"><span className="font-bold text-ink">{pace.label}.</span> {pace.detail}{version > 1 ? ` This is version ${version} of your roadmap; finished work was kept.` : ''}</p>
+    </div>
+  );
+}
+
+export default function RoadmapSummary({ roadmap, progress, version = 1, goalLabel, trackLabel }) {
   const shortened = roadmap.nodes.filter((n) => n.status !== 'mastered' && n.skippedHours > 0);
   const selfKnown = roadmap.nodes.filter((n) => n.source === 'self').length;
   return (
@@ -18,6 +34,8 @@ export default function RoadmapSummary({ roadmap, goalLabel, trackLabel }) {
         <SummaryCard index={1} label="Skills to learn" value={roadmap.nodes.filter((n) => n.status !== 'mastered').length} detail={roadmap.masteredNodeIds.length ? `${roadmap.masteredNodeIds.length} skills you already know are marked, not repeated.` : 'Starting from the foundations.'} />
         <SummaryCard index={2} label="Time saved" value={`${roadmap.hoursSaved} h`} detail={roadmap.hoursSaved > 0 ? `Compared with the same goal from zero${shortened.length ? `; your answers shortened ${shortened.length} skill${shortened.length === 1 ? '' : 's'} partway` : ''}${selfKnown ? `; ${selfKnown} skill${selfKnown === 1 ? '' : 's'} you marked as known` : ''}.` : 'No prior skills were found, so this is the full path.'} />
       </section>
+
+      {progress && <OverallProgress progress={progress} version={version} />}
 
       {!roadmap.feasible && (
         <div role="status" className="surface-card mt-6 flex items-start gap-4 border-l-[5px] border-l-error px-6 py-5">

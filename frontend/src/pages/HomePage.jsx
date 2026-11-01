@@ -7,6 +7,7 @@ import SummaryCard from '../components/home/SummaryCard';
 import useAuth from '../hooks/useAuth';
 import { getGoals } from '../services/goalApi';
 import { getLatestAttempt } from '../services/assessmentApi';
+import { getDashboard } from '../services/roadmapApi';
 import { summarizeAttempt } from '../lib/assessmentSummary';
 
 export default function HomePage() {
@@ -15,10 +16,13 @@ export default function HomePage() {
   const [dismissed, setDismissed] = useState(false);
   const [goals, setGoals] = useState([]);
   const [attempt, setAttempt] = useState(undefined); // undefined = still loading
+  const [progress, setProgress] = useState(null);
 
   useEffect(() => {
     getGoals().then((data) => setGoals(data.goals)).catch(() => {});
     getLatestAttempt().then(setAttempt).catch(() => setAttempt(null));
+    // Only students with a goal and an assessment have a saved roadmap; for everyone else this simply stays empty.
+    getDashboard().then((data) => setProgress(data.progress)).catch(() => {});
   }, []);
 
   const goal = goals.find((g) => g.id === user?.goalId);
@@ -46,7 +50,7 @@ export default function HomePage() {
             <div className="summary-grid grid md:grid-cols-[1.2fr_.9fr_.9fr]">
               <SummaryCard index={0} label="Direction" value={goal ? (track ? `${goal.label} · ${track.label}` : goal.label) : 'Still open'} detail={goal ? `${user.hoursPerWeek} hours a week${user.targetWeeks ? `, aiming for ${user.targetWeeks} weeks` : ''}. Change it any time from Goal.` : 'Name a destination when you are ready; we will shape the work around it.'} />
               <SummaryCard index={1} label="Starting point" value={summary?.level || 'Not assessed'} detail={summary ? (summary.strongest ? `Strongest in ${summary.strongest}.` : 'Based on your latest assessment.') : 'A baseline makes your effort more intentional.'} />
-              <SummaryCard index={2} label="Roadmap" value={goal ? (roadmapReady ? "Ready" : "Coming soon") : "Not started"} detail={goal && roadmapReady ? <Link to="/roadmap" className="font-bold text-mid underline-offset-4 hover:underline">Open your week-by-week roadmap</Link> : goal ? "We are still building the path for this goal." : "Choose a goal to see your path."} />
+              <SummaryCard index={2} label="Roadmap" value={progress ? `${progress.percentComplete}% done` : goal ? (roadmapReady ? "Ready" : "Coming soon") : "Not started"} detail={goal && roadmapReady ? <><Link to="/roadmap" className="font-bold text-mid underline-offset-4 hover:underline">Open your roadmap</Link>{progress ? <> or <Link to="/progress" className="font-bold text-mid underline-offset-4 hover:underline">see your progress</Link></> : null}</> : goal ? "We are still building the path for this goal." : "Choose a goal to see your path."} />
             </div>
           </section>
           <section className="mt-14 grid gap-5 border-t-2 section-rule pt-8 sm:grid-cols-[minmax(13rem,.55fr)_1fr]">

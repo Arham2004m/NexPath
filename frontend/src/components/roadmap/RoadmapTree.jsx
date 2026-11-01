@@ -7,17 +7,17 @@ import { layoutRoadmap, NODE_HEIGHT, NODE_WIDTH } from '../../lib/roadmapLayout'
 const nodeTypes = { skill: SkillNode };
 
 // Skill tree: one node per skill, edges are prerequisites, laid out top to bottom like a path.
-export default function RoadmapTree({ roadmap, selectedId, onSelect }) {
+export default function RoadmapTree({ roadmap, progress, selectedId, onSelect }) {
   const { nodes, edges } = useMemo(() => {
     const positions = layoutRoadmap(roadmap.nodes, roadmap.edges);
     return {
-      nodes: roadmap.nodes.map((node) => ({ id: node.id, type: 'skill', position: positions[node.id], data: { node, selected: node.id === selectedId, onSelect }, draggable: false, width: NODE_WIDTH, height: NODE_HEIGHT })),
+      nodes: roadmap.nodes.map((node) => ({ id: node.id, type: 'skill', position: positions[node.id], data: { node, selected: node.id === selectedId, onSelect, done: !!progress?.nodes?.[node.id]?.complete }, draggable: false, width: NODE_WIDTH, height: NODE_HEIGHT })),
       edges: roadmap.edges.map(({ from, to }) => ({
         id: `${from}->${to}`, source: from, target: to, type: 'smoothstep',
         style: { stroke: '#3282B8', strokeWidth: 2 }, markerEnd: { type: MarkerType.ArrowClosed, color: '#3282B8' }
       }))
     };
-  }, [roadmap, selectedId, onSelect]);
+  }, [roadmap, progress, selectedId, onSelect]);
 
   return (
     <div className="surface-card h-[72vh] min-h-[460px] w-full" role="region" aria-label="Skill tree. Use Tab to move between skills and Enter to open details.">
