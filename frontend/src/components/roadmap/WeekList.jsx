@@ -1,9 +1,10 @@
 import ResourceList from './ResourceList';
 import TopicCheck from './TopicCheck';
+import LogTime from './LogTime';
 import { shortDate } from '../../lib/format';
 
 // Week-by-week plan: the accessible, mobile-friendly twin of the skill tree. Topics can be ticked off right here.
-export default function WeekList({ roadmap, progress, onToggleTopic }) {
+export default function WeekList({ roadmap, progress, onToggleTopic, onLogTime, onOpenSkill }) {
   const known = roadmap.nodes.filter((n) => n.status === 'mastered');
   const finishedEarlier = roadmap.completedTopics || [];
   return (
@@ -45,7 +46,8 @@ export default function WeekList({ roadmap, progress, onToggleTopic }) {
                     <span className="min-w-0 flex-1">
                       <span className={`font-bold ${isDone ? 'text-muted line-through' : 'text-ink'}`}>{topic.title}</span>{topic.continued ? <span className="text-muted"> (continued)</span> : null}
                       {status === 'overdue' && <span className="ml-2 font-mono text-[10px] uppercase tracking-[.1em] text-error">Overdue</span>}
-                      <span className="block text-xs text-muted">{topic.nodeName}</span>
+                      <button type="button" onClick={() => onOpenSkill?.(topic.nodeId)} className="block text-left text-xs text-muted underline-offset-4 hover:text-mid hover:underline">{topic.nodeName}</button>
+                      {!isDone && onLogTime && <LogTime topicId={topic.topicId} logged={progress?.minutesByTopic[topic.topicId]} onLogTime={onLogTime} />}
                     </span>
                     <span className="shrink-0 font-mono text-[11px] text-muted">{topic.hours} h</span>
                   </li>

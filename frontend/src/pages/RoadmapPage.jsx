@@ -9,6 +9,7 @@ import WeekList from '../components/roadmap/WeekList';
 import { getGoals } from '../services/goalApi';
 import { getCurrentRoadmap, setKnownSkill, updateTopic } from '../services/roadmapApi';
 import { withTopicDone } from '../lib/progress';
+import { createSerialQueue } from '../lib/serialQueue';
 
 // React Flow is heavy, so the tree loads only when this page is opened.
 const RoadmapTree = lazy(() => import('../components/roadmap/RoadmapTree'));
@@ -23,6 +24,8 @@ export default function RoadmapPage() {
   const [notice, setNotice] = useState(null);
   const [view, setView] = useState(() => (window.matchMedia('(max-width: 639px)').matches ? 'weeks' : 'tree'));
   const confirmed = useRef(null); // last progress the server confirmed, for rolling back a failed tick
+  const queue = useRef(createSerialQueue()); // ticks reach the server in click order
+  const planRef = useRef(null);
 
   const apply = useCallback((data) => { confirmed.current = data.progress; setSaved(data); }, []);
 
@@ -35,26 +38,30 @@ export default function RoadmapPage() {
   useEffect(load, [load]);
 
   // Ticks a topic immediately, then replaces the guess with the server's numbers (or puts things back on failure).
+  // Clicks are sent one after another, and only the last answer is shown, so quick tick/untick cannot show stale numbers.
   const toggleTopic = useCallback(async (topicId, done) => {
     setNotice(null);
-    setSaved((current) => (current ? { ...current, progress: withTopicDone(current.progress, topicId, done) } : current));
-    try {
-      const progress = await updateTopic(topicId, { done });
-      confirmed.current = progress;
-      setSaved((current) => (current ? { ...current, progress } : current));
-    } catch (error) {
-      setSaved((current) => (current ? { ...current, progress: confirmed.current } : current));
+    setSaved((current) => (current ? { ...current, progress: withTopicDone(current.progress, topicId, done, planRef.current) } : current));
+    const { value, error, idle } = await queue.current.run(() => updateTopic(topicId, { done }));
+    if (error) {
+      if (idle) setSaved((current) => (current ? { ...current, progress: confirmed.current } : current));
       setNotice(error.message);
+      return;
     }
-  }, []);
+    if (value.roadmapChanged) { // un-ticking finished work from an earlier version puts it back into the plan
+      if (idle) apply(await getCurrentRoadmap());
+      return;
+    }
+    confirmed.current = value.progress;
+    if (idle) setSaved((current) => (current ? { ...current, progress: value.progress } : current));
+  }, [apply]);
 
   const logTime = useCallback(async (topicId, minutesSpent) => {
     setNotice(null);
-    try {
-      const progress = await updateTopic(topicId, { minutesSpent });
-      confirmed.current = progress;
-      setSaved((current) => (current ? { ...current, progress } : current));
-    } catch (error) { setNotice(error.message); }
+    const { value, error, idle } = await queue.current.run(() => updateTopic(topicId, { minutesSpent }));
+    if (error) { setNotice(error.message); return; }
+    confirmed.current = value.progress;
+    if (idle) setSaved((current) => (current ? { ...current, progress: value.progress } : current));
   }, []);
 
   // Marks or unmarks a skill as known; the saved roadmap regenerates (finished topics stay finished) and the open skill stays selected.
@@ -67,6 +74,7 @@ export default function RoadmapPage() {
   }, [apply]);
 
   const plan = saved?.roadmap.plan;
+  planRef.current = plan;
   const progress = saved?.progress;
   const byId = useMemo(() => new Map((plan?.nodes || []).map((node) => [node.id, node])), [plan]);
   const nameOf = useCallback((id) => byId.get(id)?.name || id, [byId]);
@@ -116,9 +124,9 @@ export default function RoadmapPage() {
                   <div className="min-w-0 flex-1">
                     {view === 'tree'
                       ? <Suspense fallback={<div className="h-[72vh] animate-pulse bg-warm" aria-label="Loading skill tree" />}><RoadmapTree roadmap={plan} progress={progress} selectedId={selectedId} onSelect={select} /></Suspense>
-                      : <WeekList roadmap={plan} progress={progress} onToggleTopic={toggleTopic} />}
+                      : <WeekList roadmap={plan} progress={progress} onToggleTopic={toggleTopic} onLogTime={logTime} onOpenSkill={select} />}
                   </div>
-                  {view === 'tree' && selected && <NodeDetails node={selected} nameOf={nameOf} progress={progress} onClose={close} onToggleKnown={toggleKnown} onToggleTopic={toggleTopic} onLogTime={logTime} busy={busy} notice={notice} />}
+                  {selected && <NodeDetails node={selected} nameOf={nameOf} progress={progress} onClose={close} onToggleKnown={toggleKnown} onToggleTopic={toggleTopic} onLogTime={logTime} busy={busy} notice={notice} />}
                 </div>
               </>
             )}

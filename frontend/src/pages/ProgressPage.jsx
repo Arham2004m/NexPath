@@ -9,6 +9,7 @@ import { getGoals } from '../services/goalApi';
 import { getDashboard, updateTopic } from '../services/roadmapApi';
 import { hoursLabel, paceSummary } from '../lib/progress';
 import { longDate, shortDate } from '../lib/format';
+import { createSerialQueue } from '../lib/serialQueue';
 
 const WeeklyChart = lazy(() => import('../components/progress/WeeklyChart'));
 
@@ -19,6 +20,7 @@ export default function ProgressPage() {
   const [problem, setProblem] = useState(null);
   const [notice, setNotice] = useState(null);
   const confirmed = useRef(null);
+  const queue = useRef(createSerialQueue());
 
   const load = useCallback(() => {
     setProblem(null); setData(null);
@@ -28,15 +30,15 @@ export default function ProgressPage() {
   }, []);
   useEffect(load, [load]);
 
-  // Tick a topic from the "up next" list; the server answers with fresh numbers for the whole page.
+  // Tick a topic from the "up next" list; clicks are sent in order and the server's numbers replace the whole page's progress.
   const tick = useCallback(async (topicId, done) => {
     setNotice(null);
-    try {
-      const progress = await updateTopic(topicId, { done });
-      confirmed.current = progress;
-      setData((current) => (current ? { ...current, progress } : current));
-    } catch (error) { setNotice(error.message); }
-  }, []);
+    const { value, error, idle } = await queue.current.run(() => updateTopic(topicId, { done }));
+    if (error) { setNotice(error.message); return; }
+    confirmed.current = value.progress;
+    if (value.roadmapChanged) { load(); return; } // finished work from an earlier version was put back into the plan
+    if (idle) setData((current) => (current ? { ...current, progress: value.progress } : current));
+  }, [load]);
 
   const progress = data?.progress;
   const plan = data?.roadmap;

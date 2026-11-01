@@ -1,36 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
-import { Check, X } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+import { X } from 'lucide-react';
 import ResourceList from './ResourceList';
 import TopicCheck from './TopicCheck';
-import { minutesLabel } from '../../lib/progress';
+import LogTime from './LogTime';
 import { weekRange } from '../../lib/format';
 
 const statusText = { mastered: 'Already known from your assessment', next: 'Start here', upcoming: 'Coming up', done: 'Completed' };
 const statusFor = (node) => (node.status === 'mastered' && node.source === 'self' ? 'Marked as known by you' : statusText[node.status]);
 
 // Side panel (bottom sheet on small screens) with everything about one skill.
-// Optional time log for one topic: minutes spent, saved as a separate event.
-function LogTime({ topicId, logged, onLogTime }) {
-  const [minutes, setMinutes] = useState('');
-  const submit = (event) => {
-    event.preventDefault();
-    const value = Number(minutes);
-    if (!Number.isInteger(value) || value < 1 || value > 1440) return;
-    onLogTime(topicId, value);
-    setMinutes('');
-  };
-  return (
-    <details className="mt-2">
-      <summary className="cursor-pointer text-xs font-bold text-mid">Log time{logged ? ` (${minutesLabel(logged)} so far)` : ''}</summary>
-      <form onSubmit={submit} className="mt-2 flex items-center gap-2">
-        <label className="sr-only" htmlFor={`min-${topicId}`}>Minutes spent</label>
-        <input id={`min-${topicId}`} type="number" min="1" max="1440" inputMode="numeric" value={minutes} onChange={(e) => setMinutes(e.target.value)} placeholder="minutes" className="w-28 border border-pale bg-white px-2.5 py-1.5 text-sm outline-none focus:border-mid" />
-        <button type="submit" className="control-transition border border-pale bg-white px-3 py-1.5 text-xs font-extrabold text-ink hover:border-mid">Add</button>
-      </form>
-    </details>
-  );
-}
-
 export default function NodeDetails({ node, nameOf, progress, onClose, onToggleKnown, onToggleTopic, onLogTime, busy, notice }) {
   const closeRef = useRef(null);
   useEffect(() => {
@@ -78,7 +56,7 @@ export default function NodeDetails({ node, nameOf, progress, onClose, onToggleK
             <li key={topic.id} className={`border border-[var(--rule)] px-4 py-3 ${topic.credited ? 'bg-[#E7F4FC] opacity-80' : 'bg-[#F9FCFE]'}`}>
               <div className="flex items-start gap-3">
                 {planned && <TopicCheck done={isDone} overdue={status === 'overdue'} title={topic.title} onToggle={(next) => onToggleTopic(topic.id, next)} />}
-                {topic.done && <span className="grid h-6 w-6 shrink-0 place-items-center border-2 border-mid bg-mid text-cream" aria-label="Finished earlier"><Check size={14} strokeWidth={3} aria-hidden="true" /></span>}
+                {topic.done && <TopicCheck done title={topic.title} onToggle={(next) => onToggleTopic(topic.id, next)} />}
                 <div className="min-w-0 flex-1">
                   <p className="flex items-baseline justify-between gap-3 text-sm font-bold text-ink"><span className={topic.credited || isDone ? 'text-muted line-through' : ''}>{topic.title}</span><span className="shrink-0 font-mono text-[11px] font-medium text-muted">{topic.credited ? 'skipped' : topic.done ? 'finished earlier' : `${topic.trimmedHours ? topic.plannedHours : topic.hours} h${topic.startWeek ? ` · ${weekRange(topic)}` : ''}`}</span></p>
                   {status === 'overdue' && <p className="mt-1 font-mono text-[10px] uppercase tracking-[.1em] text-error">Overdue</p>}

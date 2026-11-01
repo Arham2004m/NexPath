@@ -1,12 +1,36 @@
 // Small helpers for showing progress. The server is the source of truth; these only make the page feel instant.
 
-// Immediately reflect a tick before the server answers (it replaces this with the real numbers, or we roll back).
-export function withTopicDone(progress, topicId, done) {
+// Hours and owning skill of each topic in a plan (a topic can appear in several weeks).
+export function topicIndex(plan) {
+  const index = new Map();
+  for (const week of plan?.weeks || []) {
+    for (const entry of week.topics) {
+      const known = index.get(entry.topicId) || { nodeId: entry.nodeId, hours: 0 };
+      known.hours += entry.hours;
+      index.set(entry.topicId, known);
+    }
+  }
+  return index;
+}
+
+// Immediately reflect a tick before the server answers (it replaces this with the real numbers, or we roll back):
+// the topic, the percentage, and whether its skill is now complete.
+export function withTopicDone(progress, topicId, done, plan) {
   if (!progress) return progress;
+  const wasDone = progress.topicStatus[topicId] === 'done';
+  if (wasDone === done) return progress;
+  const topic = topicIndex(plan).get(topicId);
+  const doneHours = Math.max(0, progress.doneHours + (done ? 1 : -1) * (topic?.hours ?? 0));
+  const topicsDone = Math.max(0, progress.topicsDone + (done ? 1 : -1));
+  const finished = topicsDone === progress.topicsTotal;
+  const nodes = topic && progress.nodes[topic.nodeId]
+    ? { ...progress.nodes, [topic.nodeId]: { ...progress.nodes[topic.nodeId], done: progress.nodes[topic.nodeId].done + (done ? 1 : -1), complete: progress.nodes[topic.nodeId].done + (done ? 1 : -1) === progress.nodes[topic.nodeId].total } }
+    : progress.nodes;
   return {
     ...progress,
     topicStatus: { ...progress.topicStatus, [topicId]: done ? 'done' : 'upcoming' },
-    topicsDone: Math.max(0, progress.topicsDone + (done ? 1 : -1))
+    topicsDone, doneHours, nodes,
+    percentComplete: finished || progress.totalHours <= 0 ? 100 : Math.min(99, Math.floor((100 * doneHours) / progress.totalHours))
   };
 }
 

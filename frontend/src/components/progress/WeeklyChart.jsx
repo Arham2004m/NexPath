@@ -17,6 +17,8 @@ export default function WeeklyChart({ weekly }) {
   const [active, setActive] = useState(null);
   const [asTable, setAsTable] = useState(false);
   const scroller = useRef(null);
+  const columns = useRef([]);
+  const [tabStop, setTabStop] = useState(0); // roving tab index: the chart is one Tab stop, arrow keys move between weeks
   const currentIndex = weekly.findIndex((week) => week.state === 'current');
   const shown = weekly[active ?? (currentIndex >= 0 ? currentIndex : -1)] || null;
   const max = Math.max(1, ...weekly.map((week) => week.plannedHours));
@@ -26,6 +28,18 @@ export default function WeeklyChart({ weekly }) {
   useEffect(() => {
     if (scroller.current && currentIndex >= 0) scroller.current.scrollLeft = Math.max(0, currentIndex * SLOT - scroller.current.clientWidth / 2);
   }, [currentIndex, asTable]);
+
+  // Start on the current week so Tab lands somewhere meaningful.
+  useEffect(() => { if (currentIndex >= 0) setTabStop(currentIndex); }, [currentIndex]);
+
+  const onKeyDown = (event, index) => {
+    const target = { ArrowRight: index + 1, ArrowLeft: index - 1, Home: 0, End: weekly.length - 1 }[event.key];
+    if (target === undefined) return;
+    event.preventDefault();
+    const next = Math.min(weekly.length - 1, Math.max(0, target));
+    setTabStop(next);
+    columns.current[next]?.focus();
+  };
 
   if (!weekly.length) return <p className="text-sm text-muted">There are no weeks left to chart.</p>;
 
@@ -86,7 +100,8 @@ export default function WeeklyChart({ weekly }) {
                     const fill = week.plannedHours > 0 ? (week.completedHours / week.plannedHours) * 100 : 0;
                     return (
                       <button
-                        key={week.index} type="button" aria-label={describe(week)}
+                        key={week.index} type="button" aria-label={describe(week)} ref={(el) => { columns.current[index] = el; }}
+                        tabIndex={index === tabStop ? 0 : -1} onKeyDown={(event) => onKeyDown(event, index)}
                         onMouseEnter={() => setActive(index)} onMouseLeave={() => setActive(null)} onFocus={() => setActive(index)} onBlur={() => setActive(null)}
                         className="group relative flex h-full items-end justify-center outline-none" style={{ width: SLOT }}
                       >
