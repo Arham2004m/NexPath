@@ -6,6 +6,8 @@
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
     "seed": "node src/scripts/seedQuestions.js",
+    "seed-demo": "node src/scripts/seedDemo.js",
+    "evaluate": "node src/evaluation/evaluate.js",
     "validate-graph": "node src/scripts/validateGraph.js",
     "import-resources": "node src/scripts/importResources.js",
     "test": "vitest run"

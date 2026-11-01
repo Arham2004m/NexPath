@@ -157,6 +157,25 @@ describe('home page', () => {
     expect(screen.getByRole('link', { name: /see your progress/i })).toHaveAttribute('href', '/progress');
     expect(screen.queryByRole('link', { name: /begin assessment|choose your goal/i })).not.toBeInTheDocument();
   });
+
+  it('lists what to do next with a link to the mentor once a roadmap exists', async () => {
+    getDashboard.mockResolvedValue({ roadmap: {}, progress: makeProgress({ pace: 'behind', lagWeeks: 2.4 }) });
+    renderHome({ ...student, goalId: 'gate', hoursPerWeek: 10 });
+    expect(await screen.findByRole('heading', { name: 'What to do next.' })).toBeInTheDocument();
+    expect(screen.getByText('Semantic HTML')).toBeInTheDocument();
+    expect(screen.getByText('Flexbox and grid')).toBeInTheDocument();
+    expect(screen.getByText(/Behind schedule/)).toBeInTheDocument();
+    expect(screen.getByText(/Week 1 of 2/)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Ask the AI mentor' })).toHaveAttribute('href', '/mentor');
+    expect(screen.queryByText(/A path takes shape/)).not.toBeInTheDocument();
+  });
+
+  it('keeps the welcome text while there is no roadmap yet', async () => {
+    getDashboard.mockRejectedValue(new Error('none'));
+    renderHome();
+    expect(await screen.findByText(/A path takes shape/)).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: 'What to do next.' })).not.toBeInTheDocument();
+  });
 });
 
 describe('session handling', () => {

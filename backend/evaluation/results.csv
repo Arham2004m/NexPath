@@ -1,0 +1,101 @@
+goal,hoursPerWeek,learner,plan,finished,finishDay,forecastErrorDays,meanWeeksBehind,peakWeeksBehind,replans,extrasOffers
+Product company placement,8,fast,fixed,true,143,66,0,0,0,0
+Product company placement,8,fast,adaptive,true,143,66,0,0,0,9
+Product company placement,8,steady,fixed,true,200,9,0.04,0.4,0,0
+Product company placement,8,steady,adaptive,true,200,9,0.04,0.4,0,0
+Product company placement,8,slow,fixed,true,400,191,7.16,14.1,0,0
+Product company placement,8,slow,adaptive,true,400,102.9,1.21,2.5,11,0
+Product company placement,8,inconsistent,fixed,true,243,34,2.42,5,0,0
+Product company placement,8,inconsistent,adaptive,true,243,21.6,0.8,2.5,2,0
+Product company placement,8,vanishes,fixed,true,228,19,3.09,4.3,0,0
+Product company placement,8,vanishes,adaptive,true,228,10.3,0.22,2.4,2,1
+Product company placement,15,fast,fixed,true,76,42,0,0,0,0
+Product company placement,15,fast,adaptive,true,76,42,0,0,0,7
+Product company placement,15,steady,fixed,true,106,12,0,0,0,0
+Product company placement,15,steady,adaptive,true,106,12,0,0,0,1
+Product company placement,15,slow,fixed,true,213,95,3.51,7,0,0
+Product company placement,15,slow,adaptive,true,213,57.3,1.14,2.3,5,0
+Product company placement,15,inconsistent,fixed,true,131,13,0.69,2,0,0
+Product company placement,15,inconsistent,adaptive,true,131,11.7,0.62,2,1,0
+Product company placement,15,vanishes,fixed,true,134,16,2.18,3.4,0,0
+Product company placement,15,vanishes,adaptive,true,134,8.3,0.43,2.7,1,0
+Campus placements,8,fast,fixed,true,91,48,0,0,0,0
+Campus placements,8,fast,adaptive,true,91,48,0,0,0,8
+Campus placements,8,steady,fixed,true,127,12,0.06,0.5,0,0
+Campus placements,8,steady,adaptive,true,127,12,0.06,0.5,0,0
+Campus placements,8,slow,fixed,true,255,116,4.53,8.6,0,0
+Campus placements,8,slow,adaptive,true,255,64.2,1.19,2.6,7,0
+Campus placements,8,inconsistent,fixed,true,155,16,1.29,2.6,0,0
+Campus placements,8,inconsistent,adaptive,true,155,11.7,0.78,2.5,1,0
+Campus placements,8,vanishes,fixed,true,155,16,2.62,4.3,0,0
+Campus placements,8,vanishes,adaptive,true,155,11.6,0.38,2.3,2,0
+Campus placements,15,fast,fixed,true,48,28,0,0,0,0
+Campus placements,15,fast,adaptive,true,48,28,0,0,0,5
+Campus placements,15,steady,fixed,true,68,8,0,0,0,0
+Campus placements,15,steady,adaptive,true,68,8,0,0,0,0
+Campus placements,15,slow,fixed,true,136,60,2.13,4.2,0,0
+Campus placements,15,slow,adaptive,true,136,39,1.15,2.4,2,0
+Campus placements,15,inconsistent,fixed,true,84,8,0.25,0.9,0,0
+Campus placements,15,inconsistent,adaptive,true,84,8,0.25,0.9,0,0
+Campus placements,15,vanishes,fixed,true,96,20,1.87,3.3,0,0
+Campus placements,15,vanishes,adaptive,true,96,9.1,0.54,2.6,1,0
+Web developer (full stack),8,fast,fixed,true,156,67,0,0,0,0
+Web developer (full stack),8,fast,adaptive,true,156,67,0,0,0,1
+Web developer (full stack),8,steady,fixed,true,218,5,0.11,0.5,0,0
+Web developer (full stack),8,steady,adaptive,true,218,5,0.11,0.5,0,0
+Web developer (full stack),8,slow,fixed,true,437,214,7.94,15.4,0,0
+Web developer (full stack),8,slow,adaptive,true,437,115,1.33,2.9,13,0
+Web developer (full stack),8,inconsistent,fixed,true,273,50,2.84,5.6,0,0
+Web developer (full stack),8,inconsistent,adaptive,true,273,32.7,0.85,2.9,3,1
+Web developer (full stack),8,vanishes,fixed,true,246,23,3.27,4.3,0,0
+Web developer (full stack),8,vanishes,adaptive,true,246,4.9,1.15,2.5,1,0
+Web developer (full stack),15,fast,fixed,true,83,42,0,0,0,0
+Web developer (full stack),15,fast,adaptive,true,83,42,0,0,0,1
+Web developer (full stack),15,steady,fixed,true,116,9,0,0,0,0
+Web developer (full stack),15,steady,adaptive,true,116,9,0,0,0,0
+Web developer (full stack),15,slow,fixed,true,233,108,3.92,7.7,0,0
+Web developer (full stack),15,slow,adaptive,true,233,61.9,1.23,2.2,6,0
+Web developer (full stack),15,inconsistent,fixed,true,139,14,0.93,2.3,0,0
+Web developer (full stack),15,inconsistent,adaptive,true,139,11.2,0.58,2.3,1,0
+Web developer (full stack),15,vanishes,fixed,true,144,19,2.4,3.6,0,0
+Web developer (full stack),15,vanishes,adaptive,true,144,6.9,0.62,2.5,1,0
+AI / ML,8,fast,fixed,true,88,44,0,0,0,0
+AI / ML,8,fast,adaptive,true,88,44,0,0,0,3
+AI / ML,8,steady,fixed,true,124,8,0.04,0.4,0,0
+AI / ML,8,steady,adaptive,true,124,8,0.04,0.4,0,0
+AI / ML,8,slow,fixed,true,248,116,4.56,8.8,0,0
+AI / ML,8,slow,adaptive,true,248,63.9,1.06,2.5,7,0
+AI / ML,8,inconsistent,fixed,true,152,20,1.42,3.8,0,0
+AI / ML,8,inconsistent,adaptive,true,152,14.3,0.81,2,1,0
+AI / ML,8,vanishes,fixed,true,152,20,2.83,4.3,0,0
+AI / ML,8,vanishes,adaptive,true,152,10.5,0.34,2.4,2,0
+AI / ML,15,fast,fixed,true,47,22,0,0,0,0
+AI / ML,15,fast,adaptive,true,47,22,0,0,0,1
+AI / ML,15,steady,fixed,true,66,3,0.02,0.2,0,0
+AI / ML,15,steady,adaptive,true,66,3,0.02,0.2,0,0
+AI / ML,15,slow,fixed,true,132,63,2.28,4.4,0,0
+AI / ML,15,slow,adaptive,true,132,40.2,1.12,2.3,3,0
+AI / ML,15,inconsistent,fixed,true,76,7,0.44,1.2,0,0
+AI / ML,15,inconsistent,adaptive,true,76,7,0.44,1.2,0,0
+AI / ML,15,vanishes,fixed,true,94,25,1.95,3.6,0,0
+AI / ML,15,vanishes,adaptive,true,94,13,0.71,2.7,1,0
+GATE preparation,8,fast,fixed,true,206,94,0,0,0,0
+GATE preparation,8,fast,adaptive,true,206,94,0,0,0,2
+GATE preparation,8,steady,fixed,true,288,12,0.03,0.4,0,0
+GATE preparation,8,steady,adaptive,true,288,12,0.03,0.4,0,0
+GATE preparation,8,slow,fixed,true,577,277,10.3,20.5,0,0
+GATE preparation,8,slow,adaptive,true,577,145,1.23,2.6,17,0
+GATE preparation,8,inconsistent,fixed,true,359,59,3.55,7.9,0,0
+GATE preparation,8,inconsistent,adaptive,true,359,34.1,0.77,2.5,4,0
+GATE preparation,8,vanishes,fixed,true,316,16,3.14,4.3,0,0
+GATE preparation,8,vanishes,adaptive,true,316,12,0.15,2.3,2,0
+GATE preparation,15,fast,fixed,true,109,58,0,0,0,0
+GATE preparation,15,fast,adaptive,true,109,58,0,0,0,2
+GATE preparation,15,steady,fixed,true,153,14,0,0,0,0
+GATE preparation,15,steady,adaptive,true,153,14,0,0,0,2
+GATE preparation,15,slow,fixed,true,307,140,5.09,10.3,0,0
+GATE preparation,15,slow,adaptive,true,307,81.1,1.16,2.3,8,0
+GATE preparation,15,inconsistent,fixed,true,191,24,1.06,2.9,0,0
+GATE preparation,15,inconsistent,adaptive,true,191,19.5,0.64,2,1,0
+GATE preparation,15,vanishes,fixed,true,181,14,2.24,3.5,0,0
+GATE preparation,15,vanishes,adaptive,true,181,3.2,0.45,2.6,1,0

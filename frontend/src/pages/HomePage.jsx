@@ -9,6 +9,7 @@ import { getGoals } from '../services/goalApi';
 import { getLatestAttempt } from '../services/assessmentApi';
 import { getDashboard } from '../services/roadmapApi';
 import { summarizeAttempt } from '../lib/assessmentSummary';
+import { hoursLabel, paceSummary } from '../lib/progress';
 
 export default function HomePage() {
   const { user } = useAuth();
@@ -53,10 +54,36 @@ export default function HomePage() {
               <SummaryCard index={2} label="Roadmap" value={progress ? `${progress.percentComplete}% done` : goal ? (roadmapReady ? "Ready" : "Coming soon") : "Not started"} detail={goal && roadmapReady ? <><Link to="/roadmap" className="font-bold text-mid underline-offset-4 hover:underline">Open your roadmap</Link>{progress ? <> or <Link to="/progress" className="font-bold text-mid underline-offset-4 hover:underline">see your progress</Link></> : null}</> : goal ? "We are still building the path for this goal." : "Choose a goal to see your path."} />
             </div>
           </section>
-          <section className="mt-14 grid gap-5 border-t-2 section-rule pt-8 sm:grid-cols-[minmax(13rem,.55fr)_1fr]">
+          {progress && progress.nextUp?.length > 0 ? (
+            <section className="mt-14 border-t-2 section-rule pt-8" aria-labelledby="next-heading">
+              <div className="grid gap-5 sm:grid-cols-[minmax(13rem,.55fr)_1fr]">
+                <div>
+                  <h2 id="next-heading" className="text-2xl font-extrabold leading-tight tracking-[-.05em] text-ink">What to do next.</h2>
+                  <p className="mt-3 text-sm leading-7 text-muted"><span className="font-bold text-ink">{paceSummary(progress).label}.</span> Week {progress.currentWeek} of {progress.totalWeeks}.</p>
+                </div>
+                <div>
+                  <ol className="divide-y divide-pale border border-pale bg-white">
+                    {progress.nextUp.slice(0, 3).map((topic) => (
+                      <li key={topic.topicId} className="flex items-baseline justify-between gap-4 px-4 py-3">
+                        <span className="text-[15px] font-bold text-ink">{topic.title}<span className="block text-xs font-medium text-muted">{topic.nodeName}{topic.overdue ? ' · overdue' : ''}</span></span>
+                        <span className="shrink-0 text-xs font-bold text-muted">{hoursLabel(topic.hours)}</span>
+                      </li>
+                    ))}
+                  </ol>
+                  <p className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm font-bold">
+                    <Link to="/roadmap" className="text-mid underline-offset-4 hover:underline">View the full roadmap</Link>
+                    <Link to="/progress" className="text-mid underline-offset-4 hover:underline">Weekly breakdown</Link>
+                    <Link to="/mentor" className="text-mid underline-offset-4 hover:underline">Ask the AI mentor</Link>
+                  </p>
+                </div>
+              </div>
+            </section>
+          ) : (
+            <section className="mt-14 grid gap-5 border-t-2 section-rule pt-8 sm:grid-cols-[minmax(13rem,.55fr)_1fr]">
             <p className="text-2xl font-extrabold leading-tight tracking-[-.05em] text-ink">A path takes shape through small choices.</p>
             <p className="max-w-2xl text-sm leading-7 text-muted">Complete your assessment and choose a goal to unlock a weekly roadmap built for the direction you choose.</p>
-          </section>
+            </section>
+          )}
         </main>
       </div>
     </div>

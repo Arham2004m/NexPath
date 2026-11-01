@@ -32,6 +32,7 @@ app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
 const authLimit = limiter(15 * 60_000, 30, 'Too many sign-in attempts. Try again in a few minutes.');
 app.use('/api/auth/login', authLimit);
 app.use('/api/auth/register', authLimit);
+app.use('/api/auth/change-password', authLimit);
 
 app.use('/api/auth', authRoutes);
 app.use('/api/assessment', assessmentRoutes);

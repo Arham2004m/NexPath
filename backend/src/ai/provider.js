@@ -24,6 +24,7 @@ export function getProvider() {
   const apiKey = (process.env.GEMINI_API_KEY || '').trim();
   if (!apiKey) return unconfigured;
   const model = (process.env.GEMINI_MODEL || '').trim() || undefined;
-  if (!cached || cached.apiKey !== apiKey || cached.model !== model) cached = { apiKey, model, provider: createGeminiProvider({ apiKey, model }) };
+  const fallbackModel = (process.env.GEMINI_FALLBACK_MODEL || '').trim() || undefined;
+  if (!cached || cached.apiKey !== apiKey || cached.model !== model || cached.fallbackModel !== fallbackModel) cached = { apiKey, model, fallbackModel, provider: createGeminiProvider({ apiKey, model, fallbackModel }) };
   return cached.provider;
 }

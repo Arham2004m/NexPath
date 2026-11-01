@@ -90,6 +90,43 @@ describe('retrying a busy model', () => {
   });
 });
 
+describe('fallback model', () => {
+  const byModel = (plan, used = []) => ({ models: { generateContentStream: async ({ model }) => { used.push(model); const outcome = plan[model]; if (outcome instanceof Error) throw outcome; return streamOf([{ text: outcome }]); } } });
+  const err = (status) => Object.assign(new Error('x'), { status });
+  const run = (client, extra = {}) => drain(createGeminiProvider({ apiKey: 'k', model: 'main', fallbackModel: 'backup', retryDelayMs: 0, client, ...extra }).stream({ system: '', contents: [] }));
+
+  it('uses the backup when the main model is over quota (no retry of the main one)', async () => {
+    const used = [];
+    expect(await run(byModel({ main: err(429), backup: 'from backup' }, used))).toEqual(['from backup']);
+    expect(used).toEqual(['main', 'backup']);
+  });
+  it('retries the main model once when unavailable, then uses the backup', async () => {
+    const used = [];
+    expect(await run(byModel({ main: err(503), backup: 'from backup' }, used))).toEqual(['from backup']);
+    expect(used).toEqual(['main', 'main', 'backup']);
+  });
+  it('reports the failure when both models fail, and never switches for auth or blocked errors', async () => {
+    await expect(run(byModel({ main: err(429), backup: err(503) }))).rejects.toMatchObject({ code: 'unavailable' });
+    const used = [];
+    await expect(run(byModel({ main: err(403), backup: 'x' }, used))).rejects.toMatchObject({ code: 'auth' });
+    expect(used).toEqual(['main']);
+  });
+  it('does nothing different without a backup, or when the backup is the same model', async () => {
+    const used = [];
+    await expect(run(byModel({ main: err(429) }, used), { fallbackModel: undefined })).rejects.toMatchObject({ code: 'quota' });
+    await expect(run(byModel({ main: err(429) }, used), { fallbackModel: 'main' })).rejects.toMatchObject({ code: 'quota' });
+    expect(used).toEqual(['main', 'main']);
+  });
+  it('is read from the environment', () => {
+    process.env.GEMINI_API_KEY = 'k';
+    process.env.GEMINI_FALLBACK_MODEL = 'b1';
+    const first = getProvider();
+    process.env.GEMINI_FALLBACK_MODEL = 'b2';
+    expect(getProvider()).not.toBe(first);
+    delete process.env.GEMINI_API_KEY; delete process.env.GEMINI_FALLBACK_MODEL;
+  });
+});
+
 describe('provider selection', () => {
   afterEach(() => { setProvider(null); delete process.env.GEMINI_API_KEY; delete process.env.GEMINI_MODEL; });
 

@@ -64,15 +64,22 @@ Replanning is checked whenever the roadmap, dashboard or a tick is requested, so
 
 - `GEMINI_API_KEY`: from Google AI Studio.
 - `GEMINI_MODEL`: the model name. Google renames and retires models, so check the current list and set it here (default `gemini-3.5-flash`).
+- `GEMINI_FALLBACK_MODEL` (optional, for example `gemini-3.5-flash-lite`): used when the main model is over quota or still unavailable after one retry, so the mentor keeps answering.
 - `CHAT_RATE_LIMIT_PER_HOUR`: messages per student per hour (default 20; failed and refused messages do not count).
 
 Design: the provider sits behind `src/ai/provider.js` (`stream({ system, contents, signal })`), so another model can be swapped in. Safety has two layers: a constrained system prompt (career guidance, learning strategy, the student's roadmap, CS topics) and a keyword filter that answers blatant "ignore your instructions" or "show your prompt" messages and self-harm messages with a fixed reply without calling the model. Student text is untrusted and capped at 1000 characters; a hidden marker in the instructions is watched for in the output and replaced if it ever appears. The model is told the student's goal, track, hours, assessed levels, current week topics, progress, pace and latest plan change, never their name or email, plus the last 10 answered messages. Replies stream over `POST /api/chat/messages` as server-sent events (`delta`, `done`, `error`); `GET /api/chat/history?limit&before` pages the conversation and `DELETE /api/chat/history` clears it. Up to 200 messages per student are kept. One reply at a time per student (the in-flight check lives in the server process, so run a single instance or move it to a shared store when scaling out).
+
+### Demo data and evaluation
+
+- `npm run seed-demo` (in `backend/`) creates two students with five weeks of history: Riya (on track) and Karan (far behind, so the adaptive replanner acts the first time the app loads for him). Password for both: `Demo1234x`. It only ever resets those two accounts. See [DEMO.md](DEMO.md) for a presentation walkthrough.
+- `npm run evaluate` (in `backend/`) simulates 50 students (5 goals, 2 weekly-hour levels, 5 work patterns) following a fixed plan and NexPath's adaptive plan, and writes `evaluation/results.csv` and `evaluation/results.md`. Adaptation lowers the average error of the finish date shown to the student from 48.3 to 32.7 days and the average time spent behind from 1.8 to 0.5 weeks; students who keep up are unaffected. Students who work faster than planned get optional extras, not an earlier finish date, so their forecast error is unchanged. The simulated work patterns are deterministic, so results are reproducible; they are not real learners.
 
 ## API
 
 - Auth: `POST /api/auth/register`, `/login`, `/refresh`, `/logout`, and protected `GET /api/auth/me`. Registration errors return `{ message, errors: { field: message } }`; login deliberately responds with generic invalid credentials.
 - Assessment (all require `Authorization: Bearer <access token>`): `GET /api/assessment/domains`, `POST /api/assessment/questions`, `POST /api/assessment/submit`, `GET /api/assessment/latest`.
 - Goals and roadmaps: `GET /api/goals`, `GET /api/goals/recommendations`, `PUT /api/me/goal`, `GET /api/graph`, `POST /api/roadmaps/preview` (generates without saving), `GET /api/roadmaps/current` (saved roadmap plus progress), `POST /api/roadmaps/regenerate`, `PATCH /api/roadmaps/current/topics/:topicId` (`{ done, minutesSpent }`), `GET /api/dashboard`, `PUT /api/me/known-skills` (mark or unmark a skill as already known), `POST /api/roadmaps/replan`, `GET /api/replans`, `PATCH /api/replans/:id/seen`, `POST /api/replans/accept-hours`.
+- Account: `PATCH /api/auth/me` (`{ name }`), `POST /api/auth/change-password` (`{ currentPassword, newPassword, confirmPassword }`).
 - Mentor: `POST /api/chat/messages` (`{ message }`, streams events), `GET /api/chat/history`, `DELETE /api/chat/history`.
 - `GET /api/health`.
 

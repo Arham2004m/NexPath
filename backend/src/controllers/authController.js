@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 import asyncHandler from '../middleware/asyncHandler.js';
-import { validateLogin, validateRegistration } from '../utils/validators.js';
+import { validateLogin, validateNameChange, validatePasswordChange, validateRegistration } from '../utils/validators.js';
 import { createAccessToken, createRefreshToken, refreshCookieOptions } from '../utils/generateTokens.js';
 
 // A real-looking hash to compare against when the email is unknown, so a missing account takes as long as a wrong password.
@@ -39,3 +39,21 @@ export const refresh = asyncHandler(async (req, res) => {
 const { maxAge: _maxAge, ...clearCookieOptions } = refreshCookieOptions;
 export const logout = (req, res) => { res.clearCookie('refreshToken', clearCookieOptions); res.status(204).send(); };
 export const me = asyncHandler(async (req, res) => res.json({ user: profile(req.user) }));
+
+export const updateName = asyncHandler(async (req, res) => {
+  const errors = validateNameChange(req.body);
+  if (Object.keys(errors).length) return res.status(400).json({ message: 'Please correct the highlighted fields', errors });
+  req.user.name = req.body.name.trim();
+  await req.user.save();
+  res.json({ user: profile(req.user) });
+});
+
+export const changePassword = asyncHandler(async (req, res) => {
+  const errors = validatePasswordChange(req.body);
+  if (Object.keys(errors).length) return res.status(400).json({ message: 'Please correct the highlighted fields', errors });
+  const user = await User.findById(req.user._id).select('+passwordHash');
+  if (!(await bcrypt.compare(req.body.currentPassword, user.passwordHash))) return res.status(400).json({ message: 'Please correct the highlighted fields', errors: { currentPassword: 'That is not your current password' } });
+  user.passwordHash = await bcrypt.hash(req.body.newPassword, 12);
+  await user.save();
+  res.json({ message: 'Your password has been changed.' });
+});

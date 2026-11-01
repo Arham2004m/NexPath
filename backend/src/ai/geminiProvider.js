@@ -16,30 +16,38 @@ export function mapError(error) {
   return new ProviderError('unavailable', status ? `status ${status}` : error?.name || 'error');
 }
 
-export function createGeminiProvider({ apiKey, model, client, retryDelayMs = 800 } = {}) {
+export function createGeminiProvider({ apiKey, model, fallbackModel, client, retryDelayMs = 800 } = {}) {
   const ai = client || new GoogleGenAI({ apiKey });
   const modelName = model || DEFAULT_MODEL;
+  const models = [modelName, ...(fallbackModel && fallbackModel !== modelName ? [fallbackModel] : [])];
   return {
     name: 'gemini',
     model: modelName,
-    // A busy or briefly unavailable model is tried once more, but only while nothing has been shown yet.
+    // While nothing has been shown yet: a briefly unavailable model is tried once more, and a model that is over quota
+    // or still unavailable hands over to the fallback model (if one is set).
     async *stream(args) {
       let produced = false;
-      for (let attempt = 0; ; attempt++) {
-        try {
-          for await (const piece of this.attempt(args)) { produced = true; yield piece; }
-          return;
-        } catch (error) {
-          if (produced || attempt >= 1 || error.code !== 'unavailable' || args.signal?.aborted) throw error;
-          await new Promise((resolve) => setTimeout(resolve, retryDelayMs));
+      let failure = null;
+      for (const [index, name] of models.entries()) {
+        for (let attempt = 0; attempt < (index === 0 ? 2 : 1); attempt++) {
+          try {
+            for await (const piece of this.attempt(args, name)) { produced = true; yield piece; }
+            return;
+          } catch (error) {
+            if (produced || args.signal?.aborted || (error.code !== 'unavailable' && error.code !== 'quota')) throw error;
+            failure = error;
+            if (error.code === 'quota') break; // retrying the same model cannot help
+            if (index === 0 && attempt === 0) await new Promise((resolve) => setTimeout(resolve, retryDelayMs));
+          }
         }
       }
+      throw failure;
     },
-    async *attempt({ system, contents, signal }) {
+    async *attempt({ system, contents, signal }, name) {
       let stream;
       try {
         stream = await ai.models.generateContentStream({
-          model: modelName,
+          model: name,
           contents: contents.map(({ role, text }) => ({ role: role === 'assistant' ? 'model' : 'user', parts: [{ text }] })),
           config: { systemInstruction: system, maxOutputTokens: 1024, temperature: 0.6, abortSignal: signal }
         });
