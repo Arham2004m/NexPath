@@ -39,6 +39,7 @@ export async function newStudent(app, name = 'Test Student') {
     post: (path, body) => as('post', path).send(body),
     put: (path, body) => as('put', path).send(body),
     patch: (path, body) => as('patch', path).send(body),
+    delete: (path) => as('delete', path),
     // Every domain self-reported as new: the plain beginner start.
     takeAssessmentAsBeginner: () => as('post', '/assessment/submit').send({ skippedDomains: ['prog', 'dsa', 'os', 'dbms', 'web', 'aiml', 'cn', 'sd', 'mobile'], shownQuestions: {}, answers: {} }),
     chooseGoal: (goal) => as('put', '/me/goal').send(goal)

@@ -58,11 +58,22 @@ The roadmap is saved per student (`Roadmap`, one active version at a time, older
 
 Replanning is checked whenever the roadmap, dashboard or a tick is requested, so it works without a background job and catches students who stopped logging. `POST /api/roadmaps/replan` checks right now (skipping only the 7 day wait); `GET /api/replans` lists the history and `PATCH /api/replans/:id/seen` records that the student read an explanation. `tests/helpers/simulate.js` runs a day-by-day simulation of fast, steady, slow and intermittent students against the pure engine.
 
+### AI mentor
+
+`/mentor` is a chat with a Gemini-backed mentor. It is called from the server only; the key never reaches the browser. Set these in `backend/.env` (the app starts without them and the mentor then says it is not set up):
+
+- `GEMINI_API_KEY`: from Google AI Studio.
+- `GEMINI_MODEL`: the model name. Google renames and retires models, so check the current list and set it here (default `gemini-2.5-flash`).
+- `CHAT_RATE_LIMIT_PER_HOUR`: messages per student per hour (default 20; failed and refused messages do not count).
+
+Design: the provider sits behind `src/ai/provider.js` (`stream({ system, contents, signal })`), so another model can be swapped in. Safety has two layers: a constrained system prompt (career guidance, learning strategy, the student's roadmap, CS topics) and a keyword filter that answers blatant "ignore your instructions" or "show your prompt" messages and self-harm messages with a fixed reply without calling the model. Student text is untrusted and capped at 1000 characters; a hidden marker in the instructions is watched for in the output and replaced if it ever appears. The model is told the student's goal, track, hours, assessed levels, current week topics, progress, pace and latest plan change, never their name or email, plus the last 10 answered messages. Replies stream over `POST /api/chat/messages` as server-sent events (`delta`, `done`, `error`); `GET /api/chat/history?limit&before` pages the conversation and `DELETE /api/chat/history` clears it. Up to 200 messages per student are kept. One reply at a time per student (the in-flight check lives in the server process, so run a single instance or move it to a shared store when scaling out).
+
 ## API
 
 - Auth: `POST /api/auth/register`, `/login`, `/refresh`, `/logout`, and protected `GET /api/auth/me`. Registration errors return `{ message, errors: { field: message } }`; login deliberately responds with generic invalid credentials.
 - Assessment (all require `Authorization: Bearer <access token>`): `GET /api/assessment/domains`, `POST /api/assessment/questions`, `POST /api/assessment/submit`, `GET /api/assessment/latest`.
 - Goals and roadmaps: `GET /api/goals`, `GET /api/goals/recommendations`, `PUT /api/me/goal`, `GET /api/graph`, `POST /api/roadmaps/preview` (generates without saving), `GET /api/roadmaps/current` (saved roadmap plus progress), `POST /api/roadmaps/regenerate`, `PATCH /api/roadmaps/current/topics/:topicId` (`{ done, minutesSpent }`), `GET /api/dashboard`, `PUT /api/me/known-skills` (mark or unmark a skill as already known), `POST /api/roadmaps/replan`, `GET /api/replans`, `PATCH /api/replans/:id/seen`, `POST /api/replans/accept-hours`.
+- Mentor: `POST /api/chat/messages` (`{ message }`, streams events), `GET /api/chat/history`, `DELETE /api/chat/history`.
 - `GET /api/health`.
 
 ## Security notes

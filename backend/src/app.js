@@ -7,6 +7,7 @@ import authRoutes from './routes/authRoutes.js';
 import goalRoutes from './routes/goalRoutes.js';
 import roadmapRoutes from './routes/roadmapRoutes.js';
 import assessmentRoutes from './routes/assessmentRoutes.js';
+import chatRoutes from './routes/chatRoutes.js';
 import { errorHandler, notFound } from './middleware/errorHandler.js';
 import { clientDate } from './middleware/clientDate.js';
 
@@ -34,6 +35,7 @@ app.use('/api/auth/register', authLimit);
 
 app.use('/api/auth', authRoutes);
 app.use('/api/assessment', assessmentRoutes);
+app.use('/api/chat', chatRoutes);
 app.use('/api', goalRoutes);
 app.use('/api', roadmapRoutes);
 app.use(notFound);
