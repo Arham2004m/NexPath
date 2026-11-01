@@ -26,8 +26,9 @@ export function reduceEvents(events = []) {
 
 const isoDay = (value) => new Date(value).toISOString().slice(0, 10);
 
-export function computeProgress({ plan, events = [], now = new Date() }) {
-  const today = isoDay(now);
+// `today` is the student's local calendar day (YYYY-MM-DD); without it the UTC date of `now` is used.
+export function computeProgress({ plan, events = [], now = new Date(), today: localDay = null }) {
+  const today = localDay || isoDay(now);
   const weeks = plan.weeks || [];
   const carried = plan.completedTopics || [];
   const carriedHours = carried.reduce((sum, topic) => sum + topic.hours, 0);
@@ -68,7 +69,7 @@ export function computeProgress({ plan, events = [], now = new Date() }) {
   const minutesByWeek = new Map(weeks.map((week) => [week.index, 0]));
   for (const event of events) {
     if (event.type !== 'time_logged' || !topics.has(event.topicId) || !weeks.length) continue;
-    const day = isoDay(event.at);
+    const day = event.day || isoDay(event.at);
     const week = weeks.find((w) => day >= w.startDate && day <= w.endDate) || (day < weeks[0].startDate ? weeks[0] : weeks[weeks.length - 1]);
     minutesByWeek.set(week.index, minutesByWeek.get(week.index) + (event.minutes || 0));
   }
@@ -111,7 +112,8 @@ export function computeProgress({ plan, events = [], now = new Date() }) {
         : lagWeeks <= LAG_AHEAD_WEEKS ? 'ahead' : 'on_track';
 
   return {
-    percentComplete: totalHours > 0 ? Math.round((100 * doneHours) / totalHours) : 100,
+    // Rounded down so 99.6% never reads as 100% while work is left; only a finished roadmap shows 100.
+    percentComplete: finished || totalHours <= 0 ? 100 : Math.min(99, Math.floor((100 * doneHours) / totalHours)),
     doneHours, totalHours, carriedHours,
     topicsDone: doneIds.size, topicsTotal: topics.size,
     currentWeek: currentWeek ? currentWeek.index : (weeks.length && today > weeks[weeks.length - 1].endDate ? weeks.length : 1),

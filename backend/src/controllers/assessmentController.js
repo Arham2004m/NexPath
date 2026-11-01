@@ -1,6 +1,7 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Question from '../models/Question.js';
 import AssessmentAttempt from '../models/AssessmentAttempt.js';
+import IssuedQuestions from '../models/IssuedQuestions.js';
 import { DOMAIN_KEYS, DOMAIN_LABELS } from '../data/domains.js';
 import { sampleDomain } from '../services/assessment/sampler.js';
 import { questionResults, scoreDomain } from '../services/assessment/scoring.js';
@@ -34,7 +35,10 @@ export const sampleQuestions = asyncHandler(async (req, res) => {
   const questions = {};
   for (const key of new Set(domains)) {
     const pool = await Question.find({ domain: key }).lean(); // `correct` is select:false, so never sent
-    questions[key] = sampleDomain(pool, undefined, seen).map(({ id, difficulty, question, options }) => ({ id, difficulty, question, options }));
+    const sampled = sampleDomain(pool, undefined, seen);
+    questions[key] = sampled.map(({ id, difficulty, question, options }) => ({ id, difficulty, question, options }));
+    // Remember what was issued: only this exact set can be scored for this domain.
+    await IssuedQuestions.findOneAndUpdate({ userId: req.user._id, domain: key }, { $set: { questionIds: sampled.map((q) => q.id), issuedAt: new Date() } }, { upsert: true });
   }
   res.json({ questions });
 });
@@ -55,6 +59,13 @@ export const submitAttempt = asyncHandler(async (req, res) => {
     const ids = shownQuestions[key];
     if (ids === undefined) continue; // domain not reached (e.g. timer ran out)
     if (!Array.isArray(ids) || !ids.length || ids.length > MAX_QUESTIONS_PER_DOMAIN || ids.some((id) => typeof id !== 'string')) return bad(res, `Invalid questions for ${key}`);
+
+    // Only the set that was issued to this student for this domain can be scored.
+    const issued = await IssuedQuestions.findOne({ userId: req.user._id, domain: key }).lean();
+    const submitted = new Set(ids);
+    if (!issued || issued.questionIds.length !== submitted.size || !issued.questionIds.every((id) => submitted.has(id))) {
+      return bad(res, `The questions for ${DOMAIN_LABELS[key]} are not the ones issued to you. Please restart the assessment.`);
+    }
 
     // Authoritative questions (with correct answers) come from the DB; ids must belong to this domain.
     const questions = await Question.find({ domain: key, id: { $in: ids } }).select('+correct').lean();

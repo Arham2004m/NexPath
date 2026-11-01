@@ -7,7 +7,9 @@ const progressEventSchema = new mongoose.Schema({
   topicId: { type: String, required: true },
   type: { type: String, enum: ['complete', 'uncomplete', 'time_logged'], required: true },
   minutes: { type: Number, default: 0 },
-  at: { type: Date, default: Date.now }
+  at: { type: Date, default: Date.now },
+  // The student's local calendar day (YYYY-MM-DD) when it happened; weekly charts group by this, not by UTC.
+  day: { type: String, default: null }
 });
 progressEventSchema.index({ userId: 1, at: 1 });
 

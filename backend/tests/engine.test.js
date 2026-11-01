@@ -8,6 +8,7 @@ import { recommendGoals } from '../src/engine/goalRecommender.js';
 
 const { nodes, goalPaths } = readGraphFiles();
 const base = { nodes, goalPaths, hoursPerWeek: 10, startDate: '2026-01-05' };
+const GOOD_RESOURCES = ['a', 'b', 'c'].map((id) => ({ title: id, url: `https://example.com/${id}` }));
 const tested = (band, normalized) => ({ band, normalized, assessmentMethod: 'tested' });
 
 describe('knowledge graph', () => {
@@ -19,15 +20,15 @@ describe('knowledge graph', () => {
 
   it('detects cycles and prints the loop', () => {
     const broken = [
-      { id: 'a', level: 1, prerequisites: ['b'], estimatedHours: 3, topics: [{ id: 'a1', hours: 3 }], miniTasks: ['x'], resources: [1, 2, 3] },
-      { id: 'b', level: 1, prerequisites: ['a'], estimatedHours: 3, topics: [{ id: 'b1', hours: 3 }], miniTasks: ['x'], resources: [1, 2, 3] }
+      { id: 'a', level: 1, prerequisites: ['b'], estimatedHours: 3, topics: [{ id: 'a1', hours: 3 }], miniTasks: ['x'], resources: GOOD_RESOURCES },
+      { id: 'b', level: 1, prerequisites: ['a'], estimatedHours: 3, topics: [{ id: 'b1', hours: 3 }], miniTasks: ['x'], resources: GOOD_RESOURCES }
     ];
     expect(findCycle(broken)).toEqual(['a', 'b', 'a']);
     expect(validateGraph(broken, {}).errors.join('\n')).toMatch(/cycle: a -> b -> a/);
   });
 
   it('reports dangling prerequisites, hour mismatches and unknown goal nodes', () => {
-    const bad = [{ id: 'a', level: 1, prerequisites: ['ghost'], estimatedHours: 9, topics: [{ id: 'a1', hours: 3 }], miniTasks: ['x'], resources: [1, 2, 3] }];
+    const bad = [{ id: 'a', level: 1, prerequisites: ['ghost'], estimatedHours: 9, topics: [{ id: 'a1', hours: 3 }], miniTasks: ['x'], resources: GOOD_RESOURCES }];
     const text = validateGraph(bad, { g: { required: ['nope'] } }).errors.join('\n');
     expect(text).toMatch(/unknown prerequisite "ghost"/);
     expect(text).toMatch(/add up to 3 but estimatedHours is 9/);
@@ -220,5 +221,32 @@ describe('goal recommender', () => {
     const profile = profileOf({ web: 0.9, prog: 0.7 });
     expect(recommendGoals(profile)).toEqual(recommendGoals(profile));
     expect(recommendGoals(profile)[0].reasons.length).toBeGreaterThan(0);
+  });
+});
+
+describe('curated resources', () => {
+  it('every link in the graph is a plain http(s) URL with a title', () => {
+    const links = nodes.flatMap((node) => node.resources.map((resource) => ({ node: node.id, ...resource })));
+    expect(links.length).toBeGreaterThan(300);
+    for (const link of links) {
+      expect(link.url, `${link.node}: ${link.title}`).toMatch(/^https?:\/\/\S+$/i);
+      expect(link.title, link.node).toBeTruthy();
+    }
+  });
+
+  it('the validator refuses script and data links', () => {
+    const resource = (url) => ({ title: 'x', url });
+    const withResources = (resources) => [{ id: 'a', level: 1, prerequisites: [], estimatedHours: 3, topics: [{ id: 'a1', hours: 3 }], miniTasks: ['x'], resources }];
+    for (const url of ['javascript:alert(1)', 'data:text/html,<b>x</b>', 'ftp://example.com/x', '//evil.example', 'https://bad url.com', '']) {
+      expect(validateGraph(withResources([resource(url), resource('https://a.co'), resource('https://b.co')]), {}).errors.join(), url).toMatch(/needs an http\(s\) link/);
+    }
+    expect(validateGraph(withResources([resource('https://a.co'), resource('http://b.co/x?y=1'), resource('https://c.co')]), {}).errors).toEqual([]);
+  });
+
+  it('no resource id or url appears twice inside one skill', () => {
+    for (const node of nodes) {
+      const urls = node.resources.map((r) => r.url);
+      expect(new Set(urls).size, node.id).toBe(urls.length);
+    }
   });
 });

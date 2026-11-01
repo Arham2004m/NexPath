@@ -31,7 +31,8 @@ The brain of the app is a prerequisite graph of skills in `backend/src/data/grap
 
 - `npm run validate-graph`: checks ids, prerequisites, cycles, topic hours, mini tasks and goal references; the server also refuses to start on an invalid graph.
 - `npm run import-resources`: rebuilds each skill's curated resources from `backend/src/data/resources/nexpath-resources.csv` using the rules in `resourceMap.json`, and writes `import-report.json` (unmapped rows, skills with fewer than 3 resources are flagged `needsReview`). Resource links are never invented.
-- `npm test`: engine tests (ordering, determinism, mastery, partial credit, packing, deadlines, hours scaling, recommender).
+- `npm test` in `backend/`: engine tests (ordering, determinism, mastery, partial credit, packing, deadlines, hours scaling, recommender, progress) and route tests for auth, assessment, goals, roadmaps and hostile input, run against an in-memory MongoDB (downloaded once on first run).
+- `npm test` in `frontend/`: page and component tests in jsdom (assessment flow with its timer, goal page estimates, roadmap and progress pages, session expiry).
 - Every goal and sub-track has a roadmap path (`goalPaths.json`). Durations shown on the goal page are computed from the graph, not typed in. Skills with thin resources (aptitude, deployment, iOS release, trees) are flagged `needsReview`; send more CSV rows for them and re-run the importer.
 
 ### How a roadmap is personalised
@@ -52,6 +53,10 @@ The roadmap is saved per student (`Roadmap`, one active version at a time, older
 - Assessment (all require `Authorization: Bearer <access token>`): `GET /api/assessment/domains`, `POST /api/assessment/questions`, `POST /api/assessment/submit`, `GET /api/assessment/latest`.
 - Goals and roadmaps: `GET /api/goals`, `GET /api/goals/recommendations`, `PUT /api/me/goal`, `GET /api/graph`, `POST /api/roadmaps/preview` (generates without saving), `GET /api/roadmaps/current` (saved roadmap plus progress), `POST /api/roadmaps/regenerate`, `PATCH /api/roadmaps/current/topics/:topicId` (`{ done, minutesSpent }`), `GET /api/dashboard`, `PUT /api/me/known-skills` (mark or unmark a skill as already known).
 - `GET /api/health`.
+
+## Security notes
+
+Helmet security headers, no `X-Powered-By`, a 100 KB body limit, 600 requests a minute per address and 30 sign-in or sign-up attempts per 15 minutes per address (set `TRUST_PROXY=1` behind a hosting proxy). Passwords are limited to 8 to 72 characters (bcrypt ignores the rest), every sign-in takes the same time whether or not the email exists, error answers never include internals, and the assessment only scores the exact questions it issued to that student. Known gaps: refresh tokens are not rotated or revocable yet.
 
 ## Troubleshooting MongoDB
 

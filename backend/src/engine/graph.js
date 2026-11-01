@@ -101,13 +101,17 @@ export function validateGraph(nodes, goalPaths = {}) {
       if (node.miniTasks?.length !== node.topics.length) errors.push(`${where}: needs one mini task per topic (${node.topics.length}), found ${node.miniTasks?.length ?? 0}`);
     }
     if ((node.resources?.length || 0) < MIN_RESOURCES && !node.needsReview) errors.push(`${where}: fewer than ${MIN_RESOURCES} resources and not flagged needsReview`);
+    for (const resource of node.resources || []) {
+      // Links go straight into students' browsers, so only plain web links are allowed (never javascript: or data: URLs).
+      if (typeof resource?.url !== 'string' || !/^https?:\/\/[^\s]+$/i.test(resource.url)) errors.push(`${where}: resource "${resource?.title ?? '?'}" needs an http(s) link`);
+      if (!resource?.title) errors.push(`${where}: a resource has no title`);
+    }
     if (node.needsReview) warnings.push(`${where}: needs more curated resources (${node.resources?.length || 0})`);
   }
 
-  if (!errors.length) {
-    const cycle = findCycle(nodes);
-    if (cycle) errors.push(`Prerequisite cycle: ${cycle.join(' -> ')}`);
-  }
+  // Cycle detection ignores prerequisites that do not exist, so it is safe to run alongside the other checks.
+  const cycle = findCycle(nodes);
+  if (cycle) errors.push(`Prerequisite cycle: ${cycle.join(' -> ')}`);
 
   for (const { goalId, subTrack, path } of allGoalPaths(goalPaths)) {
     const label = subTrack ? `${goalId}/${subTrack}` : goalId;

@@ -1,5 +1,4 @@
 // `npm run validate-graph`: exits non-zero when the knowledge graph is invalid.
-import { fileURLToPath } from 'node:url';
 import { readGraphFiles } from '../services/graphStore.js';
 import { computeGraphVersion, validateGraph } from '../engine/graph.js';
 

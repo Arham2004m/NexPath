@@ -18,7 +18,7 @@ export class RoadmapProblem extends Error {
   }
 }
 
-const today = () => new Date().toISOString().slice(0, 10);
+const utcToday = () => new Date().toISOString().slice(0, 10);
 const hashOf = (inputs) => createHash('sha1').update(JSON.stringify(inputs)).digest('hex').slice(0, 16);
 
 async function currentInputs(userId) {
@@ -34,7 +34,7 @@ async function currentInputs(userId) {
   return { user, attempt, inputs: { ...inputs, hash: hashOf(inputs) } };
 }
 
-async function generate({ user, attempt, inputs }, completedTopicIds) {
+async function generate({ user, attempt, inputs }, completedTopicIds, startDate) {
   const { nodes, goalPaths, graphVersion } = loadGraph();
   const { mastered, credits, trims, sources } = planMastery({
     nodes, goalPaths, goalId: inputs.goalId, subTrack: inputs.subTrack,
@@ -43,19 +43,22 @@ async function generate({ user, attempt, inputs }, completedTopicIds) {
   return generateRoadmap({
     nodes, goalPaths, graphVersion, goalId: inputs.goalId, subTrack: inputs.subTrack,
     hoursPerWeek: inputs.hoursPerWeek, targetWeeks: inputs.targetWeeks,
-    mastered, credits, trims, sources, completedTopicIds, startDate: today()
+    mastered, credits, trims, sources, completedTopicIds, startDate
   });
 }
 
 // The student's active roadmap. A new version is created when none exists, when the goal, hours, target, assessment
 // or known skills changed since it was made, or when `force` is set. Finished topics are never scheduled again.
-export async function activeRoadmap(userId, { force = false } = {}) {
+export async function activeRoadmap(userId, { force = false, today = utcToday() } = {}) {
   const context = await currentInputs(userId);
   const existing = await Roadmap.findOne({ userId, status: 'active' });
-  if (existing && existing.inputs.hash === context.inputs.hash && !force) return existing;
+  const unchanged = existing && existing.inputs.hash === context.inputs.hash;
+  if (unchanged && !force) return existing;
+  // Regenerating identical inputs with no new progress would only pile up identical versions.
+  if (unchanged && !(await ProgressEvent.exists({ userId, at: { $gt: existing.createdAt } }))) return existing;
 
   const events = await ProgressEvent.find({ userId }).sort({ at: 1 }).lean();
-  const plan = await generate(context, completedTopicIdsFrom(events));
+  const plan = await generate(context, completedTopicIdsFrom(events), today);
   const last = await Roadmap.findOne({ userId }).sort({ version: -1 }).select('version').lean();
 
   await Roadmap.updateMany({ userId, status: 'active' }, { $set: { status: 'superseded' } });
@@ -68,9 +71,9 @@ export async function activeRoadmap(userId, { force = false } = {}) {
   }
 }
 
-export async function progressFor(roadmap) {
+export async function progressFor(roadmap, today = null) {
   const events = await ProgressEvent.find({ userId: roadmap.userId }).sort({ at: 1 }).lean();
-  return computeProgress({ plan: roadmap.plan, events, now: new Date() });
+  return computeProgress({ plan: roadmap.plan, events, now: new Date(), today });
 }
 
 export const roadmapDto = (roadmap) => ({ id: roadmap.id, version: roadmap.version, createdAt: roadmap.createdAt, plan: roadmap.plan });

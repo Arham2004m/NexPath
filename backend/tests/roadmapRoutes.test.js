@@ -87,12 +87,15 @@ describe('saved roadmap', () => {
     expect(v2.plan.totalHours).toBeLessThan(v1.plan.totalHours);
   });
 
-  it('regenerates on request even when nothing changed', async () => {
+  it('regenerating with nothing new does not pile up identical versions, but does after progress', async () => {
     const student = await readyStudent();
-    await student.get('/roadmaps/current');
-    const res = await student.post('/roadmaps/regenerate', {});
-    expect(res.status).toBe(200);
-    expect(res.body.roadmap.version).toBe(2);
+    const first = (await student.get('/roadmaps/current')).body.roadmap;
+    const again = await student.post('/roadmaps/regenerate', {});
+    expect(again.status).toBe(200);
+    expect(again.body.roadmap.version).toBe(1);
+    expect(again.body.roadmap.id).toBe(first.id);
+    await student.patch(`/roadmaps/current/topics/${firstTopicOf(first.plan)}`, { done: true });
+    expect((await student.post('/roadmaps/regenerate', {})).body.roadmap.version).toBe(2);
   });
 
   it('survives parallel first visits with exactly one active roadmap', async () => {
@@ -178,5 +181,70 @@ describe('progress', () => {
     expect(res.body.roadmap.totalWeeks).toBeGreaterThan(0);
     expect(res.body.progress.weekly.length).toBe(res.body.roadmap.totalWeeks);
     expect(res.body.progress.nextUp.length).toBeGreaterThan(0);
+  });
+});
+
+describe('the students own calendar day', () => {
+  const dayOffset = (days) => new Date(Date.now() + days * 86_400_000).toISOString().slice(0, 10);
+
+  it('starts the plan on the day the browser reports', async () => {
+    const student = await readyStudent();
+    const ahead = dayOffset(1); // e.g. India just after midnight while UTC is still yesterday
+    const res = await student.get('/roadmaps/current').set('X-Client-Date', ahead);
+    expect(res.body.roadmap.plan.startDate).toBe(ahead);
+    expect(res.body.roadmap.plan.weeks[0].startDate).toBe(ahead);
+  });
+
+  it('ignores a missing, malformed or implausible date', async () => {
+    const utc = dayOffset(0);
+    for (const header of [undefined, 'yesterday', '2026-13-45', '1999-01-01', '2999-01-01', "2026-01-01'; drop"]) {
+      const student = await readyStudent();
+      const req = student.get('/roadmaps/current');
+      if (header) req.set('X-Client-Date', header);
+      expect((await req).body.roadmap.plan.startDate, String(header)).toBe(utc);
+    }
+  });
+
+  it('records the students day on progress events', async () => {
+    const student = await readyStudent();
+    const topicId = firstTopicOf((await student.get('/roadmaps/current')).body.roadmap.plan);
+    const day = dayOffset(1);
+    await student.patch(`/roadmaps/current/topics/${topicId}`, { done: true, minutesSpent: 20 }).set('X-Client-Date', day);
+    const events = await mongoose.model('ProgressEvent').find({ userId: student.id }).lean();
+    expect(events.length).toBe(2);
+    expect(events.every((event) => event.day === day)).toBe(true);
+  });
+});
+
+describe('undoing finished work after a new version', () => {
+  it('un-ticking a carried-over topic puts it back into the plan', async () => {
+    const student = await readyStudent();
+    const v1 = (await student.get('/roadmaps/current')).body.roadmap;
+    const topicId = firstTopicOf(v1.plan);
+    await student.patch(`/roadmaps/current/topics/${topicId}`, { done: true });
+    await student.chooseGoal({ ...frontend, hoursPerWeek: 20 });
+    const v2 = (await student.get('/roadmaps/current')).body.roadmap;
+    expect(v2.plan.completedTopics.some((t) => t.topicId === topicId)).toBe(true);
+
+    const undo = await student.patch(`/roadmaps/current/topics/${topicId}`, { done: false });
+    expect(undo.status).toBe(200);
+    expect(undo.body.roadmapChanged).toBe(true);
+    const v3 = (await student.get('/roadmaps/current')).body;
+    expect(v3.roadmap.version).toBe(3);
+    expect(v3.roadmap.plan.completedTopics.some((t) => t.topicId === topicId)).toBe(false);
+    expect(v3.roadmap.plan.weeks.some((w) => w.topics.some((t) => t.topicId === topicId))).toBe(true);
+    expect(v3.progress.topicsDone).toBe(0);
+  });
+
+  it('ticking a carried-over topic again changes nothing, and time cannot be logged on it', async () => {
+    const student = await readyStudent();
+    const topicId = firstTopicOf((await student.get('/roadmaps/current')).body.roadmap.plan);
+    await student.patch(`/roadmaps/current/topics/${topicId}`, { done: true });
+    await student.chooseGoal({ ...frontend, hoursPerWeek: 20 });
+    await student.get('/roadmaps/current');
+    const again = await student.patch(`/roadmaps/current/topics/${topicId}`, { done: true });
+    expect(again.status).toBe(200);
+    expect(again.body.roadmapChanged).toBe(false);
+    expect((await student.patch(`/roadmaps/current/topics/${topicId}`, { minutesSpent: 30 })).status).toBe(400);
   });
 });

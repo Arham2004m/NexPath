@@ -5,6 +5,9 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import { validateLogin, validateRegistration } from '../utils/validators.js';
 import { createAccessToken, createRefreshToken, refreshCookieOptions } from '../utils/generateTokens.js';
 
+// A real-looking hash to compare against when the email is unknown, so a missing account takes as long as a wrong password.
+const DUMMY_HASH = bcrypt.hashSync('not-a-real-password', 12);
+
 export const profile = (user) => ({ id: user._id, name: user.name, email: user.email, goalId: user.goalId, subTrack: user.subTrack, hoursPerWeek: user.hoursPerWeek, targetWeeks: user.targetWeeks, onboardingComplete: user.onboardingComplete, createdAt: user.createdAt });
 const sendSession = (res, user, status = 200) => { res.cookie('refreshToken', createRefreshToken(user.id), refreshCookieOptions).status(status).json({ accessToken: createAccessToken(user.id), user: profile(user) }); };
 
@@ -20,7 +23,8 @@ export const login = asyncHandler(async (req, res) => {
   const errors = validateLogin(req.body);
   if (Object.keys(errors).length) return res.status(400).json({ message: 'Please correct the highlighted fields', errors });
   const user = await User.findOne({ email: req.body.email.toLowerCase() }).select('+passwordHash');
-  if (!user || !(await bcrypt.compare(req.body.password, user.passwordHash))) return res.status(401).json({ message: 'Invalid credentials' });
+  const matches = await bcrypt.compare(req.body.password, user ? user.passwordHash : DUMMY_HASH);
+  if (!user || !matches) return res.status(401).json({ message: 'Invalid credentials' });
   sendSession(res, user);
 });
 export const refresh = asyncHandler(async (req, res) => {
@@ -31,5 +35,7 @@ export const refresh = asyncHandler(async (req, res) => {
     res.json({ accessToken: createAccessToken(user.id), user: profile(user) });
   } catch { res.status(401).json({ message: 'Session expired. Please sign in again.' }); }
 });
-export const logout = (req, res) => { res.clearCookie('refreshToken', refreshCookieOptions); res.status(204).send(); };
+// clearCookie must not receive maxAge (deprecated in Express 4, ignored in 5).
+const { maxAge: _maxAge, ...clearCookieOptions } = refreshCookieOptions;
+export const logout = (req, res) => { res.clearCookie('refreshToken', clearCookieOptions); res.status(204).send(); };
 export const me = asyncHandler(async (req, res) => res.json({ user: profile(req.user) }));

@@ -1,21 +1,28 @@
 import { GOAL_BY_ID, HOURS_PER_WEEK, MAX_TARGET_WEEKS } from '../data/goals.js';
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const isText = (value) => typeof value === 'string';
 
-export function validateRegistration({ name, email, password, confirmPassword }) {
+// bcrypt only uses the first 72 bytes of a password, so longer ones are refused instead of silently shortened.
+export const PASSWORD_LIMITS = { min: 8, max: 72 };
+
+export function validateRegistration({ name, email, password, confirmPassword } = {}) {
   const errors = {};
-  if (!name?.trim() || name.trim().length < 2) errors.name = 'Enter your name (at least 2 characters)';
-  if (!emailPattern.test(email || '')) errors.email = 'Enter a valid email address';
-  if (!password || password.length < 8) errors.password = 'Use at least 8 characters';
+  if (!isText(name) || name.trim().length < 2) errors.name = 'Enter your name (at least 2 characters)';
+  else if (name.trim().length > 80) errors.name = 'Use 80 characters or fewer';
+  if (!isText(email) || !emailPattern.test(email) || email.length > 254) errors.email = 'Enter a valid email address';
+  if (!isText(password) || password.length < PASSWORD_LIMITS.min) errors.password = `Use at least ${PASSWORD_LIMITS.min} characters`;
+  else if (password.length > PASSWORD_LIMITS.max) errors.password = `Use ${PASSWORD_LIMITS.max} characters or fewer`;
   else if (!/[a-z]/.test(password) || !/[A-Z]/.test(password) || !/\d/.test(password)) errors.password = 'Use uppercase, lowercase, and a number';
-  if (password !== confirmPassword) errors.confirmPassword = 'Passwords do not match';
+  if (!isText(confirmPassword) || password !== confirmPassword) errors.confirmPassword = 'Passwords do not match';
   return errors;
 }
 
-export function validateLogin({ email, password }) {
+export function validateLogin({ email, password } = {}) {
   const errors = {};
-  if (!emailPattern.test(email || '')) errors.email = 'Enter a valid email address';
-  if (!password) errors.password = 'Password is required';
+  if (!isText(email) || !emailPattern.test(email) || email.length > 254) errors.email = 'Enter a valid email address';
+  if (!isText(password) || !password) errors.password = 'Password is required';
+  else if (password.length > PASSWORD_LIMITS.max) errors.password = 'That password is too long';
   return errors;
 }
 

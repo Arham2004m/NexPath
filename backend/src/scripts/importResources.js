@@ -9,6 +9,9 @@ const dataDir = fileURLToPath(new URL('../data/', import.meta.url));
 const graphDir = path.join(dataDir, 'graph');
 const defaultCsv = path.join(dataDir, 'resources', 'nexpath-resources.csv');
 
+// A UTF-8 byte order mark at the start of the file would otherwise stick to the first column name.
+const stripBom = (text) => (text.charCodeAt(0) === 0xFEFF ? text.slice(1) : text);
+
 // Minimal RFC 4180 parser: quoted fields, escaped quotes, commas and newlines inside quotes.
 export function parseCsv(text) {
   const rows = [];
@@ -30,7 +33,7 @@ export function parseCsv(text) {
   }
   if (field !== '' || row.length) { row.push(field); rows.push(row); }
   const [header, ...body] = rows;
-  return body.map((values) => Object.fromEntries(header.map((h, i) => [h.replace(/^﻿/, '').trim(), (values[i] ?? '').trim()])));
+  return body.map((values) => Object.fromEntries(header.map((h, i) => [stripBom(h).trim(), (values[i] ?? '').trim()])));
 }
 
 const TYPE_MAP = {
