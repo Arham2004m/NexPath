@@ -4,9 +4,13 @@ import Sidebar from '../components/home/Sidebar';
 import Topbar from '../components/home/Topbar';
 import SummaryCard from '../components/home/SummaryCard';
 import RoadmapBlocker from '../components/roadmap/RoadmapBlocker';
+import ReplanBanner from '../components/replan/ReplanBanner';
+import ReplanHistory from '../components/replan/ReplanHistory';
 import TopicCheck from '../components/roadmap/TopicCheck';
 import { getGoals } from '../services/goalApi';
-import { getDashboard, updateTopic } from '../services/roadmapApi';
+import { acceptSuggestedHours, getDashboard, markReplanSeen, replanNow, updateTopic } from '../services/roadmapApi';
+import useAuth from '../hooks/useAuth';
+import { dismissOffer, offerDismissed } from '../lib/offers';
 import { hoursLabel, paceSummary } from '../lib/progress';
 import { longDate, shortDate } from '../lib/format';
 import { createSerialQueue } from '../lib/serialQueue';
@@ -14,8 +18,13 @@ import { createSerialQueue } from '../lib/serialQueue';
 const WeeklyChart = lazy(() => import('../components/progress/WeeklyChart'));
 
 export default function ProgressPage() {
+  const { refreshUser } = useAuth();
   const [menu, setMenu] = useState(false);
-  const [data, setData] = useState(null); // { roadmap, progress }
+  const [bannerBusy, setBannerBusy] = useState(false);
+  const [reviewing, setReviewing] = useState(false);
+  const [reviewMessage, setReviewMessage] = useState(null);
+  const [, setOfferVersion] = useState(0); // re-render after an offer is dismissed on this device
+  const [data, setData] = useState(null); // { roadmap, progress, replan }
   const [goals, setGoals] = useState([]);
   const [problem, setProblem] = useState(null);
   const [notice, setNotice] = useState(null);
@@ -30,6 +39,40 @@ export default function ProgressPage() {
   }, []);
   useEffect(load, [load]);
 
+  // Fetches fresh numbers without blanking the page.
+  const refresh = useCallback(async () => {
+    const dashboard = await getDashboard();
+    confirmed.current = dashboard.progress;
+    setData(dashboard);
+  }, []);
+
+  const dismissEvent = useCallback(async (event) => {
+    setBannerBusy(true); setNotice(null);
+    try { await markReplanSeen(event.id); await refresh(); } catch (error) { setNotice(error.message); } finally { setBannerBusy(false); }
+  }, [refresh]);
+
+  const acceptHours = useCallback(async (hoursPerWeek) => {
+    setNotice(null);
+    try { await acceptSuggestedHours(hoursPerWeek); await refreshUser(); await refresh(); } catch (error) { setNotice(error.message); }
+  }, [refresh, refreshUser]);
+
+  const keepHours = useCallback(async (offer) => {
+    dismissOffer(offer);
+    setOfferVersion((n) => n + 1);
+    const event = data?.replan?.event;
+    if (event) await dismissEvent(event);
+  }, [data, dismissEvent]);
+
+  // "Check my plan now": same rules as the automatic check, minus the 7 day wait; always says what happened and why.
+  const reviewNow = useCallback(async () => {
+    setReviewing(true); setNotice(null); setReviewMessage(null);
+    try {
+      const result = await replanNow();
+      setReviewMessage(result.message);
+      await refresh();
+    } catch (error) { setNotice(error.message); } finally { setReviewing(false); }
+  }, [refresh]);
+
   // Tick a topic from the "up next" list; clicks are sent in order and the server's numbers replace the whole page's progress.
   const tick = useCallback(async (topicId, done) => {
     setNotice(null);
@@ -37,7 +80,7 @@ export default function ProgressPage() {
     if (error) { setNotice(error.message); return; }
     confirmed.current = value.progress;
     if (value.roadmapChanged) { load(); return; } // finished work from an earlier version was put back into the plan
-    if (idle) setData((current) => (current ? { ...current, progress: value.progress } : current));
+    if (idle) setData((current) => (current ? { ...current, progress: value.progress, replan: value.replan ? { ...current.replan, ...value.replan } : current.replan } : current));
   }, [load]);
 
   const progress = data?.progress;
@@ -74,9 +117,22 @@ export default function ProgressPage() {
                     <Link to="/roadmap" className="font-bold text-mid underline-offset-4 hover:underline">Open the roadmap</Link></p>
                 </header>
 
+                <ReplanBanner
+                  event={data.replan?.event} busy={bannerBusy}
+                  suggestion={data.replan?.suggestion && !offerDismissed(data.replan.suggestion) ? data.replan.suggestion : null}
+                  onDismiss={dismissEvent} onAcceptHours={acceptHours} onKeepHours={keepHours}
+                />
+
                 <div className="surface-card feature-card mt-9 px-6 py-6 sm:px-8">
                   <div className="h-3 bg-pale/60" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress.percentComplete} aria-label="Overall roadmap progress"><div className="h-full bg-mid" style={{ width: `${progress.percentComplete}%` }} /></div>
                   <p className="mt-4 text-sm leading-6 text-muted"><span className="font-bold text-ink">{pace.label}.</span> {pace.detail}</p>
+                  {progress.pace !== 'complete' && (
+                    <div className="mt-4 flex flex-wrap items-center gap-3">
+                      <button type="button" onClick={reviewNow} disabled={reviewing} className="control-transition inline-flex min-h-10 items-center border border-pale bg-white px-4 text-sm font-extrabold text-ink hover:border-mid disabled:opacity-60">{reviewing ? 'Checking…' : 'Check my plan now'}</button>
+                      <p className="text-xs text-muted">Your plan adapts by itself when you fall two weeks behind or get a week ahead; this checks right away.</p>
+                    </div>
+                  )}
+                  {reviewMessage && <p role="status" className="mt-3 text-sm font-bold leading-6 text-ink">{reviewMessage}</p>}
                 </div>
 
                 <section className="summary-grid mt-6 grid md:grid-cols-3">
@@ -84,6 +140,13 @@ export default function ProgressPage() {
                   <SummaryCard index={1} label="Time spent" value={hoursLabel(progress.loggedHours)} detail={`Logged by you, against ${hoursLabel(progress.plannedHoursToDate)} planned so far. Log time on a topic in the roadmap.`} />
                   <SummaryCard index={2} label="Weekly completion" value={progress.weeksEnded ? `${Math.round((progress.velocity ?? 0) * 100)}%` : 'Not yet'} detail={progress.weeksEnded ? `Of the work planned in ${progress.weeksEnded} finished week${progress.weeksEnded === 1 ? '' : 's'}, this much is done.` : 'Measured once your first week has ended.'} />
                 </section>
+
+                {progress.extras?.total > 0 && (
+                  <section className="surface-card mt-6 border-dashed px-6 py-5 sm:px-8" aria-labelledby="extras-heading">
+                    <h2 id="extras-heading" className="font-mono text-[11px] font-medium uppercase tracking-[.13em] text-mid">Optional extras</h2>
+                    <p className="mt-2 text-sm leading-6 text-muted"><span className="font-bold text-ink">{progress.extras.done} of {progress.extras.total} done</span> ({hoursLabel(progress.extras.doneHours)} of {hoursLabel(progress.extras.hours)}). Extra material for when you are ahead; it never changes your percentage or finish date. <Link to="/roadmap" className="font-bold text-mid underline-offset-4 hover:underline">Open it in the roadmap</Link></p>
+                  </section>
+                )}
 
                 <section className="surface-card mt-6 px-6 py-6 sm:px-8" aria-labelledby="weekly-heading">
                   <h2 id="weekly-heading" className="font-mono text-[11px] font-medium uppercase tracking-[.13em] text-mid">Week by week</h2>
@@ -112,6 +175,10 @@ export default function ProgressPage() {
                       ))}
                     </ul>
                   )}
+                </section>
+                <section className="surface-card mt-6 px-6 py-6 sm:px-8" aria-labelledby="changes-heading">
+                  <h2 id="changes-heading" className="font-mono text-[11px] font-medium uppercase tracking-[.13em] text-mid">Plan changes</h2>
+                  <ReplanHistory events={data.replan?.history} />
                 </section>
               </>
             )}

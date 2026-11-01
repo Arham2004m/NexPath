@@ -9,12 +9,15 @@ const nodeTypes = { skill: SkillNode };
 // Skill tree: one node per skill, edges are prerequisites, laid out top to bottom like a path.
 export default function RoadmapTree({ roadmap, progress, selectedId, onSelect }) {
   const { nodes, edges } = useMemo(() => {
-    const positions = layoutRoadmap(roadmap.nodes, roadmap.edges);
+    // Optional extras (added when the student is ahead) sit below the skills they build on, with dashed outlines.
+    const allNodes = [...roadmap.nodes, ...(roadmap.extras?.nodes || [])];
+    const allEdges = [...roadmap.edges, ...(roadmap.extras?.edges || [])];
+    const positions = layoutRoadmap(allNodes, allEdges);
     return {
-      nodes: roadmap.nodes.map((node) => ({ id: node.id, type: 'skill', position: positions[node.id], data: { node, selected: node.id === selectedId, onSelect, done: !!progress?.nodes?.[node.id]?.complete }, draggable: false, width: NODE_WIDTH, height: NODE_HEIGHT })),
-      edges: roadmap.edges.map(({ from, to }) => ({
+      nodes: allNodes.map((node) => ({ id: node.id, type: 'skill', position: positions[node.id], data: { node, selected: node.id === selectedId, onSelect, done: !!progress?.nodes?.[node.id]?.complete }, draggable: false, width: NODE_WIDTH, height: NODE_HEIGHT })),
+      edges: allEdges.map(({ from, to }) => ({
         id: `${from}->${to}`, source: from, target: to, type: 'smoothstep',
-        style: { stroke: '#3282B8', strokeWidth: 2 }, markerEnd: { type: MarkerType.ArrowClosed, color: '#3282B8' }
+        style: { stroke: '#3282B8', strokeWidth: 2, ...(roadmap.extras?.nodes?.some((node) => node.id === to) ? { strokeDasharray: '6 4' } : {}) }, markerEnd: { type: MarkerType.ArrowClosed, color: '#3282B8' }
       }))
     };
   }, [roadmap, progress, selectedId, onSelect]);

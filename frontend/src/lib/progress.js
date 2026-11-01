@@ -10,6 +10,8 @@ export function topicIndex(plan) {
       index.set(entry.topicId, known);
     }
   }
+  // Optional extras (added when the student is ahead) are tickable too, but never count towards the percentage.
+  for (const topic of plan?.extras?.topics || []) index.set(topic.topicId, { nodeId: topic.nodeId, hours: topic.hours, extra: true });
   return index;
 }
 
@@ -20,6 +22,20 @@ export function withTopicDone(progress, topicId, done, plan) {
   const wasDone = progress.topicStatus[topicId] === 'done';
   if (wasDone === done) return progress;
   const topic = topicIndex(plan).get(topicId);
+  const delta = done ? 1 : -1;
+  if (topic?.extra) {
+    const entry = progress.nodes[topic.nodeId];
+    const extras = progress.extras && {
+      ...progress.extras,
+      done: Math.max(0, progress.extras.done + delta), doneHours: Math.max(0, progress.extras.doneHours + delta * topic.hours),
+      topics: progress.extras.topics.map((item) => (item.topicId === topicId ? { ...item, done } : item))
+    };
+    return {
+      ...progress, extras,
+      topicStatus: { ...progress.topicStatus, [topicId]: done ? 'done' : 'optional' },
+      nodes: entry ? { ...progress.nodes, [topic.nodeId]: { ...entry, done: Math.max(0, entry.done + delta), complete: entry.done + delta === entry.total } } : progress.nodes
+    };
+  }
   const doneHours = Math.max(0, progress.doneHours + (done ? 1 : -1) * (topic?.hours ?? 0));
   const topicsDone = Math.max(0, progress.topicsDone + (done ? 1 : -1));
   const finished = topicsDone === progress.topicsTotal;
@@ -50,7 +66,7 @@ export function paceSummary(progress) {
     case 'complete': return { label: 'Roadmap complete', detail: 'Every topic is done. Well finished.' };
     case 'not_started': return { label: 'Just getting started', detail: 'Your first week is not over yet, so there is no pace to measure.' };
     case 'behind': return { label: 'Behind schedule', detail: `About ${weeks} weeks of planned work are still open. A small push each day closes that gap.` };
-    case 'ahead': return { label: 'Ahead of schedule', detail: `You are about ${weeks} weeks ahead of the plan.` };
+    case 'ahead': return { label: 'Ahead of schedule', detail: `You have finished about ${hoursLabel(progress.leadHours ?? 0)} of work beyond everything planned so far.` };
     default: return { label: 'On track', detail: (progress.lagWeeks ?? 0) > 0.05 ? `A little over ${weeks} weeks of planned work is open, well within range.` : 'You are keeping up with the plan.' };
   }
 }

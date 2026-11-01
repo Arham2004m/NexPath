@@ -41,10 +41,10 @@ export default function RoadmapSummary({ roadmap, progress, version = 1, goalLab
         <div role="status" className="surface-card mt-6 flex items-start gap-4 border-l-[5px] border-l-error px-6 py-5">
           <AlertTriangle size={20} className="mt-0.5 shrink-0 text-error" aria-hidden="true" />
           <p className="text-sm leading-6 text-ink">
-            <span className="font-bold">Your {roadmap.targetWeeks}-week target is tight.</span>{' '}
+            <span className="font-bold">{roadmap.deadlineDate ? `Finishing by ${longDate(roadmap.deadlineDate)} is tight.` : `Your ${roadmap.targetWeeks}-week target is tight.`}</span>{' '}
             {roadmap.achievable
               ? `This plan needs about ${roadmap.requiredHoursPerWeek} hours a week to fit; at ${roadmap.hoursPerWeek} hours it runs ${roadmap.totalWeeks} weeks. You can change your hours or target on the Goal page.`
-              : `Even at the maximum weekly hours this plan does not fit in ${roadmap.targetWeeks} weeks. Consider a later target on the Goal page.`}
+              : `Even at the maximum weekly hours this plan does not fit ${roadmap.deadlineDate ? `before ${longDate(roadmap.deadlineDate)}` : `in ${roadmap.targetWeeks} weeks`}. Consider a later target on the Goal page.`}
           </p>
         </div>
       )}

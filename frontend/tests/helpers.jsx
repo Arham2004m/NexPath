@@ -5,8 +5,8 @@ import { AuthContext } from '../src/context/AuthContext';
 export const student = { id: 'u1', name: 'Test Student', email: 't@example.com', goalId: null, subTrack: null, hoursPerWeek: null, targetWeeks: null, onboardingComplete: false };
 
 // Renders a page the way the app does: a router, and a signed-in student in the auth context.
-export function renderPage(ui, { path = '/', user = student, routes = [] } = {}) {
-  const auth = { user, token: 'token', loading: false, login: async () => {}, register: async () => {}, logout: async () => {}, refreshUser: async () => {} };
+export function renderPage(ui, { path = '/', user = student, routes = [], auth: authOverrides = {} } = {}) {
+  const auth = { user, token: 'token', loading: false, login: async () => {}, register: async () => {}, logout: async () => {}, refreshUser: async () => {}, ...authOverrides };
   return render(
     <AuthContext.Provider value={auth}>
       <MemoryRouter initialEntries={[path]}>

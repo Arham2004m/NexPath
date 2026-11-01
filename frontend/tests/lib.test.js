@@ -47,6 +47,22 @@ describe('withTopicDone (instant feedback before the server answers)', () => {
     expect(almost.percentComplete).toBeLessThanOrEqual(99);
   });
 
+  it('ticking an optional extra changes only the extras, never the percentage or the topic counts', () => {
+    const extra = { topicId: 'x1', nodeId: 'xn', nodeName: 'Extra skill', title: 'Extra topic', hours: 6, index: 0 };
+    const withExtras = makePlan({ extras: { topics: [extra], nodes: [] } });
+    const progress = makeProgress({ percentComplete: 25, topicStatus: { ...makeProgress().topicStatus, x1: 'optional' }, nodes: { ...makeProgress().nodes, xn: { done: 0, total: 1, complete: false } }, extras: { total: 1, done: 0, hours: 6, doneHours: 0, topics: [{ ...extra, done: false, minutes: 0 }], nodes: { xn: { done: 0, total: 1, complete: false } } } });
+    const ticked = withTopicDone(progress, 'x1', true, withExtras);
+    expect(ticked.topicStatus.x1).toBe('done');
+    expect(ticked.extras).toMatchObject({ done: 1, doneHours: 6 });
+    expect(ticked.nodes.xn.complete).toBe(true);
+    expect(ticked.percentComplete).toBe(25);
+    expect(ticked.topicsDone).toBe(progress.topicsDone);
+    expect(ticked.doneHours).toBe(progress.doneHours);
+    const undone = withTopicDone(ticked, 'x1', false, withExtras);
+    expect(undone.topicStatus.x1).toBe('optional');
+    expect(undone.extras.done).toBe(0);
+  });
+
   it('survives an unknown topic and missing progress', () => {
     expect(withTopicDone(null, 't1', true, plan)).toBeNull();
     expect(withTopicDone(makeProgress(), 'ghost', true, plan).topicStatus.ghost).toBe('done');
@@ -61,12 +77,12 @@ describe('withTopicDone (instant feedback before the server answers)', () => {
 describe('plain-language labels', () => {
   it('describes every pace without alarming wording', () => {
     for (const pace of ['complete', 'not_started', 'behind', 'ahead', 'on_track']) {
-      const text = paceSummary(makeProgress({ pace, lagWeeks: pace === 'behind' ? 2.4 : pace === 'ahead' ? -1.5 : 0.5 }));
+      const text = paceSummary(makeProgress({ pace, lagWeeks: pace === 'behind' ? 2.4 : pace === 'ahead' ? -1.5 : 0.5, leadHours: 15 }));
       expect(text.label, pace).toBeTruthy();
       expect(text.detail, pace).toBeTruthy();
     }
     expect(paceSummary(makeProgress({ pace: 'behind', lagWeeks: 2.4 })).detail).toContain('2.4');
-    expect(paceSummary(makeProgress({ pace: 'ahead', lagWeeks: -1.5 })).detail).toContain('1.5');
+    expect(paceSummary(makeProgress({ pace: 'ahead', lagWeeks: -1.5, leadHours: 15 })).detail).toContain('15 h');
   });
 
   it('formats time', () => {

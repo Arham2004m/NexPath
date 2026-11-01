@@ -5,7 +5,7 @@ import TopicCheck from './TopicCheck';
 import LogTime from './LogTime';
 import { weekRange } from '../../lib/format';
 
-const statusText = { mastered: 'Already known from your assessment', next: 'Start here', upcoming: 'Coming up', done: 'Completed' };
+const statusText = { mastered: 'Already known from your assessment', next: 'Start here', upcoming: 'Coming up', done: 'Completed', optional: 'Optional extra' };
 const statusFor = (node) => (node.status === 'mastered' && node.source === 'self' ? 'Marked as known by you' : statusText[node.status]);
 
 // Side panel (bottom sheet on small screens) with everything about one skill.
@@ -24,7 +24,7 @@ export default function NodeDetails({ node, nameOf, progress, onClose, onToggleK
         <div>
           <p className="font-mono text-[11px] font-medium uppercase tracking-[.13em] text-mid">{statusFor(node)}</p>
           <h2 id="node-title" className="mt-2 text-2xl font-extrabold leading-tight tracking-[-.05em] text-ink">{node.name}</h2>
-          <p className="mt-2 font-mono text-[11px] uppercase tracking-[.12em] text-muted">{node.status === 'mastered' ? `${node.estimatedHours} h skipped` : `${weekRange(node)} · ${node.estimatedHours} h`}</p>
+          <p className="mt-2 font-mono text-[11px] uppercase tracking-[.12em] text-muted">{node.status === 'mastered' ? `${node.estimatedHours} h skipped` : node.optional ? `Optional · ${node.estimatedHours} h` : `${weekRange(node)} · ${node.estimatedHours} h`}</p>
         </div>
         <button ref={closeRef} type="button" onClick={onClose} aria-label="Close details" className="control-transition p-1 text-muted hover:text-ink"><X size={20} /></button>
       </div>
@@ -34,7 +34,8 @@ export default function NodeDetails({ node, nameOf, progress, onClose, onToggleK
           <button type="button" disabled={busy} onClick={() => onToggleKnown(node.id, false)} className="control-transition inline-flex min-h-10 items-center border border-pale bg-white px-4 text-sm font-extrabold text-ink hover:border-mid disabled:opacity-60">I do not know this yet: add it back</button>
         )}
         {node.status === 'mastered' && node.source !== 'self' && <p className="text-sm leading-6 text-muted">Skipped because of your assessment result.</p>}
-        {node.status !== 'mastered' && !node.capstone && (
+        {node.optional && <p className="text-sm leading-6 text-muted">Added because you are ahead of schedule. It is yours to do whenever you like, and it never changes your finish date or your percentage.</p>}
+        {node.status !== 'mastered' && !node.capstone && !node.optional && (
           <button type="button" disabled={busy} onClick={() => onToggleKnown(node.id, true)} className="control-transition inline-flex min-h-10 items-center border border-pale bg-white px-4 text-sm font-extrabold text-ink hover:border-mid disabled:opacity-60">I already know this: skip it</button>
         )}
         {node.capstone && <p className="text-sm leading-6 text-muted"><span className="font-bold text-ink">Final hands-on skill.</span> It always stays in your plan, because this is where you prove the rest.</p>}

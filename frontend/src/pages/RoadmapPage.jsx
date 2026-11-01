@@ -4,10 +4,13 @@ import Sidebar from '../components/home/Sidebar';
 import Topbar from '../components/home/Topbar';
 import RoadmapBlocker from '../components/roadmap/RoadmapBlocker';
 import RoadmapSummary from '../components/roadmap/RoadmapSummary';
+import ReplanBanner from '../components/replan/ReplanBanner';
 import NodeDetails from '../components/roadmap/NodeDetails';
 import WeekList from '../components/roadmap/WeekList';
 import { getGoals } from '../services/goalApi';
-import { getCurrentRoadmap, setKnownSkill, updateTopic } from '../services/roadmapApi';
+import { acceptSuggestedHours, getCurrentRoadmap, markReplanSeen, setKnownSkill, updateTopic } from '../services/roadmapApi';
+import useAuth from '../hooks/useAuth';
+import { dismissOffer, offerDismissed } from '../lib/offers';
 import { withTopicDone } from '../lib/progress';
 import { createSerialQueue } from '../lib/serialQueue';
 
@@ -15,8 +18,11 @@ import { createSerialQueue } from '../lib/serialQueue';
 const RoadmapTree = lazy(() => import('../components/roadmap/RoadmapTree'));
 
 export default function RoadmapPage() {
+  const { refreshUser } = useAuth();
   const [menu, setMenu] = useState(false);
-  const [saved, setSaved] = useState(null); // { roadmap: { id, version, plan }, progress }
+  const [bannerBusy, setBannerBusy] = useState(false);
+  const [, setOfferVersion] = useState(0); // re-render after an offer is dismissed on this device
+  const [saved, setSaved] = useState(null); // { roadmap: { id, version, plan }, progress, replan }
   const [goals, setGoals] = useState([]);
   const [problem, setProblem] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
@@ -53,7 +59,7 @@ export default function RoadmapPage() {
       return;
     }
     confirmed.current = value.progress;
-    if (idle) setSaved((current) => (current ? { ...current, progress: value.progress } : current));
+    if (idle) setSaved((current) => (current ? { ...current, progress: value.progress, replan: value.replan ?? current.replan } : current));
   }, [apply]);
 
   const logTime = useCallback(async (topicId, minutesSpent) => {
@@ -73,10 +79,29 @@ export default function RoadmapPage() {
     } catch (error) { setNotice(error.message); } finally { setBusy(false); }
   }, [apply]);
 
+  // The student has read the explanation of a replan; the server remembers, then the page refreshes its replan information.
+  const dismissEvent = useCallback(async (event) => {
+    setBannerBusy(true); setNotice(null);
+    try { await markReplanSeen(event.id); apply(await getCurrentRoadmap()); } catch (error) { setNotice(error.message); } finally { setBannerBusy(false); }
+  }, [apply]);
+
+  // Accepting the offer lowers the weekly hours (never anything else); the roadmap then regenerates keeping finished work.
+  const acceptHours = useCallback(async (hoursPerWeek) => {
+    setNotice(null);
+    try { await acceptSuggestedHours(hoursPerWeek); await refreshUser(); apply(await getCurrentRoadmap()); } catch (error) { setNotice(error.message); }
+  }, [apply, refreshUser]);
+
+  const keepHours = useCallback(async (offer) => {
+    dismissOffer(offer);
+    setOfferVersion((n) => n + 1);
+    const event = saved?.replan?.event;
+    if (event) await dismissEvent(event);
+  }, [saved, dismissEvent]);
+
   const plan = saved?.roadmap.plan;
   planRef.current = plan;
   const progress = saved?.progress;
-  const byId = useMemo(() => new Map((plan?.nodes || []).map((node) => [node.id, node])), [plan]);
+  const byId = useMemo(() => new Map([...(plan?.nodes || []), ...(plan?.extras?.nodes || [])].map((node) => [node.id, node])), [plan]);
   const nameOf = useCallback((id) => byId.get(id)?.name || id, [byId]);
   const select = useCallback((id) => setSelectedId((current) => (current === id ? null : id)), []);
   const close = useCallback(() => { setSelectedId(null); setNotice(null); }, []);
@@ -106,6 +131,11 @@ export default function RoadmapPage() {
             {saved && (
               <>
                 <RoadmapSummary roadmap={plan} progress={progress} version={saved.roadmap.version} goalLabel={goal?.label || 'Your goal'} trackLabel={track?.label} />
+                <ReplanBanner
+                  event={saved.replan?.event} busy={bannerBusy}
+                  suggestion={saved.replan?.suggestion && !offerDismissed(saved.replan.suggestion) ? saved.replan.suggestion : null}
+                  onDismiss={dismissEvent} onAcceptHours={acceptHours} onKeepHours={keepHours}
+                />
                 {notice && !selected && <p role="alert" className="mt-4 text-sm font-bold text-error">{notice}</p>}
 
                 <div className="mt-10 flex flex-wrap items-center justify-between gap-4">

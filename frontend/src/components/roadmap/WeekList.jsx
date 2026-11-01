@@ -27,6 +27,28 @@ export default function WeekList({ roadmap, progress, onToggleTopic, onLogTime, 
           <p className="mt-2 text-sm leading-6 text-muted">Every topic of this roadmap is finished.</p>
         </section>
       )}
+      {roadmap.extras?.topics?.length > 0 && (
+        <section aria-labelledby="extras-title" className="surface-card border-dashed px-6 py-6 sm:px-8">
+          <h3 id="extras-title" className="text-xl font-extrabold tracking-[-.04em] text-ink">Optional extras</h3>
+          <p className="mt-1 text-sm leading-6 text-muted">You are ahead of schedule, so here is some advanced material to use your spare time on. It is entirely optional and does not change your progress or your finish date.</p>
+          <ul className="mt-4 space-y-2">
+            {roadmap.extras.topics.map((topic) => {
+              const isDone = progress?.topicStatus[topic.topicId] === 'done';
+              return (
+                <li key={topic.topicId} className="flex items-start gap-3 border-b border-[var(--rule)] pb-2 text-[15px]">
+                  <TopicCheck done={isDone} title={topic.title} onToggle={(next) => onToggleTopic(topic.topicId, next)} />
+                  <span className="min-w-0 flex-1">
+                    <span className={`font-bold ${isDone ? 'text-muted line-through' : 'text-ink'}`}>{topic.title}</span>
+                    <button type="button" onClick={() => onOpenSkill?.(topic.nodeId)} className="block text-left text-xs text-muted underline-offset-4 hover:text-mid hover:underline">{topic.nodeName}</button>
+                    {!isDone && onLogTime && <LogTime topicId={topic.topicId} logged={progress?.minutesByTopic[topic.topicId]} onLogTime={onLogTime} />}
+                  </span>
+                  <span className="shrink-0 font-mono text-[11px] text-muted">{topic.hours} h</span>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )}
       {roadmap.weeks.map((week) => {
         const current = progress?.weekly[week.index - 1]?.state === 'current';
         const done = progress?.weekly[week.index - 1]?.completedHours ?? 0;

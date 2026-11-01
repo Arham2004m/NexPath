@@ -60,3 +60,32 @@ export const catalog = {
     }
   ]
 };
+
+// What the server sends about replanning: the newest unread explanation and any offer to lower the hours.
+export const shiftEvent = (overrides = {}) => ({
+  id: 'e1', action: 'shift', reason: 'behind schedule', fromVersion: 1, toVersion: 2, createdAt: '2026-01-26T10:00:00.000Z', seenAt: null, suggestion: null,
+  message: 'You were 2.4 weeks behind schedule, so your 3 unfinished topics (12 h) were rescheduled starting today. Your finish date moved from 18 Jan 2026 to 8 Feb 2026. Nothing you finished was changed.',
+  metrics: { velocity: 0.2, lagWeeks: 2.4, weeksEnded: 3, plannedHours: 30, completedHours: 6, pace: 'behind' }, details: {}, ...overrides
+});
+export const enrichEvent = (overrides = {}) => shiftEvent({ id: 'e2', action: 'enrich', reason: 'ahead of schedule', message: 'You were 1.5 weeks ahead of schedule, so 2 optional topics (9 h) were added as extras. They are optional: they do not change your finish date, your pace or your percentage.', metrics: { velocity: 1.6, lagWeeks: -1.6, weeksEnded: 2, plannedHours: 20, completedHours: 32, pace: 'ahead' }, ...overrides });
+export const hoursOffer = (overrides = {}) => ({ hoursPerWeek: 5, currentHoursPerWeek: 10, averageCompletedHours: 3.5, weeks: 3, ...overrides });
+
+// A plan that already has optional extras (one skill, two topics) and the matching progress numbers.
+export const extrasBlock = () => ({
+  addedAt: '2026-01-12',
+  topics: [
+    { topicId: 'x1', nodeId: 'xn', nodeName: 'Extra skill', title: 'Extra topic one', hours: 5, index: 0 },
+    { topicId: 'x2', nodeId: 'xn', nodeName: 'Extra skill', title: 'Extra topic two', hours: 4, index: 1 }
+  ],
+  nodes: [{ id: 'xn', name: 'Extra skill', domain: 'web', level: 2, status: 'optional', optional: true, source: null, capstone: false, prerequisites: ['n1'], estimatedHours: 9, fullHours: 12, skippedHours: 0, creditedTopics: 0, order: 1000, startWeek: null, endWeek: null,
+    topics: [{ id: 'x1', title: 'Extra topic one', hours: 5 }, { id: 'x2', title: 'Extra topic two', hours: 4 }], miniTasks: ['Try it', 'Try it again'], resources: [] }],
+  edges: [{ from: 'n1', to: 'xn' }]
+});
+export const extrasProgress = (done = 0) => ({
+  topicStatus: { t1: 'current', t2: 'current', t3: 'upcoming', x1: done >= 1 ? 'done' : 'optional', x2: done >= 2 ? 'done' : 'optional' },
+  nodes: { n1: { done: 0, total: 2, complete: false }, n2: { done: 0, total: 1, complete: false }, xn: { done, total: 2, complete: done === 2 } },
+  extras: {
+    total: 2, done, hours: 9, doneHours: done === 0 ? 0 : done === 1 ? 5 : 9, nodes: { xn: { done, total: 2, complete: done === 2 } },
+    topics: [{ topicId: 'x1', nodeId: 'xn', nodeName: 'Extra skill', title: 'Extra topic one', hours: 5, index: 0, done: done >= 1, minutes: 0 }, { topicId: 'x2', nodeId: 'xn', nodeName: 'Extra skill', title: 'Extra topic two', hours: 4, index: 1, done: done >= 2, minutes: 0 }]
+  }
+});
