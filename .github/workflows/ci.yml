@@ -18,7 +18,11 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: backend/package-lock.json
-      - run: npm ci
+      - name: Install dependencies
+        run: |
+          npm ci
+          ROLLDOWN_VERSION=$(node -p "require('./node_modules/rolldown/package.json').version")
+          npm install --no-save @rolldown/binding-linux-x64-gnu@$ROLLDOWN_VERSION
       - name: Validate the knowledge graph (cycles, dangling prerequisites, hour sums)
         run: npm run validate-graph
       - name: Tests (in-memory MongoDB, no secrets needed)
