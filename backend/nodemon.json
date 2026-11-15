@@ -1,6 +1,12 @@
 {
-  "watch": ["src"],
-  "ext": "js,json",
-  "ignore": ["src/data/resources/*", "tests/*"],
+  "watch": [
+    "src",
+    ".env"
+  ],
+  "ext": "js,json,env",
+  "ignore": [
+    "src/data/resources/*",
+    "tests/*"
+  ],
   "delay": 500
 }
